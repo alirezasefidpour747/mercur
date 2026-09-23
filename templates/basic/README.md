@@ -4,44 +4,60 @@ This template comes configured with the bare minimum to get started building you
 
 ## Quick Start
 
-To spin up this template locally, follow these steps:
+This fork includes a Docker Compose file for PostgreSQL and Redis. The API and dashboards run from the VS Code terminal, so you can edit the code and see changes without building application containers.
 
-### Clone
+### Requirements
 
-If you've already cloned this repo, skip to [Development](#development).
+- Docker Desktop (or Docker Engine with the Compose plugin)
+- Node.js 20 or newer
+- Bun 1.3.11 or newer
+- Git
 
-### Development
+### Run the Didar preview
 
-1. First [clone the repo](#clone) if you have not done so already
-
-2. Copy the example environment variables:
+Clone the Persian preview branch, then open the repository in VS Code:
 
 ```bash
-cd my-project
+git clone --branch didar/persian-preview https://github.com/alirezasefidpour747/mercur.git
+cd mercur
+code .
+```
+
+In the VS Code terminal, go to the runnable starter template:
+
+```bash
+cd templates/basic
+docker compose up -d
+```
+
+Copy the environment template. On macOS/Linux use `cp`; in PowerShell use `Copy-Item`:
+
+```bash
 cp packages/api/.env.template packages/api/.env
 ```
 
-3. Update the `.env` file with your database connection string and other required variables:
-
-```
-DATABASE_URL=postgres://user:password@localhost:5432/mercur
-REDIS_URL=redis://localhost:6379
-JWT_SECRET=your-super-secret-jwt-key
-COOKIE_SECRET=your-super-secret-cookie-key
-```
-
-4. Install dependencies and start the dev server:
+Then install dependencies, migrate and seed the demo database, and start the development apps:
 
 ```bash
 bun install
+cd packages/api
+bunx medusa db:migrate
+bun run seed
+cd ../..
 bun dev
 ```
 
-5. Open `http://localhost:9000` to access the Medusa backend
-6. Open `http://localhost:7000` to access the admin dashboard
-6. Open `http://localhost:7001` to access the vendor dashboard
+Open the panels:
 
-That's it! Follow the on-screen instructions to login and create your first admin user.
+- API: `http://localhost:9000`
+- Admin: `http://localhost:7000`
+- Vendor: `http://localhost:7001`
+
+Follow the Admin panel's first-run instructions to create an admin user. The seeded demo login for the Vendor panel is `seller@mercur.dev` / `supersecret`.
+
+The seeded catalog is Mercur's generic footwear demo data; it is not Didar's gold catalog or business workflow. This setup is for inspecting the starter's screens and marketplace foundation.
+
+To stop the database containers while keeping their data, run `docker compose down`. To start them again, run `docker compose up -d`.
 
 ## What's Inside
 
