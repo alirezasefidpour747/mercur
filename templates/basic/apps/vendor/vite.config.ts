@@ -20,6 +20,8 @@ export default defineConfig(({ mode }) => {
       react(),
       mercurDashboardPlugin({
         medusaConfigPath: '../../packages/api/medusa-config.ts',
+        name: 'دیدار',
+        i18n: { defaultLanguage: 'fa' },
         ...(backendUrl ? { backendUrl } : {}),
       }),
     ],
