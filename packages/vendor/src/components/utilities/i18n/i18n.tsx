@@ -3,9 +3,30 @@ import LanguageDetector from "i18next-browser-languagedetector";
 import { initReactI18next } from "react-i18next";
 
 import { defaultI18nOptions } from "../../../i18n/config";
+import { languages } from "../../../i18n/languages";
 import translations from "../../../i18n/translations";
 import customI18nResources from "virtual:mercur/i18n";
 import config from "virtual:mercur/config";
+
+let documentLanguageListenerRegistered = false;
+
+const syncDocumentLanguage = (code: string) => {
+  if (typeof document === "undefined") {
+    return;
+  }
+
+  const normalizedCode = code.toLowerCase();
+  const language = languages.find(({ code: candidate }) => {
+    const normalizedCandidate = candidate.toLowerCase();
+    return (
+      normalizedCode === normalizedCandidate ||
+      normalizedCode.startsWith(`${normalizedCandidate}-`)
+    );
+  });
+
+  document.documentElement.lang = code;
+  document.documentElement.dir = language?.ltr === false ? "rtl" : "ltr";
+};
 
 function deepMerge(
   target: Record<string, any>,
@@ -38,6 +59,11 @@ export const I18n = () => {
     return null;
   }
 
+  if (!documentLanguageListenerRegistered) {
+    i18n.on("languageChanged", syncDocumentLanguage);
+    documentLanguageListenerRegistered = true;
+  }
+
   i18n
     .use(
       new LanguageDetector(null, {
@@ -52,7 +78,8 @@ export const I18n = () => {
         lng: config.i18n.defaultLanguage,
       }),
       resources: mergedTranslations,
-    });
+    })
+    .then(() => syncDocumentLanguage(i18n.resolvedLanguage || i18n.language));
 
   return null;
 };
