@@ -28,12 +28,21 @@ In the VS Code terminal, go to the runnable starter template:
 ```bash
 cd templates/basic
 docker compose up -d
+docker compose ps
 ```
 
-Copy the environment template. On macOS/Linux use `cp`; in PowerShell use `Copy-Item`:
+Wait until PostgreSQL and Redis show `healthy`, then copy the environment template.
+
+On macOS/Linux:
 
 ```bash
 cp packages/api/.env.template packages/api/.env
+```
+
+On Windows PowerShell:
+
+```powershell
+Copy-Item packages/api/.env.template packages/api/.env
 ```
 
 Then install dependencies, migrate and seed the demo database, and start the development apps:
