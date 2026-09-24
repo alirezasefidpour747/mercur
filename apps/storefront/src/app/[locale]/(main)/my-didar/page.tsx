@@ -32,6 +32,7 @@ export default async function MyDidar({ params }: Props) {
       })}
     </div>
     <p className="didar-service-disclaimer">{copy.serviceNote}</p>
+    <Link className="didar-source-link" href={`/${locale}/my-didar/preview`}>{copy.fullPreview}</Link>
     <Link className="didar-secondary-link" href={`/${locale}/jewellery`}>{copy.catalog}</Link>
   </main>
 }
