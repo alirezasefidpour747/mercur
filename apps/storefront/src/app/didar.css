@@ -644,6 +644,10 @@
 .didar-product-card{border:1px solid #ecebe9;margin-inline-start:-1px;margin-bottom:-1px}
 .didar-product-image{background:#fff;aspect-ratio:1.04;padding:clamp(20px,4vw,70px)}
 .didar-product-image img{object-fit:contain}
+.didar-product-image,.didar-detail-media{position:relative}
+.didar-detail-media{aspect-ratio:4/5;background:#f3f0eb}
+.didar-detail-media img{object-fit:cover}
+.didar-detail-gallery .didar-detail-media:only-child{grid-column:1/-1;max-height:700px}
 .didar-product-info{padding:10px 28px 24px}
 .didar-catalog-heading h1,.didar-detail h1{font-weight:400}
 .didar-interactive-page{padding:24px 0 0;max-width:none}
