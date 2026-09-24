@@ -213,7 +213,7 @@ export async function generateMetadata({
       url: `${baseUrl}/${locale}`,
       siteName: "Didar",
       type: "website",
-      images: [{ url: `${baseUrl}/didar/hero.webp`, alt: content.title }],
+      images: [{ url: "https://didargold.ir/assets/film/didar-portrait-v7.webp", alt: content.title }],
     },
   }
 }
