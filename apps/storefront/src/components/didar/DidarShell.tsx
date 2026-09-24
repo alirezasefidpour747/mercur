@@ -12,38 +12,38 @@ const directionFor = (locale: DidarLocale) =>
 
 const shellCopy = {
   fa: {
+    navLabel: "ناوبری اصلی",
     home: "خانه",
     collections: "مجموعه‌ها",
     story: "جهان دیدار",
     care: "راهنمای انتخاب",
-    catalog: "فهرست محصولات",
     language: "زبان",
     footer: "زیبایی در جزئیاتی که می‌مانند.",
   },
   en: {
+    navLabel: "Main navigation",
     home: "Home",
     collections: "Collections",
     story: "The Didar world",
     care: "Choosing well",
-    catalog: "Shop the catalog",
     language: "Language",
     footer: "Beauty in the details that stay.",
   },
   ar: {
+    navLabel: "التنقل الرئيسي",
     home: "الرئيسية",
     collections: "المجموعات",
     story: "عالم ديدار",
     care: "دليل الاختيار",
-    catalog: "تصفح المنتجات",
     language: "اللغة",
     footer: "جمال في تفاصيل تبقى.",
   },
   fr: {
+    navLabel: "Navigation principale",
     home: "Accueil",
     collections: "Collections",
     story: "L’univers Didar",
     care: "Bien choisir",
-    catalog: "Voir le catalogue",
     language: "Langue",
     footer: "La beauté dans les détails qui restent.",
   },
@@ -76,7 +76,7 @@ export function DidarHeader({ locale }: { locale: string }) {
           <span>دیدار</span>
         </Link>
 
-        <nav className="didar-nav" aria-label={copy.home}>
+        <nav className="didar-nav" aria-label={copy.navLabel}>
           <Link href={`/${locale}`}>{copy.home}</Link>
           <Link href={`/${locale}#collections`}>{copy.collections}</Link>
           <Link href={`/${locale}#story`}>{copy.story}</Link>
@@ -84,9 +84,6 @@ export function DidarHeader({ locale }: { locale: string }) {
         </nav>
 
         <div className="didar-header-actions">
-          <Link className="didar-header-catalog" href={`/${locale}/categories`}>
-            {copy.catalog}
-          </Link>
           <nav className="didar-languages" aria-label={copy.language}>
             {DIDAR_LOCALES.map((language) => (
               <Link
@@ -120,7 +117,6 @@ export function DidarFooter({ locale }: { locale: string }) {
           <span>دیدار</span>
         </Link>
         <p>{copy.footer}</p>
-        <Link href={`/${locale}/categories`}>{copy.catalog}</Link>
       </div>
       <div className="didar-footer-bottom">
         <span>© Didar</span>

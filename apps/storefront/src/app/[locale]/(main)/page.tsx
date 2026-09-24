@@ -8,6 +8,28 @@ import {
   type DidarLocale,
 } from "@/lib/helpers/storefront-locale"
 
+type HomeCopy = {
+  title: string
+  description: string
+  eyebrow: string
+  headline: string
+  intro: string
+  explore: string
+  storyLink: string
+  values: string[]
+  collectionEyebrow: string
+  collectionTitle: string
+  collectionIntro: string
+  collectionCards: { title: string; note: string }[]
+  storyEyebrow: string
+  storyTitle: string
+  storyText: string
+  careEyebrow: string
+  careTitle: string
+  careText: string
+  imageAlt: string[]
+}
+
 const copy = {
   fa: {
     title: "زیورآلات با روایت",
@@ -29,7 +51,6 @@ const copy = {
       { title: "رنگ و درخشش", note: "سنگ‌هایی برای به‌یادماندن" },
       { title: "امضای دیدار", note: "جزئیاتی با شخصیت" },
     ],
-    allCollections: "رفتن به فهرست محصولات",
     storyEyebrow: "داستان دیدار",
     storyTitle: "ساخته‌شده برای نزدیک‌تر شدن",
     storyText:
@@ -37,8 +58,7 @@ const copy = {
     careEyebrow: "انتخابی با شناخت بیشتر",
     careTitle: "هر انتخاب، آغاز یک همراهی‌ست",
     careText:
-      "برای دیدن محصولات و اطلاعاتی که در حال حاضر در فروشگاه ثبت شده‌اند، وارد فهرست شوید. اطلاعات ساخت، موجودی و خدمات باید از داده‌های تأییدشدهٔ دیدار تکمیل شوند.",
-    openCatalog: "باز کردن فهرست فروشگاه",
+      "شناخت ویژگی‌های یک قطعه، بخشی از لذت انتخاب آن است؛ از روایت طراحی تا راهنمای نگهداری.",
     imageAlt: [
       "زیورآلات دیدار در فضایی روشن",
       "زیورآلات طلایی با طراحی ظریف",
@@ -67,7 +87,6 @@ const copy = {
       { title: "Colour and light", note: "Stones to remember" },
       { title: "The Didar signature", note: "Details with character" },
     ],
-    allCollections: "Go to the product catalog",
     storyEyebrow: "The Didar story",
     storyTitle: "Created to bring us closer",
     storyText:
@@ -75,8 +94,7 @@ const copy = {
     careEyebrow: "Choose with more understanding",
     careTitle: "Every choice begins a relationship",
     careText:
-      "Browse the products and information currently listed in the store. Craft, inventory and service details should be completed from Didar’s verified records.",
-    openCatalog: "Open the store catalog",
+      "Understanding a piece is part of choosing it—from the story of its design to the care it needs.",
     imageAlt: [
       "Didar jewellery in a light-filled setting",
       "Gold jewellery with a delicate design",
@@ -105,7 +123,6 @@ const copy = {
       { title: "لون وبريق", note: "أحجار لا تُنسى" },
       { title: "بصمة ديدار", note: "تفاصيل ذات شخصية" },
     ],
-    allCollections: "الانتقال إلى المنتجات",
     storyEyebrow: "حكاية ديدار",
     storyTitle: "صُنع لنكون أقرب",
     storyText:
@@ -113,8 +130,7 @@ const copy = {
     careEyebrow: "اختيار بمعرفة أوسع",
     careTitle: "كل اختيار بداية لمرافقة",
     careText:
-      "تصفحوا المنتجات والمعلومات المسجلة حالياً في المتجر. تُستكمل تفاصيل الصنع والمخزون والخدمات من سجلات ديدار المعتمدة.",
-    openCatalog: "فتح قائمة المتجر",
+      "معرفة خصائص القطعة جزء من متعة اختيارها، من حكاية تصميمها إلى طريقة العناية بها.",
     imageAlt: [
       "مجوهرات ديدار في مساحة مضيئة",
       "مجوهرات ذهبية بتصميم رقيق",
@@ -143,7 +159,6 @@ const copy = {
       { title: "Couleur et lumière", note: "Des pierres à retenir" },
       { title: "La signature Didar", note: "Des détails singuliers" },
     ],
-    allCollections: "Voir le catalogue produits",
     storyEyebrow: "L’histoire Didar",
     storyTitle: "Créé pour nous rapprocher",
     storyText:
@@ -151,8 +166,7 @@ const copy = {
     careEyebrow: "Choisir en connaissance de cause",
     careTitle: "Chaque choix ouvre une relation",
     careText:
-      "Consultez les produits et informations actuellement enregistrés dans la boutique. Les détails de fabrication, de stock et de service doivent être complétés à partir des données vérifiées de Didar.",
-    openCatalog: "Ouvrir le catalogue",
+      "Comprendre une pièce fait partie du choix, de l’histoire de sa création aux gestes pour en prendre soin.",
     imageAlt: [
       "Bijoux Didar dans un espace lumineux",
       "Bijoux en or au dessin délicat",
@@ -161,7 +175,7 @@ const copy = {
       "Récit visuel de l’univers Didar",
     ],
   },
-} satisfies Record<DidarLocale, Record<string, any>>
+} satisfies Record<DidarLocale, HomeCopy>
 
 const languageTags: Record<DidarLocale, string> = {
   fa: "fa-IR",
@@ -216,7 +230,7 @@ export default async function Home({
     : "fa"
   const content = copy[locale]
   const direction = locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-  const catalogUrl = `/${locale}/categories`
+  const collectionsUrl = `/${locale}#collections`
 
   return (
     <main className="didar-site" lang={locale} dir={direction}>
@@ -226,7 +240,7 @@ export default async function Home({
           <h1 id="didar-home-title">{content.headline}</h1>
           <p className="didar-lead">{content.intro}</p>
           <div className="didar-hero-actions">
-            <Link className="didar-button didar-button-primary" href={catalogUrl}>
+            <Link className="didar-button didar-button-primary" href={collectionsUrl}>
               {content.explore}
             </Link>
             <Link className="didar-text-link" href={`/${locale}#story`}>
@@ -270,11 +284,7 @@ export default async function Home({
         </div>
         <div className="didar-collection-grid">
           {content.collectionCards.map((card, index) => (
-            <Link
-              className="didar-collection-card"
-              href={catalogUrl}
-              key={card.title}
-            >
+            <article className="didar-collection-card" key={card.title}>
               <div className="didar-collection-image">
                 <Image
                   src={`/didar/collection-0${index + 1}.webp`}
@@ -290,14 +300,8 @@ export default async function Home({
                 </div>
                 <span aria-hidden="true">↗</span>
               </div>
-            </Link>
+            </article>
           ))}
-        </div>
-        <div className="didar-section-link-wrap">
-          <Link className="didar-text-link" href={catalogUrl}>
-            {content.allCollections}
-            <span aria-hidden="true">↗</span>
-          </Link>
         </div>
       </section>
 
@@ -314,10 +318,6 @@ export default async function Home({
           <p className="didar-eyebrow">{content.storyEyebrow}</p>
           <h2 id="didar-story-title">{content.storyTitle}</h2>
           <p>{content.storyText}</p>
-          <Link className="didar-text-link" href={catalogUrl}>
-            {content.explore}
-            <span aria-hidden="true">↗</span>
-          </Link>
         </div>
       </section>
 
@@ -328,9 +328,6 @@ export default async function Home({
         </div>
         <div className="didar-care-action">
           <p>{content.careText}</p>
-          <Link className="didar-button didar-button-outline" href={catalogUrl}>
-            {content.openCatalog}
-          </Link>
         </div>
       </section>
     </main>
