@@ -21,5 +21,6 @@ export default async function DidarRoleHome({ params }: Props) {
       </Link>)}
     </div>
     <p className="didar-service-disclaimer">{copy.serviceNote}</p>
+    <Link className="didar-source-link" href={`/${locale}/my-didar/preview`}>{copy.fullPreview}</Link>
   </main>
 }
