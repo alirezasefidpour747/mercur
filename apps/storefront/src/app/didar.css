@@ -618,3 +618,11 @@
 @media(max-width:800px){.didar-product-grid,.didar-service-grid{grid-template-columns:repeat(2,minmax(0,1fr))}.didar-detail-layout{grid-template-columns:1fr}.didar-detail-copy{padding-top:0}}
 @media(max-width:520px){.didar-product-grid,.didar-service-grid{gap:14px}.didar-product-info h2{font-size:14px}.didar-service-grid{grid-template-columns:1fr}.didar-service-card{min-height:260px}.didar-catalog-tools label{width:100%}.didar-catalog-tools button{width:100%}}
 @media(prefers-reduced-motion:reduce){.didar-product-image img{transition:none}}
+.didar-service-card-link{color:var(--didar-ink);text-decoration:none;transition:background 180ms ease,transform 180ms ease}
+.didar-service-card-link:hover{background:#ece6da;transform:translateY(-2px)}
+.didar-service-card-link:focus-visible,.didar-product-card a:focus-visible{outline:2px solid var(--didar-accent);outline-offset:4px}
+.didar-service-view .didar-catalog-heading{margin-top:30px}
+.didar-service-empty{max-width:760px;min-height:300px;padding:clamp(24px,5vw,60px);background:var(--didar-soft)}
+.didar-service-empty h2{font-size:24px;font-weight:500;margin:30px 0 18px}
+.didar-service-empty p{color:var(--didar-muted);font-size:14px;line-height:2;max-width:590px}
+@media(prefers-reduced-motion:reduce){.didar-service-card-link{transition:none}}
