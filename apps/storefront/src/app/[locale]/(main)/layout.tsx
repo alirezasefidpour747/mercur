@@ -17,10 +17,8 @@ export default async function RootLayout({
   const { locale } = await params
 
   if (isDidarLocale(locale)) {
-    const regionCheck = await checkRegion(locale)
-
-    if (!regionCheck) return redirect("/")
-
+    // The public Didar UI must remain viewable before Medusa is configured.
+    // Legacy commerce routes still validate their sales region below.
     return (
       <>
         <DidarHeader locale={locale} />
