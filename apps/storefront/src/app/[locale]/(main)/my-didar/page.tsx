@@ -23,12 +23,12 @@ export default async function MyDidar({ params }: Props) {
       {paths.map((role, i) => {
         const label = copy[role]
         const items = copy[`${role}Services` as const]
-        return <section className="didar-service-card" key={role}>
+        return <Link className="didar-service-card didar-service-card-link" href={`/${locale}/my-didar/${role}`} key={role}>
           <span className="didar-service-number">0{i + 1}</span>
           <h2>{label}</h2>
           <ul>{items.map((item) => <li key={item}>{item}</li>)}</ul>
           <p>{copy.serviceState}</p>
-        </section>
+        </Link>
       })}
     </div>
     <p className="didar-service-disclaimer">{copy.serviceNote}</p>
