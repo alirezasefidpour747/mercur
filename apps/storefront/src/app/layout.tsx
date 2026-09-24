@@ -1,120 +1,54 @@
-import type { Metadata } from 'next';
-import { Funnel_Display } from 'next/font/google';
+import type { Metadata } from 'next'
 
-import './globals.css';
+import './didar.css'
+import './globals.css'
 
-import { Toaster } from '@medusajs/ui';
-import Head from 'next/head';
+import { Toaster } from '@medusajs/ui'
+import Head from 'next/head'
 
-import { HtmlLangSetter } from '@/components/atoms/HtmlLangSetter/HtmlLangSetter';
-import { retrieveCart } from '@/lib/data/cart';
+import { HtmlLangSetter } from '@/components/atoms/HtmlLangSetter/HtmlLangSetter'
+import { retrieveCart } from '@/lib/data/cart'
 
-import { Providers } from './providers';
-
-const funnelDisplay = Funnel_Display({
-  variable: '--font-funnel-sans',
-  subsets: ['latin'],
-  weight: ['300', '400', '500', '600']
-});
+import { Providers } from './providers'
 
 export const metadata: Metadata = {
   title: {
-    template: `%s | ${
-      process.env.NEXT_PUBLIC_SITE_NAME || 'Mercur B2C Demo - Marketplace Storefront'
-    }`,
-    default: process.env.NEXT_PUBLIC_SITE_NAME || 'Mercur B2C Demo - Marketplace Storefront'
+    template: '%s | Didar',
+    default: 'Didar',
   },
-  description:
-    process.env.NEXT_PUBLIC_SITE_DESCRIPTION || 'Mercur B2C Demo - Marketplace Storefront',
-  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000')
-};
+  description: 'Didar jewellery and stories',
+  metadataBase: new URL(process.env.NEXT_PUBLIC_BASE_URL || 'http://localhost:3000'),
+}
 
 export default async function RootLayout({
-  children
+  children,
 }: Readonly<{
-  children: React.ReactNode;
+  children: React.ReactNode
 }>) {
-  const cart = await retrieveCart();
-
-  // default lang updated by HtmlLangSetter
-  const htmlLang = 'en';
+  const cart = await retrieveCart()
+  const htmlLang = 'en'
 
   return (
-    <html
-      lang={htmlLang}
-      className=""
-    >
+    <html lang={htmlLang}>
       <Head>
         <link
           rel="preconnect"
-          href="https://fonts.gstatic.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://fonts.gstatic.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://fonts.googleapis.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://fonts.googleapis.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://i.imgur.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://i.imgur.com"
-        />
-        {/* Image origins for faster LCP */}
-        <link
-          rel="preconnect"
           href="https://medusa-public-images.s3.eu-west-1.amazonaws.com"
           crossOrigin="anonymous"
         />
-        <link
-          rel="dns-prefetch"
-          href="https://medusa-public-images.s3.eu-west-1.amazonaws.com"
-        />
+        <link rel="dns-prefetch" href="https://medusa-public-images.s3.eu-west-1.amazonaws.com" />
         <link
           rel="preconnect"
           href="https://mercur-connect.s3.eu-central-1.amazonaws.com"
           crossOrigin="anonymous"
         />
-        <link
-          rel="dns-prefetch"
-          href="https://mercur-connect.s3.eu-central-1.amazonaws.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://s3.eu-central-1.amazonaws.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://s3.eu-central-1.amazonaws.com"
-        />
-        <link
-          rel="preconnect"
-          href="https://api.mercurjs.com"
-          crossOrigin="anonymous"
-        />
-        <link
-          rel="dns-prefetch"
-          href="https://api.mercurjs.com"
-        />
+        <link rel="dns-prefetch" href="https://mercur-connect.s3.eu-central-1.amazonaws.com" />
       </Head>
-      <body className={`${funnelDisplay.className} relative bg-primary text-secondary antialiased`}>
+      <body className="relative bg-primary text-secondary antialiased">
         <HtmlLangSetter />
         <Providers cart={cart}>{children}</Providers>
         <Toaster position="top-right" />
       </body>
     </html>
-  );
+  )
 }

@@ -1,5 +1,8 @@
 export const toHreflang = (code: string): string => {
   const map: Record<string, string> = {
+    fa: "fa-IR",
+    en: "en-US",
+    ar: "ar",
     us: "en-US",
     gb: "en-GB",
     au: "en-AU",
@@ -33,35 +36,23 @@ export const toHreflang = (code: string): string => {
 
 const DEFAULT_REGION = process.env.NEXT_PUBLIC_DEFAULT_REGION || "us"
 
-// The storefront serves every page under a locale prefix (/de, /se, ...);
-// requests without one are 307-redirected by the middleware. x-default must
-// therefore resolve to a locale that actually returns 200, never the bare path.
 export const resolveXDefaultLocale = (locales: string[]): string => {
-  if (!locales.length) return DEFAULT_REGION
-  for (const preferred of [DEFAULT_REGION, "us", "gb"]) {
+  if (!locales.length) return "fa"
+  for (const preferred of ["fa", DEFAULT_REGION, "us", "gb"]) {
     if (locales.includes(preferred)) return preferred
   }
   return locales[0]
 }
 
 export const getStorefrontLocales = (
-  regions: { countries?: { iso_2?: string | null }[] | null }[] | null
-): string[] =>
-  Array.from(
-    new Set(
-      (regions || []).flatMap(
-        (r) => r.countries?.map((c) => c.iso_2).filter(Boolean) || []
-      )
-    )
-  ) as string[]
+  _regions: { countries?: { iso_2?: string | null }[] | null }[] | null
+): string[] => ["fa", "en", "ar", "fr"]
 
 type HreflangAlternates = {
   canonical: string
   languages: Record<string, string>
 }
 
-// Builds hreflang alternates where every entry — including x-default and the
-// self-referencing link — points at a locale-prefixed URL that returns 200.
 export const buildHreflangAlternates = ({
   baseUrl,
   path,
@@ -69,13 +60,11 @@ export const buildHreflangAlternates = ({
   locales,
 }: {
   baseUrl: string
-  // Path after the locale segment, starting with "/" (empty string for home).
   path: string
   locale: string
   locales: string[]
 }): HreflangAlternates => {
   const list = locales.length ? locales : [locale]
-
   const languages = list.reduce<Record<string, string>>((acc, code) => {
     acc[toHreflang(code)] = `${baseUrl}/${code}${path}`
     return acc
