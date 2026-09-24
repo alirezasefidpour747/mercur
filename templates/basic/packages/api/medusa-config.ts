@@ -35,6 +35,9 @@ module.exports = withMercur({
     seller_registration: true
   },
   modules: [
+    // Didar account, catalog-source and physical-piece records. This module
+    // starts empty; it never seeds products, SKUs, UIDs or financial balances.
+    { resolve: './src/modules/didar-core' },
     {
       resolve: '@medusajs/medusa/cache-redis',
       options: { redisUrl: REDIS_URL },
