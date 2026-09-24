@@ -678,7 +678,7 @@ rvOldNavigate(action,id);};
 const rvFileOK=f=>f&&f.size>0&&f.size<=2*1024*1024&&['application/pdf','image/jpeg','image/png'].includes(f.type);
 root.addEventListener('input',e=>{if(e.target.id==='rv-quantity')rvQty=e.target.value;if(e.target.form?.id==='rv-profile-form'&&e.target.name){rvCurrent().profileDraft[e.target.name]=e.target.value;rvSave();}});
 root.addEventListener('change',e=>{const x=e.target;if(x.id==='rv-supplier'){rvSupplier=x.value;shell();}if(x.id==='rv-period'){rvPeriod=x.value;shell();}if(x.dataset.rvQty!==undefined){const qty=Number(x.value),p=rvCurrent().basket.find(p=>p.modelId===Number(x.dataset.rvQty));if(!p)return;if(!Number.isInteger(qty)||qty<1||qty>999)rvMessage=t('quantityError');else{p.qty=qty;rvSave();}shell();}if(x.id==='rv-license'){const file=x.files[0];if(!rvFileOK(file)){rvMessage=t('badFile');shell();return;}const a=rvCurrent(),reader=new FileReader();reader.onload=()=>{a.profileFile={name:file.name,type:file.type,data:reader.result};rvSave();shell();};reader.onerror=()=>{rvMessage=t('badFile');shell();};reader.readAsDataURL(file);}});
-root.addEventListener('submit',e=>{const f=e.target,d=new FormData(f),get=k=>String(d.get(k)||'').trim();if(f.id==='dc-login'){e.preventDefault();e.stopImmediatePropagation();if(!roles.some(r=>r.id===state.loginRole))return;const id=get('email');if(!id)return;state.mode=state.loginRole;state.authEmail=id;rvBind(state.mode,id);state.menuOpen=false;if(rvCheckoutAfterLogin&&isBuyer()){state.page='checkout';rvCheckoutAfterLogin=false;}else if(isPartner())state.page='partnerEntry';else if(state.intent){state.modelId=state.intent.modelId;state.page=isConsumer()?'nearby':'product';}else state.page='catalog';shell();return;}
+root.addEventListener('submit',e=>{const f=e.target,d=new FormData(f),get=k=>String(d.get(k)||'').trim();if(f.id==='dc-login'){e.preventDefault();e.stopImmediatePropagation();if(!roles.some(r=>r.id===state.loginRole))return;const id=get('email');if(!id)return;state.mode=state.loginRole;state.authEmail=id;rvBind(state.mode,id);state.menuOpen=false;if(rvCheckoutAfterLogin&&isBuyer()){state.page='checkout';rvCheckoutAfterLogin=false;}else if(state.previewTarget){state.page=state.previewTarget;state.previewTarget=null;}else if(isPartner())state.page='partnerEntry';else if(state.intent){state.modelId=state.intent.modelId;state.page=isConsumer()?'nearby':'product';}else state.page='catalog';shell();return;}
 if(!f.id.startsWith('rv-'))return;e.preventDefault();e.stopImmediatePropagation();rvMessage='';if(!isRetailerMode())return;
 if(f.id==='rv-profile-form'){const a=rvCurrent();for(const k of rvProfileFields)a.profileDraft[k]=get(k);if(rvProfileFields.some(k=>!a.profileDraft[k])||!a.profileFile){rvMessage=t('missingFields');}else{a.profilePending={data:rvClone(a.profileDraft),file:rvClone(a.profileFile)};a.profileStatus='pending';}}
 if(f.id==='rv-quote-form'){const r=rvCurrent().requests.find(x=>x.id===rvQuoteId);if(r&&['awaitSupply','revisionPending'].includes(r.status)){const quote=r.items.map(p=>({modelId:p.modelId,qty:Number(get('q'+p.modelId))}));if(quote.some((p,i)=>!Number.isInteger(p.qty)||p.qty<0||p.qty>r.items[i].qty)||!quote.some(p=>p.qty>0))rvMessage=t('quantityError');else{r.quote=quote;r.status='awaitApproval';r.smsAt=new Date().toISOString();}}}
@@ -945,6 +945,14 @@ if(typeof FontFace!=='undefined'&&document.fonts){
 if(typeof globalThis.__DIDAR_TEST_HOOK__==='function')globalThis.__DIDAR_TEST_HOOK__({state,rvDB,rvBind,rvCurrent,navigate,page,cards,product,selection,rvSave,registry,shell,v5Families,v5Categories,v5CoinWeights,v5MetricWeights,v5SetProductTax,v5ValidTax,v5ProductError,v5StoreProduct,v5SupplierData,v5Path,v5WeightOptions,models,getFilter:()=>v5Filter,setFilter:f=>v5Filter=f,getSupplier:()=>v5SupplierId,rvRows,setQuote:id=>rvQuoteId=id});
 
 const previewRole=new URLSearchParams(location.search).get('role');
+const previewService=new URLSearchParams(location.search).get('service');
+const previewRoutes={
+ consumer:{stores:'nearby',authenticity:'warranty',warranty:'warranty',buyback:'resale'},
+ retailer:{application:'myProfile',catalog:'catalog',inquiries:'requests',orders:'orders'},
+ supplier:{profile:'supplierProfile',products:'supplierProducts',review:'supplierProducts',supply:'v5-workspace'},
+ wholesaler:{application:'supplierProfile',cooperation:'v5-workspace',requests:'v5-workspace'}
+};
+state.previewTarget=previewRoutes[previewRole]?.[previewService]||null;
 if(['retailer','consumer','supplier','wholesaler'].includes(previewRole)){state.loginRole=previewRole;state.page='login';}
 shell();
 })();
