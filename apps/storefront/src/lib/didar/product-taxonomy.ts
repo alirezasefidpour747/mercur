@@ -1,5 +1,7 @@
 /** Exact category and subtype labels from the supplied clickable HTML. */
-export const didarFamilies = [
+export type LocalizedTaxon = { id: string; fa: string; ar: string; en: string; fr: string }
+export type DidarTaxon = LocalizedTaxon & { family: string; types: readonly LocalizedTaxon[]; future?: boolean }
+export const didarFamilies: readonly (LocalizedTaxon & { pending?: boolean })[] = [
   {
     "id": "jewelry",
     "fa": "زیورآلات بدنی",
@@ -38,7 +40,7 @@ export const didarFamilies = [
   }
 ] as const
 
-export const didarTaxonomy = [
+export const didarTaxonomy: readonly DidarTaxon[] = [
   {
     "id": "rings",
     "family": "jewelry",
