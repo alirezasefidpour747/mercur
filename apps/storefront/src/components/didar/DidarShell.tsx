@@ -16,6 +16,8 @@ const shellCopy = {
     navLabel: "ناوبری اصلی",
     home: "خانه",
     collections: "مجموعه‌ها",
+    products: "زیورآلات",
+    myDidar: "مای دیدار",
     story: "جهان دیدار",
     care: "راهنمای انتخاب",
     language: "زبان",
@@ -25,6 +27,8 @@ const shellCopy = {
     navLabel: "Main navigation",
     home: "Home",
     collections: "Collections",
+    products: "Jewellery",
+    myDidar: "My Didar",
     story: "The Didar world",
     care: "Choosing well",
     language: "Language",
@@ -34,6 +38,8 @@ const shellCopy = {
     navLabel: "التنقل الرئيسي",
     home: "الرئيسية",
     collections: "المجموعات",
+    products: "المجوهرات",
+    myDidar: "ديدار الخاص بي",
     story: "عالم ديدار",
     care: "دليل الاختيار",
     language: "اللغة",
@@ -43,6 +49,8 @@ const shellCopy = {
     navLabel: "Navigation principale",
     home: "Accueil",
     collections: "Collections",
+    products: "Bijoux",
+    myDidar: "Mon Didar",
     story: "L’univers Didar",
     care: "Bien choisir",
     language: "Langue",
@@ -72,9 +80,11 @@ export function DidarHeader({ locale }: { locale: string }) {
 
         <nav className="didar-nav" aria-label={copy.navLabel}>
           <Link href={`/${locale}`}>{copy.home}</Link>
+          <Link href={`/${locale}/jewellery`}>{copy.products}</Link>
           <Link href={`/${locale}#collections`}>{copy.collections}</Link>
           <Link href={`/${locale}#story`}>{copy.story}</Link>
           <Link href={`/${locale}#care`}>{copy.care}</Link>
+          <Link href={`/${locale}/my-didar`}>{copy.myDidar}</Link>
         </nav>
 
         <div className="didar-header-actions">
