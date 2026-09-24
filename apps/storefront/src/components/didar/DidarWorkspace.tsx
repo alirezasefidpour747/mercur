@@ -22,7 +22,7 @@ const uid = (prefix: string) => `${prefix}-${Date.now().toString(36).toUpperCase
 
 const extraMenus: Record<DidarRole, { id: string; fa: string; en: string }[]> = {
   consumer: [{ id: "favorites", fa: "انتخاب‌های من", en: "My selections" }, { id: "cases", fa: "پرونده‌های خدمات", en: "Service cases" }],
-  retailer: [{ id: "basket", fa: "سبد استعلام", en: "Inquiry basket" }, { id: "quotes", fa: "پیش‌فاکتورها", en: "Quotations" }, { id: "shipments", fa: "ارسال‌ها", en: "Shipments" }, { id: "shop", fa: "ویترین فروشگاه", en: "Shop window" }, { id: "suppliers", fa: "تأمین‌کنندگان", en: "Suppliers" }],
+  retailer: [{ id: "directory", fa: "ساختار محصولات", en: "Product taxonomy" }, { id: "basket", fa: "سبد استعلام", en: "Inquiry basket" }, { id: "quotes", fa: "پیش‌فاکتورها", en: "Quotations" }, { id: "shipments", fa: "ارسال‌ها", en: "Shipments" }, { id: "shop", fa: "ویترین فروشگاه", en: "Shop window" }, { id: "suppliers", fa: "تأمین‌کنندگان", en: "Suppliers" }],
   supplier: [{ id: "new-product", fa: "ثبت محصول جدید", en: "New product" }, { id: "directory", fa: "ساختار محصولات", en: "Product taxonomy" }],
   wholesaler: [{ id: "products", fa: "محصولات پیشنهادی", en: "Product proposals" }],
 }
@@ -37,6 +37,7 @@ export function DidarWorkspace({ locale, role, initialService }: { locale: Didar
   const [loaded, setLoaded] = useState(false)
   const [message, setMessage] = useState("")
   const [search, setSearch] = useState("")
+  const [catalogCategory, setCatalogCategory] = useState("")
   const [family, setFamily] = useState("")
   const [category, setCategory] = useState("")
   const [subtype, setSubtype] = useState("")
@@ -60,7 +61,8 @@ export function DidarWorkspace({ locale, role, initialService }: { locale: Didar
   const profile = state.profiles[role] || blankProfile()
   const isFa = locale === "fa"
   const localeLabel = (item: { fa: string; en: string; ar?: string; fr?: string }) => item[locale] || item.en
-  const catalog = useMemo(() => publicDidarProducts.filter((item) => !search.trim() || item.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase())), [search])
+  const publicCategories = useMemo(() => [...new Set(publicDidarProducts.map((item) => item.category).filter((item): item is string => !!item))], [])
+  const catalog = useMemo(() => publicDidarProducts.filter((item) => (!catalogCategory || item.category === catalogCategory) && (!search.trim() || item.title.toLocaleLowerCase().includes(search.trim().toLocaleLowerCase()))), [search, catalogCategory])
   const selected = publicDidarProducts.filter((item) => state.selected.includes(item.slug))
   const categories = didarTaxonomy.filter((item) => item.family === family)
   const subtypes = didarTaxonomy.find((item) => item.id === category)?.types || []
@@ -118,7 +120,7 @@ export function DidarWorkspace({ locale, role, initialService }: { locale: Didar
     {profile.submitted && <p className="didar-work-status">{isFa ? "وضعیت: در انتظار بررسی (نمایشی)" : "Status: pending review (sample)"}</p>}
   </form>
 
-  const catalogueView = <><div className="didar-work-toolbar"><input type="search" aria-label={copy.search} placeholder={copy.search} value={search} onChange={(event) => setSearch(event.target.value)} /><span>{catalog.length} {copy.results}</span><button type="button" onClick={() => nav("basket")}>{isFa ? "سبد استعلام" : "Inquiry basket"} ({state.selected.length})</button></div><div className="didar-work-products">{catalog.map((item) => <article key={item.slug}><Link href={`/${locale}/creation/${item.slug}`}><div className="didar-work-product-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 760px) 48vw, 25vw" /></div><h3 lang="fa" dir="rtl">{item.title}</h3></Link><p>{item.category ?? copy.uncategorized}</p><div className="didar-work-actions"><button type="button" aria-pressed={state.favorites.includes(item.slug)} onClick={() => toggle(item.slug, "favorites")}>{state.favorites.includes(item.slug) ? "♥" : "♡"} {isFa ? "انتخاب‌های من" : "Favourite"}</button><button type="button" aria-pressed={state.selected.includes(item.slug)} onClick={() => toggle(item.slug, "selected")}>{state.selected.includes(item.slug) ? (isFa ? "حذف از سبد" : "Remove") : (isFa ? "افزودن به استعلام" : "Add to inquiry")}</button></div></article>)}</div></>
+  const catalogueView = <><div className="didar-work-toolbar"><input type="search" aria-label={copy.search} placeholder={copy.search} value={search} onChange={(event) => setSearch(event.target.value)} /><select aria-label={isFa ? "دستهٔ محصولات موجود" : "Available collection"} value={catalogCategory} onChange={(event) => setCatalogCategory(event.target.value)}><option value="">{isFa ? "تمام دسته‌های موجود" : "All available collections"}</option>{publicCategories.map((name) => <option value={name} key={name}>{name}</option>)}</select><span>{catalog.length} {copy.results}</span><button type="button" onClick={() => nav("basket")}>{isFa ? "سبد استعلام" : "Inquiry basket"} ({state.selected.length})</button></div><div className="didar-work-products">{catalog.map((item) => <article key={item.slug}><Link href={`/${locale}/creation/${item.slug}`}><div className="didar-work-product-image"><Image src={item.image} alt={item.title} fill sizes="(max-width: 760px) 48vw, 25vw" /></div><h3 lang="fa" dir="rtl">{item.title}</h3></Link><p>{item.category ?? copy.uncategorized}</p><div className="didar-work-actions"><button type="button" aria-pressed={state.favorites.includes(item.slug)} onClick={() => toggle(item.slug, "favorites")}>{state.favorites.includes(item.slug) ? "♥" : "♡"} {isFa ? "انتخاب‌های من" : "Favourite"}</button><button type="button" aria-pressed={state.selected.includes(item.slug)} onClick={() => toggle(item.slug, "selected")}>{state.selected.includes(item.slug) ? (isFa ? "حذف از سبد" : "Remove") : (isFa ? "افزودن به استعلام" : "Add to inquiry")}</button></div></article>)}</div>{!catalog.length && <p className="didar-work-empty">{copy.none}</p>}</>
 
   const inquiryList = <div className="didar-work-stack">{state.inquiries.length ? state.inquiries.map((item) => <article className="didar-work-card" key={item.id}><span className="didar-work-tag">{isFa ? "در انتظار بررسی · نمونه" : "Pending review · sample"}</span><h3 dir="ltr">{item.id}</h3><p>{item.slugs.map((slug) => publicDidarProducts.find((product) => product.slug === slug)?.title || slug).join("، ")}</p><p>{item.date} · {item.city}</p><button type="button" onClick={() => setInquiryId(inquiryId === item.id ? null : item.id)}>{isFa ? "جزئیات" : "Details"}</button>{inquiryId === item.id && <dl><dt>{isFa ? "متقاضی" : "Applicant"}</dt><dd>{item.name}</dd><dt>{isFa ? "یادداشت" : "Note"}</dt><dd>{item.note || "—"}</dd></dl>}</article>) : <div className="didar-work-empty">{isFa ? "هنوز استعلامی ثبت نشده است. از کاتالوگ، محصول انتخاب کنید." : "No inquiries yet. Select products from the catalogue."}<br /><button type="button" onClick={() => nav("catalog")}>{copy.catalog} ↗</button></div>}</div>
 
