@@ -944,6 +944,8 @@ if(typeof FontFace!=='undefined'&&document.fonts){
 // Expose only to the offline regression harness; absent in normal rendering.
 if(typeof globalThis.__DIDAR_TEST_HOOK__==='function')globalThis.__DIDAR_TEST_HOOK__({state,rvDB,rvBind,rvCurrent,navigate,page,cards,product,selection,rvSave,registry,shell,v5Families,v5Categories,v5CoinWeights,v5MetricWeights,v5SetProductTax,v5ValidTax,v5ProductError,v5StoreProduct,v5SupplierData,v5Path,v5WeightOptions,models,getFilter:()=>v5Filter,setFilter:f=>v5Filter=f,getSupplier:()=>v5SupplierId,rvRows,setQuote:id=>rvQuoteId=id});
 
+const previewRole=new URLSearchParams(location.search).get('role');
+if(['retailer','consumer','supplier','wholesaler'].includes(previewRole)){state.loginRole=previewRole;state.page='login';}
 shell();
 })();
 </script>
