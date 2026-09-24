@@ -15,7 +15,7 @@ export const didarUiCopy = {
     supplierServices: ["پروندهٔ تأمین‌کننده", "پیشنهاد محصول", "بررسی و انتشار", "پیگیری عرضه"],
     wholesalerServices: ["پروندهٔ بنکداری", "همکاری تجاری", "پیگیری درخواست"],
     serviceNote: "این بخش نمای مسیر خدمات است. ثبت و پیگیری واقعی هر خدمت با اتصال حساب و فرایند سروری فعال می‌شود.",
-    serviceState: "در حال طراحی و اتصال", viewServices: "مشاهدهٔ مسیر خدمات",
+    serviceState: "در حال طراحی و اتصال", viewServices: "مشاهدهٔ مسیر خدمات", fullPreview: "باز کردن پیش‌نمایش کامل و کلیک‌پذیر خدمات",
   },
   en: {
     catalog: "Didar jewellery", explore: "Discover the collection", search: "Search product names",
@@ -31,7 +31,7 @@ export const didarUiCopy = {
     supplierServices: ["Supplier profile", "Product proposals", "Review and publication", "Supply tracking"],
     wholesalerServices: ["Wholesale application", "Business cooperation", "Request tracking"],
     serviceNote: "This page shows the service paths. Live submissions and tracking become available as accounts and server flows are connected.",
-    serviceState: "Design and integration in progress", viewServices: "Explore services",
+    serviceState: "Design and integration in progress", viewServices: "Explore services", fullPreview: "Open the full clickable service preview",
   },
   ar: {
     catalog: "مجوهرات ديدار", explore: "اكتشف التشكيلة", search: "ابحث باسم المنتج",
@@ -47,7 +47,7 @@ export const didarUiCopy = {
     supplierServices: ["ملف المورّد", "اقتراح منتج", "المراجعة والنشر", "تتبع التوريد"],
     wholesalerServices: ["ملف الجملة", "التعاون التجاري", "متابعة الطلبات"],
     serviceNote: "هذه الصفحة تعرض مسارات الخدمات. يصبح التسجيل والمتابعة متاحين عند ربط الحسابات والإجراءات الخلفية.",
-    serviceState: "قيد التصميم والربط", viewServices: "استكشف الخدمات",
+    serviceState: "قيد التصميم والربط", viewServices: "استكشف الخدمات", fullPreview: "افتح معاينة الخدمات التفاعلية الكاملة",
   },
   fr: {
     catalog: "Bijoux Didar", explore: "Découvrir la collection", search: "Rechercher un produit",
@@ -63,6 +63,6 @@ export const didarUiCopy = {
     supplierServices: ["Profil fournisseur", "Propositions de produits", "Validation et publication", "Suivi de l'offre"],
     wholesalerServices: ["Profil grossiste", "Coopération commerciale", "Suivi des demandes"],
     serviceNote: "Cette page présente les parcours. Les demandes et suivis seront actifs après connexion des comptes et services.",
-    serviceState: "Conception et intégration en cours", viewServices: "Découvrir les services",
+    serviceState: "Conception et intégration en cours", viewServices: "Découvrir les services", fullPreview: "Ouvrir la maquette interactive complète",
   },
 } satisfies Record<DidarLocale, Record<string, string | string[]>>
