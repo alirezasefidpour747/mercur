@@ -1,6 +1,5 @@
-import Image from "next/image"
-import Link from "next/link"
 import type { Metadata } from "next"
+import { DidarReferenceHome } from "@/components/didar/DidarReferenceHome"
 
 import {
   DIDAR_LOCALES,
@@ -228,108 +227,5 @@ export default async function Home({
   const locale: DidarLocale = isDidarLocale(requestedLocale)
     ? requestedLocale
     : "fa"
-  const content = copy[locale]
-  const direction = locale === "fa" || locale === "ar" ? "rtl" : "ltr"
-  const collectionsUrl = `/${locale}#collections`
-
-  return (
-    <main className="didar-site" lang={locale} dir={direction}>
-      <section className="didar-hero" aria-labelledby="didar-home-title">
-        <div className="didar-hero-copy">
-          <p className="didar-eyebrow">{content.eyebrow}</p>
-          <h1 id="didar-home-title">{content.headline}</h1>
-          <p className="didar-lead">{content.intro}</p>
-          <div className="didar-hero-actions">
-            <Link className="didar-button didar-button-primary" href={collectionsUrl}>
-              {content.explore}
-            </Link>
-            <Link className="didar-text-link" href={`/${locale}#story`}>
-              {content.storyLink}
-              <span aria-hidden="true">↗</span>
-            </Link>
-          </div>
-        </div>
-        <div className="didar-hero-media">
-          <Image
-            src="/didar/hero.webp"
-            alt={content.imageAlt[0]}
-            fill
-            priority
-            sizes="(max-width: 760px) 100vw, 52vw"
-          />
-          <span className="didar-image-caption">{content.eyebrow}</span>
-        </div>
-      </section>
-
-      <div className="didar-values" aria-label={content.eyebrow}>
-        {content.values.map((value, index) => (
-          <p key={value}>
-            <span>0{index + 1}</span>
-            {value}
-          </p>
-        ))}
-      </div>
-
-      <section
-        className="didar-section didar-collections"
-        id="collections"
-        aria-labelledby="didar-collections-title"
-      >
-        <div className="didar-section-heading">
-          <div>
-            <p className="didar-eyebrow">{content.collectionEyebrow}</p>
-            <h2 id="didar-collections-title">{content.collectionTitle}</h2>
-          </div>
-          <p>{content.collectionIntro}</p>
-        </div>
-        <div className="didar-collection-grid">
-          {content.collectionCards.map((card, index) => (
-            <article className="didar-collection-card" key={card.title}>
-              <div className="didar-collection-image">
-                <Image
-                  src={`/didar/collection-0${index + 1}.webp`}
-                  alt={content.imageAlt[index + 1]}
-                  fill
-                  sizes="(max-width: 760px) 90vw, 31vw"
-                />
-              </div>
-              <div className="didar-card-copy">
-                <div>
-                  <p>{card.note}</p>
-                  <h3>{card.title}</h3>
-                </div>
-                <span aria-hidden="true">↗</span>
-              </div>
-            </article>
-          ))}
-        </div>
-      </section>
-
-      <section className="didar-story" id="story" aria-labelledby="didar-story-title">
-        <div className="didar-story-media">
-          <Image
-            src="/didar/story.webp"
-            alt={content.imageAlt[4]}
-            fill
-            sizes="(max-width: 760px) 100vw, 48vw"
-          />
-        </div>
-        <div className="didar-story-copy">
-          <p className="didar-eyebrow">{content.storyEyebrow}</p>
-          <h2 id="didar-story-title">{content.storyTitle}</h2>
-          <p>{content.storyText}</p>
-        </div>
-      </section>
-
-      <section className="didar-care" id="care" aria-labelledby="didar-care-title">
-        <div>
-          <p className="didar-eyebrow">{content.careEyebrow}</p>
-          <h2 id="didar-care-title">{content.careTitle}</h2>
-        </div>
-        <div className="didar-care-action">
-          <p>{content.careText}</p>
-        </div>
-      </section>
-    </main>
-  )
+  return <DidarReferenceHome locale={locale} />
 }
