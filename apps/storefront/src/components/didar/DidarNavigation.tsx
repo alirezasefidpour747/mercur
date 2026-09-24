@@ -46,7 +46,7 @@ export function DidarNavigation({ locale }: { locale: DidarLocale }) {
         <button className="didar-drawer-close" type="button" onClick={close}>{copy.close} ×</button>
         {section === "root" ? <nav className="didar-drawer-links">
           <button className="didar-drawer-feature" type="button" onClick={() => setSection("shop")}>{copy.shop}<span>‹</span></button>
-          <Link className="didar-drawer-feature" href={`/${locale}/my-didar/preview`} onClick={close}>{copy.trade}<small>{copy.tradeNote}</small></Link>
+          <Link className="didar-drawer-feature" href={`/${locale}/my-didar`} onClick={close}>{copy.trade}<small>{copy.tradeNote}</small></Link>
           <Link href={`/${locale}/my-didar`} onClick={close}>{copy.licence}</Link>
           <Link href={`/${locale}/my-didar`} onClick={close}>{copy.services}</Link>
           <Link href={`/${locale}/my-didar/consumer/authenticity`} onClick={close}>{copy.verify}</Link>
