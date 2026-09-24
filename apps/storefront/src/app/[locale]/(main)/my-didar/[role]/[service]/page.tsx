@@ -20,7 +20,7 @@ export default async function DidarServiceView({ params }: Props) {
     <iframe
       className="didar-interactive-frame"
       title={`${copy[role]} · ${title}`}
-      src={`/didar/interactive-preview.html?lang=${locale}&role=${role}`}
+      src={`/didar/interactive-preview.html?lang=${locale}&role=${role}&service=${service}`}
       sandbox="allow-scripts allow-forms"
       referrerPolicy="no-referrer"
     />
