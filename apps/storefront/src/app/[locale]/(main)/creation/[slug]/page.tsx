@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -26,7 +27,9 @@ export default async function DidarCreation({ params }: Props) {
     <Link className="didar-back" href={`/${locale}/jewellery`}>{copy.back}</Link>
     <div className="didar-detail-layout">
       <div className="didar-detail-gallery">
-        {images.map((src, i) => <img key={src} src={src} alt={`${product.title} ${i + 1}`} loading={i ? "lazy" : "eager"} />)}
+        {images.map((src, i) => <div className="didar-detail-media" key={src}>
+          <Image src={src} alt={`${product.title} ${i + 1}`} fill sizes="(max-width: 800px) 50vw, 34vw" priority={i === 0} />
+        </div>)}
       </div>
       <div className="didar-detail-copy">
         <p className="didar-eyebrow">DIDAR · CREATION</p>
