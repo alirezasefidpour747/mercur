@@ -1,11 +1,12 @@
 import Image from "next/image"
 import Link from "next/link"
+import { Suspense } from "react"
 
 import {
-  DIDAR_LOCALES,
   isDidarLocale,
   type DidarLocale,
 } from "@/lib/helpers/storefront-locale"
+import { DidarLanguageLinks } from "./DidarLanguageLinks"
 
 const directionFor = (locale: DidarLocale) =>
   locale === "fa" || locale === "ar" ? "rtl" : "ltr"
@@ -49,13 +50,6 @@ const shellCopy = {
   },
 } satisfies Record<DidarLocale, Record<string, string>>
 
-const localeNames: Record<DidarLocale, string> = {
-  fa: "فارسی",
-  en: "English",
-  ar: "العربية",
-  fr: "Français",
-}
-
 export function DidarHeader({ locale }: { locale: string }) {
   if (!isDidarLocale(locale)) return null
 
@@ -85,17 +79,9 @@ export function DidarHeader({ locale }: { locale: string }) {
 
         <div className="didar-header-actions">
           <nav className="didar-languages" aria-label={copy.language}>
-            {DIDAR_LOCALES.map((language) => (
-              <Link
-                key={language}
-                href={`/${language}`}
-                lang={language}
-                aria-current={language === locale ? "page" : undefined}
-                title={localeNames[language]}
-              >
-                {language.toUpperCase()}
-              </Link>
-            ))}
+            <Suspense fallback={null}>
+              <DidarLanguageLinks locale={locale} />
+            </Suspense>
           </nav>
         </div>
       </div>
