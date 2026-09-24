@@ -1,4 +1,5 @@
 import type { Metadata } from "next"
+import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
@@ -49,7 +50,7 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
       {results.length ? <div className="didar-product-grid">
         {results.map((product) => <article className="didar-product-card" key={product.slug}>
           <Link href={`/${locale}/creation/${product.slug}`} aria-label={`${copy.detail}: ${product.title}`}>
-            <div className="didar-product-image"><img src={product.image} alt={product.title} loading="lazy" /></div>
+            <div className="didar-product-image"><Image src={product.image} alt={product.title} fill sizes="(max-width: 760px) 50vw, 33vw" /></div>
             <div className="didar-product-info"><span>{product.category ?? copy.uncategorized}</span><h2 lang="fa" dir="rtl">{product.title}</h2><span className="didar-product-more">{copy.detail} <span aria-hidden="true">↗</span></span></div>
           </Link>
         </article>)}
