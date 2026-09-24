@@ -21,6 +21,7 @@ const shellCopy = {
     story: "جهان دیدار",
     care: "راهنمای انتخاب",
     language: "زبان",
+    search: "جست‌وجو",
     footer: "زیبایی در جزئیاتی که می‌مانند.",
   },
   en: {
@@ -32,6 +33,7 @@ const shellCopy = {
     story: "The Didar world",
     care: "Choosing well",
     language: "Language",
+    search: "Search",
     footer: "Beauty in the details that stay.",
   },
   ar: {
@@ -43,6 +45,7 @@ const shellCopy = {
     story: "عالم ديدار",
     care: "دليل الاختيار",
     language: "اللغة",
+    search: "بحث",
     footer: "جمال في تفاصيل تبقى.",
   },
   fr: {
@@ -54,6 +57,7 @@ const shellCopy = {
     story: "L’univers Didar",
     care: "Bien choisir",
     language: "Langue",
+    search: "Recherche",
     footer: "La beauté dans les détails qui restent.",
   },
 } satisfies Record<DidarLocale, Record<string, string>>
@@ -67,16 +71,14 @@ export function DidarHeader({ locale }: { locale: string }) {
   return (
     <header className="didar-header" dir={direction} lang={locale}>
       <div className="didar-header-inner">
-        <Link className="didar-brand" href={`/${locale}`} aria-label="Didar">
-          <Image
-            src="/didar/logo.png"
-            width={48}
-            height={44}
-            alt=""
-            priority
-          />
-          <span>دیدار</span>
-        </Link>
+        <div className="didar-header-top">
+          <Link className="didar-header-account" href={`/${locale}/my-didar`}>{copy.myDidar}</Link>
+          <Link className="didar-brand" href={`/${locale}`} aria-label="DidarGold">
+            <Image src="/didar/logo.png" width={25} height={24} alt="" priority />
+            <span dir="ltr">DIDARGOLD</span>
+          </Link>
+          <Link className="didar-header-search" href={`/${locale}/jewellery`}>{copy.search} <span aria-hidden="true">⌕</span></Link>
+        </div>
 
         <nav className="didar-nav" aria-label={copy.navLabel}>
           <Link href={`/${locale}`}>{copy.home}</Link>
