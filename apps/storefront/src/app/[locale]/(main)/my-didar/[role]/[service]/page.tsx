@@ -16,11 +16,13 @@ export default async function DidarServiceView({ params }: Props) {
   return <main className="didar-site didar-services didar-service-view" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}>
     <Link className="didar-back" href={`/${locale}/my-didar/${role}`}>{copy[role]}</Link>
     <div className="didar-catalog-heading"><p className="didar-eyebrow">DIDAR · {copy.myDidar}</p><h1>{title}</h1><p>{copy.serviceState}</p></div>
-    <section className="didar-service-empty" aria-label={title}>
-      <span className="didar-service-number">{String(i + 1).padStart(2, "0")}</span>
-      <h2>{title}</h2>
-      <p>{copy.serviceNote}</p>
-      <Link className="didar-secondary-link" href={`/${locale}/my-didar/${role}`}>{copy.myDidar}</Link>
-    </section>
+    <div className="didar-preview-intro"><p role="note">{copy.serviceNote}</p></div>
+    <iframe
+      className="didar-interactive-frame"
+      title={`${copy[role]} · ${title}`}
+      src={`/didar/interactive-preview.html?lang=${locale}&role=${role}`}
+      sandbox="allow-scripts allow-forms"
+      referrerPolicy="no-referrer"
+    />
   </main>
 }
