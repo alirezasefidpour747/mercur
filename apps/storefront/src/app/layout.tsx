@@ -1,6 +1,7 @@
 import type { Metadata } from 'next'
 
 import './didar.css'
+import './didar-workspace.css'
 import './globals.css'
 
 import { Toaster } from '@medusajs/ui'
