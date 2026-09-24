@@ -232,6 +232,15 @@
 #didar-my-didar[lang=fa] :is(.dc-wordmark,.dc-code,.v5-metal-code){font-family:Inter,Arial,sans-serif!important}
 #didar-my-didar .lucide{display:inline-block;flex-shrink:0;vertical-align:middle}
 #didar-my-didar .v5-heart .lucide-heart{width:22px;height:22px;stroke:currentColor}
+</style><style id="didar-site-bridge">
+html{color-scheme:light!important}body{margin:0;background:#fff;color:#20201e}
+#didar-my-didar{color-scheme:light!important;--dc-bg:#fff!important;--dc-panel:#fff!important;--dc-text:#20201e!important;--dc-muted:#676662!important;--dc-line:#e6e4e0!important;--dc-soft:#f7f6f3!important;--dc-gold:#695437!important;--dc-main:#20201e!important;--dc-onmain:#fff!important}
+#didar-my-didar .dc-header{border-radius:0;background:#fff}
+#didar-my-didar .dc-wordmark{color:#20201e;letter-spacing:2px;font-family:Georgia,serif;font-size:29px}
+#didar-my-didar .dc-wordmark::after{content:"GOLD"}
+#didar-my-didar .dc-demo{border-radius:0;background:#f7f6f3}
+#didar-my-didar .dc-button,#didar-my-didar .dc-box,#didar-my-didar .dc-role-card,#didar-my-didar .dc-product-card{border-radius:0}
+#didar-my-didar .dc-primary{background:#20201e;color:#fff}
 </style>
 <script>
 (()=>{
@@ -343,7 +352,7 @@ const models=[
 {id:2,sku:'DR-NC-306',category:'necklaces',shops:[1],pieces:[{uid:'DG-306-001',mg:8140,source:'partner',available:true}]},
 {id:3,sku:'DR-RN-112',category:'rings',shops:[2],pieces:[{uid:'DG-112-001',mg:7210,source:'warehouse',available:true}]}
 ];
-const state={locale:'fa',mode:'guest',page:'catalog',modelId:0,shopId:0,search:'',category:'all',collection:'allCollections',selected:new Set(),basket:[],intent:null,returnPage:'catalog',authEmail:'retailer@example.test',toastKey:'',errorKey:'',requestId:null,delivery:'shipping',contact:{recipient:'',phone:'',city:'',address:'',notes:''},profile:{name:'',city:'',address:'',email:'store@example.test'},requests:[],submitted:new Set()};
+const state={locale:(['fa','ar','en','fr'].includes(new URLSearchParams(location.search).get('lang'))?new URLSearchParams(location.search).get('lang'):'fa'),mode:'guest',page:'catalog',modelId:0,shopId:0,search:'',category:'all',collection:'allCollections',selected:new Set(),basket:[],intent:null,returnPage:'catalog',authEmail:'retailer@example.test',toastKey:'',errorKey:'',requestId:null,delivery:'shipping',contact:{recipient:'',phone:'',city:'',address:'',notes:''},profile:{name:'',city:'',address:'',email:'store@example.test'},requests:[],submitted:new Set()};
 Object.assign(state,{menuOpen:false,loginRole:'retailer',area:'',shopReturnPage:'product',services:[],serviceId:null,warrantyForm:{uid:'DG-104-001',shop:'0',date:'2026-09-01',invoice:'INV-DEMO-1048'},resaleForm:{condition:'conditionGood',notes:''}});
 const roles=[{id:'retailer',label:'roleRetailer',desc:'roleRetailerDesc',icon:'store'},{id:'consumer',label:'roleConsumer',desc:'roleConsumerDesc',icon:'gem'},{id:'supplier',label:'roleSupplier',desc:'roleSupplierDesc',icon:'factory'},{id:'wholesaler',label:'roleWholesaler',desc:'roleWholesalerDesc',icon:'boxes'}];
 const areas=[{id:'north',label:'areaNorth',distances:{0:2.4,1:8.6}},{id:'west',label:'areaWest',distances:{0:11.2,1:1.7}},{id:'isfahan',label:'areaIsfahan',distances:{2:3.1}},{id:'shiraz',label:'areaShiraz',distances:{}}];
