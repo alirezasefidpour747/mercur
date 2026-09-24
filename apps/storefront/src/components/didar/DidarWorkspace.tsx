@@ -17,7 +17,7 @@ type Profile = { name: string; phone: string; city: string; address: string; ema
 type DemoState = { selected: string[]; favorites: string[]; inquiries: Inquiry[]; cases: Case[]; supplierItems: SupplierItem[]; profiles: Partial<Record<DidarRole, Profile>> }
 const blankProfile = (): Profile => ({ name: "", phone: "", city: "", address: "", email: "", legalType: "person", businessType: "manufacturer", submitted: false })
 const initial = (): DemoState => ({ selected: [], favorites: [], inquiries: [], cases: [], supplierItems: [], profiles: {} })
-const storageKey = "didar-ui-demo-v1"
+const storagePrefix = "didar-ui-demo-v2"
 const uid = (prefix: string) => `${prefix}-${Date.now().toString(36).toUpperCase()}`
 
 const extraMenus: Record<DidarRole, { id: string; fa: string; en: string }[]> = {
@@ -29,7 +29,8 @@ const extraMenus: Record<DidarRole, { id: string; fa: string; en: string }[]> = 
 
 const field = (form: FormData, name: string) => String(form.get(name) ?? "").trim()
 
-export function DidarWorkspace({ locale, role, initialService }: { locale: DidarLocale; role: DidarRole; initialService?: string }) {
+export function DidarWorkspace({ locale, role, initialService, accountEmail }: { locale: DidarLocale; role: DidarRole; initialService?: string; accountEmail: string }) {
+  const storageKey = `${storagePrefix}:${role}:${accountEmail}`
   const copy = didarUiCopy[locale]
   const rtl = locale === "fa" || locale === "ar"
   const [section, setSection] = useState(initialService || didarServicePaths[role][0])
@@ -51,7 +52,7 @@ export function DidarWorkspace({ locale, role, initialService }: { locale: Didar
   useEffect(() => {
     try { const stored = localStorage.getItem(storageKey); if (stored) { const value = JSON.parse(stored) as Partial<DemoState>; setState({ ...initial(), ...value }) } } catch { /* the demo also works without storage */ }
     setLoaded(true)
-  }, [])
+  }, [storageKey])
   useEffect(() => { if (loaded) try { localStorage.setItem(storageKey, JSON.stringify(state)) } catch { /* storage may be unavailable */ } }, [loaded, state])
   useEffect(() => { setSection(initialService || didarServicePaths[role][0]); setMessage("") }, [role, initialService])
   useEffect(() => () => { photoPreview.forEach((src) => URL.revokeObjectURL(src)) }, [photoPreview])
