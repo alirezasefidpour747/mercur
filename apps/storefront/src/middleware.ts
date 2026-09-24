@@ -92,6 +92,12 @@ export async function middleware(request: NextRequest) {
   if (request.nextUrl.pathname.includes('.')) return NextResponse.next()
 
   const { pathname } = request.nextUrl
+  // The Didar landing page is public and can be previewed without a running
+  // Medusa API or configured sales region.
+  if (pathname === '/') {
+    return NextResponse.redirect(new URL(`/${DEFAULT_LOCALE}`, request.url), 307)
+  }
+
   const cacheIdCookie = request.cookies.get('_medusa_cache_id')
   const cacheId = cacheIdCookie?.value || crypto.randomUUID()
   const urlSegment = pathname.split('/')[1]?.toLowerCase() || ''
