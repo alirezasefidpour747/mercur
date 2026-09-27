@@ -8,8 +8,8 @@ export type DidarCatalogFilters = {
   category: string
   subtype: string
   purity: string
-  inventory: string
-  availability: string
+  inventorySource: string
+  saleStatus: string
   verified: string
   minWeight: number | null
   maxWeight: number | null
@@ -43,8 +43,8 @@ export function parseDidarCatalogFilters(
     category: limited(params.category),
     subtype: limited(params.subtype),
     purity: limited(params.purity, 8),
-    inventory: limited(params.inventory, 24),
-    availability: limited(params.availability, 24),
+    inventorySource: limited(params.inventory_source, 24),
+    saleStatus: limited(params.sale_status, 24),
     verified: limited(params.verified, 8),
     minWeight: numberOrNull(params.minWeight),
     maxWeight: numberOrNull(params.maxWeight),
@@ -106,8 +106,8 @@ export function filterDidarCatalog(
         product.category === filters.category) &&
       (!filters.subtype || product.subtypeId === filters.subtype) &&
       (!filters.purity || product.purity === Number(filters.purity)) &&
-      (!filters.inventory || product.inventorySource === filters.inventory) &&
-      (!filters.availability || product.saleStatus === filters.availability) &&
+      (!filters.inventorySource || product.inventorySource === filters.inventorySource) &&
+      (!filters.saleStatus || product.saleStatus === filters.saleStatus) &&
       (!filters.verified ||
         (filters.verified === "yes" ? product.detailVerified : !product.detailVerified)) &&
       overlaps(
@@ -147,8 +147,8 @@ export function hasDidarCatalogFilters(filters: DidarCatalogFilters) {
       filters.category ||
       filters.subtype ||
       filters.purity ||
-      filters.inventory ||
-      filters.availability ||
+      filters.inventorySource ||
+      filters.saleStatus ||
       filters.verified ||
       filters.minWeight != null ||
       filters.maxWeight != null ||

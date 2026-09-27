@@ -163,14 +163,14 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
 
             <label>
               <span>{labels.inventory}</span>
-              <select name="inventory" defaultValue={filters.inventory}>
+              <select name="inventory_source" defaultValue={filters.inventorySource}>
                 <option value="">{labels.all}</option><option value="didar">{labels.didar}</option><option value="supplier">{labels.supplier}</option><option value="made-to-order">{labels.made}</option>
               </select>
             </label>
 
             <label>
               <span>{labels.availability}</span>
-              <select name="availability" defaultValue={filters.availability}>
+              <select name="sale_status" defaultValue={filters.saleStatus}>
                 <option value="">{labels.all}</option><option value="available">{labels.available}</option><option value="inquiry">{labels.inquiry}</option><option value="made-to-order">{labels.made}</option><option value="unavailable">{labels.unavailable}</option>
               </select>
             </label>
