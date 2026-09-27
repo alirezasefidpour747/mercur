@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { DidarFavoriteButton } from "@/components/didar/DidarFavoriteButton"
 import { publicDidarProducts } from "@/lib/didar/public-catalog"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { isDidarLocale } from "@/lib/helpers/storefront-locale"
@@ -57,6 +58,7 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
       <div className="didar-catalog-summary"><p className="didar-catalog-count" aria-live="polite">{results.length} {copy.results}</p><span>{locale === "fa" ? "فیلتر و مرتب‌سازی" : "Filter and sort"} ☷</span></div>
       {results.length ? <div className="didar-product-grid">
         {results.map((product) => <article className="didar-product-card" key={product.slug}>
+          <DidarFavoriteButton slug={product.slug} locale={locale} className="didar-product-favorite" />
           <Link href={`/${locale}/creation/${product.slug}`} aria-label={`${copy.detail}: ${product.title}`}>
             <div className="didar-product-image"><Image src={product.image} alt={product.title} fill sizes="(max-width: 760px) 50vw, 33vw" /></div>
             <div className="didar-product-info"><span>{product.category ?? copy.uncategorized}</span><h2 lang="fa" dir="rtl">{product.title}</h2><span className="didar-product-more">{copy.detail} <span aria-hidden="true">↗</span></span></div>
