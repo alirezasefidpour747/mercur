@@ -5,18 +5,22 @@ import { useRouter } from "next/navigation"
 import { useEffect, useState, type FormEvent } from "react"
 
 import { DidarWorkspace } from "@/components/didar/DidarWorkspace"
+import {
+  clearDidarDemoSession,
+  readDidarDemoSession,
+  writeDidarDemoSession,
+  type DidarDemoSession,
+} from "@/lib/didar/demo-auth"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { type DidarRole } from "@/lib/didar/service-paths"
 import { type DidarLocale } from "@/lib/helpers/storefront-locale"
 
 type Channel = "email" | "mobile"
 type Account = { role: DidarRole; email?: string; mobile?: string; name: string; city: string; demo?: boolean }
-type Session = { role: DidarRole; identifier: string; accountKey: string }
 type Stage = "roles" | "login" | "otp" | "register"
 type OtpIntent = "signin" | "register"
 
 const accountsKey = "didar-ui-accounts-v2"
-const sessionKey = "didar-ui-session-v2"
 const demoOtp = "246810"
 const roles: DidarRole[] = ["retailer", "consumer", "supplier", "wholesaler"]
 const sampleAccounts: Account[] = [
@@ -55,14 +59,14 @@ function identifierChannel(value: string): Channel | null {
 const accountMatches = (account: Account, identifier: string) =>
   account.email === identifier || account.mobile === identifier
 
-export function DidarAccess({ locale, role: routeRole, service }: { locale: DidarLocale; role?: DidarRole; service?: string }) {
+export function DidarAccess({ locale, role: routeRole, service, commerceEntry = false }: { locale: DidarLocale; role?: DidarRole; service?: string; commerceEntry?: boolean }) {
   const router = useRouter()
   const copy = didarUiCopy[locale]
   const w = words[locale]
   const [stage, setStage] = useState<Stage>(routeRole ? "login" : "roles")
   const [selected, setSelected] = useState<DidarRole>(routeRole || "retailer")
   const [accounts, setAccounts] = useState<Account[]>(sampleAccounts)
-  const [session, setSession] = useState<Session | null>(null)
+  const [session, setSession] = useState<DidarDemoSession | null>(null)
   const [ready, setReady] = useState(false)
   const [error, setError] = useState("")
   const [status, setStatus] = useState("")
@@ -75,16 +79,14 @@ export function DidarAccess({ locale, role: routeRole, service }: { locale: Dida
     try {
       const storedAccounts = JSON.parse(localStorage.getItem(accountsKey) || "[]") as Account[]
       if (Array.isArray(storedAccounts)) setAccounts([...sampleAccounts, ...storedAccounts])
-      const storedSession = JSON.parse(localStorage.getItem(sessionKey) || "null") as Session | null
-      if (storedSession && roles.includes(storedSession.role) && typeof storedSession.identifier === "string") {
-        setSession({ ...storedSession, accountKey: storedSession.accountKey || storedSession.identifier })
-      }
+      setSession(readDidarDemoSession())
     } catch { /* Browsers may block local storage; the preview can still be viewed. */ }
     setReady(true)
   }, [])
 
   const activeRole = routeRole || selected
   const authorized = !!session && session.role === activeRole
+  const workspaceEntry = !!routeRole && !commerceEntry
   const sample = sampleAccounts.find((account) => account.role === activeRole)!
   const normalizedIdentifier = normalizeIdentifier(identifier)
   const channel = identifierChannel(normalizedIdentifier)
@@ -124,19 +126,23 @@ export function DidarAccess({ locale, role: routeRole, service }: { locale: Dida
     }
     const next = { role: activeRole, identifier, accountKey: pendingAccount.email || pendingAccount.mobile || identifier }
     setSession(next)
-    try { localStorage.setItem(sessionKey, JSON.stringify(next)) } catch {}
+    try { writeDidarDemoSession(next) } catch {}
     setError("")
     setStatus(otpIntent === "register" ? w.pending : "")
-    if (!routeRole) router.push(`/${locale}/my-didar/${activeRole}`)
+    if (!workspaceEntry) {
+      router.push(activeRole === "consumer" || activeRole === "retailer"
+        ? `/${locale}/jewellery`
+        : `/${locale}/my-didar/${activeRole}`)
+    }
   }
   function signOut() {
     setSession(null); setStage(routeRole ? "login" : "roles"); setIdentifier(""); setOtp(""); setPendingAccount(null); clearFeedback()
-    try { localStorage.removeItem(sessionKey) } catch {}
+    try { clearDidarDemoSession() } catch {}
     if (routeRole) router.push(`/${locale}/my-didar`)
   }
 
   if (!ready) return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><p className="didar-access-loading">DIDAR</p></main>
-  if (authorized) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.accountKey}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.accountKey} /></>
+  if (authorized && workspaceEntry) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.accountKey}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.accountKey} /></>
 
   return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}>
     <div className="didar-access-heading"><p className="didar-eyebrow">DIDAR · {copy.myDidar}</p><h1>{stage === "roles" ? w.choose : stage === "login" ? w.login : stage === "otp" ? w.otpTitle : w.registerTitle}</h1><p>{stage === "roles" ? w.intro : copy[activeRole]}</p></div>
