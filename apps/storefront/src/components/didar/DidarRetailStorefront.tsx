@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useState } from "react"
 
+import { DidarProductMeta } from "@/components/didar/DidarProductMeta"
 import {
   didarDemoSessionEvent,
   didarDemoSessionKey,
@@ -62,7 +63,7 @@ export function DidarRetailStorefront({ locale, storeSlug }: { locale: DidarLoca
       <div className="didar-product-grid">{products.map((product) => <article className="didar-product-card" key={product.slug}>
         <Link href={`/${locale}/creation/${product.slug}`}>
           <div className="didar-product-image"><Image src={product.image} alt={product.title} fill sizes="(max-width: 760px) 50vw, 25vw" /></div>
-          <div className="didar-product-info"><span>{product.category}</span><h3 lang="fa" dir="rtl">{product.title}</h3><span className="didar-product-more">{text.detail} ↗</span></div>
+          <div className="didar-product-info"><span>{product.categoryLabel || product.category}</span><h3 lang="fa" dir="rtl">{product.title}</h3><DidarProductMeta product={product} locale={locale} compact /><span className="didar-product-more">{text.detail} ↗</span></div>
         </Link>
       </article>)}</div>
     </section>
