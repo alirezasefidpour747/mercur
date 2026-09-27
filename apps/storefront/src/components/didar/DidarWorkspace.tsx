@@ -28,7 +28,6 @@ const extraMenus: Record<DidarRole, { id: string; fa: string; en: string }[]> = 
   consumer: [{ id: "favorites", fa: "انتخاب‌های من", en: "My selections" }, { id: "cases", fa: "پرونده‌های خدمات", en: "Service cases" }],
   retailer: [{ id: "directory", fa: "ساختار محصولات", en: "Product taxonomy" }, { id: "basket", fa: "سبد استعلام", en: "Inquiry basket" }, { id: "quotes", fa: "پیش‌فاکتورها", en: "Quotations" }, { id: "shipments", fa: "ارسال‌ها", en: "Shipments" }, { id: "shop", fa: "ویترین فروشگاه", en: "Shop window" }, { id: "suppliers", fa: "تأمین‌کنندگان", en: "Suppliers" }],
   supplier: [{ id: "new-product", fa: "ثبت محصول جدید", en: "New product" }, { id: "directory", fa: "ساختار محصولات", en: "Product taxonomy" }],
-  wholesaler: [{ id: "products", fa: "محصولات پیشنهادی", en: "Product proposals" }],
 }
 
 const field = (form: FormData, name: string) => String(form.get(name) ?? "").trim()
@@ -56,7 +55,7 @@ export function DidarWorkspace({ locale, role, initialService, accountEmail }: {
 
   useEffect(() => {
     try {
-      const stored = localStorage.getItem(storageKey)
+      const stored = localStorage.getItem(storageKey) || (role === "supplier" ? localStorage.getItem(`${storagePrefix}:wholesaler:${accountEmail}`) : null)
       const parsed = stored ? JSON.parse(stored) as Partial<DemoState> : {}
       const value = { ...initial(), ...parsed }
       const carried = role === "consumer" || role === "retailer" ? consumeDidarGuestFavorites() : []
@@ -148,7 +147,7 @@ export function DidarWorkspace({ locale, role, initialService, accountEmail }: {
   }
 
   const profileView = <form className="didar-work-form" onSubmit={submitProfile} key={role}>
-    <div className="didar-work-fields"><label>{isFa ? "نام شخص / مجموعه" : "Person / business name"}<input required name="name" defaultValue={profile.name} /></label><label>{isFa ? "تلفن" : "Phone"}<input required name="phone" type="tel" dir="ltr" defaultValue={profile.phone} /></label><label>{isFa ? "ایمیل" : "Email"}<input name="email" type="email" dir="ltr" defaultValue={profile.email} /></label><label>{isFa ? "شهر" : "City"}<input required name="city" defaultValue={profile.city} /></label><label>{isFa ? "نوع شخصیت" : "Legal entity"}<select name="legalType" defaultValue={profile.legalType}><option value="person">{isFa ? "حقیقی" : "Individual"}</option><option value="company">{isFa ? "حقوقی" : "Company"}</option></select></label>{(role === "supplier" || role === "wholesaler") && <label>{isFa ? "نوع تأمین‌کننده" : "Supplier type"}<select name="businessType" defaultValue={profile.businessType}><option value="manufacturer">{isFa ? "تولیدکننده" : "Manufacturer"}</option><option value="wholesaler">{isFa ? "بنکدار" : "Wholesaler"}</option><option value="other">{isFa ? "سایر" : "Other"}</option></select></label>}<label className="didar-work-span">{isFa ? "نشانی" : "Address"}<textarea required name="address" defaultValue={profile.address} /></label></div>
+    <div className="didar-work-fields"><label>{isFa ? "نام شخص / مجموعه" : "Person / business name"}<input required name="name" defaultValue={profile.name} /></label><label>{isFa ? "تلفن" : "Phone"}<input required name="phone" type="tel" dir="ltr" defaultValue={profile.phone} /></label><label>{isFa ? "ایمیل" : "Email"}<input name="email" type="email" dir="ltr" defaultValue={profile.email} /></label><label>{isFa ? "شهر" : "City"}<input required name="city" defaultValue={profile.city} /></label><label>{isFa ? "نوع شخصیت" : "Legal entity"}<select name="legalType" defaultValue={profile.legalType}><option value="person">{isFa ? "حقیقی" : "Individual"}</option><option value="company">{isFa ? "حقوقی" : "Company"}</option></select></label>{role === "supplier" && <label>{isFa ? "نوع فعالیت" : "Business type"}<select name="businessType" defaultValue={profile.businessType}><option value="supplier">{isFa ? "تأمین‌کننده" : "Supplier"}</option><option value="manufacturer">{isFa ? "تولیدکننده" : "Manufacturer"}</option><option value="wholesaler">{isFa ? "بنکدار" : "Wholesaler"}</option><option value="mixed">{isFa ? "ترکیبی" : "Mixed"}</option></select></label>}<label className="didar-work-span">{isFa ? "نشانی" : "Address"}<textarea required name="address" defaultValue={profile.address} /></label></div>
     <button className="didar-work-primary" type="submit">{isFa ? "ثبت پروندهٔ نمونه" : "Save sample application"}</button>
     {profile.submitted && <p className="didar-work-status">{isFa ? "وضعیت: در انتظار بررسی (نمایشی)" : "Status: pending review (sample)"}</p>}
   </form>
