@@ -1,8 +1,7 @@
 export const didarServicePaths = {
   consumer: ["stores", "authenticity", "warranty", "buyback"],
   retailer: ["application", "catalog", "inquiries", "orders"],
-  supplier: ["profile", "products", "review", "supply"],
-  wholesaler: ["application", "cooperation", "requests"],
+  supplier: ["profile", "products", "review", "supply", "cooperation", "requests"],
 } as const
 
 export type DidarRole = keyof typeof didarServicePaths
