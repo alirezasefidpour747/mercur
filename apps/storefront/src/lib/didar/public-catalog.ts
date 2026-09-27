@@ -1,16 +1,9 @@
-/** Public DidarGold listing snapshot (2026-09-24). No SKU, UID, price, weight, stock or order entitlement is inferred. */
-export type PublicDidarProduct = {
-  slug: string
-  sourceUrl: string
-  title: string
-  image: string
-  category: string | null
-  material: string | null
-  gallery: string[]
-  detailVerified: boolean
-}
+/** Public DidarGold listing snapshot (2026-09-24), normalized into Didar's canonical product model. */
+import { normalizeDidarProduct, type DidarProduct, type DidarProductSource } from "@/lib/didar/product-model"
 
-export const publicDidarProducts: PublicDidarProduct[] = [
+export type PublicDidarProduct = DidarProduct
+
+const publicDidarProductSource: DidarProductSource[] = [
   {
     "slug": "malachite-seyfi-1",
     "sourceUrl": "https://didargold.ir/fa/creation/malachite-seyfi-1",
@@ -748,6 +741,8 @@ export const publicDidarProducts: PublicDidarProduct[] = [
     "detailVerified": false
   }
 ]
+
+export const publicDidarProducts: PublicDidarProduct[] = publicDidarProductSource.map(normalizeDidarProduct)
 
 export function publicProduct(slug: string) {
   return publicDidarProducts.find((product) => product.slug === slug)
