@@ -1,0 +1,5 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 64 64" role="img" aria-labelledby="title">
+  <title>دیدار</title>
+  <rect width="64" height="64" rx="12" fill="#10223a"/>
+  <path d="M16 42h32M20 34h24M25 26h14M30 18h4" fill="none" stroke="#c4a16a" stroke-width="4" stroke-linecap="round"/>
+</svg>

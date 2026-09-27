@@ -25,7 +25,7 @@ import { useTranslation } from "react-i18next";
 import { Skeleton } from "../../common/skeleton";
 
 import { useState } from "react";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { useLogout, useMe } from "../../../hooks/api";
 import { queryClient } from "../../../lib/query-client";
 import { useGlobalShortcuts } from "../../../providers/keybind-provider/hooks";
@@ -33,6 +33,7 @@ import { useTheme } from "../../../providers/theme-provider";
 import { SIDEBAR_RAIL_FADE } from "../../../providers/sidebar-provider";
 import { useDocumentDirection } from "../../../hooks/use-document-direction";
 import { languages } from "../../../i18n/languages";
+import { getDidarHomeUrl } from "../../../lib/didar-navigation";
 
 export const UserMenu = () => {
   const { t } = useTranslation();
@@ -246,7 +247,6 @@ export const LanguageToggle = () => {
 
 const Logout = () => {
   const { t } = useTranslation();
-  const navigate = useNavigate();
 
   const { mutateAsync: logoutMutation } = useLogout();
 
@@ -257,7 +257,7 @@ const Logout = () => {
          * When the user logs out, we want to clear the query cache
          */
         queryClient.clear();
-        navigate("/login");
+        window.location.assign(getDidarHomeUrl());
       },
     });
   };

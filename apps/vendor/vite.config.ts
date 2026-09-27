@@ -31,6 +31,8 @@ export default defineConfig(({ mode }) => {
       react(),
       mercurDashboardPlugin({
         medusaConfigPath: '../api/medusa-config.ts',
+        name: 'دیدار',
+        logo: '/didar-logo.svg',
         i18n: { defaultLanguage: 'fa' },
         ...(backendUrl ? { backendUrl } : {}),
       }),

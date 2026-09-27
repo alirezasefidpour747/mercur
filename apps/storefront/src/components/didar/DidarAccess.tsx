@@ -13,6 +13,7 @@ import {
 } from "@/lib/didar/demo-auth"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { type DidarRole } from "@/lib/didar/service-paths"
+import { didarVendorPanelUrl } from "@/lib/didar/vendor-panel"
 import { type DidarLocale } from "@/lib/helpers/storefront-locale"
 
 type Channel = "email" | "mobile"
@@ -94,6 +95,10 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
 
   function clearFeedback() { setError(""); setStatus("") }
   function choose(role: DidarRole) {
+    if (role === "supplier") {
+      window.location.assign(didarVendorPanelUrl(locale))
+      return
+    }
     setSelected(role); setStage("login"); setIdentifier(""); setOtp(""); setPendingAccount(null); clearFeedback()
   }
   function showOtp(nextAccount: Account, intent: OtpIntent, destination: string, delivery: Channel) {
