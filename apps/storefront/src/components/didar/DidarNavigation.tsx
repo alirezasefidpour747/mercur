@@ -85,7 +85,7 @@ export function DidarNavigation({ locale }: { locale: DidarLocale }) {
           </nav>
         </> : <>
           <h2>{locale === "fa" ? "با چه عنوانی وارد دیدار می‌شوید؟" : locale === "ar" ? "بأي صفة تود الدخول إلى ديدار؟" : locale === "fr" ? "Comment souhaitez-vous utiliser Didar ?" : "How would you like to use Didar?"}</h2>
-          <div className="didar-role-dropdown-grid">{(["retailer", "consumer", "supplier", "wholesaler"] as const).map((role, i) => <Link href={`/${locale}/my-didar?role=${role}`} key={role} onClick={close}><small>0{i + 1}</small><span>{didarUiCopy[locale][role]}</span><b aria-hidden="true">↗</b></Link>)}</div>
+          <div className="didar-role-dropdown-grid">{(["retailer", "consumer", "supplier"] as const).map((role, i) => <Link href={`/${locale}/my-didar?role=${role}`} key={role} onClick={close}><small>0{i + 1}</small><span>{didarUiCopy[locale][role]}</span><b aria-hidden="true">↗</b></Link>)}</div>
         </>}
       </div>
     </div>}
