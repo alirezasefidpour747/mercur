@@ -22,12 +22,12 @@ type OtpIntent = "signin" | "register"
 
 const accountsKey = "didar-ui-accounts-v2"
 const demoOtp = "246810"
-const roles: DidarRole[] = ["retailer", "consumer", "supplier", "wholesaler"]
+const roles: DidarRole[] = ["retailer", "consumer", "supplier"]
 const sampleAccounts: Account[] = [
   { role: "consumer", email: "consumer@didar.demo", mobile: "09120000001", name: "مشتری نمونه", city: "تهران", demo: true },
   { role: "retailer", email: "retailer@didar.demo", mobile: "09120000002", name: "خرده‌فروشی نمونه", city: "تهران", demo: true },
   { role: "supplier", email: "supplier@didar.demo", mobile: "09120000003", name: "تأمین‌کننده نمونه", city: "اصفهان", demo: true },
-  { role: "wholesaler", email: "wholesaler@didar.demo", mobile: "09120000004", name: "بنکدار نمونه", city: "تهران", demo: true },
+  { role: "supplier", email: "wholesaler@didar.demo", mobile: "09120000004", name: "بنکدار نمونه", city: "تهران", demo: true },
 ]
 
 const words = {
@@ -77,8 +77,8 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
 
   useEffect(() => {
     try {
-      const storedAccounts = JSON.parse(localStorage.getItem(accountsKey) || "[]") as Account[]
-      if (Array.isArray(storedAccounts)) setAccounts([...sampleAccounts, ...storedAccounts])
+      const storedAccounts = JSON.parse(localStorage.getItem(accountsKey) || "[]") as Array<Omit<Account, "role"> & { role: DidarRole | "wholesaler" }>
+      if (Array.isArray(storedAccounts)) setAccounts([...sampleAccounts, ...storedAccounts.map((account) => ({ ...account, role: account.role === "wholesaler" ? "supplier" as const : account.role }))])
       setSession(readDidarDemoSession())
     } catch { /* Browsers may block local storage; the preview can still be viewed. */ }
     setReady(true)
@@ -145,7 +145,7 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
   function signOut() {
     setSession(null); setStage(routeRole ? "login" : "roles"); setIdentifier(""); setOtp(""); setPendingAccount(null); clearFeedback()
     try { clearDidarDemoSession() } catch {}
-    if (routeRole) router.push(`/${locale}/my-didar`)
+    if (routeRole) router.push(routeRole === "supplier" ? `/${locale}` : `/${locale}/my-didar`)
   }
 
   if (!ready) return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><p className="didar-access-loading">DIDAR</p></main>
