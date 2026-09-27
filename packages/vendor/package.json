@@ -31,9 +31,10 @@
     "dist"
   ],
   "scripts": {
-    "dev": "tsup --watch",
+    "clean:dist": "node -e \"require('node:fs').rmSync('dist',{recursive:true,force:true})\"",
+    "dev": "bun run clean:dist && tsup --watch",
     "generate:targets": "bun run scripts/generate-extension-targets.ts",
-    "build": "tsup && bun run generate:targets",
+    "build": "bun run clean:dist && tsup && bun run generate:targets",
     "lint": "oxlint --max-warnings 0"
   },
   "dependencies": {
