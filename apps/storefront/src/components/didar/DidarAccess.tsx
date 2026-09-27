@@ -59,7 +59,7 @@ function identifierChannel(value: string): Channel | null {
 const accountMatches = (account: Account, identifier: string) =>
   account.email === identifier || account.mobile === identifier
 
-export function DidarAccess({ locale, role: routeRole, service, commerceEntry = false }: { locale: DidarLocale; role?: DidarRole; service?: string; commerceEntry?: boolean }) {
+export function DidarAccess({ locale, role: routeRole, service, commerceEntry = false, returnTo }: { locale: DidarLocale; role?: DidarRole; service?: string; commerceEntry?: boolean; returnTo?: string }) {
   const router = useRouter()
   const copy = didarUiCopy[locale]
   const w = words[locale]
@@ -87,6 +87,7 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
   const activeRole = routeRole || selected
   const authorized = !!session && session.role === activeRole
   const workspaceEntry = !!routeRole && !commerceEntry
+  const safeReturnTo = returnTo?.startsWith(`/${locale}/`) && !returnTo.startsWith("//") ? returnTo : undefined
   const sample = sampleAccounts.find((account) => account.role === activeRole)!
   const normalizedIdentifier = normalizeIdentifier(identifier)
   const channel = identifierChannel(normalizedIdentifier)
@@ -130,8 +131,9 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
     setError("")
     setStatus(otpIntent === "register" ? w.pending : "")
     if (!workspaceEntry) {
-      router.push(activeRole === "consumer" || activeRole === "retailer"
-        ? `/${locale}/jewellery`
+      const commerceRole = activeRole === "consumer" || activeRole === "retailer"
+      router.push(commerceRole
+        ? safeReturnTo || `/${locale}/jewellery`
         : `/${locale}/my-didar/${activeRole}`)
     }
   }
