@@ -4,6 +4,7 @@ export type DidarDemoSession = {
   role: DidarRole
   identifier: string
   accountKey: string
+  displayName: string
 }
 
 export const didarDemoSessionKey = "didar-ui-session-v2"
@@ -15,7 +16,22 @@ export function readDidarDemoSession(): DidarDemoSession | null {
     const value = JSON.parse(window.localStorage.getItem(didarDemoSessionKey) || "null") as Partial<DidarDemoSession> | null
     if (!value?.role || !value.identifier) return null
     if (!["consumer", "retailer", "supplier", "wholesaler"].includes(value.role)) return null
-    return { role: value.role, identifier: value.identifier, accountKey: value.accountKey || value.identifier }
+    const demoNames: Record<string, string> = {
+      "consumer@didar.demo": "مشتری نمونه",
+      "09120000001": "مشتری نمونه",
+      "retailer@didar.demo": "خرده‌فروشی نمونه",
+      "09120000002": "خرده‌فروشی نمونه",
+      "supplier@didar.demo": "تأمین‌کننده نمونه",
+      "09120000003": "تأمین‌کننده نمونه",
+      "wholesaler@didar.demo": "بنکدار نمونه",
+      "09120000004": "بنکدار نمونه",
+    }
+    return {
+      role: value.role,
+      identifier: value.identifier,
+      accountKey: value.accountKey || value.identifier,
+      displayName: value.displayName || demoNames[value.identifier] || value.identifier,
+    }
   } catch {
     return null
   }
