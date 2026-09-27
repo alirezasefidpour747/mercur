@@ -125,7 +125,12 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
       setAccounts(nextAccounts)
       try { localStorage.setItem(accountsKey, JSON.stringify(nextAccounts.filter((account) => !account.demo))) } catch {}
     }
-    const next = { role: activeRole, identifier, accountKey: pendingAccount.email || pendingAccount.mobile || identifier }
+    const next = {
+      role: activeRole,
+      identifier,
+      accountKey: pendingAccount.email || pendingAccount.mobile || identifier,
+      displayName: pendingAccount.name || identifier,
+    }
     setSession(next)
     try { writeDidarDemoSession(next) } catch {}
     setError("")
