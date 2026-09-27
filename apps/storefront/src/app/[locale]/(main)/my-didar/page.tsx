@@ -20,5 +20,6 @@ export default async function MyDidar({ params, searchParams }: Props) {
   const { locale } = await params
   const { role, returnTo } = await searchParams
   if (!isDidarLocale(locale)) notFound()
-  return <DidarAccess locale={locale} role={role && isDidarRole(role) ? role : undefined} commerceEntry returnTo={returnTo} />
+  const normalizedRole = role === "wholesaler" ? "supplier" : role
+  return <DidarAccess locale={locale} role={normalizedRole && isDidarRole(normalizedRole) ? normalizedRole : undefined} commerceEntry returnTo={returnTo} />
 }
