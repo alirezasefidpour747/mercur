@@ -26,11 +26,20 @@ export function readDidarDemoSession(): DidarDemoSession | null {
       "wholesaler@didar.demo": "بنکدار نمونه",
       "09120000004": "بنکدار نمونه",
     }
+    const storedAccounts = JSON.parse(window.localStorage.getItem("didar-ui-accounts-v2") || "[]") as Array<{
+      role?: DidarRole
+      email?: string
+      mobile?: string
+      name?: string
+    }>
+    const storedName = Array.isArray(storedAccounts)
+      ? storedAccounts.find((account) => account.role === value.role && (account.email === value.identifier || account.mobile === value.identifier))?.name
+      : undefined
     return {
       role: value.role,
       identifier: value.identifier,
       accountKey: value.accountKey || value.identifier,
-      displayName: value.displayName || demoNames[value.identifier] || value.identifier,
+      displayName: value.displayName || demoNames[value.identifier] || storedName || value.identifier,
     }
   } catch {
     return null
