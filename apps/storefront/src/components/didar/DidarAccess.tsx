@@ -11,7 +11,7 @@ import { type DidarLocale } from "@/lib/helpers/storefront-locale"
 
 type Channel = "email" | "mobile"
 type Account = { role: DidarRole; email?: string; mobile?: string; name: string; city: string; demo?: boolean }
-type Session = { role: DidarRole; identifier: string }
+type Session = { role: DidarRole; identifier: string; accountKey: string }
 type Stage = "roles" | "login" | "otp" | "register"
 type OtpIntent = "signin" | "register"
 
@@ -76,7 +76,9 @@ export function DidarAccess({ locale, role: routeRole, service }: { locale: Dida
       const storedAccounts = JSON.parse(localStorage.getItem(accountsKey) || "[]") as Account[]
       if (Array.isArray(storedAccounts)) setAccounts([...sampleAccounts, ...storedAccounts])
       const storedSession = JSON.parse(localStorage.getItem(sessionKey) || "null") as Session | null
-      if (storedSession && roles.includes(storedSession.role) && typeof storedSession.identifier === "string") setSession(storedSession)
+      if (storedSession && roles.includes(storedSession.role) && typeof storedSession.identifier === "string") {
+        setSession({ ...storedSession, accountKey: storedSession.accountKey || storedSession.identifier })
+      }
     } catch { /* Browsers may block local storage; the preview can still be viewed. */ }
     setReady(true)
   }, [])
@@ -120,7 +122,7 @@ export function DidarAccess({ locale, role: routeRole, service }: { locale: Dida
       setAccounts(nextAccounts)
       try { localStorage.setItem(accountsKey, JSON.stringify(nextAccounts.filter((account) => !account.demo))) } catch {}
     }
-    const next = { role: activeRole, identifier }
+    const next = { role: activeRole, identifier, accountKey: pendingAccount.email || pendingAccount.mobile || identifier }
     setSession(next)
     try { localStorage.setItem(sessionKey, JSON.stringify(next)) } catch {}
     setError("")
@@ -134,7 +136,7 @@ export function DidarAccess({ locale, role: routeRole, service }: { locale: Dida
   }
 
   if (!ready) return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><p className="didar-access-loading">DIDAR</p></main>
-  if (authorized) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.identifier}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.identifier} /></>
+  if (authorized) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.accountKey}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.accountKey} /></>
 
   return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}>
     <div className="didar-access-heading"><p className="didar-eyebrow">DIDAR · {copy.myDidar}</p><h1>{stage === "roles" ? w.choose : stage === "login" ? w.login : stage === "otp" ? w.otpTitle : w.registerTitle}</h1><p>{stage === "roles" ? w.intro : copy[activeRole]}</p></div>
