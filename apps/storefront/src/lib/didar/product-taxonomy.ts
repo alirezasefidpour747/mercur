@@ -1,1 +1,2 @@
-export { didarFamilies, didarTaxonomy, metricBarWeights, coinWeights } from "@mercurjs/types"\nexport type { LocalizedTaxon, DidarTaxon } from "@mercurjs/types"\n
+export { didarFamilies, didarTaxonomy, metricBarWeights, coinWeights } from "@mercurjs/types"
+export type { LocalizedTaxon, DidarTaxon } from "@mercurjs/types"
