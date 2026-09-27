@@ -149,7 +149,7 @@ export function DidarAccess({ locale, role: routeRole, service, commerceEntry = 
   }
 
   if (!ready) return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><p className="didar-access-loading">DIDAR</p></main>
-  if (authorized && workspaceEntry) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.accountKey}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.accountKey} /></>
+  if (authorized && workspaceEntry) return <><div className="didar-access-session" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}><span>{copy.myDidar} · {session.displayName} · {copy[activeRole]} · <bdi dir="ltr">{session.identifier}</bdi></span><button type="button" onClick={signOut}>{w.signout}</button></div><DidarWorkspace key={`${activeRole}:${session.accountKey}`} locale={locale} role={activeRole} initialService={service} accountEmail={session.accountKey} /></>
 
   return <main className="didar-site didar-access" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}>
     <div className="didar-access-heading"><p className="didar-eyebrow">DIDAR · {copy.myDidar}</p><h1>{stage === "roles" ? w.choose : stage === "login" ? w.login : stage === "otp" ? w.otpTitle : w.registerTitle}</h1><p>{stage === "roles" ? w.intro : copy[activeRole]}</p></div>
