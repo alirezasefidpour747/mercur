@@ -8,7 +8,7 @@ import { isDidarLocale } from "@/lib/helpers/storefront-locale"
 
 type Props = {
   params: Promise<{ locale: string }>
-  searchParams: Promise<{ role?: string }>
+  searchParams: Promise<{ role?: string; returnTo?: string }>
 }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
@@ -18,7 +18,7 @@ export async function generateMetadata({ params }: Props): Promise<Metadata> {
 
 export default async function MyDidar({ params, searchParams }: Props) {
   const { locale } = await params
-  const { role } = await searchParams
+  const { role, returnTo } = await searchParams
   if (!isDidarLocale(locale)) notFound()
-  return <DidarAccess locale={locale} role={role && isDidarRole(role) ? role : undefined} commerceEntry />
+  return <DidarAccess locale={locale} role={role && isDidarRole(role) ? role : undefined} commerceEntry returnTo={returnTo} />
 }
