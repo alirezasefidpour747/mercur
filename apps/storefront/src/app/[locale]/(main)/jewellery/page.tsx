@@ -10,7 +10,7 @@ import {
   hasDidarCatalogFilters,
   parseDidarCatalogFilters,
 } from "@/lib/didar/catalog-filters"
-import { publicDidarProducts } from "@/lib/didar/public-catalog"
+import { getDidarCatalog } from "@/lib/didar/medusa-catalog"
 import { didarFamilies, didarTaxonomy } from "@/lib/didar/product-taxonomy"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import {
@@ -84,7 +84,7 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
   const copy = didarUiCopy[locale]
   const labels = filterCopy[locale]
   const filters = parseDidarCatalogFilters(await searchParams)
-  const results = filterDidarCatalog(publicDidarProducts, filters)
+  const results = filterDidarCatalog(await getDidarCatalog(), filters)
   const selectedCategory = didarTaxonomy.find((item) => item.id === filters.category)
   const visibleCategories = filters.family
     ? didarTaxonomy.filter((item) => item.family === filters.family)
@@ -145,9 +145,11 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
               <select name="purity" defaultValue={filters.purity}>
                 <option value="">{labels.all}</option>
                 <option value="750">۱۸ عیار / 750‰</option>
-                <option value="875">۲۱ عیار / 875‰</option>
+                <option value="900">سکه بانکی / 900‰</option>
                 <option value="916">۲۲ عیار / 916‰</option>
+                <option value="995">شمش / 995‰</option>
                 <option value="999">۲۴ عیار / 999‰</option>
+                <option value="999.9">شمش خالص / 999.9‰</option>
               </select>
             </label>
 

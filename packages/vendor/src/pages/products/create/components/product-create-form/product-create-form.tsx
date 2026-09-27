@@ -1,4 +1,3 @@
-import { MercurFeatureFlags } from "@mercurjs/types"
 import { Button, toast } from "@medusajs/ui"
 import { ReactNode, useEffect, useMemo, Children } from "react"
 import { useForm, useWatch, DeepPartial } from "react-hook-form"
@@ -7,7 +6,7 @@ import { zodResolver } from "@hookform/resolvers/zod"
 
 import { RouteFocusModal, useRouteModal } from "@components/modals"
 import { TabbedForm } from "@components/tabbed-form/tabbed-form"
-import { useCreateProduct, useFeatureFlags } from "@hooks/api"
+import { useCreateProduct } from "@hooks/api"
 import { sdk } from "@lib/client"
 
 import { PRODUCT_CREATE_FORM_DEFAULTS, ProductCreateSchema } from "../../constants"
@@ -45,10 +44,6 @@ export const ProductCreateForm = ({
   })
 
   const { mutateAsync, isPending } = useCreateProduct()
-
-  const { feature_flags } = useFeatureFlags()
-  const productRequestEnabled =
-    !!feature_flags?.[MercurFeatureFlags.PRODUCT_REQUEST]
 
   const watchedAttributes = useWatch({
     control: form.control,
@@ -100,11 +95,7 @@ export const ProductCreateForm = ({
       }
     }
 
-    const submittedStatus = isDraftSubmission
-      ? "draft"
-      : productRequestEnabled
-        ? "proposed"
-        : "published"
+    const submittedStatus = isDraftSubmission ? "draft" : "proposed"
 
     await mutateAsync(
       normalizeProductFormValues({
@@ -201,7 +192,7 @@ export const ProductCreateForm = ({
               isLoading={isLoading}
               data-testid="product-create-form-publish-button"
             >
-              {t("actions.publish")}
+              ارسال برای بررسی
             </Button>
           ) : (
             <Button

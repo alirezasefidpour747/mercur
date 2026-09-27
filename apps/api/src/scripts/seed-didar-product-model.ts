@@ -5,11 +5,14 @@ import {
 } from "@medusajs/framework/utils"
 import {
   AttributeType,
+  didarGoldAttributeStandard,
   didarFamilies,
   didarTaxonomy,
+  MercurModules,
 } from "@mercurjs/types"
 import { createProductAttributesWorkflow } from "@mercurjs/core/workflows"
 import { createProductCategoriesWorkflow } from "@medusajs/medusa/core-flows"
+import type { ProductAttributeModuleService } from "@mercurjs/core/modules/product-attribute"
 
 type CategorySeed = {
   handle: string
@@ -25,6 +28,8 @@ type AttributeSeed = {
   type: AttributeType
   values: readonly string[]
   filterable?: boolean
+  required: boolean
+  description: string
   metadata: Record<string, unknown>
 }
 
@@ -74,106 +79,15 @@ const categoryLevels: CategorySeed[][] = [
   ),
 ]
 
-const attributeDefinitions: readonly AttributeSeed[] = [
-  {
-    handle: "purity",
-    name: "عیار طلا",
-    type: AttributeType.SINGLE_SELECT,
-    values: ["750", "875", "916", "999"],
-    metadata: { didar_master: true, unit: "permille" },
-  },
-  {
-    handle: "gold_color",
-    name: "رنگ طلا",
-    type: AttributeType.MULTI_SELECT,
-    values: ["طلای زرد", "طلای سفید", "رزگلد", "ترکیبی"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "weight",
-    name: "وزن",
-    type: AttributeType.UNIT,
-    values: [],
-    filterable: false,
-    metadata: { didar_master: true, unit: "g", precision: 3 },
-  },
-  {
-    handle: "weight_range",
-    name: "بازه وزن",
-    type: AttributeType.SINGLE_SELECT,
-    values: ["کمتر از ۳ گرم", "۳ تا ۶ گرم", "۶ تا ۱۲ گرم", "۱۲ تا ۲۰ گرم", "بیش از ۲۰ گرم"],
-    metadata: { didar_master: true, unit: "g" },
-  },
-  {
-    handle: "wage_percentage",
-    name: "درصد اجرت",
-    type: AttributeType.UNIT,
-    values: [],
-    filterable: false,
-    metadata: { didar_master: true, unit: "percent", precision: 2 },
-  },
-  {
-    handle: "wage_range",
-    name: "بازه اجرت",
-    type: AttributeType.SINGLE_SELECT,
-    values: ["کمتر از ۱۰٪", "۱۰ تا ۱۵٪", "۱۵ تا ۲۰٪", "۲۰ تا ۲۵٪", "بیش از ۲۵٪"],
-    metadata: { didar_master: true, unit: "percent" },
-  },
-  {
-    handle: "audience",
-    name: "مخاطب",
-    type: AttributeType.MULTI_SELECT,
-    values: ["زنانه", "مردانه", "کودک", "یونیسکس"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "stone_type",
-    name: "نوع سنگ",
-    type: AttributeType.MULTI_SELECT,
-    values: ["بدون سنگ", "الماس", "برلیان", "فیروزه", "مالاکیت", "مروارید", "سنگ رنگی", "سایر"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "style",
-    name: "سبک",
-    type: AttributeType.MULTI_SELECT,
-    values: ["روزمره", "لوکس روزمره", "لوکس", "کلاسیک", "مدرن", "مینیمال", "مناسبتی"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "inventory_source",
-    name: "منبع موجودی",
-    type: AttributeType.SINGLE_SELECT,
-    values: ["انبار دیدار", "انبار تأمین‌کننده", "سفارش ساخت"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "sale_status",
-    name: "وضعیت عرضه",
-    type: AttributeType.SINGLE_SELECT,
-    values: ["آماده عرضه", "استعلام موجودی", "سفارش ساخت", "ناموجود"],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "warranty_status",
-    name: "گارانتی دیدار",
-    type: AttributeType.TOGGLE,
-    values: [],
-    metadata: { didar_master: true },
-  },
-  {
-    handle: "authenticity_status",
-    name: "شناسنامه اصالت",
-    type: AttributeType.TOGGLE,
-    values: [],
-    metadata: { didar_master: true, uid_xrf: true },
-  },
-]
+const attributeDefinitions: readonly AttributeSeed[] = didarGoldAttributeStandard
 
 export default async function seedDidarProductModel({ container }: ExecArgs) {
   const logger = container.resolve(ContainerRegistrationKeys.LOGGER)
   const query = container.resolve(ContainerRegistrationKeys.QUERY)
   const productModule = container.resolve(Modules.PRODUCT)
+  const attributeModule = container.resolve<ProductAttributeModuleService>(
+    MercurModules.PRODUCT_ATTRIBUTE
+  )
 
   logger.info("Seeding Didar product taxonomy...")
 
@@ -215,7 +129,7 @@ export default async function seedDidarProductModel({ container }: ExecArgs) {
 
   const { data: existingAttributes } = await query.graph({
     entity: "product_attribute",
-    fields: ["id", "handle"],
+    fields: ["id", "handle", "values.id", "values.name"],
     filters: {
       handle: attributeDefinitions.map((attribute) => attribute.handle),
       product_id: null,
@@ -235,7 +149,8 @@ export default async function seedDidarProductModel({ container }: ExecArgs) {
           name: attribute.name,
           handle: attribute.handle,
           type: attribute.type,
-          is_required: false,
+          description: attribute.description,
+          is_required: attribute.required,
           is_filterable: attribute.filterable ?? true,
           is_variant_axis: false,
           rank,
@@ -247,6 +162,47 @@ export default async function seedDidarProductModel({ container }: ExecArgs) {
         })),
       },
     })
+  }
+
+  const existingByHandle = new Map(
+    existingAttributes.map((attribute: any) => [attribute.handle, attribute])
+  )
+
+  for (const [rank, definition] of attributeDefinitions.entries()) {
+    const existing = existingByHandle.get(definition.handle) as any
+    if (!existing) continue
+
+    // Deliberately sequential: this seed may run while the dev API has an
+    // active pool, so bounded connection usage is safer than fan-out.
+    // eslint-disable-next-line no-await-in-loop
+    await attributeModule.updateProductAttributes({
+        id: existing.id,
+        name: definition.name,
+        description: definition.description,
+        is_required: definition.required,
+        is_filterable: definition.filterable ?? true,
+        is_variant_axis: false,
+        is_active: true,
+        rank,
+        metadata: definition.metadata,
+    })
+
+    const existingValueNames = new Set(
+      (existing.values ?? []).map((value: { name: string }) => value.name)
+    )
+    const missingValues = definition.values.filter(
+      (name) => !existingValueNames.has(name)
+    )
+    if (missingValues.length) {
+      // eslint-disable-next-line no-await-in-loop
+      await attributeModule.createProductAttributeValues(
+        missingValues.map((name, valueRank) => ({
+          attribute_id: existing.id,
+          name,
+          rank: (existing.values?.length ?? 0) + valueRank,
+        }))
+      )
+    }
   }
 
   logger.info(

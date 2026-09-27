@@ -16,7 +16,7 @@ import {
   useQuery,
   UseQueryOptions,
 } from "@tanstack/react-query";
-import { sdk } from "../../lib/client";
+import { fetchQuery, sdk } from "../../lib/client";
 import { queryClient } from "../../lib/query-client";
 import { queryKeysFactory } from "../../lib/query-key-factory";
 import { inventoryItemsQueryKeys } from "./inventory.tsx";
@@ -173,6 +173,21 @@ export const useUpdateProduct = (
       options?.onSuccess?.(data, variables, context);
     },
     ...options,
+  });
+};
+
+export const useSubmitProductForReview = (id: string) => {
+  return useMutation({
+    mutationFn: () =>
+      fetchQuery(`/vendor/products/${id}/submit`, { method: "POST" }),
+    onSuccess: async () => {
+      await queryClient.invalidateQueries({
+        queryKey: productsQueryKeys.detail(id),
+      });
+      await queryClient.invalidateQueries({
+        queryKey: productsQueryKeys.lists(),
+      });
+    },
   });
 };
 

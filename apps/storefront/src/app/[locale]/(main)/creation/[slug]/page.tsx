@@ -5,7 +5,7 @@ import { notFound } from "next/navigation"
 
 import { DidarProductActions } from "@/components/didar/DidarProductActions"
 import { DidarProductMeta } from "@/components/didar/DidarProductMeta"
-import { publicProduct } from "@/lib/didar/public-catalog"
+import { getDidarProduct } from "@/lib/didar/medusa-catalog"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { isDidarLocale } from "@/lib/helpers/storefront-locale"
 
@@ -13,14 +13,14 @@ type Props = { params: Promise<{ locale: string; slug: string }> }
 
 export async function generateMetadata({ params }: Props): Promise<Metadata> {
   const { locale, slug } = await params
-  const product = publicProduct(slug)
+  const product = await getDidarProduct(slug)
   return { title: product?.title ?? "Didar", robots: product && isDidarLocale(locale) ? undefined : { index: false } }
 }
 
 export default async function DidarCreation({ params }: Props) {
   const { locale, slug } = await params
   if (!isDidarLocale(locale)) notFound()
-  const product = publicProduct(slug)
+  const product = await getDidarProduct(slug)
   if (!product) notFound()
   const copy = didarUiCopy[locale]
   const images = product.gallery.length ? product.gallery : [product.image]
