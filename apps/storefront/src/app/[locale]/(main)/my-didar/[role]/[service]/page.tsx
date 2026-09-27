@@ -1,4 +1,4 @@
-import { notFound } from "next/navigation"
+import { notFound, redirect } from "next/navigation"
 
 import { DidarAccess } from "@/components/didar/DidarAccess"
 import { isDidarRole, isDidarService } from "@/lib/didar/service-paths"
@@ -8,6 +8,7 @@ type Props = { params: Promise<{ locale: string; role: string; service: string }
 
 export default async function DidarServiceView({ params }: Props) {
   const { locale, role, service } = await params
+  if (role === "wholesaler" && isDidarLocale(locale)) redirect(`/${locale}/my-didar/supplier/${service === "application" ? "profile" : service}`)
   if (!isDidarLocale(locale) || !isDidarRole(role) || !isDidarService(role, service)) notFound()
   return <DidarAccess locale={locale} role={role} service={service} />
 }
