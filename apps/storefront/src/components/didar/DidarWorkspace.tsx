@@ -4,6 +4,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { useEffect, useMemo, useState, type FormEvent, type ReactNode } from "react"
 
+import { consumeDidarGuestFavorites } from "@/components/didar/DidarFavoriteButton"
 import { publicDidarProducts } from "@/lib/didar/public-catalog"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { didarFamilies, didarTaxonomy, metricBarWeights, coinWeights } from "@/lib/didar/product-taxonomy"
@@ -47,14 +48,25 @@ export function DidarWorkspace({ locale, role, initialService, accountEmail }: {
   const [photoPreview, setPhotoPreview] = useState<string[]>([])
   const [inquiryId, setInquiryId] = useState<string | null>(null)
   const [city, setCity] = useState("")
+  const [storeProductSlug, setStoreProductSlug] = useState("")
   const [warrantyUid, setWarrantyUid] = useState("")
 
   useEffect(() => {
-    try { const stored = localStorage.getItem(storageKey); if (stored) { const value = JSON.parse(stored) as Partial<DemoState>; setState({ ...initial(), ...value }) } } catch { /* the demo also works without storage */ }
+    try {
+      const stored = localStorage.getItem(storageKey)
+      const parsed = stored ? JSON.parse(stored) as Partial<DemoState> : {}
+      const value = { ...initial(), ...parsed }
+      const carried = role === "consumer" || role === "retailer" ? consumeDidarGuestFavorites() : []
+      const favorites = [...new Set([...value.favorites, ...carried])]
+      setState({ ...value, favorites })
+      if (carried.length) setMessage(role === "consumer"
+        ? (locale === "fa" ? "علاقه‌مندی‌های مهمان به حساب شما منتقل شد. اکنون می‌توانید فروشگاه دارندهٔ هر محصول را پیدا کنید." : "Guest favourites were moved to your account. You can now find a retailer for each creation.")
+        : (locale === "fa" ? "علاقه‌مندی‌های مهمان به فضای خرده‌فروشی منتقل شد. می‌توانید آن‌ها را به سبد درخواست اضافه کنید." : "Guest favourites were moved to your retailer workspace. You can add them to the inquiry basket."))
+    } catch { /* the demo also works without storage */ }
     setLoaded(true)
-  }, [storageKey])
+  }, [locale, role, storageKey])
   useEffect(() => { if (loaded) try { localStorage.setItem(storageKey, JSON.stringify(state)) } catch { /* storage may be unavailable */ } }, [loaded, state])
-  useEffect(() => { setSection(initialService || didarServicePaths[role][0]); setMessage("") }, [role, initialService])
+  useEffect(() => { setSection(initialService || didarServicePaths[role][0]) }, [role, initialService])
   useEffect(() => () => { photoPreview.forEach((src) => URL.revokeObjectURL(src)) }, [photoPreview])
 
   const update = (change: Partial<DemoState>) => setState((before) => ({ ...before, ...change }))
@@ -74,7 +86,22 @@ export function DidarWorkspace({ locale, role, initialService, accountEmail }: {
   const title = menu.find((item) => item.id === section)?.label || copy[role]
 
   function toggle(slug: string, key: "selected" | "favorites") {
-    update({ [key]: state[key].includes(slug) ? state[key].filter((value) => value !== slug) : [...state[key], slug] })
+    setState((before) => ({
+      ...before,
+      [key]: before[key].includes(slug)
+        ? before[key].filter((value) => value !== slug)
+        : [...before[key], slug],
+    }))
+  }
+  function addFavoriteToInquiry(slug: string) {
+    setState((before) => before.selected.includes(slug)
+      ? before
+      : { ...before, selected: [...before.selected, slug] })
+    setMessage(isFa ? "محصول به سبد درخواست خرده‌فروش اضافه شد؛ هنوز رزرو یا سفارشی ایجاد نشده است." : "The creation was added to the retailer inquiry basket; no reservation or order was created.")
+  }
+  function findRetailerFor(slug: string) {
+    setStoreProductSlug(slug)
+    nav("stores")
   }
   function submitProfile(event: FormEvent<HTMLFormElement>) {
     event.preventDefault()
@@ -142,10 +169,10 @@ export function DidarWorkspace({ locale, role, initialService, accountEmail }: {
   else if (section === "orders" || section === "quotes" || section === "shipments") body = <div className="didar-work-empty">{isFa ? "برای این بخش هنوز سفارش، پیش‌فاکتور یا ارسال واقعی وجود ندارد. پس از بررسی استعلام، وضعیت اینجا نمایش داده می‌شود." : "No real order, quotation or shipment exists. Reviewed inquiries will appear here after API integration."}<br /><button type="button" onClick={() => nav("inquiries")}>{isFa ? "مشاهدهٔ استعلام‌ها" : "View inquiries"} ↗</button></div>
   else if (section === "shop") body = <><p className="didar-work-muted">{isFa ? "نمای ویترین خرده‌فروش؛ محصولات انتخابی نمونه‌اند و به‌صورت عمومی منتشر نمی‌شوند." : "Sample shop window; selected creations are not published."}</p>{catalogueView}</>
   else if (section === "suppliers") body = <div className="didar-work-grid">{["کارگاه الف", "تأمین‌کننده ب", "خانه شمش ج"].map((name, index) => <article className="didar-work-card" key={name}><span className="didar-work-tag">{isFa ? "تأمین‌کننده نمونه" : "Sample supplier"} 0{index + 1}</span><h3>{name}</h3><p>{isFa ? "پرونده و محصولات پس از تأیید قابل مشاهده‌اند." : "Profile and products become visible after approval."}</p></article>)}</div>
-  else if (section === "stores") body = <><p className="didar-work-muted">{isFa ? "مکان واقعی شما دریافت نمی‌شود. شهر را برای دیدن مکان‌های نمونه انتخاب کنید." : "Your actual location is not requested. Choose a city to see sample locations."}</p><label className="didar-work-city">{isFa ? "شهر" : "City"}<select value={city} onChange={(event) => setCity(event.target.value)}><option value="">{isFa ? "همهٔ شهرها" : "All cities"}</option><option value="tehran">{isFa ? "تهران" : "Tehran"}</option><option value="isfahan">{isFa ? "اصفهان" : "Isfahan"}</option></select></label><div className="didar-work-grid">{[{ city: "tehran", title: "فروشگاه نمایشی تهران ۱" }, { city: "tehran", title: "فروشگاه نمایشی تهران ۲" }, { city: "isfahan", title: "فروشگاه نمایشی اصفهان" }].filter((item) => !city || item.city === city).map((item) => <article className="didar-work-card" key={item.title}><span className="didar-work-tag">{isFa ? "نمونه" : "Sample"}</span><h3>{item.title}</h3><p>{isFa ? "نشانی و موجودی واقعی پس از اتصال فروشگاه‌ها نمایش داده می‌شود." : "Verified location and inventory will appear after integration."}</p></article>)}</div></>
+  else if (section === "stores") body = <>{storeProductSlug && <p className="didar-work-message">{isFa ? "فروشگاه‌های دارندهٔ محصول:" : "Retailers carrying:"} {publicDidarProducts.find((item) => item.slug === storeProductSlug)?.title}</p>}<p className="didar-work-muted">{isFa ? "مکان واقعی شما دریافت نمی‌شود. شهر را برای دیدن مکان‌های نمونه انتخاب کنید. مشتری نهایی از دیدار خرید نمی‌کند و خرید در فروشگاه منتخب انجام می‌شود." : "Your actual location is not requested. Choose a city to see sample locations. Consumers buy from the selected retailer, not from Didar."}</p><label className="didar-work-city">{isFa ? "شهر" : "City"}<select value={city} onChange={(event) => setCity(event.target.value)}><option value="">{isFa ? "همهٔ شهرها" : "All cities"}</option><option value="tehran">{isFa ? "تهران" : "Tehran"}</option><option value="isfahan">{isFa ? "اصفهان" : "Isfahan"}</option></select></label><div className="didar-work-grid">{[{ city: "tehran", title: "فروشگاه نمایشی تهران ۱" }, { city: "tehran", title: "فروشگاه نمایشی تهران ۲" }, { city: "isfahan", title: "فروشگاه نمایشی اصفهان" }].filter((item) => !city || item.city === city).map((item) => <article className="didar-work-card" key={item.title}><span className="didar-work-tag">{isFa ? "نمونه" : "Sample"}</span><h3>{item.title}</h3><p>{isFa ? "نشانی و موجودی واقعی پس از اتصال فروشگاه‌ها نمایش داده می‌شود." : "Verified location and inventory will appear after integration."}</p></article>)}</div></>
   else if (section === "authenticity") body = <form className="didar-work-form" onSubmit={(event) => { event.preventDefault(); setMessage(isFa ? `شناسهٔ ${warrantyUid || "—"} در این پیش‌نمایش به سامانهٔ اصالت متصل نیست.` : `ID ${warrantyUid || "—"} is not connected to a verification service.`) }}><p>{isFa ? "شناسهٔ درج‌شده روی قطعه را وارد کنید؛ پاسخ این مرحله فقط نمایشی است." : "Enter the code on the piece; this is a sample interface."}</p><label>UID <input dir="ltr" value={warrantyUid} onChange={(event) => setWarrantyUid(event.target.value)} required maxLength={40} placeholder="DG-104-001" /></label><button type="submit" className="didar-work-primary">{isFa ? "بررسی نمونه" : "Sample lookup"}</button></form>
   else if (section === "warranty" || section === "buyback") body = <><form className="didar-work-form" onSubmit={(event) => submitCase(event, section === "warranty" ? "warranty" : "buyback")}><div className="didar-work-fields"><label>UID<input required name="uid" dir="ltr" maxLength={40} placeholder="DG-104-001" /></label>{section === "warranty" && <><label>{isFa ? "تاریخ خرید" : "Purchase date"}<input name="date" required type="date" /></label><label>{isFa ? "شماره فاکتور" : "Invoice number"}<input name="invoice" required dir="ltr" /></label></>}<label className="didar-work-span">{isFa ? "توضیحات" : "Notes"}<textarea name="note" maxLength={500} /></label></div><button className="didar-work-primary" type="submit">{section === "warranty" ? (isFa ? "ثبت گارانتی نمونه" : "Sample warranty request") : (isFa ? "درخواست بازخرید نمونه" : "Sample buyback request")}</button></form><h2 className="didar-work-subheading">{isFa ? "پرونده‌های ثبت‌شده در این مرورگر" : "Cases saved in this browser"}</h2>{caseList}</>
-  else if (section === "favorites") body = <div className="didar-work-products">{publicDidarProducts.filter((item) => state.favorites.includes(item.slug)).map((item) => <article key={item.slug}><Link href={`/${locale}/creation/${item.slug}`}><div className="didar-work-product-image"><Image src={item.image} alt={item.title} fill sizes="33vw" /></div><h3>{item.title}</h3></Link><button type="button" onClick={() => toggle(item.slug, "favorites")}>{isFa ? "حذف از انتخاب‌ها" : "Remove"}</button></article>)}{!state.favorites.length && <div className="didar-work-empty">{isFa ? "هنوز محصولی ذخیره نکرده‌اید." : "No saved creations yet."}</div>}</div>
+  else if (section === "favorites") body = <div className="didar-work-products">{publicDidarProducts.filter((item) => state.favorites.includes(item.slug)).map((item) => <article key={item.slug}><Link href={`/${locale}/creation/${item.slug}`}><div className="didar-work-product-image"><Image src={item.image} alt={item.title} fill sizes="33vw" /></div><h3>{item.title}</h3></Link><div className="didar-work-actions">{role === "consumer" && <button type="button" onClick={() => findRetailerFor(item.slug)}>{isFa ? "یافتن فروشگاه دارنده" : "Find a retailer"}</button>}{role === "retailer" && <button type="button" onClick={() => addFavoriteToInquiry(item.slug)}>{state.selected.includes(item.slug) ? (isFa ? "در سبد درخواست" : "In inquiry basket") : (isFa ? "افزودن به سبد درخواست" : "Add to inquiry basket")}</button>}<button type="button" onClick={() => toggle(item.slug, "favorites")}>{isFa ? "حذف از علاقه‌مندی‌ها" : "Remove"}</button></div></article>)}{!state.favorites.length && <div className="didar-work-empty">{isFa ? "هنوز محصولی ذخیره نکرده‌اید." : "No saved creations yet."}</div>}</div>
   else if (section === "cases") body = caseList
   else if (section === "new-product" || (section === "products" && !!productDraft)) body = productForm
   else if (section === "products" || section === "review" || section === "supply") body = <><button className="didar-work-primary" type="button" onClick={() => { setProductDraft(newDraft()); setFamily(""); setCategory(""); setSubtype(""); nav("new-product") }}>{isFa ? "ثبت محصول جدید" : "New product"}</button><div className="didar-work-stack">{state.supplierItems.map((item) => <article className="didar-work-card" key={item.id}><span className="didar-work-tag">{item.status === "draft" ? (isFa ? "پیش‌نویس" : "Draft") : (isFa ? "در انتظار بررسی · نمونه" : "Pending review · sample")}</span><h3>{item.name}</h3><p dir="ltr">{item.sku}</p><p>{didarTaxonomy.find((taxon) => taxon.id === item.category)?.fa} / {item.purity}‰ / {item.quantity}</p><div className="didar-work-actions"><button type="button" onClick={() => { setProductDraft(item); setFamily(item.family); setCategory(item.category); setSubtype(item.subtype); nav("new-product") }}>{isFa ? "ویرایش" : "Edit"}</button>{item.status === "draft" && <button type="button" onClick={() => { update({ supplierItems: state.supplierItems.map((existing) => existing.id === item.id ? { ...existing, status: "review" } : existing) }); setMessage(isFa ? "محصول نمونه برای بررسی علامت‌گذاری شد." : "Sample product marked for review.") }}>{isFa ? "ارسال برای بررسی" : "Submit for review"}</button>}</div></article>)}{!state.supplierItems.length && <div className="didar-work-empty">{isFa ? "هنوز محصولی پیشنهاد نشده است." : "No product proposals yet."}</div>}</div></>
