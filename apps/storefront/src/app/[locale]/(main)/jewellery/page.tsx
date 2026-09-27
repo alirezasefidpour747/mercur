@@ -4,7 +4,9 @@ import Link from "next/link"
 import { notFound } from "next/navigation"
 
 import { DidarFavoriteButton } from "@/components/didar/DidarFavoriteButton"
+import { DidarProductMeta } from "@/components/didar/DidarProductMeta"
 import { publicDidarProducts } from "@/lib/didar/public-catalog"
+import { didarTaxonomy } from "@/lib/didar/product-taxonomy"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { isDidarLocale } from "@/lib/helpers/storefront-locale"
 
@@ -25,18 +27,18 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
   const { q = "", category = "" } = await searchParams
   const query = typeof q === "string" ? q.trim().slice(0, 80) : ""
   const selected = typeof category === "string" ? category : ""
-  const categories = ["", "طلای روزمره", "طلای لوکس روزمره", "other"]
+  const categories = [...new Set(publicDidarProducts.map((product) => product.categoryId).filter((value): value is string => !!value))]
   const results = publicDidarProducts.filter((product) => {
     const matchesQuery = !query || product.title.toLocaleLowerCase().includes(query.toLocaleLowerCase())
-    const matchesCategory = !selected || (selected === "other" ? !product.category : product.category === selected)
+    const matchesCategory = !selected || product.categoryId === selected || product.category === selected
     return matchesQuery && matchesCategory
   })
-  const labels = [copy.all, copy.daily, copy.luxury, copy.uncategorized]
   const categoryLinks = [
     { label: copy.all, href: `/${locale}/jewellery` },
-    { label: copy.daily, href: `/${locale}/jewellery?category=${encodeURIComponent("طلای روزمره")}` },
-    { label: locale === "fa" ? "طلای لوکس روزمره" : copy.luxury, href: `/${locale}/jewellery?category=${encodeURIComponent("طلای لوکس روزمره")}` },
-    { label: locale === "fa" ? "ساعت طلا" : "Gold watches", href: `/${locale}/jewellery?q=${encodeURIComponent("ساعت")}` },
+    ...categories.slice(0, 7).map((id) => {
+      const taxon = didarTaxonomy.find((item) => item.id === id)
+      return { label: taxon?.[locale] || taxon?.en || id, href: `/${locale}/jewellery?category=${encodeURIComponent(id)}` }
+    }),
   ]
 
   return (
@@ -50,7 +52,8 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
       <form className="didar-catalog-tools" action={`/${locale}/jewellery`} method="get">
         <label>{copy.search}<input name="q" type="search" defaultValue={query} maxLength={80} /></label>
         <label>{copy.filter}<select name="category" defaultValue={selected}>
-          {categories.map((value, i) => <option key={value} value={value}>{labels[i]}</option>)}
+          <option value="">{copy.all}</option>
+          {categories.map((value) => { const taxon = didarTaxonomy.find((item) => item.id === value); return <option key={value} value={value}>{taxon?.[locale] || taxon?.en || value}</option> })}
         </select></label>
         <button type="submit">{copy.explore}</button>
       </form>
@@ -61,7 +64,7 @@ export default async function DidarJewellery({ params, searchParams }: PageProps
           <DidarFavoriteButton slug={product.slug} locale={locale} className="didar-product-favorite" />
           <Link href={`/${locale}/creation/${product.slug}`} aria-label={`${copy.detail}: ${product.title}`}>
             <div className="didar-product-image"><Image src={product.image} alt={product.title} fill sizes="(max-width: 760px) 50vw, 33vw" /></div>
-            <div className="didar-product-info"><span>{product.category ?? copy.uncategorized}</span><h2 lang="fa" dir="rtl">{product.title}</h2><span className="didar-product-more">{copy.detail} <span aria-hidden="true">↗</span></span></div>
+            <div className="didar-product-info"><span>{product.categoryLabel ?? product.category ?? copy.uncategorized}</span><h2 lang="fa" dir="rtl">{product.title}</h2><DidarProductMeta product={product} locale={locale} compact /><span className="didar-product-more">{copy.detail} <span aria-hidden="true">↗</span></span></div>
           </Link>
         </article>)}
       </div> : <p className="didar-empty-state">{copy.none}</p>}
