@@ -3,6 +3,7 @@ import Image from "next/image"
 import Link from "next/link"
 import { notFound } from "next/navigation"
 
+import { DidarFavoriteButton } from "@/components/didar/DidarFavoriteButton"
 import { publicProduct } from "@/lib/didar/public-catalog"
 import { didarUiCopy } from "@/lib/didar/ui-copy"
 import { isDidarLocale } from "@/lib/helpers/storefront-locale"
@@ -39,7 +40,8 @@ export default async function DidarCreation({ params }: Props) {
         <div className="didar-detail-gate">{locale === "fa" ? "اجرت و ثبت سفارش فقط پس از تأیید مجوز همکاری فعال می‌شود." : copy.detailsNote}<br /><Link href={`/${locale}/my-didar/retailer/application`}>{locale === "fa" ? "ورود و تکمیل پروندهٔ همکاری ←" : copy.viewServices}</Link></div>
         <div className="didar-detail-inquiry"><h2>{locale === "fa" ? "استعلام همکاری" : copy.viewServices}</h2><p>{locale === "fa" ? "اجرت، موجودی، وزن نهایی و شرایط تسویه با استعلام تأیید می‌شود." : copy.detailsNote}</p></div>
         <Link className="didar-detail-primary" href={`/${locale}/my-didar/retailer/application`}>{locale === "fa" ? "ورود و تأیید همکاری" : copy.viewServices}</Link>
-        <Link className="didar-detail-action" href={`/${locale}/my-didar/preview`}>{locale === "fa" ? "ذخیره در انتخاب‌های من" : copy.viewServices} ♡</Link>
+        <DidarFavoriteButton slug={product.slug} locale={locale} className="didar-detail-action didar-detail-favorite" />
+        <Link className="didar-detail-action" href={`/${locale}/my-didar/consumer/stores`}>{locale === "fa" ? "یافتن فروشگاه دارندهٔ این محصول" : "Find a retailer carrying this creation"} ↗</Link>
         <Link className="didar-detail-action" href={`/${locale}/my-didar/retailer/inquiries`}>{locale === "fa" ? "ارسال مشخصات برای استعلام" : copy.viewServices} ↗</Link>
         <div className="didar-detail-benefits"><Link href={`/${locale}/my-didar/consumer/authenticity`}>{locale === "fa" ? "اصالت با کد اختصاصی" : copy.viewServices} ◇</Link><Link href={`/${locale}/my-didar/consumer/warranty`}>{locale === "fa" ? "گارانتی معتبر دیدار" : copy.viewServices} ◇</Link><Link href={`/${locale}/my-didar/consumer/buyback`}>{locale === "fa" ? "بازخرید شفاف" : copy.viewServices} ◇</Link></div>
         <section id="creation-details" className="didar-detail-facts"><h2>{locale === "fa" ? "جزئیات اثر" : copy.detail}</h2><dl><div><dt>{copy.category}</dt><dd>{product.category ?? copy.unknown}</dd></div><div><dt>{copy.material}</dt><dd>{product.material ?? copy.unknown}</dd></div></dl></section>
