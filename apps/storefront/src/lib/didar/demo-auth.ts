@@ -15,7 +15,11 @@ export function readDidarDemoSession(): DidarDemoSession | null {
   try {
     const value = JSON.parse(window.localStorage.getItem(didarDemoSessionKey) || "null") as Partial<DidarDemoSession> | null
     if (!value?.role || !value.identifier) return null
-    if (!["consumer", "retailer", "supplier", "wholesaler"].includes(value.role)) return null
+    const storedRole = String(value.role)
+    const role: DidarRole | null = storedRole === "wholesaler"
+      ? "supplier"
+      : ["consumer", "retailer", "supplier"].includes(storedRole) ? storedRole as DidarRole : null
+    if (!role) return null
     const demoNames: Record<string, string> = {
       "consumer@didar.demo": "مشتری نمونه",
       "09120000001": "مشتری نمونه",
@@ -36,7 +40,7 @@ export function readDidarDemoSession(): DidarDemoSession | null {
       ? storedAccounts.find((account) => account.role === value.role && (account.email === value.identifier || account.mobile === value.identifier))?.name
       : undefined
     return {
-      role: value.role,
+      role,
       identifier: value.identifier,
       accountKey: value.accountKey || value.identifier,
       displayName: value.displayName || demoNames[value.identifier] || storedName || value.identifier,
