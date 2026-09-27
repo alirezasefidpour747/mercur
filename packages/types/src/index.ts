@@ -73,4 +73,7 @@ export * from "./custom-fields"
 export * from "./dashboard"
 
 // Feature flags
-export * from "./feature-flags"\n\n// Didar shared product master data\nexport * from "./didar-product-taxonomy"
+export * from "./feature-flags"
+
+// Didar shared product master data
+export * from "./didar-product-taxonomy"
