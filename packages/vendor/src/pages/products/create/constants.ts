@@ -36,12 +36,14 @@ export type ProductCreateVariantSchema = z.infer<
 
 export const ProductCreateSchema = z
   .object({
-    title: z.string().min(1, {
+    title: z.string().min(3, {
       message: i18n.t("products.fields.title.required"),
     }),
     subtitle: z.string().optional(),
     handle: z.string().optional(),
-    description: z.string().optional(),
+    description: z.string().min(20, {
+      message: "شرح محصول باید حداقل ۲۰ نویسه باشد",
+    }),
     discountable: z.boolean(),
     type_id: z.string().optional(),
     collection_id: z.string().optional(),
@@ -97,7 +99,9 @@ export const ProductCreateSchema = z
         })
       }),
     variants: z.array(ProductCreateVariantSchema).min(1),
-    media: z.array(MediaSchema).optional(),
+    media: z.array(MediaSchema).min(1, {
+      message: "حداقل یک تصویر محصول الزامی است",
+    }),
   })
   .superRefine((data, ctx) => {
     if (data.variants.every((v) => !v.should_create)) {
@@ -111,6 +115,14 @@ export const ProductCreateSchema = z
     const skus = new Set<string>()
 
     data.variants.forEach((v, index) => {
+      if (v.should_create && !v.sku?.trim()) {
+        ctx.addIssue({
+          code: z.ZodIssueCode.custom,
+          path: [`variants.${index}.sku`],
+          message: "کد SKU برای هر تنوع الزامی است",
+        })
+      }
+
       if (v.sku) {
         if (skus.has(v.sku)) {
           ctx.addIssue({

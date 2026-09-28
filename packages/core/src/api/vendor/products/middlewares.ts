@@ -38,6 +38,7 @@ import {
   MedusaError,
   promiseAll,
 } from "@medusajs/framework/utils"
+import { validateDidarGoldProductSubmission } from "./validate-didar-gold-product"
 
 const applySellerProductLinkFilter = async (
   req: AuthenticatedMedusaRequest,
@@ -121,6 +122,7 @@ export const vendorProductsMiddlewares: MiddlewareRoute[] = [
     matcher: "/vendor/products",
     middlewares: [
       validateAndTransformBody(VendorCreateProduct),
+      validateDidarGoldProductSubmission,
       validateAndTransformQuery(
         VendorGetProductParams,
         vendorProductQueryConfig.retrieve
@@ -183,6 +185,18 @@ export const vendorProductsMiddlewares: MiddlewareRoute[] = [
     method: ["POST"],
     matcher: "/vendor/products/:id/cancel",
     middlewares: [validateAndTransformBody(VendorCancelProductChange)],
+    policies: [
+      {
+        resource: PolicyResource.product,
+        operation: PolicyOperation.update,
+      },
+    ],
+  },
+
+  {
+    method: ["POST"],
+    matcher: "/vendor/products/:id/submit",
+    middlewares: [],
     policies: [
       {
         resource: PolicyResource.product,

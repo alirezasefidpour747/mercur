@@ -1,0 +1,49 @@
+import type { Metadata } from "next"
+import Image from "next/image"
+import Link from "next/link"
+import { notFound } from "next/navigation"
+
+import { DidarProductActions } from "@/components/didar/DidarProductActions"
+import { DidarProductMeta } from "@/components/didar/DidarProductMeta"
+import { getDidarProduct } from "@/lib/didar/medusa-catalog"
+import { didarUiCopy } from "@/lib/didar/ui-copy"
+import { isDidarLocale } from "@/lib/helpers/storefront-locale"
+
+type Props = { params: Promise<{ locale: string; slug: string }> }
+
+export async function generateMetadata({ params }: Props): Promise<Metadata> {
+  const { locale, slug } = await params
+  const product = await getDidarProduct(slug)
+  return { title: product?.title ?? "Didar", robots: product && isDidarLocale(locale) ? undefined : { index: false } }
+}
+
+export default async function DidarCreation({ params }: Props) {
+  const { locale, slug } = await params
+  if (!isDidarLocale(locale)) notFound()
+  const product = await getDidarProduct(slug)
+  if (!product) notFound()
+  const copy = didarUiCopy[locale]
+  const images = product.gallery.length ? product.gallery : [product.image]
+
+  return <main className="didar-site didar-detail" lang={locale} dir={locale === "fa" || locale === "ar" ? "rtl" : "ltr"}>
+    <nav className="didar-breadcrumb" aria-label={locale === "fa" ? "مسیر صفحه" : "Breadcrumb"}><Link href={`/${locale}/jewellery`}>{copy.catalog}</Link><span>‹</span><span>{product.categoryLabel ?? product.category ?? copy.uncategorized}</span></nav>
+    <div className="didar-detail-layout">
+      <div className="didar-detail-gallery">
+        {images.map((src, i) => <div className="didar-detail-media" key={src}>
+          <Image src={src} alt={`${product.title} ${i + 1}`} fill sizes="(max-width: 800px) 50vw, 34vw" priority={i === 0} />
+        </div>)}
+      </div>
+      <div className="didar-detail-copy">
+        <p className="didar-detail-category">{product.categoryLabel ?? product.category ?? copy.uncategorized}</p>
+        <h1 lang="fa" dir="rtl">{product.title}</h1>
+        {product.material && <p className="didar-detail-material">{product.material}</p>}
+        <a className="didar-detail-anchor" href="#creation-details">{locale === "fa" ? "جزئیات اثر" : copy.detail} ↓</a>
+        <DidarProductActions locale={locale} slug={product.slug} />
+        <div className="didar-detail-benefits"><Link href={`/${locale}/my-didar/consumer/authenticity`}>{locale === "fa" ? "اصالت با کد اختصاصی" : copy.viewServices} ◇</Link><Link href={`/${locale}/my-didar/consumer/warranty`}>{locale === "fa" ? "گارانتی معتبر دیدار" : copy.viewServices} ◇</Link><Link href={`/${locale}/my-didar/consumer/buyback`}>{locale === "fa" ? "بازخرید شفاف" : copy.viewServices} ◇</Link></div>
+        <section id="creation-details" className="didar-detail-facts"><h2>{locale === "fa" ? "جزئیات اثر" : copy.detail}</h2><dl><div><dt>{copy.category}</dt><dd>{[product.familyLabel, product.categoryLabel, product.subtypeLabel].filter(Boolean).join(" / ") || product.category || copy.unknown}</dd></div><div><dt>{copy.material}</dt><dd>{product.material ?? copy.unknown}</dd></div></dl><DidarProductMeta product={product} locale={locale} /></section>
+        {!product.detailVerified && <p className="didar-data-note">{copy.galleryNote}</p>}
+        <a className="didar-detail-source" href={product.sourceUrl} target="_blank" rel="noopener noreferrer">{copy.source} ↗</a>
+      </div>
+    </div>
+  </main>
+}

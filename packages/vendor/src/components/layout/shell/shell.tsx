@@ -19,6 +19,7 @@ import { useGlobalShortcuts } from "../../../providers/keybind-provider/hooks"
 import { useSidebar } from "../../../providers/sidebar-provider"
 import { useMe } from "../../../hooks/api"
 import { ProgressBar } from "../../common/progress-bar"
+import { getDidarBackLabel, getDidarHomeUrl } from "../../../lib/didar-navigation"
 
 export const Shell = ({ children }: PropsWithChildren) => {
   const globalShortcuts = useGlobalShortcuts()
@@ -197,12 +198,15 @@ const ToggleSidebar = () => {
 
 const Topbar = () => {
   return (
-    <div className="grid w-full grid-cols-2 border-b p-3">
+    <div className="didar-vendor-topbar grid w-full grid-cols-2 border-b p-3">
       <div className="flex items-center gap-x-1.5">
         <ToggleSidebar />
         <Breadcrumbs />
       </div>
-      <div className="flex items-center justify-end gap-x-3" />
+      <div className="flex items-center justify-end gap-x-3">
+        <span className="didar-vendor-topbar__brand">DIDAR</span>
+        <a className="didar-vendor-topbar__back" href={getDidarHomeUrl()}>{getDidarBackLabel()}</a>
+      </div>
     </div>
   )
 }

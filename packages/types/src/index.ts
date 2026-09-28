@@ -74,3 +74,7 @@ export * from "./dashboard"
 
 // Feature flags
 export * from "./feature-flags"
+
+// Didar shared product master data
+export * from "./didar-product-taxonomy"
+export * from "./didar-product-standard"

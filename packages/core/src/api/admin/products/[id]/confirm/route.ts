@@ -2,11 +2,15 @@ import {
   AuthenticatedMedusaRequest,
   MedusaResponse,
 } from "@medusajs/framework/http"
-import { ContainerRegistrationKeys } from "@medusajs/framework/utils"
+import {
+  ContainerRegistrationKeys,
+  ProductStatus,
+} from "@medusajs/framework/utils"
 import { HttpTypes } from "@mercurjs/types"
 
 import { confirmProductsWorkflow } from "../../../../../workflows/product/workflows/confirm-products"
 import { AdminConfirmProductType } from "../../validators"
+import { assertStoredProductMeetsDidarGoldStandard } from "../../../../vendor/products/validate-didar-gold-product"
 
 export const POST = async (
   req: AuthenticatedMedusaRequest<AdminConfirmProductType>,
@@ -14,6 +18,12 @@ export const POST = async (
 ) => {
   const query = req.scope.resolve(ContainerRegistrationKeys.QUERY)
   const productId = req.params.id
+
+  await assertStoredProductMeetsDidarGoldStandard(
+    req.scope,
+    productId,
+    ProductStatus.PROPOSED
+  )
 
   await confirmProductsWorkflow(req.scope).run({
     input: {

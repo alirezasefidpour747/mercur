@@ -67,7 +67,12 @@ export const POST = async (
 
   const productInput = {
     ...payload,
-    status: payload.status ?? ProductStatus.PROPOSED,
+    // Didar vendors never publish directly. Every complete submission enters
+    // the admin review queue; only an explicit draft remains a draft.
+    status:
+      payload.status === ProductStatus.DRAFT
+        ? ProductStatus.DRAFT
+        : ProductStatus.PROPOSED,
   } as unknown as CreateProductsWorkflowInput["products"][number]
 
   const { result } = await createProductsWorkflow(req.scope).run({

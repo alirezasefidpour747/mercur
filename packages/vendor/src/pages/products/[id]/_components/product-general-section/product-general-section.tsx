@@ -1,5 +1,5 @@
 import { PencilSquare, Trash } from "@medusajs/icons";
-import { Container, Heading, StatusBadge, usePrompt } from "@medusajs/ui";
+import { Button, Container, Heading, StatusBadge, toast, usePrompt } from "@medusajs/ui";
 import { useTranslation } from "react-i18next";
 import { useNavigate } from "react-router-dom";
 
@@ -7,7 +7,10 @@ import { DisplayExtensionZone, DisplayField } from "@mercurjs/dashboard-shared";
 
 import { ActionMenu } from "@components/common/action-menu";
 import { SectionRow } from "@components/common/section";
-import { useDeleteProduct } from "@hooks/api/products";
+import {
+  useDeleteProduct,
+  useSubmitProductForReview,
+} from "@hooks/api/products";
 
 const GENERAL_FIELD_IDS = [
   "title",
@@ -43,6 +46,8 @@ export const ProductGeneralSection = ({
   const navigate = useNavigate();
 
   const { mutateAsync } = useDeleteProduct(product.id);
+  const { mutateAsync: submitForReview, isPending: isSubmitting } =
+    useSubmitProductForReview(product.id);
 
   const handleDelete = async () => {
     const res = await prompt({
@@ -72,6 +77,25 @@ export const ProductGeneralSection = ({
           <Heading>{product.title}</Heading>
         </DisplayField>
         <div className="flex items-center gap-x-4">
+          {product.status === "draft" && (
+            <Button
+              size="small"
+              type="button"
+              isLoading={isSubmitting}
+              onClick={async () => {
+                try {
+                  await submitForReview();
+                  toast.success("محصول برای بررسی مدیر ارسال شد");
+                } catch (error) {
+                  toast.error(
+                    error instanceof Error ? error.message : "ارسال محصول ناموفق بود"
+                  );
+                }
+              }}
+            >
+              ارسال برای بررسی
+            </Button>
+          )}
           <DisplayField
             model="product"
             zone="general"
