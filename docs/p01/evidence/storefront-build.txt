@@ -1,0 +1,760 @@
+$ next build
+   ▲ Next.js 15.5.24
+
+   Creating an optimized production build ...
+ ✓ Compiled successfully in 14.7s
+   Skipping validation of types
+   Linting ...
+
+ ⚠ The Next.js plugin was not detected in your ESLint configuration. See https://nextjs.org/docs/app/api-reference/config/eslint#migrating-existing-config
+
+Failed to compile.
+
+./src/app/[locale]/(checkout)/checkout/page.tsx
+54:60  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/[id]/page.tsx
+19:56  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/[id]/return/page.tsx
+15:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+24:43  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/page.tsx
+29:38  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/global-error.tsx
+3:3  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/app/robots.ts
+1:37  Warning: Missing semicolon.  semi
+4:48  Warning: Missing semicolon.  semi
+10:6  Warning: Missing semicolon.  semi
+15:4  Warning: Missing semicolon.  semi
+
+./src/components/atoms/index.ts
+1:41  Warning: Missing semicolon.  semi
+2:53  Warning: Missing semicolon.  semi
+3:41  Warning: Missing semicolon.  semi
+4:38  Warning: Missing semicolon.  semi
+5:56  Warning: Missing semicolon.  semi
+6:47  Warning: Missing semicolon.  semi
+7:35  Warning: Missing semicolon.  semi
+8:44  Warning: Missing semicolon.  semi
+9:50  Warning: Missing semicolon.  semi
+10:38  Warning: Missing semicolon.  semi
+11:47  Warning: Missing semicolon.  semi
+12:71  Warning: Missing semicolon.  semi
+13:35  Warning: Missing semicolon.  semi
+14:53  Warning: Missing semicolon.  semi
+15:86  Warning: Missing semicolon.  semi
+16:38  Warning: Missing semicolon.  semi
+17:56  Warning: Missing semicolon.  semi
+18:65  Warning: Missing semicolon.  semi
+19:59  Warning: Missing semicolon.  semi
+41:2  Warning: Missing semicolon.  semi
+
+./src/components/cells/AddressSelect/AddressSelect.tsx
+6:10  Error: 'Radio' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/MobileNavbar/components/index.ts
+1:62  Warning: Missing semicolon.  semi
+2:62  Warning: Missing semicolon.  semi
+
+./src/components/cells/OrderAddresses/OrderAddresses.tsx
+5:70  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/OrderCancel/OrderCancel.tsx
+10:49  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:54  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+18:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+26:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+59:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/OrderProductListItem/OrderProductListItem.tsx
+15:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/OrderReturn/OrderReturn.tsx
+6:49  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/OrderTrack/OrderTrack.tsx
+3:48  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/PasswordValidator/PasswordValidator.tsx
+30:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/PriceFilter/PriceFilter.tsx
+6:21  Error: 'FilterCheckboxOption' is defined but never used.  @typescript-eslint/no-unused-vars
+19:9  Error: 'selected' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+26:9  Error: 'selectHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/ProductDetailsHeader/ProductDetailsHeader.tsx
+70:53  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+71:31  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+138:14  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/SizeFilter/SizeFilter.tsx
+3:21  Error: 'SelectField' is defined but never used.  @typescript-eslint/no-unused-vars
+8:7  Error: 'sizeType' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+36:9  Error: 'size_region' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+38:9  Error: 'selectSizeRegionHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/UserDropdown/UserDropdown.tsx
+4:3  Error: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Error: 'HttpTypes' is defined but never used.  @typescript-eslint/no-unused-vars
+23:9  Error: 'unreads' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/AddressForm/AddressForm.tsx
+88:5  Error: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+
+./src/components/molecules/AddressForm/schema.ts
+1:24  Warning: Missing semicolon.  semi
+19:3  Warning: Missing semicolon.  semi
+
+./src/components/molecules/CartDropdownItem/CartDropdownItem.tsx
+12:9  Error: 'original_total' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CategoryNavbar/components/CategoryDropdownContainer.tsx
+15:3  Error: 'isVisible' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CategoryNavbar/components/CategoryDropdownMenu.tsx
+7:10  Error: 'FeaturedCategory' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CategoryNavbar/components/index.ts
+1:72  Warning: Missing semicolon.  semi
+2:68  Warning: Missing semicolon.  semi
+3:62  Warning: Missing semicolon.  semi
+4:52  Warning: Missing semicolon.  semi
+
+./src/components/molecules/CategoryNavbar/hooks/useCategoryDropdown.ts
+1:57  Warning: Missing semicolon.  semi
+4:82  Warning: Missing semicolon.  semi
+5:68  Warning: Missing semicolon.  semi
+6:74  Warning: Missing semicolon.  semi
+9:37  Warning: Missing semicolon.  semi
+10:34  Warning: Missing semicolon.  semi
+11:67  Warning: Missing semicolon.  semi
+12:37  Warning: Missing semicolon.  semi
+13:9  Warning: Missing semicolon.  semi
+16:32  Warning: Missing semicolon.  semi
+18:37  Warning: Missing semicolon.  semi
+19:33  Warning: Missing semicolon.  semi
+20:10  Warning: Missing semicolon.  semi
+21:37  Warning: Missing semicolon.  semi
+22:9  Warning: Missing semicolon.  semi
+26:22  Warning: Missing semicolon.  semi
+28:41  Warning: Missing semicolon.  semi
+31:38  Warning: Missing semicolon.  semi
+34:22  Warning: Missing semicolon.  semi
+35:6  Warning: Missing semicolon.  semi
+37:75  Warning: Missing semicolon.  semi
+39:5  Error: Arrow function expected no return value.  consistent-return
+40:61  Warning: Missing semicolon.  semi
+41:6  Warning: Missing semicolon.  semi
+42:44  Warning: Missing semicolon.  semi
+51:4  Warning: Missing semicolon.  semi
+52:2  Warning: Missing semicolon.  semi
+
+./src/components/molecules/CountrySelector/CountrySelector.tsx
+74:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+98:20  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+129:26  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+
+./src/components/molecules/ForgotPasswordForm/ForgotPasswordForm.tsx
+3:10  Error: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+6:10  Error: 'ClientError' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/ForgotPasswordForm/schema.ts
+1:24  Warning: Missing semicolon.  semi
+5:3  Warning: Missing semicolon.  semi
+
+./src/components/molecules/HeaderCategoryNavbar/HeaderCategoryNavbar.tsx
+5:10  Error: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/LocalizedLink/LocalizedLink.tsx
+21:16  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/LoginForm/LoginForm.tsx
+65:5  Error: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+
+./src/components/molecules/LoginForm/schema.ts
+1:24  Warning: Missing semicolon.  semi
+6:3  Warning: Missing semicolon.  semi
+
+./src/components/molecules/OrderParcelActions/OrderParcelActions.tsx
+1:10  Error: 'OrderCancel' is defined but never used.  @typescript-eslint/no-unused-vars
+5:56  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/OrderParcelItems/OrderParcelItems.tsx
+7:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/OrderParcelStatus/OrderParcelStatus.tsx
+4:55  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+5:7  Error: 'currentStep' is never reassigned. Use 'const' instead.  prefer-const
+
+./src/components/molecules/ParcelAccordion/ParcelAccordion.tsx
+22:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/ParcelAccordion/ParcelAccordionItems.tsx
+17:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:61  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+89:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/ProfileDetailsForm/ProfileDetailsForm.tsx
+60:5  Error: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+
+./src/components/molecules/ProfileDetailsForm/schema.ts
+1:24  Warning: Missing semicolon.  semi
+8:3  Warning: Missing semicolon.  semi
+
+./src/components/molecules/ProfilePasswordForm/ProfilePasswordForm.tsx
+3:18  Error: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/ProfilePasswordForm/schema.ts
+1:24  Warning: Missing semicolon.  semi
+6:3  Warning: Missing semicolon.  semi
+
+./src/components/molecules/RegisterForm/RegisterForm.tsx
+4:3  Error: 'FieldValues' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/SellerInfo/SellerInfo.tsx
+7:3  Error: 'header' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/SellerReviewList/SellerReviewList.tsx
+9:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/BillingAddress/BillingAddress.tsx
+7:44  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/CartItems/CartItems.tsx
+12:23  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+32:26  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+34:30  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/CompareOffersModal/CompareOffersModal.tsx
+40:14  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/Header/Header.tsx
+14:32  Error: 'locale' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OfferCard/OfferCard.tsx
+65:14  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderDefails/OrderDetails.tsx
+11:9  Error: 'formatStatus' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderDefails/OrderShipping.tsx
+1:10  Error: 'isStripe' is defined but never used.  @typescript-eslint/no-unused-vars
+4:10  Error: 'Container' is defined but never used.  @typescript-eslint/no-unused-vars
+50:22  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/OrderItems/OrderItems.tsx
+1:10  Error: 'Divider' is defined but never used.  @typescript-eslint/no-unused-vars
+3:10  Error: 'Table' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderParcels/OrderParcels.tsx
+8:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/OrderTotals/OrderTotals.tsx
+4:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+7:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/ProductListingHeader/ProductListingHeader.tsx
+5:10  Error: 'SelectField' is defined but never used.  @typescript-eslint/no-unused-vars
+7:7  Error: 'selectOptions' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+17:9  Error: 'selectOptionHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/ProductSearchSidebar/ProductSearchSidebar.tsx
+101:40  Error: 'count' is defined but never used.  @typescript-eslint/no-unused-vars
+163:10  Error: 'PriceFilter' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/PromoCode/PromoCode.tsx
+11:66  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+129:41  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/SellerFooter/SellerFooter.tsx
+4:10  Error: 'DoneIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Error: 'SingleProductSeller' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/SellerHeading/SellerHeading.tsx
+5:10  Error: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/ShippingAddress/ShippingAddress.tsx
+13:3  Error: 'checked' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Error: 'onChange' is defined but never used.  @typescript-eslint/no-unused-vars
+24:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+72:5  Error: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+73:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+86:5  Error: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+87:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/SingleOrderReturn/SingleOrderReturn.tsx
+24:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+27:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+44:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+46:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+49:22  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+51:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+63:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+130:49  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/index.ts
+1:56  Warning: Missing semicolon.  semi
+2:50  Warning: Missing semicolon.  semi
+3:50  Warning: Missing semicolon.  semi
+4:59  Warning: Missing semicolon.  semi
+5:47  Warning: Missing semicolon.  semi
+6:83  Warning: Missing semicolon.  semi
+7:59  Warning: Missing semicolon.  semi
+8:77  Warning: Missing semicolon.  semi
+9:65  Warning: Missing semicolon.  semi
+10:83  Warning: Missing semicolon.  semi
+11:104  Warning: Missing semicolon.  semi
+12:41  Warning: Missing semicolon.  semi
+13:41  Warning: Missing semicolon.  semi
+14:68  Warning: Missing semicolon.  semi
+15:62  Warning: Missing semicolon.  semi
+16:59  Warning: Missing semicolon.  semi
+17:53  Warning: Missing semicolon.  semi
+18:56  Warning: Missing semicolon.  semi
+19:50  Warning: Missing semicolon.  semi
+20:83  Warning: Missing semicolon.  semi
+21:65  Warning: Missing semicolon.  semi
+22:65  Warning: Missing semicolon.  semi
+23:77  Warning: Missing semicolon.  semi
+24:51  Warning: Missing semicolon.  semi
+25:50  Warning: Missing semicolon.  semi
+53:2  Warning: Missing semicolon.  semi
+
+./src/components/sections/CartPaymentSection/CartPaymentSection.tsx
+19:31  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+31:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+35:22  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+102:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartReview/CartItems.tsx
+8:23  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+27:26  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+29:30  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartReview/CartReview.tsx
+9:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+16:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartReview/PaymentButton.tsx
+10:10  Error: 'orderErrorFormatter' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Error: 'toast' is defined but never used.  @typescript-eslint/no-unused-vars
+56:18  Error: 'dataTestId' is defined but never used.  @typescript-eslint/no-unused-vars
+72:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+92:5  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+180:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartShippingMethodsSection/CartShippingMethodRow.tsx
+30:21  Error: Optional chain expressions can return undefined by design - using a non-null assertion is unsafe and wrong.  @typescript-eslint/no-non-null-asserted-optional-chain
+
+./src/components/sections/CartShippingMethodsSection/CartShippingMethodsSection.tsx
+48:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+70:33  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+84:59  Error: Optional chain expressions can return undefined by design - using a non-null assertion is unsafe and wrong.  @typescript-eslint/no-non-null-asserted-optional-chain
+112:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+133:60  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+164:48  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+179:43  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+259:70  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderConfirmedSection/OrderConfirmedSection.tsx
+1:8  Error: 'OrderDetails' is defined but never used.  @typescript-eslint/no-unused-vars
+2:8  Error: 'OrderShipping' is defined but never used.  @typescript-eslint/no-unused-vars
+3:8  Error: 'OrderTotals' is defined but never used.  @typescript-eslint/no-unused-vars
+4:8  Error: 'OrderItems' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/sections/OrderDetailsSection/OrderDetailsSection.tsx
+1:10  Error: 'OrderAddresses' is defined but never used.  @typescript-eslint/no-unused-vars
+5:67  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnRequests/OrderReturnRequests.tsx
+15:12  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+16:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+19:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/OrderReturnSection.tsx
+20:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+21:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:54  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+27:52  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+39:42  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+43:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnItemsTab.tsx
+22:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+23:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+24:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+37:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnMethodsTab.tsx
+9:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+10:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+29:45  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnSummaryTab.tsx
+14:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+15:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+19:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/ProductListing/SearchProductsListing.tsx
+77:5  Error: Definition for rule 'react-hooks/exhaustive-deps' was not found.  react-hooks/exhaustive-deps
+104:16  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+113:5  Error: Definition for rule 'react-hooks/exhaustive-deps' was not found.  react-hooks/exhaustive-deps
+
+./src/components/sections/SellerPageHeader/SellerPageHeader.tsx
+5:3  Error: 'header' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+10:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/index.ts
+1:35  Warning: Missing semicolon.  semi
+2:77  Warning: Missing semicolon.  semi
+3:65  Warning: Missing semicolon.  semi
+4:62  Warning: Missing semicolon.  semi
+5:70  Warning: Missing semicolon.  semi
+6:56  Warning: Missing semicolon.  semi
+7:65  Warning: Missing semicolon.  semi
+8:71  Warning: Missing semicolon.  semi
+9:35  Warning: Missing semicolon.  semi
+10:77  Warning: Missing semicolon.  semi
+11:79  Warning: Missing semicolon.  semi
+12:80  Warning: Missing semicolon.  semi
+13:82  Warning: Missing semicolon.  semi
+29:2  Warning: Missing semicolon.  semi
+
+./src/const/index.ts
+1:32  Warning: Missing semicolon.  semi
+3:60  Warning: Missing semicolon.  semi
+
+./src/data/sellerMock.ts
+16:2  Warning: Missing semicolon.  semi
+
+./src/hooks/useUpdateSearchParams.ts
+1:74  Warning: Missing semicolon.  semi
+4:29  Warning: Missing semicolon.  semi
+5:41  Warning: Missing semicolon.  semi
+6:33  Warning: Missing semicolon.  semi
+9:77  Warning: Missing semicolon.  semi
+11:40  Warning: Missing semicolon.  semi
+13:44  Warning: Missing semicolon.  semi
+18:7  Warning: Missing semicolon.  semi
+19:4  Warning: Missing semicolon.  semi
+21:28  Warning: Missing semicolon.  semi
+22:2  Warning: Missing semicolon.  semi
+24:37  Warning: Missing semicolon.  semi
+
+./src/lib/data/cart.ts
+287:63  Warning: Missing semicolon.  semi
+299:7  Warning: Missing semicolon.  semi
+300:52  Warning: Missing semicolon.  semi
+301:32  Warning: Missing semicolon.  semi
+302:5  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+303:55  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+305:6  Warning: Missing semicolon.  semi
+306:38  Warning: Missing semicolon.  semi
+307:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+311:39  Warning: Missing semicolon.  semi
+312:51  Warning: Missing semicolon.  semi
+364:23  Error: Expected to return a value at the end of async function 'setAddresses'.  consistent-return
+388:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+394:15  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+412:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+413:56  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+466:7  Error: 'removedItems' is never reassigned. Use 'const' instead.  prefer-const
+475:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+483:9  Error: There is no `cause` attached to the symptom error being thrown.  preserve-caught-error
+503:22  Error: 'deleteError' is defined but never used.  @typescript-eslint/no-unused-vars
+512:16  Error: 'fetchError' is defined but never used.  @typescript-eslint/no-unused-vars
+513:9  Error: There is no `cause` attached to the symptom error being thrown.  preserve-caught-error
+
+./src/lib/data/collections.ts
+1:13  Warning: Missing semicolon.  semi
+3:44  Warning: Missing semicolon.  semi
+4:65  Warning: Missing semicolon.  semi
+5:32  Warning: Missing semicolon.  semi
+11:4  Warning: Missing semicolon.  semi
+18:42  Warning: Missing semicolon.  semi
+19:2  Warning: Missing semicolon.  semi
+24:61  Warning: Missing semicolon.  semi
+26:49  Warning: Missing semicolon.  semi
+27:49  Warning: Missing semicolon.  semi
+34:77  Warning: Missing semicolon.  semi
+35:2  Warning: Missing semicolon.  semi
+43:4  Warning: Missing semicolon.  semi
+51:47  Warning: Missing semicolon.  semi
+52:2  Warning: Missing semicolon.  semi
+
+./src/lib/data/cookies.ts
+5:31  Error: The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead.  @typescript-eslint/no-empty-object-type
+29:12  Error: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+36:33  Error: The `{}` ("empty object") type allows any non-nullish value, including literals like `0` and `""`.
+- If that's what you want, disable this lint rule with an inline comment or configure the 'allowObjectTypes' rule option.
+- If you want a type meaning "any object", you probably want `object` instead.
+- If you want a type meaning "any value", you probably want `unknown` instead.  @typescript-eslint/no-empty-object-type
+
+./src/lib/data/customer.ts
+104:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+158:71  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+207:74  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+249:88  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+263:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+280:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/lib/data/fulfillment.ts
+8:63  Error: 'is_return' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/data/regions.ts
+55:12  Error: 'e' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/helpers/category-utils.ts
+1:44  Warning: Missing semicolon.  semi
+11:6  Warning: Missing semicolon.  semi
+16:8  Warning: Missing semicolon.  semi
+18:30  Warning: Missing semicolon.  semi
+23:14  Warning: Missing semicolon.  semi
+31:50  Warning: Missing semicolon.  semi
+33:74  Warning: Missing semicolon.  semi
+35:85  Warning: Missing semicolon.  semi
+36:46  Warning: Missing semicolon.  semi
+38:75  Warning: Missing semicolon.  semi
+42:6  Warning: Missing semicolon.  semi
+43:42  Warning: Missing semicolon.  semi
+50:4  Warning: Missing semicolon.  semi
+52:46  Warning: Missing semicolon.  semi
+59:30  Warning: Missing semicolon.  semi
+61:74  Warning: Missing semicolon.  semi
+65:4  Warning: Missing semicolon.  semi
+72:29  Warning: Missing semicolon.  semi
+74:74  Warning: Missing semicolon.  semi
+75:72  Warning: Missing semicolon.  semi
+77:33  Warning: Missing semicolon.  semi
+81:24  Warning: Missing semicolon.  semi
+85:14  Warning: Missing semicolon.  semi
+96:42  Warning: Missing semicolon.  semi
+99:85  Warning: Missing semicolon.  semi
+101:28  Warning: Missing semicolon.  semi
+104:80  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/check-region.ts
+1:46  Warning: Missing semicolon.  semi
+4:38  Warning: Missing semicolon.  semi
+7:46  Warning: Missing semicolon.  semi
+9:12  Warning: Missing semicolon.  semi
+11:51  Warning: Missing semicolon.  semi
+12:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/compare-addresses.ts
+1:39  Warning: Missing semicolon.  semi
+3:52  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+3:67  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+19:4  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/filter-valid-cart-items.ts
+1:44  Warning: Missing semicolon.  semi
+7:14  Warning: Missing semicolon.  semi
+15:6  Warning: Missing semicolon.  semi
+16:5  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/get-precentage-diff.ts
+2:37  Warning: Missing semicolon.  semi
+3:43  Warning: Missing semicolon.  semi
+5:28  Warning: Missing semicolon.  semi
+6:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/get-product-price.ts
+1:44  Warning: Missing semicolon.  semi
+2:58  Warning: Missing semicolon.  semi
+3:42  Warning: Missing semicolon.  semi
+5:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+10:16  Warning: Missing semicolon.  semi
+37:6  Warning: Missing semicolon.  semi
+64:4  Warning: Missing semicolon.  semi
+65:2  Warning: Missing semicolon.  semi
+75:43  Warning: Missing semicolon.  semi
+80:18  Warning: Missing semicolon.  semi
+84:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+85:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+85:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+90:54  Warning: Missing semicolon.  semi
+91:12  Warning: Missing semicolon.  semi
+92:4  Warning: Missing semicolon.  semi
+96:18  Warning: Missing semicolon.  semi
+99:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+99:43  Warning: Missing semicolon.  semi
+101:40  Warning: Missing semicolon.  semi
+102:4  Warning: Missing semicolon.  semi
+106:18  Warning: Missing semicolon.  semi
+109:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+110:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+111:6  Warning: Missing semicolon.  semi
+114:18  Warning: Missing semicolon.  semi
+117:40  Warning: Missing semicolon.  semi
+118:4  Warning: Missing semicolon.  semi
+125:4  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/get-seller-product-price.ts
+1:42  Warning: Missing semicolon.  semi
+3:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+5:16  Warning: Missing semicolon.  semi
+19:4  Warning: Missing semicolon.  semi
+20:2  Warning: Missing semicolon.  semi
+26:12  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+30:43  Warning: Missing semicolon.  semi
+35:18  Warning: Missing semicolon.  semi
+38:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+39:19  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+40:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+40:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:59  Warning: Missing semicolon.  semi
+42:12  Warning: Missing semicolon.  semi
+44:48  Warning: Missing semicolon.  semi
+45:4  Warning: Missing semicolon.  semi
+49:18  Warning: Missing semicolon.  semi
+52:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+53:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+54:6  Warning: Missing semicolon.  semi
+57:18  Warning: Missing semicolon.  semi
+60:40  Warning: Missing semicolon.  semi
+61:4  Warning: Missing semicolon.  semi
+67:4  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/hreflang.ts
+30:4  Warning: Missing semicolon.  semi
+31:27  Warning: Missing semicolon.  semi
+32:2  Warning: Missing semicolon.  semi
+34:70  Warning: Missing semicolon.  semi
+40:45  Warning: Missing semicolon.  semi
+42:54  Warning: Missing semicolon.  semi
+44:20  Warning: Missing semicolon.  semi
+45:2  Warning: Missing semicolon.  semi
+56:16  Warning: Missing semicolon.  semi
+77:51  Warning: Missing semicolon.  semi
+80:56  Warning: Missing semicolon.  semi
+81:15  Warning: Missing semicolon.  semi
+82:9  Warning: Missing semicolon.  semi
+84:78  Warning: Missing semicolon.  semi
+89:4  Warning: Missing semicolon.  semi
+90:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/isBot.ts
+2:80  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/isEmpty.ts
+1:33  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+1:64  Warning: Missing semicolon.  semi
+2:32  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+2:60  Warning: Missing semicolon.  semi
+3:32  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+8:34  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+10:4  Warning: Missing semicolon.  semi
+11:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/medusa-error.ts
+1:44  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+3:62  Warning: Missing semicolon.  semi
+4:45  Warning: Missing semicolon.  semi
+5:57  Warning: Missing semicolon.  semi
+6:57  Warning: Missing semicolon.  semi
+7:54  Warning: Missing semicolon.  semi
+9:71  Warning: Missing semicolon.  semi
+11:78  Warning: Missing semicolon.  semi
+13:62  Warning: Missing semicolon.  semi
+15:70  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/money.ts
+1:36  Warning: Missing semicolon.  semi
+20:1  Warning: Expected indentation of 6 spaces but found 8.  indent
+21:1  Warning: Expected indentation of 6 spaces but found 8.  indent
+22:1  Warning: Expected indentation of 6 spaces but found 8.  indent
+23:1  Warning: Expected indentation of 6 spaces but found 8.  indent
+24:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+25:24  Warning: Missing semicolon.  semi
+26:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/order-error-formatter.ts
+1:44  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+3:16  Warning: Missing semicolon.  semi
+7:40  Warning: Missing semicolon.  semi
+10:23  Warning: Missing semicolon.  semi
+11:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/parcel-statuses.ts
+1:71  Warning: Missing semicolon.  semi
+7:1  Warning: Expected indentation of 2 spaces but found 4.  indent
+8:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+8:15  Warning: Missing semicolon.  semi
+9:1  Warning: Expected indentation of 2 spaces but found 4.  indent
+10:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+10:15  Warning: Missing semicolon.  semi
+11:1  Warning: Expected indentation of 2 spaces but found 4.  indent
+12:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+12:15  Warning: Missing semicolon.  semi
+13:1  Warning: Expected indentation of 2 spaces but found 4.  indent
+14:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+14:15  Warning: Missing semicolon.  semi
+15:1  Warning: Expected indentation of 2 spaces but found 4.  indent
+16:1  Warning: Expected indentation of 4 spaces but found 6.  indent
+16:15  Warning: Missing semicolon.  semi
+18:2  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/parse-variant-error.ts
+8:14  Warning: Missing semicolon.  semi
+11:48  Warning: Missing semicolon.  semi
+12:55  Warning: Missing semicolon.  semi
+14:23  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/sanitize-rich-text.ts
+1:41  Warning: Missing semicolon.  semi
+36:2  Warning: Missing semicolon.  semi
+38:70  Warning: Missing semicolon.  semi
+41:41  Warning: Missing semicolon.  semi
+
+./src/lib/helpers/seo.ts
+1:44  Warning: Missing semicolon.  semi
+2:32  Warning: Missing semicolon.  semi
+3:39  Warning: Missing semicolon.  semi
+5:49  Warning: Missing semicolon.  semi
+9:32  Warning: Missing semicolon.  semi
+15:38  Warning: Missing semicolon.  semi
+16:39  Warning: Missing semicolon.  semi
+17:67  Warning: Missing semicolon.  semi
+18:78  Warning: Missing semicolon.  semi
+20:7  Error: This assigned value is not used in subsequent statements.  no-useless-assignment
+20:29  Warning: Missing semicolon.  semi
+22:56  Warning: Missing semicolon.  semi
+24:23  Warning: Missing semicolon.  semi
+32:5  Warning: Missing semicolon.  semi
+69:4  Warning: Missing semicolon.  semi
+70:2  Warning: Missing semicolon.  semi
+75:38  Warning: Missing semicolon.  semi
+76:39  Warning: Missing semicolon.  semi
+77:67  Warning: Missing semicolon.  semi
+95:13  Error: Unexpected constant truthiness on the left-hand side of a `||` expression.  no-constant-binary-expression
+109:9  Error: Unexpected constant truthiness on the left-hand side of a `||` expression.  no-constant-binary-expression
+113:4  Warning: Missing semicolon.  semi
+114:2  Warning: Missing semicolon.  semi
+
+./src/types/cart.ts
+1:44  Warning: Missing semicolon.  semi
+
+./src/types/product.ts
+1:44  Warning: Missing semicolon.  semi
+
+./src/types/seller.ts
+1:49  Warning: Missing semicolon.  semi
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+error: script "build" exited with code 1

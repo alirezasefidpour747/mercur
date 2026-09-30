@@ -1,0 +1,24 @@
+✖ P01 real Medusa API journey and authorization (12.995521ms)
+ℹ tests 1
+ℹ suites 0
+ℹ pass 0
+ℹ fail 1
+ℹ cancelled 0
+ℹ skipped 0
+ℹ todo 0
+ℹ duration_ms 140.616299
+
+✖ failing tests:
+
+test at apps/api/tests/p01-http.test.mjs:79:1
+✖ P01 real Medusa API journey and authorization (12.995521ms)
+  [TypeError: fetch failed] {
+    [cause]: Error: connect ECONNREFUSED 127.0.0.1:9000
+        at TCPConnectWrap.afterConnect [as oncomplete] (node:net:1864:16) {
+      errno: -111,
+      code: 'ECONNREFUSED',
+      syscall: 'connect',
+      address: '127.0.0.1',
+      port: 9000
+    }
+  }

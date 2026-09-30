@@ -23,7 +23,12 @@
     "dev": "medusa develop",
     "test:integration:http": "TEST_TYPE=integration:http NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
     "test:integration:modules": "TEST_TYPE=integration:modules NODE_OPTIONS=--experimental-vm-modules jest --silent=false --runInBand --forceExit",
-    "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit"
+    "test:unit": "TEST_TYPE=unit NODE_OPTIONS=--experimental-vm-modules jest --silent --runInBand --forceExit",
+    "build": "mercurjs codegen && medusa build",
+    "seed:p01": "medusa exec ./src/scripts/seed-p01.ts",
+    "test:p01:unit": "bun test ./src/modules/didar-catalog/__tests__/domain.test.ts",
+    "test:p01:integration": "node --test ./tests/p01-http.test.mjs",
+    "test:p01:schema": "node --test ./tests/p01-schema.test.mjs"
   },
   "dependencies": {
     "@medusajs/admin-sdk": "2.21.0",
@@ -46,7 +51,8 @@
     "@types/node": "^26.1.0",
     "jest": "^30.4.2",
     "prop-types": "^15.8.1",
-    "yalc": "^1.0.0-pre.53"
+    "yalc": "^1.0.0-pre.53",
+    "@electric-sql/pglite": "0.3.14"
   },
   "engines": {
     "node": ">=20"

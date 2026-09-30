@@ -1,0 +1,20 @@
+bun test v1.3.8 (b64edcb4)
+
+apps/api/src/modules/didar-catalog/__tests__/domain.test.ts:
+(pass) P01 business boundaries > PERCENT and RANGE_PERCENT support decimal-string precision [2.01ms]
+(pass) P01 business boundaries > FIXED always rejects without inventing a basis [0.14ms]
+(pass) P01 business boundaries > mixed weight/fee fields, reversed bounds, numeric JSON and missing exact weights reject [0.14ms]
+(pass) P01 business boundaries > no forged Supplier, stock, currency, UID or approval fields [0.12ms]
+(pass) P01 business boundaries > public ranges are independently nullable and percent-only [0.14ms]
+(pass) P01 business boundaries > APPROVED differs from PUBLISHED and invalid transitions fail [0.06ms]
+(pass) P01 business boundaries > catalog query rejects hidden dimensions and expansions [0.28ms]
+(pass) P01 business boundaries > URL attributes normalize to an allowlisted query contract [0.44ms]
+(pass) P01 business boundaries > count pagination range and sort validate server inputs [0.33ms]
+(pass) P01 business boundaries > permission fallback is absent and audience matters [0.07ms]
+(pass) P01 business boundaries > stable hash distinguishes changed idempotent payloads [0.29ms]
+(pass) P01 business boundaries > native Product common fields cannot carry Supplier terms [1.26ms]
+
+ 12 pass
+ 0 fail
+ 90 expect() calls
+Ran 12 tests across 1 file. [172.00ms]

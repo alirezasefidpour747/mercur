@@ -1,16 +1,22 @@
-import { GalleryCarousel } from '@/components/organisms';
 import { HttpTypes } from '@medusajs/types';
+
+import { GalleryCarousel } from '@/components/organisms';
 
 export const ProductGallery = ({
   images,
+  alt
 }: {
-  images: HttpTypes.StoreProduct['images'];
+  alt?: string;
+  images: Pick<HttpTypes.StoreProductImage, 'id' | 'url'>[];
 }) => {
   if (!images || images.length === 0) return null;
-   
+
   return (
     <div data-testid="product-gallery">
-      <GalleryCarousel images={images} />
+      <GalleryCarousel
+        images={images}
+        alt={alt}
+      />
     </div>
   );
 };

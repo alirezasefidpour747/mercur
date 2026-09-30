@@ -1,33 +1,17 @@
-import { ProductDetailsPage } from "@/components/sections"
-import { listProducts } from "@/lib/data/products"
-import { generateProductMetadata } from "@/lib/helpers/seo"
-import type { Metadata } from "next"
+import { CatalogBoundary, CatalogDetail } from '@/components/didar/catalog';
 
-export async function generateMetadata({
-  params,
+export default async function Page({
+  params
 }: {
-  params: Promise<{ handle: string; locale: string }>
-}): Promise<Metadata> {
-  const { handle, locale } = await params
-
-  const prod = await listProducts({
-    countryCode: locale,
-    queryParams: { handle: [handle], limit: 1 },
-  }).then(({ response }) => response.products[0])
-
-  return generateProductMetadata(prod, locale)
-}
-
-export default async function ProductPage({
-  params,
-}: {
-  params: Promise<{ handle: string; locale: string }>
+  params: Promise<{ locale: string; handle: string }>;
 }) {
-  const { handle, locale } = await params
-
+  const p = await params;
   return (
-    <main className="container">
-      <ProductDetailsPage handle={handle} locale={locale} />
-    </main>
-  )
+    <CatalogBoundary>
+      <CatalogDetail
+        lang={p.locale}
+        handle={p.handle}
+      />
+    </CatalogBoundary>
+  );
 }

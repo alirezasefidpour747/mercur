@@ -1,0 +1,39 @@
+apps/api/src/scripts/lib/seed-seller-order.ts(312,9): error TS2322: Type '{ id: string; display_id: Maybe<string>; }[]' is not assignable to type 'SeededOrder[]'.
+  Type '{ id: string; display_id: Maybe<string>; }' is not assignable to type 'SeededOrder'.
+    Types of property 'display_id' are incompatible.
+      Type 'Maybe<string>' is not assignable to type 'number'.
+        Type 'null' is not assignable to type 'number'.
+apps/api/src/scripts/probe-shared-priceset.ts(175,9): error TS2322: Type 'string' is not assignable to type 'string[]'.
+apps/api/src/scripts/seed-reservations-sole-society.ts(60,10): error TS2345: Argument of type '(l: { location_id?: string; }) => string | undefined' is not assignable to parameter of type '(value: Maybe<InventoryLevel>, index: number, array: Maybe<InventoryLevel>[]) => string | undefined'.
+  Types of parameters 'l' and 'value' are incompatible.
+    Type 'Maybe<InventoryLevel>' is not assignable to type '{ location_id?: string | undefined; }'.
+      Type 'null' is not assignable to type '{ location_id?: string | undefined; }'.
+apps/api/src/scripts/seed-reservations-sole-society.ts(72,7): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => value is Maybe<InventoryLevel>, thisArg?: any): Maybe<...> | undefined', gave the following error.
+    Argument of type '(l: { stocked_quantity?: number; reserved_quantity?: number; }) => boolean' is not assignable to parameter of type '(value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => value is Maybe<InventoryLevel>'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'Maybe<InventoryLevel>' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+          Type 'null' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+  Overload 2 of 2, '(predicate: (value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => unknown, thisArg?: any): Maybe<InventoryLevel> | undefined', gave the following error.
+    Argument of type '(l: { stocked_quantity?: number; reserved_quantity?: number; }) => boolean' is not assignable to parameter of type '(value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => unknown'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'Maybe<InventoryLevel>' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+          Type 'null' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+apps/api/src/scripts/seed-reservations-sole-society.ts(89,7): error TS2740: Type '{ location_id: string; stocked_quantity: number; reserved_quantity: number; }' is missing the following properties from type 'InventoryLevel': id, created_at, updated_at, deleted_at, and 6 more.
+apps/api/src/scripts/seed-reservations.ts(59,7): error TS2769: No overload matches this call.
+  Overload 1 of 2, '(predicate: (value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => value is Maybe<InventoryLevel>, thisArg?: any): Maybe<...> | undefined', gave the following error.
+    Argument of type '(l: { stocked_quantity?: number; reserved_quantity?: number; }) => boolean' is not assignable to parameter of type '(value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => value is Maybe<InventoryLevel>'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'Maybe<InventoryLevel>' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+          Type 'null' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+  Overload 2 of 2, '(predicate: (value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => unknown, thisArg?: any): Maybe<InventoryLevel> | undefined', gave the following error.
+    Argument of type '(l: { stocked_quantity?: number; reserved_quantity?: number; }) => boolean' is not assignable to parameter of type '(value: Maybe<InventoryLevel>, index: number, obj: Maybe<InventoryLevel>[]) => unknown'.
+      Types of parameters 'l' and 'value' are incompatible.
+        Type 'Maybe<InventoryLevel>' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+          Type 'null' is not assignable to type '{ stocked_quantity?: number | undefined; reserved_quantity?: number | undefined; }'.
+apps/api/src/scripts/seed-reviews-seller-mercur.ts(112,5): error TS2322: Type '{ id: string; }[]' is not assignable to type 'Customer[]'.
+  Type '{ id: string; }' is missing the following properties from type 'Customer': company_name, first_name, last_name, email, and 17 more.
+apps/api/src/scripts/seed-reviews.ts(113,5): error TS2322: Type '{ id: string; }[]' is not assignable to type 'Customer[]'.
+  Type '{ id: string; }' is missing the following properties from type 'Customer': company_name, first_name, last_name, email, and 17 more.
+apps/api/src/scripts/seed-reviews.ts(161,5): error TS2322: Type '{ id: string; }[]' is not assignable to type 'Order[]'.
+  Type '{ id: string; }' is missing the following properties from type 'Order': version, order_change, status, is_draft_order, and 85 more.

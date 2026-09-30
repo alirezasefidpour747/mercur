@@ -1,7 +1,7 @@
 # P01-IMPLEMENTATION-MAP.md
 
-**Status: IN PROGRESS** — preparation completed; awaiting owner review of this map.
-**P01 code: NOT STARTED.** No application, migration, seed, component or configuration changes are authorized by this preparation step.
+**Status: TESTED — FAILED** — map approved; P01 code and partial test evidence are recorded in `P01-RESULT.md`. Full Definition of Done remains unmet.
+**Owner authorization:** implement P01 only; do not begin P02.
 **Baseline:** owner-confirmed successful clean local runtime; source inspected at Mercur `296b5968eac620d3cb689ae130a6a2aa382c9941` (2.3.6-canary.6 / Medusa 2.21.0).
 **Authority:** PRODUCT-CORE current file version 2 (document v0.3), REPORTING-FOUNDATION current file version 3 (v0.4), supplied UI documents v0.1, and Product-related boundaries in B2B-RBAC v0.4.
 
@@ -82,7 +82,7 @@ Do not use native Custom Fields for required migration-controlled fields: the in
 | CatalogProfile (1:1 Product) | product_id, product_code, karat, technical_description, subcategory_id, publication state, published revision, version, actor timestamps; separately named nullable public indicative weight/fee fields | Unique product_id/code; indexes on subcategory/state, public weight bounds, public percentage-fee bounds and publication time. Leaf ID must match native category link. |
 | Public query fields on CatalogProfile | Derived root_category_id, public_sort_name, public_search_text/type reference from native public fields; no Supplier or stock terms | GIN full-text search and B-tree sort/filter indexes. These are a synchronized query projection of the native catalog, not a new catalog identity. Regenerate after relevant Product/category edits. |
 | OfferProfile (1:1 native Offer) | offer_id, active revision, ACTIVE/INACTIVE status, version, actual creator/updater and owner organization | Unique offer_id; status/version index. Native Offer provides supplier/product/variant references. |
-| OfferTermRevision | offer_id, revision, supplier_product_code, EXACT/RANGE and exact/min/max grams, PERCENT/FIXED/RANGE_PERCENT fee values/bounds/basis, AVAILABLE/MADE_TO_ORDER/UNAVAILABLE, lead_time_days, actor/time | Unique (offer_id,revision); structured numeric fields and applicable indexes. Reviewed revisions are immutable; edits create a revision. |
+| OfferTermRevision | offer_id, revision, supplier_product_code, EXACT/RANGE and exact/min/max grams, PERCENT/RANGE_PERCENT fee values/bounds; FIXED inactive in P01, AVAILABLE/MADE_TO_ORDER/UNAVAILABLE, lead_time_days, actor/time | Unique (offer_id,revision); structured numeric fields and applicable indexes. Reviewed revisions are immutable; edits create a revision. |
 | ProductSubmission | native product_id, supplier organization, candidate/native ProductChange reference, Offer revision references, review state, version, submit/review timestamps/actors/reasons | Index (state,submitted_at,id), supplier/state, product/version; unique active submission constraint per applicable product/supplier candidate. |
 | Candidate extension values | Typed candidate profile/Offer term values linked to the submission; do not overwrite published gold/presentation fields before authorization | Versioned candidate values and native staged ProductChange references; publish activates a matching approved revision only. |
 | CatalogEvent | entity type/id, Product/Offer/Submission/native-change refs, event code, from/to state, actual actor user/org/type, business-owner org, role context, on_behalf_of, timestamp, command ID, before/after and reason | Append-oriented; unique (command_id,event sequence), indexes on entity/time, organization/time, actor/time. Critical relationships/status/measure fields are structured, not only JSON. |
@@ -191,13 +191,11 @@ Language changes update lang/dir/font, preserve resource and permitted filters, 
 
 ## 8. OWNER DECISION REQUIRED and known gaps
 
-### D1 — FIXED making-fee unit and calculation basis
+### D1 — resolved by owner: FIXED inactive in P01
 
-PRODUCT-CORE permits FIXED but specifies neither unit/currency nor whether the value applies per piece, per gram or another basis.
+Only PERCENT and RANGE_PERCENT are supported. FIXED creation/activation returns 422 FIXED_NOT_SUPPORTED. No unit or basis default is introduced. This is an intentional P01 exclusion, not an unfinished advertised path.
 
-**OWNER DECISION REQUIRED:** define the unit and calculation basis for FIXED Supplier making fees. The implementation must not assume Rial, Toman or grams of gold.
-
-Until resolved: schema supports explicit basis/unit fields, but creating/activating FIXED terms is blocked with a clear validation result. PERCENT and RANGE_PERCENT flows, weights, catalog and review can proceed after map approval. P01 cannot be PASSED with an advertised FIXED path that is a TODO.
+Public indicative terms are separately curated/approved by Product Ops and nullable. They are never derived from Supplier Offer ranges. Approved identity, separate approval/publication and scope remain unchanged.
 
 ### Technical gaps already mapped, not owner design questions
 
@@ -231,11 +229,15 @@ Package result must name actual files/migrations/endpoints, each screen's real A
 
 ## 10. Implementation sequence after review
 
-1. Freeze the approved contracts, source revision and minimum Product authorization context; resolve D1 or keep that branch explicitly blocked.
+1. Freeze the approved contracts, source revision and minimum Product authorization context; enforce the owner decision that FIXED is inactive.
 2. Add linked models/migrations and deterministic seed; reuse native Product/Variant/Seller/Offer identities.
 3. Deliver supplier draft → review → publication as the first small real vertical slice, including Supplier and Product Ops screens with real APIs.
 4. Connect retailer category/list/detail and server-side filters to the same persisted published catalog.
 5. Complete scope/bypass, audit/report queries, error states, localization and the 16-state matrix; run T01–T10.
 6. Produce P01-RESULT.md with evidence. Only then may the package become PASSED.
 
-**Review gate:** this document is the completed proposed mapping. Implementation remains NOT STARTED until the owner has reviewed it, as explicitly requested. No code implementation, dependency change or unrelated package work is part of this preparation.
+**Review gate:** owner reviewed and approved the map on 2026-09-30. P01 implementation is authorized with the final decisions above.
+
+## P01 source adaptation recorded during implementation
+
+The Medusa 2.21 `createProductVariantsWorkflow` always invokes `createPriceSetsStep`, including when `prices` is absent. P01 therefore invokes the native Mercur Product workflow with no Variant payload, retains its default option/Seller/attribute/Product audit, and creates the single native Variant using the native Product module service. A native `VARIANT_ADD` audit records the actual actor. This avoids an empty price-set side effect and preserves the approved native identity structure. Native Offer creation uses its service directly. Native Medusa Redis locking is reused for command serialization; no extra SQL connection waits on an advisory lock. Real multi-session and recovery evidence remains required.

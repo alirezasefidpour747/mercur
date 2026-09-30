@@ -1,0 +1,275 @@
+[WebServer] (node:20) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:40) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:64) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:74) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [@mercurjs/dashboard-sdk] Could not load the Medusa config from "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts": Dynamic require of "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts" is not supported. Building with base "/" and no plugin extensions — if this panel is served under a sub-path (e.g. /dashboard), its assets will not resolve.
+[WebServer] (node:110) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] [@mercurjs/dashboard-sdk] Could not load the Medusa config from "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts": Dynamic require of "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts" is not supported. Building with base "/" and no plugin extensions — if this panel is served under a sub-path (e.g. /dashboard), its assets will not resolve.
+
+Running 52 tests using 1 worker
+
+(node:144) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+(Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:216) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   1 p01/failure-states.spec.ts:7:9 › retailer login fa 375 (2.6s)
+[WebServer] 8:53:32 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:33 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   2 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fa 375 (4.0s)
+[WebServer] 8:53:36 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:37 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   3 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fa 375 (3.9s)
+[WebServer] (node:285) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   4 p01/failure-states.spec.ts:7:9 › retailer login fa 768 (2.1s)
+[WebServer] 8:53:42 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:43 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   5 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fa 768 (3.9s)
+[WebServer] 8:53:46 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:47 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   6 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fa 768 (3.9s)
+[WebServer] (node:350) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓   7 p01/failure-states.spec.ts:7:9 › retailer login fa 1280 (2.1s)
+[WebServer] 8:53:52 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:53 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   8 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fa 1280 (4.0s)
+[WebServer] 8:53:56 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:53:57 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓   9 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fa 1280 (4.1s)
+[WebServer] (node:417) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  10 p01/failure-states.spec.ts:7:9 › retailer login fa 1920 (2.0s)
+[WebServer] 8:54:02 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:54:03 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  11 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fa 1920 (4.0s)
+[WebServer] 8:54:06 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:54:07 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  12 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fa 1920 (4.0s)
+[WebServer] (node:478) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  13 p01/failure-states.spec.ts:7:9 › retailer login en 375 (2.0s)
+[WebServer] 8:54:12 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] 
+[WebServer] - /workspace/scratch/270651e17946/mercur
+[WebServer] - /tmp/p01-deps/node_modules/vite/dist/client
+[WebServer] 
+[WebServer] Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+[WebServer] 
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:13 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  14 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 en 375 (3.9s)
+[WebServer] 8:54:16 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] 
+[WebServer] - /workspace/scratch/270651e17946/mercur
+[WebServer] - /tmp/p01-deps/node_modules/vite/dist/client
+[WebServer] 
+[WebServer] Refer to docs https://vite.dev/config/server-options.html#server-fs-allow for configurations and more details.
+[WebServer] 
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:17 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  15 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 en 375 (3.9s)
+[WebServer] (node:546) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  16 p01/failure-states.spec.ts:7:9 › retailer login en 768 (2.1s)
+[WebServer] 8:54:22 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:23 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  17 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 en 768 (3.9s)
+[WebServer] 8:54:26 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:27 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  18 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 en 768 (3.8s)
+[WebServer] (node:608) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  19 p01/failure-states.spec.ts:7:9 › retailer login en 1280 (2.1s)
+[WebServer] 8:54:32 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:33 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  20 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 en 1280 (4.0s)
+[WebServer] 8:54:36 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:37 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  21 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 en 1280 (3.9s)
+[WebServer] (node:675) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  22 p01/failure-states.spec.ts:7:9 › retailer login en 1920 (2.1s)
+[WebServer] 8:54:42 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:43 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  23 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 en 1920 (4.1s)
+[WebServer] 8:54:46 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:54:47 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  24 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 en 1920 (4.0s)
+[WebServer] (node:742) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  25 p01/failure-states.spec.ts:7:9 › retailer login ar 375 (2.2s)
+[WebServer] 8:54:52 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:54:53 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  26 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 ar 375 (3.9s)
+[WebServer] 8:54:56 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:54:57 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  27 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 ar 375 (4.0s)
+[WebServer] (node:815) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  28 p01/failure-states.spec.ts:7:9 › retailer login ar 768 (2.3s)
+[WebServer] 8:55:02 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:03 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  29 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 ar 768 (3.9s)
+[WebServer] 8:55:06 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:07 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  30 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 ar 768 (3.9s)
+[WebServer] (node:874) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  31 p01/failure-states.spec.ts:7:9 › retailer login ar 1280 (2.0s)
+[WebServer] 8:55:12 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:13 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  32 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 ar 1280 (3.7s)
+[WebServer] 8:55:16 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:17 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  33 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 ar 1280 (3.8s)
+[WebServer] (node:946) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  34 p01/failure-states.spec.ts:7:9 › retailer login ar 1920 (2.0s)
+[WebServer] 8:55:21 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:23 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  35 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 ar 1920 (3.7s)
+[WebServer] 8:55:25 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] 8:55:27 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+  ✓  36 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 ar 1920 (4.7s)
+[WebServer] (node:1007) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  37 p01/failure-states.spec.ts:7:9 › retailer login fr 375 (2.0s)
+[WebServer] 8:55:32 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:33 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  38 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fr 375 (3.8s)
+[WebServer] 8:55:35 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:36 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  39 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fr 375 (3.5s)
+[WebServer] (node:1072) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  40 p01/failure-states.spec.ts:7:9 › retailer login fr 768 (2.0s)
+[WebServer] 8:55:41 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:42 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  41 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fr 768 (3.7s)
+[WebServer] 8:55:45 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:46 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  42 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fr 768 (3.6s)
+[WebServer] (node:1137) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  43 p01/failure-states.spec.ts:7:9 › retailer login fr 1280 (2.0s)
+[WebServer] 8:55:50 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:52 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  44 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fr 1280 (3.8s)
+[WebServer] 8:55:54 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:55:56 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  45 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fr 1280 (3.9s)
+[WebServer] (node:1205) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  46 p01/failure-states.spec.ts:7:9 › retailer login fr 1920 (2.0s)
+[WebServer] 8:56:00 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:56:02 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  47 p01/failure-states.spec.ts:30:11 › workspace backend-down 7011 fr 1920 (3.9s)
+[WebServer] 8:56:04 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+[WebServer] 8:56:05 PM [vite] (client) [console.warn] No `HydrateFallback` element provided to render during initial hydration
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Regular-CKBOXRQ3.ttf" is outside of Vite serving allow list.
+[WebServer] The request id "/tmp/p01-deps/node_modules/@medusajs/dashboard/dist/Inter-Medium-RUQTUVA3.ttf" is outside of Vite serving allow list.
+  ✓  48 p01/failure-states.spec.ts:30:11 › workspace backend-down 7012 fr 1920 (3.9s)
+[WebServer] (node:1270) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1286) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1294) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1302) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  49 p01/failure-states.spec.ts:56:7 › retailer stopped backend and direct refresh fa (10.7s)
+[WebServer] (node:1318) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1335) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1343) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1351) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  50 p01/failure-states.spec.ts:56:7 › retailer stopped backend and direct refresh en (6.1s)
+[WebServer] (node:1367) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1384) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1393) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1401) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  51 p01/failure-states.spec.ts:56:7 › retailer stopped backend and direct refresh ar (6.1s)
+[WebServer] (node:1417) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1432) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1440) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+[WebServer] (node:1450) Warning: The 'NO_COLOR' env is ignored due to the 'FORCE_COLOR' env being set.
+[WebServer] (Use `node --trace-warnings ...` to show where the warning was created)
+  ✓  52 p01/failure-states.spec.ts:56:7 › retailer stopped backend and direct refresh fr (6.2s)
+
+  52 passed (3.5m)

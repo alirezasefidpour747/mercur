@@ -1,0 +1,104 @@
+apps/storefront/src/components/cells/CartDropdown/CartDropdown.tsx(23,54): error TS2345: Argument of type 'Cart | null' is not assignable to parameter of type 'StoreCart | null'.
+  Type 'Cart' is not assignable to type 'StoreCart'.
+    Types of property 'promotions' are incompatible.
+      Type 'StorePromotion[] | undefined' is not assignable to type 'StoreCartPromotion[]'.
+        Type 'undefined' is not assignable to type 'StoreCartPromotion[]'.
+apps/storefront/src/components/cells/CartDropdown/CartDropdown.tsx(24,48): error TS2345: Argument of type 'Cart' is not assignable to parameter of type 'StoreCart'.
+  Types of property 'promotions' are incompatible.
+    Type 'StorePromotion[] | undefined' is not assignable to type 'StoreCartPromotion[]'.
+      Type 'undefined' is not assignable to type 'StoreCartPromotion[]'.
+apps/storefront/src/components/cells/CountrySelect/CountrySelect.tsx(54,40): error TS2322: Type 'string | number | readonly string[] | undefined' is not assignable to type 'string | undefined'.
+  Type 'number' is not assignable to type 'string'.
+apps/storefront/src/components/molecules/CountrySelector/CountrySelector.tsx(88,11): error TS2322: Type '{ country: string | undefined; region: string; label: string | undefined; } | undefined' is not assignable to type 'CountryOption | undefined'.
+  Type '{ country: string | undefined; region: string; label: string | undefined; }' is not assignable to type 'CountryOption'.
+    Types of property 'country' are incompatible.
+      Type 'string | undefined' is not assignable to type 'string'.
+        Type 'undefined' is not assignable to type 'string'.
+apps/storefront/src/components/molecules/UpdateCartItemButton/UpdateCartItemButton.tsx(44,22): error TS2540: Cannot assign to 'current' because it is a read-only property.
+apps/storefront/src/components/organisms/OrderItems/Item.tsx(12,5): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+apps/storefront/src/components/organisms/OrderItems/Item.tsx(17,5): error TS2322: Type 'number | undefined' is not assignable to type 'number'.
+  Type 'undefined' is not assignable to type 'number'.
+apps/storefront/src/components/sections/Cart/Cart.tsx(18,20): error TS2322: Type 'Cart' is not assignable to type 'StoreCart'.
+  Types of property 'promotions' are incompatible.
+    Type 'StorePromotion[] | undefined' is not assignable to type 'StoreCartPromotion[]'.
+      Type 'undefined' is not assignable to type 'StoreCartPromotion[]'.
+apps/storefront/src/components/sections/ProductDetailsPage/ProductDetailsPage.tsx(22,12): error TS2339: Property 'seller' does not exist on type 'StoreProduct'.
+apps/storefront/src/components/sections/ProductDetailsPage/ProductDetailsPage.tsx(48,26): error TS2339: Property 'seller' does not exist on type 'StoreProduct'.
+apps/storefront/src/lib/data/cart.ts(32,26): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(41,14): error TS7031: Binding element 'cart' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(42,12): error TS7006: Parameter 'error' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(62,38): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(75,21): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(98,26): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(100,20): error TS7031: Binding element 'cart' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(135,5): error TS7006: Parameter 'item' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(139,21): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(152,22): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(186,31): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(214,19): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(234,31): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(236,11): error TS7006: Parameter 'data' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(237,12): error TS7006: Parameter 'error' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(260,54): error TS2339: Property 'paymentCollections' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(267,34): error TS2339: Property 'paymentCollections' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(268,12): error TS18048: 'paymentCollection' is possibly 'undefined'.
+apps/storefront/src/lib/data/cart.ts(295,38): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(327,22): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(351,22): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(410,31): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(412,11): error TS7006: Parameter 'data' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(413,12): error TS7006: Parameter 'error' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(487,42): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(494,42): error TS7006: Parameter 'item' implicitly has an 'any' type.
+apps/storefront/src/lib/data/cart.ts(497,31): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/cart.ts(542,27): error TS2339: Property 'shippingOptions' does not exist on type '{}'.
+apps/storefront/src/lib/data/categories.ts(13,42): error TS2339: Property 'productCategories' does not exist on type '{}'.
+apps/storefront/src/lib/data/categories.ts(51,21): error TS2339: Property 'productCategories' does not exist on type '{}'.
+apps/storefront/src/lib/data/collections.ts(13,21): error TS2339: Property 'collections' does not exist on type '{}'.
+apps/storefront/src/lib/data/collections.ts(29,21): error TS2339: Property 'collections' does not exist on type '{}'.
+apps/storefront/src/lib/data/collections.ts(45,21): error TS2339: Property 'collections' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(30,27): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(44,37): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(46,14): error TS7031: Binding element 'customer' implicitly has an 'any' type.
+apps/storefront/src/lib/data/customer.ts(47,12): error TS7006: Parameter 'err' implicitly has an 'any' type.
+apps/storefront/src/lib/data/customer.ts(67,35): error TS2339: Property '$actorType' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(82,60): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(87,40): error TS2339: Property '$actorType' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(114,35): error TS2339: Property '$actorType' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(152,19): error TS2339: Property 'carts' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(178,21): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(195,20): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(237,21): error TS2339: Property 'customers' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(250,31): error TS2339: Property '$actorType' does not exist on type '{}'.
+apps/storefront/src/lib/data/customer.ts(271,31): error TS2339: Property '$actorType' does not exist on type '{}'.
+apps/storefront/src/lib/data/fulfillment.ts(13,21): error TS2339: Property 'shippingOptions' does not exist on type '{}'.
+apps/storefront/src/lib/data/fulfillment.ts(76,20): error TS2339: Property 'shippingOptions' does not exist on type '{}'.
+apps/storefront/src/lib/data/fulfillment.ts(86,14): error TS7031: Binding element 'shipping_option' implicitly has an 'any' type.
+apps/storefront/src/lib/data/offers.ts(47,15): error TS2339: Property 'offers' does not exist on type '{}'.
+apps/storefront/src/lib/data/offers.ts(77,15): error TS2339: Property 'offers' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(21,15): error TS2339: Property 'orderGroups' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(39,15): error TS2339: Property 'orders' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(110,15): error TS2339: Property 'orders' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(156,15): error TS2339: Property 'orders' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(169,15): error TS2339: Property 'orders' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(183,15): error TS2339: Property 'orders' does not exist on type '{}'.
+apps/storefront/src/lib/data/orders.ts(195,15): error TS2339: Property 'returnReasons' does not exist on type '{}'.
+apps/storefront/src/lib/data/payment.ts(13,21): error TS2339: Property 'paymentProviders' does not exist on type '{}'.
+apps/storefront/src/lib/data/products.ts(36,15): error TS2339: Property 'productAttributes' does not exist on type '{}'.
+apps/storefront/src/lib/data/products.ts(102,15): error TS2339: Property 'products' does not exist on type '{}'.
+apps/storefront/src/lib/data/products.ts(188,15): error TS2339: Property 'products' does not exist on type '{}'.
+apps/storefront/src/lib/data/products.ts(244,48): error TS2339: Property 'products' does not exist on type '{}'.
+apps/storefront/src/lib/data/regions.ts(16,20): error TS2339: Property 'regions' does not exist on type '{}'.
+apps/storefront/src/lib/data/regions.ts(18,14): error TS7031: Binding element 'regions' implicitly has an 'any' type.
+apps/storefront/src/lib/data/regions.ts(28,20): error TS2339: Property 'regions' does not exist on type '{}'.
+apps/storefront/src/lib/data/regions.ts(30,14): error TS7031: Binding element 'region' implicitly has an 'any' type.
+apps/storefront/src/lib/data/regions.ts(48,21): error TS7006: Parameter 'region' implicitly has an 'any' type.
+apps/storefront/src/lib/data/regions.ts(49,33): error TS7006: Parameter 'c' implicitly has an 'any' type.
+apps/storefront/src/lib/data/seller.ts(12,15): error TS2339: Property 'sellers' does not exist on type '{}'.
+apps/storefront/src/lib/helpers/check-region.ts(6,12): error TS7006: Parameter 'r' implicitly has an 'any' type.
+apps/storefront/src/lib/helpers/check-region.ts(7,32): error TS7006: Parameter 'c' implicitly has an 'any' type.
+apps/storefront/src/types/cart.ts(3,18): error TS2430: Interface 'Cart' incorrectly extends interface 'StoreCart'.
+  Types of property 'promotions' are incompatible.
+    Type 'StorePromotion[] | undefined' is not assignable to type 'StoreCartPromotion[]'.
+      Type 'undefined' is not assignable to type 'StoreCartPromotion[]'.

@@ -1,14 +1,23 @@
-import { ProductCarousel } from '@/components/cells';
 import { HttpTypes } from '@medusajs/types';
+
+import { ProductCarousel } from '@/components/cells';
 
 export const GalleryCarousel = ({
   images,
+  alt
 }: {
-  images: HttpTypes.StoreProduct['images'];
+  alt?: string;
+  images: Pick<HttpTypes.StoreProductImage, 'id' | 'url'>[];
 }) => {
   return (
-    <div className='border w-full p-1 rounded-sm' data-testid="gallery-carousel">
-      <ProductCarousel slides={images} />
+    <div
+      className="w-full rounded-sm border p-1"
+      data-testid="gallery-carousel"
+    >
+      <ProductCarousel
+        slides={images}
+        alt={alt}
+      />
     </div>
   );
 };

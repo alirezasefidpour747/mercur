@@ -1,0 +1,182 @@
+src/main.tsx(4,17): error TS7016: Could not find a declaration file for module '@mercurjs/vendor'. '/workspace/scratch/270651e17946/mercur/packages/vendor/dist/index.js' implicitly has an 'any' type.
+  If the '@mercurjs/vendor' package actually exposes this module, try adding a new declaration (.d.ts) file containing `declare module '@mercurjs/vendor';`
+src/widgets/order-outstanding-payment.tsx(53,13): error TS2367: This comparison appears to be unintentional because the types 'BasePaymentCollectionStatus' and '"captured"' have no overlap.
+../../packages/core/src/api/admin/sellers/[id]/members/invite/route.ts(25,41): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/api/store/carts/[id]/line-items/route.ts(39,11): error TS2353: Object literal may only specify known properties, and 'offer_id' does not exist in type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/api/utils/ensure-seller-middleware.ts(16,3): error TS6133: 'res' is declared but its value is never read.
+../../packages/core/src/api/vendor/customers/[id]/route.ts(43,49): error TS7006: Parameter 'g' implicitly has an 'any' type.
+../../packages/core/src/api/vendor/customers/[id]/route.ts(50,47): error TS7006: Parameter 'g' implicitly has an 'any' type.
+../../packages/core/src/api/vendor/sellers/[id]/members/route.ts(45,41): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/api/vendor/uploads/route.ts(13,21): error TS2339: Property 'files' does not exist on type 'AuthenticatedMedusaRequest<BaseUploadFile, Record<string, unknown>>'.
+../../packages/core/src/api/vendor/uploads/route.ts(13,38): error TS2694: Namespace 'global.Express' has no exported member 'Multer'.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(22,17): error TS7006: Parameter 'container' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(155,27): error TS7006: Parameter 'row' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(178,39): error TS7006: Parameter 'trx' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(198,39): error TS7006: Parameter 'trx' implicitly has an 'any' type.
+../../packages/core/src/modules/payout/services/provider-service.ts(39,28): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'InjectedDependencies'.
+  No index signature with a parameter of type 'string' was found on type 'InjectedDependencies'.
+../../packages/core/src/modules/seller/repositories/order-group.ts(43,27): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ $eq: string; $lt: string; $gt: string; $lte: string; $gte: string; $ne: string; $in: string; $nin: string; $like: string; $ilike: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ $eq: string; $lt: string; $gt: string; $lte: string; $gte: string; $ne: string; $in: string; $nin: string; $like: string; $ilike: string; }'.
+../../packages/core/src/modules/seller/repositories/order-group.ts(187,34): error TS7006: Parameter 'row' implicitly has an 'any' type.
+../../packages/core/src/modules/seller/service.ts(243,35): error TS2769: No overload matches this call.
+  The last overload gave the following error.
+    Argument of type 'string | undefined' is not assignable to parameter of type 'string | ArrayBuffer | SharedArrayBuffer | Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> | ... 17 more ... | GetPublicKeyOrSecret'.
+      Type 'undefined' is not assignable to type 'string | ArrayBuffer | SharedArrayBuffer | Uint8Array<ArrayBufferLike> | Buffer<ArrayBufferLike> | ... 17 more ... | GetPublicKeyOrSecret'.
+../../packages/core/src/workflows/cart/hooks/validate.ts(29,23): error TS2339: Property 'offer_id' does not exist on type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/workflows/cart/hooks/validate.ts(59,24): error TS2339: Property 'offer_id' does not exist on type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(36,114): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(151,25): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(155,22): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(134,52): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(189,93): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(189,128): error TS7006: Parameter 'so' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(191,59): error TS7006: Parameter 'item' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(224,76): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(252,31): error TS7006: Parameter 'item' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(255,31): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(350,38): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(540,67): error TS18046: 'createdOrderGroup' is of type 'unknown'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(582,51): error TS2339: Property 'id' does not exist on type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(637,51): error TS2339: Property 'id' does not exist on type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(649,57): error TS2339: Property 'id' does not exist on type 'WorkflowData<unknown>'.
+../../packages/core/src/workflows/cart/workflows/list-seller-shipping-options-for-cart.ts(111,77): error TS7006: Parameter 'fulfillmentSet' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/list-seller-shipping-options-for-cart.ts(246,38): error TS7006: Parameter 'shippingOption' implicitly has an 'any' type.
+../../packages/core/src/workflows/commission/steps/create-commission-rates.ts(19,28): error TS7006: Parameter 'rate' implicitly has an 'any' type.
+../../packages/core/src/workflows/offer/workflows/create-offers.ts(268,30): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/steps/create-order-group.ts(17,3): error TS2345: Argument of type '(id: string, { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string>'.
+  Types of parameters 'id' and 'input' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(30,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(30,19): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ NOT_PAID: string; AWAITING: string; CAPTURED: string; PARTIALLY_CAPTURED: string; PARTIALLY_REFUNDED: string; REFUNDED: string; CANCELED: string; REQUIRES_ACTION: string; AUTHORIZED: string; PARTIALLY_AUTHORIZED: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ NOT_PAID: string; AWAITING: string; CAPTURED: string; PARTIALLY_CAPTURED: string; PARTIALLY_REFUNDED: string; REFUNDED: string; CANCELED: string; REQUIRES_ACTION: string; AUTHORIZED: string; PARTIALLY_AUTHORIZED: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(47,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(63,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(73,7): error TS7053: Element implicitly has an 'any' type because expression of type 'PaymentCollectionStatus' can't be used to index type '{}'.
+  Property 'completed' does not exist on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(79,21): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(81,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(85,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(87,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(88,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(96,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(97,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(104,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(106,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(115,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(116,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(121,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(143,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(143,23): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ NOT_FULFILLED: string; PARTIALLY_FULFILLED: string; FULFILLED: string; PARTIALLY_SHIPPED: string; SHIPPED: string; DELIVERED: string; PARTIALLY_DELIVERED: string; CANCELED: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ NOT_FULFILLED: string; PARTIALLY_FULFILLED: string; FULFILLED: string; PARTIALLY_SHIPPED: string; SHIPPED: string; DELIVERED: string; PARTIALLY_DELIVERED: string; CANCELED: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(155,11): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'FulfillmentDTO'.
+  No index signature with a parameter of type 'string' was found on type 'FulfillmentDTO'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(156,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(156,27): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ canceled_at: string; delivered_at: string; shipped_at: string; packed_at: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ canceled_at: string; delivered_at: string; shipped_at: string; packed_at: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(164,25): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(173,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(175,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(185,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(187,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(197,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(199,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(210,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(211,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order/workflows/cancel-order-fulfillment.ts(277,39): error TS7006: Parameter 'f' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/cancel-order-fulfillment.ts(282,40): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(499,12): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(520,17): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(521,20): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/product/steps/validate-seller-product-permissions.ts(35,35): error TS7006: Parameter 's' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/steps/create-member-invites.ts(21,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/create-seller-member.ts(19,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/create-seller.ts(16,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/delete-seller.ts(13,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/update-member.ts(27,3): error TS2345: Argument of type '(prevMembers: MemberDTO[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<MemberDTO[]>'.
+  Types of parameters 'prevMembers' and 'input' are incompatible.
+    Type 'MemberDTO[] | undefined' is not assignable to type 'MemberDTO[]'.
+      Type 'undefined' is not assignable to type 'MemberDTO[]'.
+../../packages/core/src/workflows/seller/steps/update-seller.ts(23,3): error TS2345: Argument of type '(prevSellers: SellerDTO[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<SellerDTO[]>'.
+  Types of parameters 'prevSellers' and 'input' are incompatible.
+    Type 'SellerDTO[] | undefined' is not assignable to type 'SellerDTO[]'.
+      Type 'undefined' is not assignable to type 'SellerDTO[]'.
+../../packages/core/src/workflows/seller/workflows/accept-member-invite.ts(65,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/add-seller-member.ts(25,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/add-seller-member.ts(37,30): error TS18046: 'sellerMembers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/approve-seller.ts(43,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(22,45): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(27,9): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(27,22): error TS7006: Parameter 'inv' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(57,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(58,60): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(87,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(40,14): error TS2322: Type 'ReturnWorkflow<{ sellers: (CreateSellerDTO & { member: { email: string; }; })[]; } & AdditionalData, unknown, [Hook<"validate", { input: CreateSellersWorkflowInput; }, unknown>, Hook<...>]>' is not assignable to type 'ReturnWorkflow<CreateSellersWorkflowInput, SellerDTO[], CreateSellersWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ sellers: (CreateSellerDTO & { member: { email: string; }; })[]; } & AdditionalData, unknown, [Hook<"validate", { input: CreateSellersWorkflowInput; }, unknown>, Hook<...>]>' is not assignable to type '{ runAsStep: ({ input, }: { input: CreateSellersWorkflowInput | WorkflowData<CreateSellersWorkflowInput>; }) => SellerDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; c...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'SellerDTO[] & WorkflowDataProperties<SellerDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'SellerDTO[]': length, pop, push, concat, and 29 more.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(52,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,11): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,24): error TS7006: Parameter 'seller' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,32): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(78,7): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(78,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/delete-seller.ts(20,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(72,45): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(77,9): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(77,22): error TS7006: Parameter 'inv' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/suspend-seller.ts(44,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/terminate-seller.ts(43,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/unsuspend-seller.ts(42,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/unterminate-seller.ts(42,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-member.ts(35,14): error TS2322: Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: { first_name?: string | null | undefined; last_name?: string | null | undefined; locale?: string | null | undefined; }; } & AdditionalData, unknown, [...]>' is not assignable to type 'ReturnWorkflow<UpdateMemberWorkflowInput, MemberDTO[], UpdateMemberWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: { first_name?: string | null | undefined; last_name?: string | null | undefined; locale?: string | null | undefined; }; } & AdditionalData, unknown, [...]>' is not assignable to type '{ runAsStep: ({ input, }: { input: UpdateMemberWorkflowInput | WorkflowData<UpdateMemberWorkflowInput>; }) => MemberDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; con...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'MemberDTO[] & WorkflowDataProperties<MemberDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'MemberDTO[]': length, pop, push, concat, and 29 more.
+../../packages/core/src/workflows/seller/workflows/update-member.ts(42,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(34,14): error TS2322: Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: UpdateSellerDTO; } & AdditionalData, unknown, [Hook<"sellersUpdated", { sellers: WorkflowDataProperties<unknown> & { ...; } & StepFunctionReturnConfig<...>; additional_data: Record<...> | undefined; }, unknown>]>' is not assignable to type 'ReturnWorkflow<UpdateSellersWorkflowInput, SellerDTO[], UpdateSellersWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: UpdateSellerDTO; } & AdditionalData, unknown, [Hook<"sellersUpdated", { sellers: WorkflowDataProperties<unknown> & { ...; } & StepFunctionReturnConfig<...>; additional_data: Record<...> | undefined; }, unknown>]>' is not assignable to type '{ runAsStep: ({ input, }: { input: UpdateSellersWorkflowInput | WorkflowData<UpdateSellersWorkflowInput>; }) => SellerDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; c...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'SellerDTO[] & WorkflowDataProperties<SellerDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'SellerDTO[]': length, pop, push, concat, and 29 more.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(41,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(49,7): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(49,20): error TS7006: Parameter 's' implicitly has an 'any' type.

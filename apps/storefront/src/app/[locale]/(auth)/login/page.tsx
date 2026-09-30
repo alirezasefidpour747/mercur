@@ -1,20 +1,14 @@
-import { LoginForm } from "@/components/molecules"
-import { retrieveCustomer } from "@/lib/data/customer"
-import type { Metadata } from "next"
-import { redirect } from "next/navigation"
+import { CatalogBoundary, CatalogLogin } from '@/components/didar/catalog';
 
-export const metadata: Metadata = {
-  title: "Login",
-  robots: { index: false, follow: false },
+export default async function Page({
+  params
+}: {
+  params: Promise<{ locale: string; handle: string }>;
+}) {
+  const p = await params;
+  return (
+    <CatalogBoundary>
+      <CatalogLogin lang={p.locale} />
+    </CatalogBoundary>
+  );
 }
-
-export default async function LoginPage() {
-  const user = await retrieveCustomer()
-
-  if (user) {
-    redirect("/user")
-  }
-
-  return <LoginForm />
-}
-

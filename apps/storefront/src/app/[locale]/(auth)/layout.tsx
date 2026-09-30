@@ -1,27 +1,16 @@
-import { Footer, Header } from "@/components/organisms"
-import { checkRegion } from "@/lib/helpers/check-region"
-import { redirect } from "next/navigation"
+import { CatalogBoundary, CatalogShell } from '@/components/didar/catalog';
 
-export default async function AuthLayout({
+export default async function Layout({
   children,
-  params,
-}: Readonly<{
-  children: React.ReactNode
-  params: Promise<{ locale: string }>
-}>) {
-  const { locale } = await params
-  const regionCheck = await checkRegion(locale)
-
-  if (!regionCheck) {
-    return redirect("/")
-  }
-
+  params
+}: {
+  children: React.ReactNode;
+  params: Promise<{ locale: string }>;
+}) {
+  const { locale } = await params;
   return (
-    <>
-      <Header locale={locale} />
-      {children}
-      <Footer />
-    </>
-  )
+    <CatalogBoundary>
+      <CatalogShell lang={locale}>{children}</CatalogShell>
+    </CatalogBoundary>
+  );
 }
-

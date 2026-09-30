@@ -1,0 +1,92 @@
+import { model } from "@medusajs/framework/utils";
+
+export const CatalogProfile = model
+  .define("didar_catalog_profile", {
+    id: model.id({ prefix: "dcatalog" }).primaryKey(),
+    product_id: model.text(),
+    variant_id: model.text(),
+    owner_organization_id: model.text(),
+    product_code: model.text(),
+    subcategory_id: model.text().nullable(),
+    root_category_id: model.text().nullable(),
+    karat: model.number().nullable(),
+    material: model.text().nullable(),
+    technical_description: model.text().nullable(),
+    publication_state: model.text(),
+    version: model.number(),
+    published_candidate_id: model.text().nullable(),
+    published_at: model.dateTime().nullable(),
+    public_weight_min: model.bigNumber().nullable(),
+    public_weight_max: model.bigNumber().nullable(),
+    public_fee_min: model.bigNumber().nullable(),
+    public_fee_max: model.bigNumber().nullable(),
+    public_sort_name: model.text().nullable(),
+    public_handle: model.text().nullable(),
+    public_search_text: model.text().nullable(),
+    type_id: model.text().nullable(),
+    native_fingerprint: model.text().nullable(),
+    created_by: model.text(),
+    updated_by: model.text(),
+  })
+  .indexes([
+    {
+      name: "IDX_didar_catalog_profile_0",
+      on: ["product_id"],
+      unique: true,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_1",
+      on: ["product_code"],
+      unique: true,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_2",
+      on: ["public_handle"],
+      unique: true,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_3",
+      on: ["publication_state", "root_category_id"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_4",
+      on: ["publication_state", "subcategory_id"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_5",
+      on: ["karat", "material", "type_id"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_6",
+      on: ["public_weight_min", "public_weight_max"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_7",
+      on: ["public_fee_min", "public_fee_max"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_8",
+      on: ["published_at", "product_id"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+    {
+      name: "IDX_didar_catalog_profile_9",
+      on: ["public_sort_name", "product_id"],
+      unique: false,
+      where: "deleted_at IS NULL",
+    },
+  ]);

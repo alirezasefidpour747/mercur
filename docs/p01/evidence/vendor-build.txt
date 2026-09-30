@@ -1,0 +1,19 @@
+$ vite build
+[@mercurjs/dashboard-sdk] Could not load the Medusa config from "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts": Dynamic require of "/workspace/scratch/270651e17946/mercur/apps/api/medusa-config.ts" is not supported. Building with base "/" and no plugin extensions — if this panel is served under a sub-path (e.g. /dashboard), its assets will not resolve.
+vite v8.3.1 building client environment for production...
+transforming...
+✓ 4523 modules transformed.
+rendering chunks...
+computing gzip size...
+dist/index.html                                                      4.19 kB │ gzip:     0.99 kB
+[asset size listing omitted]
+dist/assets/date-picker-1cgNoxSV.js                                198.46 kB │ gzip:    62.76 kB
+dist/assets/chunk-EOZVM6OY-v96YZeRJ.js                             218.53 kB │ gzip:    11.35 kB
+dist/assets/index-Vkw49GqT.js                                    6,495.25 kB │ gzip: 1,557.92 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✓ built in 1.93s

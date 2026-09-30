@@ -1,0 +1,2 @@
+[mercur] Applied patch "@medusajs+core-flows@2.18.0.patch" to 1 copy/copies of @medusajs/core-flows
+[mercur] Applied patch "@medusajs+core-flows@2.21.0-payment-hooks.patch" to 1 copy/copies of @medusajs/core-flows

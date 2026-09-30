@@ -1,9 +1,9 @@
-import { loadEnv } from '@medusajs/framework/utils'
-import { withMercur } from '@mercurjs/core'
+import { loadEnv } from "@medusajs/framework/utils";
+import { withMercur } from "@mercurjs/core";
 
-loadEnv(process.env.NODE_ENV || 'development', process.cwd())
+loadEnv(process.env.NODE_ENV || "development", process.cwd());
 
-const REDIS_URL = process.env.REDIS_URL || 'redis://localhost:6379'
+const REDIS_URL = process.env.REDIS_URL || "redis://localhost:6379";
 
 module.exports = withMercur({
   projectConfig: {
@@ -16,47 +16,49 @@ module.exports = withMercur({
       authCors: process.env.AUTH_CORS!,
       jwtSecret: process.env.JWT_SECRET || "supersecret",
       cookieSecret: process.env.COOKIE_SECRET || "supersecret",
-    }
+    },
   },
   featureFlags: {
-    seller_registration: true
+    seller_registration: true,
+    product_request: true,
   },
   modules: [
+    { resolve: "./src/modules/didar-catalog" },
     {
-      resolve: '@mercurjs/core/modules/admin-ui',
+      resolve: "@mercurjs/core/modules/admin-ui",
       options: {
-        appDir: '',
-        path: '/dashboard',
-        disable: true
-      }
+        appDir: "",
+        path: "/dashboard",
+        disable: true,
+      },
     },
     {
-      resolve: '@mercurjs/core/modules/vendor-ui',
+      resolve: "@mercurjs/core/modules/vendor-ui",
       options: {
-        appDir: '',
-        path: '/seller',
-        disable: true
-      }
+        appDir: "",
+        path: "/seller",
+        disable: true,
+      },
     },
     {
-      resolve: '@medusajs/medusa/cache-redis',
+      resolve: "@medusajs/medusa/cache-redis",
       options: { redisUrl: REDIS_URL },
     },
     {
-      resolve: '@medusajs/medusa/event-bus-redis',
+      resolve: "@medusajs/medusa/event-bus-redis",
       options: { redisUrl: REDIS_URL },
     },
     {
-      resolve: '@medusajs/medusa/workflow-engine-redis',
+      resolve: "@medusajs/medusa/workflow-engine-redis",
       options: { redis: { url: REDIS_URL } },
     },
     {
-      resolve: '@medusajs/medusa/locking',
+      resolve: "@medusajs/medusa/locking",
       options: {
         providers: [
           {
-            resolve: '@medusajs/medusa/locking-redis',
-            id: 'locking-redis',
+            resolve: "@medusajs/medusa/locking-redis",
+            id: "locking-redis",
             is_default: true,
             options: { redisUrl: REDIS_URL },
           },
@@ -64,21 +66,22 @@ module.exports = withMercur({
       },
     },
     {
-      resolve: '@medusajs/medusa/file',
+      resolve: "@medusajs/medusa/file",
       options: {
         providers: [
           {
-            resolve: '@medusajs/medusa/file-local',
-            id: 'local',
+            resolve: "@medusajs/medusa/file-local",
+            id: "local",
             options: {
               // The local provider bakes this into every uploaded file URL.
               // It must be the publicly reachable origin in production, or
               // images resolve to localhost and render broken.
-              backend_url: process.env.FILE_BACKEND_URL || 'http://localhost:9000/static',
+              backend_url:
+                process.env.FILE_BACKEND_URL || "http://localhost:9000/static",
             },
           },
         ],
       },
     },
   ],
-})
+});
