@@ -1,7 +1,16 @@
+import type { HttpTypes } from "@medusajs/types"
+
+type PricedVariant = Pick<HttpTypes.StoreProductVariant, "id" | "sku"> & {
+  prices?: { amount: number; currency_code: string }[] | null
+}
+type PricedProduct = Pick<HttpTypes.StoreProduct, "id"> & {
+  variants?: PricedVariant[] | null
+}
+
 import { convertToLocale } from "./money"
 
-export const getPricesForVariant = (variant: any) => {
-  if (!variant?.prices[0]?.amount) {
+export const getPricesForVariant = (variant?: PricedVariant | null) => {
+  if (!variant?.prices?.[0]?.amount) {
     return null
   }
 
@@ -23,7 +32,7 @@ export function getSellerProductPrice({
   product,
   variantId,
 }: {
-  product: any
+  product: PricedProduct
   variantId?: string
 }) {
   if (!product || !product.id) {
@@ -35,10 +44,11 @@ export function getSellerProductPrice({
       return null
     }
 
-    const cheapestVariant: any = product.variants
-      .filter((v: any) => !!v.prices?.[0])
-      .sort((a: any, b: any) => {
-        return a.prices?.[0].amount - b.prices?.[0].amount
+    const cheapestVariant = product.variants
+      .filter((v) => !!v.prices?.[0])
+      .sort((a, b) => {
+        return (a.prices?.[0]?.amount ?? Number.POSITIVE_INFINITY) -
+          (b.prices?.[0]?.amount ?? Number.POSITIVE_INFINITY)
       })[0]
 
     return getPricesForVariant(cheapestVariant)
@@ -49,8 +59,8 @@ export function getSellerProductPrice({
       return null
     }
 
-    const variant: any = product.variants?.find(
-      (v: any) => v.id === variantId || v.sku === variantId
+    const variant = product.variants?.find(
+      (v) => v.id === variantId || v.sku === variantId
     )
 
     if (!variant) {

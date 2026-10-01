@@ -1,23 +1,29 @@
 'use client';
 
+import type { HttpTypes } from '@medusajs/types';
+import type { OfferDTO } from '@mercurjs/types';
+
 import { CartSummary } from '@/components/organisms';
 import { PromoCode } from '@/components/organisms/PromoCode/PromoCode';
 
 import { CartItems } from './CartItems';
 import PaymentButton from './PaymentButton';
 
-const Review = ({ cart }: { cart: any }) => {
+type ReviewCart = HttpTypes.StoreCart & { gift_cards?: unknown[] | null };
+type CartItemWithOffer = HttpTypes.StoreCartLineItem & { offer?: OfferDTO | null };
+
+const Review = ({ cart }: { cart: ReviewCart }) => {
   const paidByGiftcard = cart?.gift_cards && cart?.gift_cards?.length > 0 && cart?.total === 0;
 
   // Every seller in the cart must have a shipping method. The backend enforces
   // one method per seller, so covering each seller means one method per seller.
   const cartSellerCount = new Set(
     (cart?.items ?? [])
-      .map((item: any) => item.offer?.seller_id)
+      .map((item: CartItemWithOffer) => item.offer?.seller_id)
       .filter(Boolean)
   ).size;
   const allSellersHaveShipping =
-    cart.shipping_methods.length > 0 &&
+    (cart.shipping_methods?.length ?? 0) > 0 &&
     cart.shipping_methods.length >= cartSellerCount;
 
   const previousStepsCompleted =

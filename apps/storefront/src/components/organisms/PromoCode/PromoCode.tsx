@@ -1,5 +1,7 @@
 'use client';
 
+import type { HttpTypes } from '@medusajs/types';
+
 import { useEffect, useRef, useState, useTransition } from 'react';
 
 import { Button, Card, Input } from '@/components/atoms';
@@ -8,7 +10,7 @@ import { applyPromotions, deletePromotionCode } from '@/lib/data/cart';
 import { toast } from '@/lib/helpers/toast';
 import { cn } from '@/lib/utils';
 
-export const PromoCode = ({ cart, defaultOpen = false }: { cart: any; defaultOpen?: boolean }) => {
+export const PromoCode = ({ cart, defaultOpen = false }: { cart: HttpTypes.StoreCart | null; defaultOpen?: boolean }) => {
   const [isOpen, setIsOpen] = useState(defaultOpen);
   const [height, setHeight] = useState(0);
   const contentRef = useRef<HTMLDivElement>(null);
@@ -126,15 +128,15 @@ export const PromoCode = ({ cart, defaultOpen = false }: { cart: any; defaultOpe
               </Button>
             </div>
           ) : (
-            cart.promotions.map((promo: any) => (
+            cart.promotions.map((promo) => (
               <div
                 key={promo.id}
                 className="flex items-center justify-between py-2"
               >
                 <span>{promo.code}</span>
                 <button
-                  onClick={() => handleRemoveCode(promo.code)}
-                  disabled={isPending}
+                  onClick={() => { if (promo.code) handleRemoveCode(promo.code); }}
+                  disabled={isPending || !promo.code}
                   className="text-primary transition-colors hover:text-red-500 disabled:opacity-50"
                 >
                   <BinIcon size={20} />

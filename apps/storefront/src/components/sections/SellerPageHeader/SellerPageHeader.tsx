@@ -1,13 +1,13 @@
 import { SellerFooter, SellerHeading } from "@/components/organisms"
+import type { SellerDTO } from "@mercurjs/types"
 import { HttpTypes } from "@medusajs/types"
 
 export const SellerPageHeader = ({
-  header = false,
   seller,
   user,
 }: {
   header?: boolean
-  seller: any
+  seller: SellerDTO
   user: HttpTypes.StoreCustomer | null
 }) => {
   return (

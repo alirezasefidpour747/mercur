@@ -409,3 +409,17 @@ Local verification: eight existing parcel-status mapping smoke assertions **PASS
 On `485e4bf3`, Storefront typecheck **TESTED — FAILED** with two diagnostics in OrderTrack: StoreOrderFulfillment has no labels field (TS2339), causing an implicit-any callback (TS7006). The remainder of round 12 emitted no diagnostics in this run.
 
 Correction **IMPLEMENTED — NOT TESTED**: keep the native StoreOrder fulfillment projection and explicitly inspect optional label expansion data at runtime. Render only actual array entries with checked string ID and tracking number; absent or malformed labels render no tracking controls. No invented guaranteed response field, type assertion to a broader API contract, route expansion or new fulfillment behavior was added. This existing commerce component remains outside P01's active B2B flow. Full TypeScript and remaining lint/build gates still require verification; P01 overall remains **TESTED — FAILED**.
+
+
+## Owner-machine debugging — 2026-10-01, round 14
+
+On `8978366c`, owner Storefront typecheck **PASSED** after native contract generation with no diagnostics. This supersedes round 13's OrderTrack failures.
+
+Next existing-source lint batch **IMPLEMENTED — NOT TESTED** against full application gates:
+
+- Native pricing helper uses StoreProductVariant and checked nullable native calculated-price fields, optional price-list detail access, actual nested calculated-price amounts for sorting, and returns null for incomplete display terms without fabricating amounts/currency. Zero calculated amounts are recognized as actual numeric data. Sorting operates on a derived array and preserves the Product's Variant order.
+- Existing Seller price helper describes a native Product/Variant ID/SKU projection with optional pricing expansion, guarding absent price arrays. These are private TS projections, not new Product/SKU entities or API routes.
+- PromoCode consumes StoreCart promotions and guards absent removal codes; CartReview uses native cart fields and optional Offer expansions, guarding unexpanded shipping methods.
+- SellerPageHeader uses SellerDTO; SellerReviewList consumes the existing review component's concrete review type.
+
+Verified native nullable calculated-price fields against Medusa v2.21.0 `packages/core/types/src/http/product/common.ts` and `http/price-preference/common.ts`. Local Node helper smoke checks **PASSED** (11 assertions: missing/incomplete/zero/tax price data, selected/cheapest variants, unchanged source ordering, empty lists and Seller price sorting). No real HTTP/database/UI journey was exercised. No suppression or explicit-any was added in this batch. Didar curated indicative ranges and approved Product identity/business rules remain unchanged; native commerce screens remain outside active P01 B2B routes. Full application typecheck/scoped lint/build and remaining native lint repair are pending. P01 overall remains **TESTED — FAILED**.

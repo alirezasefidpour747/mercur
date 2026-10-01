@@ -1,0 +1,4 @@
+Node v24.19.0 — 2026-10-01
+11 native pricing-helper smoke assertions passed with isolated source fixtures.
+Type-only imports stripped by Node; relative dependency resolution adds .ts extensions in the smoke harness.
+No full app typecheck, lint, build or real API/database verification was run here for this batch.
