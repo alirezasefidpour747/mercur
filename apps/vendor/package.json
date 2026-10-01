@@ -50,6 +50,7 @@
     "turbo": "^2.7.4",
     "typescript": "5.9.3",
     "@types/node": "^26.1.0",
-    "@mercurjs/types": "workspace:*"
+    "@mercurjs/types": "workspace:*",
+    "@medusajs/types": "2.21.0"
   }
 }

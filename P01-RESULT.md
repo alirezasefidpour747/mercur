@@ -343,3 +343,12 @@ Admin evidence: `docs/p01/evidence/owner-macos-20261001-admin-round1.txt`. Admin
 Correction **IMPLEMENTED — NOT TESTED**: register `shared/p01` as the private `@didar/p01-ui` workspace and explicitly declare the same React 18, Router, Medusa UI and React type versions already used by the host apps. Both hosts declare this workspace dependency. Native panel clients use generated auth/admin or auth/vendor contracts pointing at compiled native declarations, following the verified storefront approach; build/typecheck scripts regenerate these declarations. No Core package source, runtime API, business rule or validation gate was changed.
 
 The generator executed against the exact checked-in native map; both outputs matched the checked-in contracts. This is not evidence of passing host builds/typechecks. Because workspace manifests changed, run `bun install` at the repository root on the owner's machine to generate the canonical Bun lockfile. The lockfile update is pending capture/commit from that verified environment; frozen-lockfile verification must be rerun afterward. Do not discard the owner's generated lockfile. Next: admin build/typecheck, then vendor build/typecheck. P01 remains **TESTED — FAILED**; P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 7
+
+On `2f854894`, `bun install` succeeded and admin typecheck/build both **PASSED**. Evidence: `docs/p01/evidence/owner-macos-20261001-admin-round2.txt`. This supersedes the previous admin compilation failure; admin native-config warning and large bundle warning remain open, and successful compilation is not positive runtime journey evidence.
+
+Vendor production bundle **PASSED** (898ms); vendor typecheck **TESTED — FAILED** with two diagnostics in the existing payment widget. Evidence: `docs/p01/evidence/owner-macos-20261001-vendor-round1.txt`. Both trace to undeclared `@medusajs/types` in the vendor app's own dependency scope.
+
+Correction **IMPLEMENTED — NOT TESTED**: declare `@medusajs/types: 2.21.0` as a vendor devDependency for the widget's type-only import, matching existing native Medusa packages. No payment logic or future package is implemented/activated. Re-run root `bun install` and vendor typecheck. Canonical owner-generated lockfile capture/commit and frozen installation remain pending. Storefront lint/full build, real migrations/seed/API journey, authorization/filter/persistence tests and runtime config warning remain unresolved. Overall P01 remains **TESTED — FAILED**; no P02.
