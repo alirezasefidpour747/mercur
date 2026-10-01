@@ -1,7 +1,6 @@
 "use client"
 import {
   FieldError,
-  FieldValues,
   FormProvider,
   useForm,
   useFormContext,
@@ -14,7 +13,7 @@ import { signup } from "@/lib/data/customer"
 import { useState } from "react"
 import { Container } from "@medusajs/ui"
 import Link from "next/link"
-import { PasswordValidator } from "@/components/cells/PasswordValidator/PasswordValidator"
+import { PasswordValidator, type PasswordValidation } from "@/components/cells/PasswordValidator/PasswordValidator"
 import { toast } from "@/lib/helpers/toast"
 
 export const RegisterForm = () => {
@@ -37,12 +36,13 @@ export const RegisterForm = () => {
 }
 
 const Form = () => {
-  const [passwordError, setPasswordError] = useState({
+  const [passwordError, setPasswordError] = useState<PasswordValidation>({
     isValid: false,
     lower: false,
     upper: false,
     "8chars": false,
-    symbolOrDigit: false,
+    digit: false,
+    symbol: false,
   })
 
   const {
@@ -66,7 +66,7 @@ const Form = () => {
 
     const res = await signup(formData)
 
-    if (res && !res?.id) {
+    if (typeof res === "string") {
 
       // Temporary solution. Check also for status code when it's fixed by backend
       const errorMessage = res.toLowerCase().includes('error: identity with email already exists') ? 'It seems the email you entered is already associated with another account. Please log in instead.' : res

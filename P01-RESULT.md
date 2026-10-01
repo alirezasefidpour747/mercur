@@ -384,3 +384,12 @@ First correction batch **IMPLEMENTED — NOT TESTED** against full application g
 - `ProductDetailsHeader.tsx`: infer option DTOs from the already typed native Product.
 
 Local Node v24 helper smoke checks **PASSED** (18 assertions: empty/non-empty values, redirect/stock error formatting, actual and malformed response payloads, offline/null errors). This is not full application TypeScript/lint/build or real API evidence. React changes were reviewed for existing state-setter dependencies and unchanged rendering; the new types do not activate native Order/Payment/B2C flows. No check was disabled and no Core source changed. Remaining native lint diagnostics, full Storefront build and all outstanding native T01–T10 requirements remain pending. P01 overall remains **TESTED — FAILED**. Next gate: owner's Storefront typecheck for this batch before continuing native lint repairs.
+
+
+## Owner-machine debugging — 2026-10-01, round 11
+
+On `bf7c1ab7`, Storefront typecheck **TESTED — FAILED** with six diagnostics in three consuming forms. Removing permissive return/callback types surfaced mismatched contracts: signup returns string or StoreCustomer; the address error can be null; both password forms retained a obsolete symbolOrDigit state field despite the validator emitting separate digit/symbol fields.
+
+Correction **IMPLEMENTED — NOT TESTED**: export the existing PasswordValidation shape and use it for both consuming state setters with separate digit/symbol fields, narrow the signup error branch with typeof string, and render an explicit failure fallback when a failed address result has no error message. Password validation rules and existing native action responses remain unchanged. No lint/type gate disabled, no future business package activated. Full application typecheck must be rerun; remaining native lint repairs are still pending. P01 overall remains **TESTED — FAILED**.
+
+Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-round6.txt` records the six owner-reported diagnostics.

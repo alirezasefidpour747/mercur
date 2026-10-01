@@ -16,7 +16,7 @@ import { useState } from "react"
 import { updateCustomerPassword } from "@/lib/data/customer"
 import { Heading, toast } from "@medusajs/ui"
 import LocalizedClientLink from "../LocalizedLink/LocalizedLink"
-import { PasswordValidator } from "@/components/cells/PasswordValidator/PasswordValidator"
+import { PasswordValidator, type PasswordValidation } from "@/components/cells/PasswordValidator/PasswordValidator"
 
 export const ProfilePasswordForm = ({ token }: { token?: string }) => {
   const form = useForm<ProfilePasswordFormData>({
@@ -45,12 +45,13 @@ const Form = ({
   const [confirmPasswordError, setConfirmPasswordError] = useState<
     FieldError | undefined
   >(undefined)
-  const [newPasswordError, setNewPasswordError] = useState({
+  const [newPasswordError, setNewPasswordError] = useState<PasswordValidation>({
     isValid: false,
     lower: false,
     upper: false,
     "8chars": false,
-    symbolOrDigit: false,
+    digit: false,
+    symbol: false,
   })
 
   const {

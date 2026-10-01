@@ -7,7 +7,7 @@ import { CheckCircle } from '@medusajs/icons';
 import { Card } from '@/components/atoms';
 import { cn } from '@/lib/utils';
 
-type PasswordValidation = {
+export type PasswordValidation = {
   isValid: boolean;
   lower: boolean;
   upper: boolean;
@@ -38,7 +38,7 @@ export const PasswordValidator = ({
   password: string;
   setError: (error: PasswordValidation) => void;
 }) => {
-  const [newPasswordError, setNewPasswordError] = useState({
+  const [newPasswordError, setNewPasswordError] = useState<PasswordValidation>({
     isValid: false,
     lower: false,
     upper: false,

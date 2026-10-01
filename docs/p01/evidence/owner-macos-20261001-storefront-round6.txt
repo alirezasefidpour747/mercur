@@ -1,0 +1,18 @@
+Owner macOS — 2026-10-01; commit bf7c1ab7
+Command: bun run typecheck
+Generated native storefront contract (auth/store)
+
+src/components/molecules/AddressForm/AddressForm.tsx:83:16 TS2345
+string | null is not assignable to SetStateAction<string | undefined> at setError(res.error).
+
+src/components/molecules/ProfilePasswordForm/ProfilePasswordForm.tsx:130:9 TS2322
+PasswordValidation lacks obsolete symbolOrDigit required by consumer state at setError={setNewPasswordError}.
+
+src/components/molecules/RegisterForm/RegisterForm.tsx:69:22 TS2339
+Property id does not exist on string | StoreCustomer.
+:72:32 TS2339 — Property toLowerCase does not exist on string | StoreCustomer.
+:73:21 TS2322 — string | StoreCustomer is not assignable to toast title string.
+:132:15 TS2322 — PasswordValidation lacks obsolete symbolOrDigit required by consumer state at setError={setPasswordError}.
+
+Found 6 errors in 3 files.
+This evidence is a diagnostic transcription from the owner's chat output, not a separately captured raw log.
