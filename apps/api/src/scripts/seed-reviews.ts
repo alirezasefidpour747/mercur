@@ -97,11 +97,13 @@ export default async function seedReviews({ container }: ExecArgs) {
 
   const customerModule = container.resolve(Modules.CUSTOMER)
 
-  let { data: customers } = await query.graph({
+  const { data: customerRows } = await query.graph({
     entity: "customer",
     fields: ["id"],
     pagination: { take: 10, skip: 0 },
   })
+
+  let customers = customerRows.map((customer) => ({ id: customer.id }))
 
   if (!customers.length) {
     logger.info("No customers found, creating demo customers...")
@@ -126,11 +128,13 @@ export default async function seedReviews({ container }: ExecArgs) {
     pagination: { take: SELLER_REVIEWS.length, skip: 0 },
   })
 
-  let { data: orders } = await query.graph({
+  const { data: orderRows } = await query.graph({
     entity: "order",
     fields: ["id"],
     pagination: { take: 10, skip: 0 },
   })
+
+  let orders = orderRows.map((order) => ({ id: order.id }))
 
   // Reviews must reference the order the customer bought from. When the demo
   // DB has no orders yet, drive the real store checkout (per seller) so every

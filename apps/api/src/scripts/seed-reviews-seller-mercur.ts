@@ -96,11 +96,13 @@ export default async function seedReviewsForMercurSeller({
 
   logger.info(`Seeding reviews for seller "${seller.name}" (${seller.id})`)
 
-  let { data: customers } = await query.graph({
+  const { data: customerRows } = await query.graph({
     entity: "customer",
     fields: ["id"],
     pagination: { take: 5, skip: 0 },
   })
+
+  let customers = customerRows.map((customer) => ({ id: customer.id }))
 
   if (!customers.length) {
     logger.info("No customers found, creating demo customers...")

@@ -56,7 +56,8 @@ export default async function seedReservations({ container }: ExecArgs) {
     if (alreadyReserved.has(item.id as string)) continue
 
     const level = (item.location_levels ?? []).find(
-      (l: { stocked_quantity?: number; reserved_quantity?: number }) =>
+      (l) =>
+        l != null &&
         (l.stocked_quantity ?? 0) - (l.reserved_quantity ?? 0) > 0
     )
     if (!level) continue

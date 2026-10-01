@@ -32,7 +32,7 @@ type OfferRow = {
 
 export type SeededOrder = {
   id: string
-  display_id: number
+  display_id: string | null | undefined
 }
 
 export async function seedSellerOrder(
@@ -310,8 +310,9 @@ export async function seedSellerOrder(
     filters: { id: orderGroupId },
   })
   const orders: SeededOrder[] = (orderGroups[0]?.orders ?? [])
-    .filter((o) => Boolean(o?.id))
-    .map((o) => ({ id: o!.id, display_id: o!.display_id }))
+    .flatMap((o) =>
+      o?.id ? [{ id: o.id, display_id: o.display_id }] : []
+    )
   logger.info(
     `Seeded ${orders.length} order(s) for seller ${sellerId}: ${orders
       .map((o) => `#${o.display_id}`)

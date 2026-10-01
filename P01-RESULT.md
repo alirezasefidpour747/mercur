@@ -277,3 +277,20 @@ The following exact repository-relative paths are included in this P01 change. B
 - `shared/p01/messages.ts`
 - `shared/p01/styles.css`
 - `shared/p01/workspace.tsx`
+
+
+## Owner-machine debugging — 2026-10-01, round 1
+
+Status: **TESTED — FAILED** (P01 overall).
+
+The owner checked out commit `6680b91a` on macOS with Bun 1.4.2. `bun install --frozen-lockfile` succeeded. `bun run build` in `apps/api` failed with nine TypeScript diagnostics in six existing application seed/probe scripts; route and Medusa type generation succeeded. This independently confirms the recorded backend build failure.
+
+A compatibility correction is **IMPLEMENTED — NOT TESTED** pending the owner's next full build:
+
+- `src/scripts/lib/seed-seller-order.ts`: preserve the graph's nullable string display ID and skip null order entries without non-null assertions.
+- `src/scripts/probe-shared-priceset.ts`: pass a string array to the native pricing filter.
+- `src/scripts/seed-reservations.ts`: handle nullable inventory levels using inferred graph types.
+- `src/scripts/seed-reservations-sole-society.ts`: handle nullable levels/locations and keep the selected location ID separately, rather than manufacture a partial InventoryLevel object.
+- `src/scripts/seed-reviews.ts` and `src/scripts/seed-reviews-seller-mercur.ts`: normalize queried customer/order results to the ID-only projection actually consumed by these scripts.
+
+No typecheck exclusion, core package source change, migration, dependency change or seed execution is part of this correction. These existing ecommerce demo scripts are corrected for compilation; they are not enabled as P01 business flows. Full native persistence, authenticated journey and T01–T10 remain pending. P02 remains untouched.

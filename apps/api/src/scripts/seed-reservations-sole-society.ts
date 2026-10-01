@@ -57,8 +57,8 @@ export default async function seedSellerReservations({ container }: ExecArgs) {
   // A location this seller already uses (to attach stock levels where missing).
   const fallbackLocationId = mine
     .flatMap((it) => it.location_levels ?? [])
-    .map((l: { location_id?: string }) => l.location_id)
-    .find(Boolean)
+    .map((l) => l?.location_id)
+    .find((id): id is string => typeof id === "string" && id.length > 0)
 
   const reservations: {
     inventory_item_id: string
@@ -68,13 +68,16 @@ export default async function seedSellerReservations({ container }: ExecArgs) {
   }[] = []
 
   for (const item of offerItems) {
-    let level = (item.location_levels ?? []).find(
-      (l: { stocked_quantity?: number; reserved_quantity?: number }) =>
+    const level = (item.location_levels ?? []).find(
+      (l) =>
+        l != null &&
         (l.stocked_quantity ?? 0) - (l.reserved_quantity ?? 0) > 0
     )
 
+    let locationId = level?.location_id
+
     // No stock level with availability — create one so the item is reservable.
-    if (!level && fallbackLocationId) {
+    if (!locationId && fallbackLocationId) {
       await createInventoryLevelsWorkflow(container).run({
         input: {
           inventory_levels: [
@@ -86,15 +89,11 @@ export default async function seedSellerReservations({ container }: ExecArgs) {
           ],
         },
       })
-      level = {
-        location_id: fallbackLocationId,
-        stocked_quantity: 300,
-        reserved_quantity: 0,
-      }
+      locationId = fallbackLocationId
       logger.info(`Added a stock level to ${item.sku ?? item.id}.`)
     }
 
-    if (!level) continue
+    if (!locationId) continue
 
     const productTitle =
       (item as { offers?: { product?: { title?: string } }[] }).offers?.[0]
@@ -103,7 +102,7 @@ export default async function seedSellerReservations({ container }: ExecArgs) {
     for (let n = 0; n < RESERVATIONS_PER_ITEM; n++) {
       reservations.push({
         inventory_item_id: item.id as string,
-        location_id: level.location_id as string,
+        location_id: locationId,
         quantity: 5 + n * 10, // 5, 15, 25
         description: `Reserved stock for ${productTitle}`,
       })
