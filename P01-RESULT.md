@@ -463,3 +463,17 @@ Source inspection found one setAddresses UI consumer in the available checkout s
 On `e6aec778`, owner Storefront `bun run typecheck` **PASSED** after native contract generation, with no diagnostics. This supersedes round 18's three CartAddressSection errors and verifies the current cart/payment/address changes against the full application TypeScript gate.
 
 Storefront lint/full build remains **TESTED — FAILED** based on the last recorded lint run; a fresh lint run is required to establish the remaining diagnostics after these corrections. The address success/failure navigation change has not yet been runtime tested. Native database/API/UI T01–T10 evidence and canonical Bun lock capture remain pending. P01 overall remains **TESTED — FAILED**; P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 20
+
+Fresh owner Storefront `bun run lint` **TESTED — FAILED**, exit code 1, with 67 fatal diagnostics (previous run: 80). Raw evidence: `docs/p01/evidence/owner-macos-20261001-storefront-lint-round3.txt`. The next-lint deprecation notice and unused-variable/hook warnings are separate from fatal diagnostics.
+
+Next address/shipping correction batch **IMPLEMENTED — NOT TESTED**:
+
+- Checkout passes the actual flattened shipping-option result directly; ShippingProps consumes StoreCardShippingMethod[] | null and StoreCart. Remove explicit-any rules/callback/reducer casts and use a typed seller grouping.
+- Memoize the filtered shipping-option list to avoid a new effect dependency every render. Calculated prices are accepted only from fulfilled, non-null, finite numeric responses; clear obsolete prices, ignore late responses after dependency changes/unmount, and show calculation failures. Valid zero prices are displayed; missing prices are not fabricated.
+- Shipping selection/removal handles checked unknown errors. Removal refresh follows the awaited successful action; selected-method amount access has no optional-chain assertion.
+- ShippingAddress uses string form state and inferred functional updates; a stable address callback and explicit effect dependencies replace the inconsistent JSON snapshot dependencies. Country values are actual address fields; absent country remains empty, and saved addresses are filtered using actual native region countries rather than interpreting the language URL as a country.
+
+Source review checked the fulfillment helper's flattened return type, checkout consumer, AddressSelect callback and cart action results. No explicit-any or type/lint suppression remains in these four edited files. Full application typecheck/lint/build and native runtime behavior are pending; source review is not execution evidence. Existing native checkout remains outside the approved active P01 B2B slice: no Didar Order, Payment, Proforma or Dispatch APIs/features were added. Overall P01 remains **TESTED — FAILED**; native T01–T10 and canonical Bun lock capture remain outstanding, and P02 remains untouched.

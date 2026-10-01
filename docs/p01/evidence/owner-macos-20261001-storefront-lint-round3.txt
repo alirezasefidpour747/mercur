@@ -1,0 +1,234 @@
+arashthearcher@Arashs-MacBook-Air storefront % bun run lint
+$ next lint
+`next lint` is deprecated and will be removed in Next.js 16.
+For new projects, use create-next-app to choose your preferred linter.
+For existing projects, migrate to the ESLint CLI:
+npx @next/codemod@canary next-lint-to-eslint-cli .
+
+
+./src/app/[locale]/(checkout)/checkout/page.tsx
+54:60  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/[id]/page.tsx
+19:56  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/[id]/return/page.tsx
+15:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+24:43  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/[locale]/(main)/user/orders/page.tsx
+29:38  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/app/global-error.tsx
+3:3  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/AddressSelect/AddressSelect.tsx
+6:10  Warning: 'Radio' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/CartDropdown/CartDropdown.tsx
+67:6  Warning: React Hook useEffect has a missing dependency: 'pathname'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/cells/OrderAddresses/OrderAddresses.tsx
+5:70  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/OrderCancel/OrderCancel.tsx
+10:49  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:54  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+18:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+26:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+59:39  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/cells/PriceFilter/PriceFilter.tsx
+6:21  Warning: 'FilterCheckboxOption' is defined but never used.  @typescript-eslint/no-unused-vars
+19:9  Warning: 'selected' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+26:9  Warning: 'selectHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/SizeFilter/SizeFilter.tsx
+3:21  Warning: 'SelectField' is defined but never used.  @typescript-eslint/no-unused-vars
+8:7  Warning: 'sizeType' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+36:9  Warning: 'size_region' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+38:9  Warning: 'selectSizeRegionHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/cells/UserDropdown/UserDropdown.tsx
+4:3  Warning: 'Badge' is defined but never used.  @typescript-eslint/no-unused-vars
+12:10  Warning: 'HttpTypes' is defined but never used.  @typescript-eslint/no-unused-vars
+23:9  Warning: 'unreads' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CartDropdownItem/CartDropdownItem.tsx
+12:9  Warning: 'original_total' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CategoryNavbar/components/CategoryDropdownContainer.tsx
+15:3  Warning: 'isVisible' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/CategoryNavbar/components/CategoryDropdownMenu.tsx
+7:10  Warning: 'FeaturedCategory' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/ForgotPasswordForm/ForgotPasswordForm.tsx
+3:10  Warning: 'useState' is defined but never used.  @typescript-eslint/no-unused-vars
+6:10  Warning: 'ClientError' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/HeaderCategoryNavbar/HeaderCategoryNavbar.tsx
+5:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/LoginForm/LoginForm.tsx
+65:5  Warning: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+
+./src/components/molecules/ParcelAccordion/ParcelAccordion.tsx
+22:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/ParcelAccordion/ParcelAccordionItems.tsx
+17:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+41:61  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+89:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/molecules/ProfileDetailsForm/ProfileDetailsForm.tsx
+60:5  Warning: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+
+./src/components/molecules/ProfilePasswordForm/ProfilePasswordForm.tsx
+3:18  Warning: 'Card' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/molecules/SellerInfo/SellerInfo.tsx
+7:3  Warning: 'header' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/CompareOffersModal/CompareOffersModal.tsx
+40:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/Header/Header.tsx
+14:32  Warning: 'locale' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OfferCard/OfferCard.tsx
+65:14  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderDefails/OrderDetails.tsx
+11:9  Warning: 'formatStatus' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderDefails/OrderShipping.tsx
+1:10  Warning: 'isStripe' is defined but never used.  @typescript-eslint/no-unused-vars
+4:10  Warning: 'Container' is defined but never used.  @typescript-eslint/no-unused-vars
+50:22  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/OrderItems/OrderItems.tsx
+1:10  Warning: 'Divider' is defined but never used.  @typescript-eslint/no-unused-vars
+3:10  Warning: 'Table' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/OrderParcels/OrderParcels.tsx
+8:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/OrderTotals/OrderTotals.tsx
+4:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+7:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/organisms/ProductListingHeader/ProductListingHeader.tsx
+5:10  Warning: 'SelectField' is defined but never used.  @typescript-eslint/no-unused-vars
+7:7  Warning: 'selectOptions' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+17:9  Warning: 'selectOptionHandler' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/ProductSearchSidebar/ProductSearchSidebar.tsx
+101:40  Warning: 'count' is defined but never used.  @typescript-eslint/no-unused-vars
+163:10  Warning: 'PriceFilter' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/SellerFooter/SellerFooter.tsx
+4:10  Warning: 'DoneIcon' is defined but never used.  @typescript-eslint/no-unused-vars
+5:10  Warning: 'SingleProductSeller' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/SellerHeading/SellerHeading.tsx
+5:10  Warning: 'Button' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/organisms/ShippingAddress/ShippingAddress.tsx
+13:3  Warning: 'checked' is defined but never used.  @typescript-eslint/no-unused-vars
+14:3  Warning: 'onChange' is defined but never used.  @typescript-eslint/no-unused-vars
+24:59  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+43:5  Warning: React Hook useMemo has a missing dependency: 'locale'. Either include it or remove the dependency array.  react-hooks/exhaustive-deps
+53:5  Warning: React Hook useMemo has a missing dependency: 'cart?.shipping_address'. Either include itor remove the dependency array.  react-hooks/exhaustive-deps
+72:5  Warning: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+73:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+86:5  Warning: Expected an assignment or function call and instead saw an expression.  @typescript-eslint/no-unused-expressions
+87:46  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+101:6  Warning: React Hook useEffect has missing dependencies: 'cart', 'customer.email', and 'setFormAddress'. Either include them or remove the dependency array.  react-hooks/exhaustive-deps
+
+./src/components/organisms/SingleOrderReturn/SingleOrderReturn.tsx
+24:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+27:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+44:25  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+46:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+49:22  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+51:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+63:58  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+130:49  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartReview/PaymentButton.tsx
+10:10  Warning: 'orderErrorFormatter' is defined but never used.  @typescript-eslint/no-unused-vars
+11:10  Warning: 'toast' is defined but never used.  @typescript-eslint/no-unused-vars
+56:18  Warning: 'dataTestId' is defined but never used.  @typescript-eslint/no-unused-vars
+72:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+92:5  Error: Use "@ts-expect-error" instead of "@ts-ignore", as "@ts-ignore" will do nothing if the following line is error-free.  @typescript-eslint/ban-ts-comment
+180:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/CartShippingMethodsSection/CartShippingMethodRow.tsx
+30:21  Error: Optional chain expressions can return undefined by design - using a non-null assertion isunsafe and wrong.  @typescript-eslint/no-non-null-asserted-optional-chain
+
+./src/components/sections/CartShippingMethodsSection/CartShippingMethodsSection.tsx
+48:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+70:33  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+84:59  Error: Optional chain expressions can return undefined by design - using a non-null assertion isunsafe and wrong.  @typescript-eslint/no-non-null-asserted-optional-chain
+112:21  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+133:60  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+164:48  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+179:43  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+259:70  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderConfirmedSection/OrderConfirmedSection.tsx
+1:8  Warning: 'OrderDetails' is defined but never used.  @typescript-eslint/no-unused-vars
+2:8  Warning: 'OrderShipping' is defined but never used.  @typescript-eslint/no-unused-vars
+3:8  Warning: 'OrderTotals' is defined but never used.  @typescript-eslint/no-unused-vars
+4:8  Warning: 'OrderItems' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/components/sections/OrderDetailsSection/OrderDetailsSection.tsx
+1:10  Warning: 'OrderAddresses' is defined but never used.  @typescript-eslint/no-unused-vars
+5:67  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnRequests/OrderReturnRequests.tsx
+15:12  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+16:9  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+19:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/OrderReturnSection.tsx
+20:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+21:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+22:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:54  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+27:52  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+39:42  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+43:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnItemsTab.tsx
+22:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+23:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+24:28  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+25:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+37:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnMethodsTab.tsx
+9:20  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+10:35  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+12:11  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+29:45  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/OrderReturnSection/ReturnSummaryTab.tsx
+14:18  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+15:10  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+19:17  Error: Unexpected any. Specify a different type.  @typescript-eslint/no-explicit-any
+
+./src/components/sections/ProductListing/SearchProductsListing.tsx
+104:16  Warning: 'error' is defined but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/data/fulfillment.ts
+8:63  Warning: 'is_return' is assigned a value but never used.  @typescript-eslint/no-unused-vars
+
+./src/lib/data/regions.ts
+55:12  Warning: 'e' is defined but never used.  @typescript-eslint/no-unused-vars
+
+info  - Need to disable some ESLint rules? Learn more here: https://nextjs.org/docs/app/api-reference/config/eslint#disabling-rules
+error: script "lint" exited with code 1

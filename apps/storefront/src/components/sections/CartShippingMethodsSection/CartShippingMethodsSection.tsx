@@ -1,6 +1,6 @@
 'use client';
 
-import { Fragment, useEffect, useState, useTransition, type FC } from 'react';
+import { Fragment, useEffect, useMemo, useState, useTransition, type FC } from 'react';
 
 import { Listbox, Transition } from '@headlessui/react';
 import { CheckCircleSolid, ChevronUpDown, Loader } from '@medusajs/icons';
@@ -14,22 +14,13 @@ import ErrorMessage from '@/components/molecules/ErrorMessage/ErrorMessage';
 import { removeShippingMethod, setShippingMethod } from '@/lib/data/cart';
 import { calculatePriceForShippingOption } from '@/lib/data/fulfillment';
 import { convertToLocale } from '@/lib/helpers/money';
+import { requestErrorMessage } from '@/lib/helpers/request-error-message';
 
 import { CartShippingMethodRow } from './CartShippingMethodRow';
 
-type ExtendedStoreProduct = HttpTypes.StoreProduct & {
-  seller?: {
-    id: string;
-    name: string;
-  };
-};
-
-type CartItem = {
-  product?: ExtendedStoreProduct;
-};
-
 export type StoreCardShippingMethod = HttpTypes.StoreCartShippingOption & {
   seller_id?: string;
+  rules?: { attribute: string; value: string | string[] }[];
   seller_name?: string;
   service_zone?: {
     fulfillment_set: {
@@ -39,19 +30,8 @@ export type StoreCardShippingMethod = HttpTypes.StoreCartShippingOption & {
 };
 
 type ShippingProps = {
-  cart: Omit<HttpTypes.StoreCart, 'items'> & {
-    items?: CartItem[];
-  };
-  availableShippingMethods:
-    | (StoreCardShippingMethod &
-        {
-          rules: any;
-          seller_id: string;
-          price_type: string;
-          id: string;
-          amount?: number;
-        }[])
-    | null;
+  cart: HttpTypes.StoreCart;
+  availableShippingMethods: StoreCardShippingMethod[] | null;
 };
 
 const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShippingMethods }) => {
@@ -66,29 +46,45 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
 
   const isOpen = searchParams.get('step') === 'delivery';
 
-  const _shippingMethods = availableShippingMethods?.filter(
-    sm => sm.rules?.find((rule: any) => rule.attribute === 'is_return')?.value !== 'true'
+  const _shippingMethods = useMemo(
+    () => (availableShippingMethods ?? []).filter(
+      method => method.rules?.find(rule => rule.attribute === 'is_return')?.value !== 'true'
+    ),
+    [availableShippingMethods]
   );
 
   useEffect(() => {
-    if (_shippingMethods?.length) {
-      const promises = _shippingMethods
-        .filter(sm => sm.price_type === 'calculated')
-        .map(sm => calculatePriceForShippingOption(sm.id, cart.id));
-
-      if (promises.length) {
-        Promise.allSettled(promises).then(res => {
-          const pricesMap: Record<string, number> = {};
-          res
-            .filter(r => r.status === 'fulfilled')
-            .forEach(p => (pricesMap[p.value?.id || ''] = p.value?.amount!));
-
-          setCalculatedPricesMap(pricesMap);
-          setIsLoadingPrices(false);
-        });
-      }
+    let cancelled = false;
+    const methods = _shippingMethods.filter(method => method.price_type === 'calculated');
+    if (!methods.length) {
+      setCalculatedPricesMap({});
+      setIsLoadingPrices(false);
+      return;
     }
-  }, [availableShippingMethods, _shippingMethods, cart.id]);
+    setCalculatedPricesMap({});
+    setIsLoadingPrices(true);
+    Promise.allSettled(
+      methods.map(method => calculatePriceForShippingOption(method.id, cart.id))
+    ).then(results => {
+      if (cancelled) return;
+      const pricesMap: Record<string, number> = {};
+      let failed = false;
+      for (const result of results) {
+        if (
+          result.status === 'fulfilled' && result.value &&
+          typeof result.value.amount === 'number' && Number.isFinite(result.value.amount)
+        ) {
+          pricesMap[result.value.id] = result.value.amount;
+        } else {
+          failed = true;
+        }
+      }
+      setCalculatedPricesMap(pricesMap);
+      if (failed) setError('Could not calculate one or more shipping prices. Please try again.');
+      setIsLoadingPrices(false);
+    });
+    return () => { cancelled = true; };
+  }, [_shippingMethods, cart.id]);
 
   const handleSubmit = () => {
     router.push(pathname + '?step=payment', { scroll: false });
@@ -107,12 +103,10 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
         shippingMethodId: id
       });
       if (!res.ok) {
-        return setError(res.error?.message);
+        return setError(requestErrorMessage(res.error, 'Failed to set shipping method'));
       }
-    } catch (error: any) {
-      setError(
-        error?.message?.replace('Error setting up the request: ', '') || 'An error occurred'
-      );
+    } catch (error: unknown) {
+      setError(requestErrorMessage(error, 'Failed to set shipping method'));
     } finally {
       setIsLoadingPrices(false);
       router.refresh();
@@ -121,32 +115,29 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
 
   const handleRemoveShippingMethod = (methodId: string) => {
     startTransitionDeleteRow(async () => {
-      await removeShippingMethod(methodId);
+      try {
+        await removeShippingMethod(methodId);
+        router.refresh();
+      } catch (error: unknown) {
+        setError(requestErrorMessage(error, 'Failed to remove shipping method'));
+      }
     });
-    router.refresh();
   };
 
   useEffect(() => {
     setError(null);
   }, [isOpen]);
 
-  const groupedBySellerId = _shippingMethods?.reduce((acc: any, method) => {
-    const sellerId = method.seller_id!;
-
-    if (!acc[sellerId]) {
-      acc[sellerId] = [];
-    }
-
-    const amount = Number(
-      method.price_type === 'flat' ? method.amount : calculatedPricesMap[method.id]
-    );
-
-    if (!isNaN(amount)) {
-      acc[sellerId]?.push(method);
-    }
-
-    return acc;
-  }, {});
+  const groupedBySellerId = _shippingMethods.reduce<Record<string, StoreCardShippingMethod[]>>(
+    (groups, method) => {
+      const sellerId = method.seller_id;
+      const amount = method.price_type === 'flat' ? method.amount : calculatedPricesMap[method.id];
+      if (!sellerId || typeof amount !== 'number' || !Number.isFinite(amount)) return groups;
+      (groups[sellerId] ??= []).push(method);
+      return groups;
+    },
+    {}
+  );
 
   const handleEdit = () => {
     router.replace(pathname + '?step=delivery');
@@ -161,7 +152,7 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
   // the option ids that belong to that seller.
   const getSelectedMethodForSeller = (key: string) => {
     const optionIds = new Set<string>(
-      (groupedBySellerId?.[key] ?? []).map((o: any) => o.id)
+      (groupedBySellerId?.[key] ?? []).map(option => option.id)
     );
     return cart.shipping_methods?.find(
       method =>
@@ -176,7 +167,7 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
 
   // Map each selected method back to its seller name for the summary rows.
   const sellerNameByOptionId = new Map<string, string | undefined>(
-    (_shippingMethods ?? []).map((option: any) => [option.id, option.seller_name])
+    (_shippingMethods ?? []).map(option => [option.id, option.seller_name])
   );
 
   return (
@@ -256,7 +247,7 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
                                 className="text-small-regular border-top-0 absolute z-20 max-h-60 w-full overflow-auto rounded-lg border bg-white focus:outline-none sm:text-sm"
                                 data-testid="shipping-address-options"
                               >
-                                {groupedBySellerId[key].map((option: any) => (
+                                {groupedBySellerId[key].map(option => (
                                   <Listbox.Option
                                     className="relative cursor-pointer select-none border-b py-4 pl-6 pr-10 hover:bg-gray-50"
                                     value={option.id}
@@ -266,10 +257,10 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
                                     {' - '}
                                     {option.price_type === 'flat' ? (
                                       convertToLocale({
-                                        amount: option.amount!,
+                                        amount: option.amount ?? calculatedPricesMap[option.id],
                                         currency_code: cart?.currency_code
                                       })
-                                    ) : calculatedPricesMap[option.id] ? (
+                                    ) : typeof calculatedPricesMap[option.id] === 'number' ? (
                                       convertToLocale({
                                         amount: calculatedPricesMap[option.id],
                                         currency_code: cart?.currency_code
@@ -337,7 +328,7 @@ const CartShippingMethodsSection: FC<ShippingProps> = ({ cart, availableShipping
                     <Text className="txt-medium text-ui-fg-subtle">
                       {method.name}{' '}
                       {convertToLocale({
-                        amount: method.amount!,
+                        amount: method.amount,
                         currency_code: cart?.currency_code
                       })}
                     </Text>

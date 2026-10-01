@@ -25,9 +25,9 @@ export const CartShippingMethodRow = ({
           {sellerName ?? "Method"}
         </Text>
         <Text className="txt-medium text-ui-fg-subtle">
-          {method?.name}{" "}
+          {method.name}{" "}
           {convertToLocale({
-            amount: method?.amount!,
+            amount: method.amount,
             currency_code: currency_code,
           })}
         </Text>
