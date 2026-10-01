@@ -423,3 +423,8 @@ Next existing-source lint batch **IMPLEMENTED — NOT TESTED** against full appl
 - SellerPageHeader uses SellerDTO; SellerReviewList consumes the existing review component's concrete review type.
 
 Verified native nullable calculated-price fields against Medusa v2.21.0 `packages/core/types/src/http/product/common.ts` and `http/price-preference/common.ts`. Local Node helper smoke checks **PASSED** (11 assertions: missing/incomplete/zero/tax price data, selected/cheapest variants, unchanged source ordering, empty lists and Seller price sorting). No real HTTP/database/UI journey was exercised. No suppression or explicit-any was added in this batch. Didar curated indicative ranges and approved Product identity/business rules remain unchanged; native commerce screens remain outside active P01 B2B routes. Full application typecheck/scoped lint/build and remaining native lint repair are pending. P01 overall remains **TESTED — FAILED**.
+
+
+## Owner-machine debugging — 2026-10-01, round 15
+
+On `d82181f4`, Storefront typecheck **TESTED — FAILED** with one TS18048 at CartReview.tsx:27: the second shipping-method count access remained unguarded. Other round 14 changes emitted no diagnostics in this run. Correction **IMPLEMENTED — NOT TESTED**: guard both count comparisons for an omitted native shipping_methods expansion; no shipping methods does not satisfy the review gate. Owner typecheck is required again. Remaining lint/full build and native T01–T10 evidence are pending. P01 overall remains **TESTED — FAILED**.

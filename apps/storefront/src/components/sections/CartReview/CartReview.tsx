@@ -24,7 +24,7 @@ const Review = ({ cart }: { cart: ReviewCart }) => {
   ).size;
   const allSellersHaveShipping =
     (cart.shipping_methods?.length ?? 0) > 0 &&
-    cart.shipping_methods.length >= cartSellerCount;
+    (cart.shipping_methods?.length ?? 0) >= cartSellerCount;
 
   const previousStepsCompleted =
     cart.shipping_address &&
