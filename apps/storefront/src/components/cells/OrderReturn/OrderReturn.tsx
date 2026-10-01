@@ -3,7 +3,7 @@
 import { Button } from "@/components/atoms"
 import Link from "next/link"
 
-export const OrderReturn = ({ order }: { order: any }) => {
+export const OrderReturn = ({ order }: { order: { id: string } }) => {
   return (
     <div className="md:flex justify-between items-center">
       <div className="mb-4 md:mb-0">

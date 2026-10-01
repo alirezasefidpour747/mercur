@@ -1,3 +1,4 @@
+import type { HttpTypes } from "@medusajs/types"
 import { Fragment } from 'react';
 
 import Image from 'next/image';
@@ -12,7 +13,7 @@ export const OrderProductListItem = ({
   currency_code,
   withDivider
 }: {
-  item: any;
+  item: HttpTypes.StoreOrderLineItem;
   currency_code: string;
   withDivider?: boolean;
 }) => (

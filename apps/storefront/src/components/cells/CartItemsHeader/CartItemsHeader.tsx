@@ -7,7 +7,11 @@ import LocalizedClientLink from "@/components/molecules/LocalizedLink/LocalizedL
 export const CartItemsHeader = ({
   seller,
 }: {
-  seller: SingleProductSeller
+  seller: Pick<SingleProductSeller, "id" | "name"> & {
+    handle?: string
+    photo: string
+    created_at?: string | Date
+  }
 }) => {
   return (
     <LocalizedClientLink href={`/sellers/${seller.handle}`}>

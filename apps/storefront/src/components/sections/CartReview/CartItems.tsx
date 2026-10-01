@@ -2,10 +2,19 @@ import { HttpTypes } from '@medusajs/types';
 
 import { CartItemsHeader, CartItemsProducts } from '@/components/cells';
 
+import type { ComponentProps } from "react";
+import type { OfferDTO } from "@mercurjs/types";
+
+type CartItemWithOffer = HttpTypes.StoreCartLineItem & { offer?: OfferDTO | null }
+type SellerItemGroup = {
+  seller: ComponentProps<typeof CartItemsHeader>["seller"]
+  items: HttpTypes.StoreCartLineItem[]
+}
+
 export const CartItems = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
   if (!cart) return null;
 
-  const groupedItems: any = groupItemsBySeller(cart);
+  const groupedItems = groupItemsBySeller(cart);
 
   return Object.keys(groupedItems).map(key => (
     <div
@@ -24,14 +33,16 @@ export const CartItems = ({ cart }: { cart: HttpTypes.StoreCart | null }) => {
 };
 
 function groupItemsBySeller(cart: HttpTypes.StoreCart) {
-  const groupedBySeller: any = {};
+  const groupedBySeller: Record<string, SellerItemGroup> = {};
 
-  cart.items?.forEach((item: any) => {
+  cart.items?.forEach((item: CartItemWithOffer) => {
     const seller = item.offer?.seller;
     if (seller) {
       if (!groupedBySeller[seller.id]) {
         groupedBySeller[seller.id] = {
-          seller: { ...seller, photo: seller.photo ?? seller.logo },
+          seller: { ...seller, photo: "photo" in seller && typeof seller.photo === "string"
+            ? seller.photo
+            : seller.logo ?? "" },
           items: []
         };
       }

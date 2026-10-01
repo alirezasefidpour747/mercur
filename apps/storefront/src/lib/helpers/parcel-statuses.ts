@@ -1,7 +1,9 @@
+import type { HttpTypes } from "@medusajs/types"
+
 export const steps = ["Received", "Preparing", "Shipped", "Delivered"]
 
 export const parcelStatuses = (
-  order: "not_fulfilled" | "fulfilled" | "delivered" | "shipped"
+  order: HttpTypes.StoreOrder["fulfillment_status"]
 ) => {
   switch (order) {
     case "not_fulfilled":

@@ -1,15 +1,16 @@
+import type { HttpTypes } from "@medusajs/types"
 import { OrderProductListItem } from "@/components/cells"
 
 export const OrderParcelItems = ({
   items,
   currency_code,
 }: {
-  items: any[]
+  items?: HttpTypes.StoreOrderLineItem[]
   currency_code: string
 }) => {
   return (
     <>
-      {items.map((item) => (
+      {(items ?? []).map((item) => (
         <OrderProductListItem
           key={item.id + item.variant_id}
           item={item}

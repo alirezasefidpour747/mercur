@@ -1,0 +1,7 @@
+Owner macOS — 2026-10-01; commit 29a04724
+Command: bun run typecheck
+$ bun run generate:native-contract && tsc --noEmit
+$ bun ./scripts/generate-native-contract.mjs
+Generated native storefront contract (auth/store)
+No diagnostics; shell prompt returned.
+Transcribed from owner chat output.

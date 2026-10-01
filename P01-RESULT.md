@@ -393,3 +393,12 @@ On `bf7c1ab7`, Storefront typecheck **TESTED — FAILED** with six diagnostics i
 Correction **IMPLEMENTED — NOT TESTED**: export the existing PasswordValidation shape and use it for both consuming state setters with separate digit/symbol fields, narrow the signup error branch with typeof string, and render an explicit failure fallback when a failed address result has no error message. Password validation rules and existing native action responses remain unchanged. No lint/type gate disabled, no future business package activated. Full application typecheck must be rerun; remaining native lint repairs are still pending. P01 overall remains **TESTED — FAILED**.
 
 Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-round6.txt` records the six owner-reported diagnostics.
+
+
+## Owner-machine debugging — 2026-10-01, round 12
+
+On `29a04724`, owner Storefront `bun run typecheck` **PASSED** after native contract generation, with no diagnostics and a return to the shell prompt. This supersedes round 11's six errors. It is not a full build/lint or authenticated runtime pass.
+
+Next native lint batch **IMPLEMENTED — NOT TESTED** against application gates: both existing CartItems components describe optional native Offer expansions and typed Seller item groups; CartItemsHeader accepts only the actual display fields it consumes, with no invented rating/review values. BillingAddress uses string-valued form state. Existing order return/tracking/status/action components use native order field projections; OrderProductListItem and OrderParcelItems use native line-item DTOs. Nullable/unexpanded fulfillment labels/items are guarded. Parcel status helper accepts the native fulfillment-status union and preserves its existing default behavior. No P01 Order/Payment/Dispatch capability was added or activated; these are compilation fixes in existing app source. No Core source or lint/type gate changed.
+
+Local verification: eight existing parcel-status mapping smoke assertions **PASSED**. Inspection of this batch found no explicit-any or suppression additions. Full app typecheck, scoped lint and production build for these edits require owner execution. Remaining native lint diagnostics and all outstanding T01–T10 requirements remain pending. P01 overall remains **TESTED — FAILED**.
