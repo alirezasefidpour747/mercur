@@ -447,3 +447,12 @@ Next correction batch **IMPLEMENTED — NOT TESTED** against full application ga
 - CartPaymentSection uses actual StorePaymentProvider and StoreCart types, optional expansion fields and real error messages; absent shipping methods fail its readiness check. No payment route, settlement behavior or P01 commerce capability was added.
 
 The small application-local requestErrorMessage helper preserves nested response errors, ordinary Error messages and text errors, and provides a failure fallback for malformed/empty values. Local Node smoke checks **PASSED**, six assertions; this is not real API evidence. No explicit-any or suppression remains in these edited files. Full app TypeScript/lint/build must be verified on the owner machine; overall P01 remains **TESTED — FAILED** and all outstanding native T01–T10 work remains pending.
+
+
+## Owner-machine debugging — 2026-10-01, round 18
+
+On `663c8f05`, owner Storefront `bun run typecheck` **TESTED — FAILED** with three CartAddressSection diagnostics: useActionState received the checkbox boolean as the initial error state, its failed overload resolution made the dispatch appear payload-less, and ErrorMessage received a boolean/string union. Other round 17 changes emitted no diagnostics in this run.
+
+Correction **IMPLEMENTED — NOT TESTED**: CartAddressSection keeps the billing checkbox separate from action error state; the action accepts FormData and returns the actual string/undefined result of setAddresses. The form uses the action dispatch directly, renders only the returned error, and disables Save while pending. Delivery navigation and refresh occur only after the awaited address action succeeds; the old wrapper advanced even on failure. Include the actual router/path dependencies in its address effect. No new commerce API or P01 checkout capability was added, and no type/lint suppression was introduced.
+
+Source inspection found one setAddresses UI consumer in the available checkout source. The component was checked against the current remote action signature. Full application typecheck, lint, build and runtime behavior remain pending; no local full app compiler or live native backend was available for this correction. P01 overall remains **TESTED — FAILED**. Native T01–T10 and the remaining lint repairs remain outstanding; P02 remains untouched.

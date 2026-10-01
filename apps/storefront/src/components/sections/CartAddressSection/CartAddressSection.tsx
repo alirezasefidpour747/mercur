@@ -41,13 +41,23 @@ export const CartAddressSection = ({
       : true
   )
 
-  const [message, formAction] = useActionState(setAddresses, sameAsBilling)
+  const [message, formAction, isPending] = useActionState(
+    async (previousState: string | undefined, data: FormData) => {
+      const error = await setAddresses(previousState, data)
+      if (error === undefined) {
+        router.replace(`${pathname}?step=delivery`)
+        router.refresh()
+      }
+      return error
+    },
+    undefined
+  )
 
   useEffect(() => {
     if (!isAddress) {
       router.replace(pathname + "?step=address")
     }
-  }, [isAddress])
+  }, [isAddress, pathname, router])
 
   const handleEdit = () => {
     router.replace(pathname + "?step=address")
@@ -70,13 +80,7 @@ export const CartAddressSection = ({
           </Text>
         )}
       </div>
-      <form
-        action={async (data) => {
-          await formAction(data)
-          router.replace(`${pathname}?step=delivery`)
-          router.refresh()
-        }}
-      >
+      <form action={formAction}>
         {isOpen ? (
           <div className="pb-8">
             <ShippingAddress
@@ -88,12 +92,13 @@ export const CartAddressSection = ({
             <Button
               className="mt-6"
               data-testid="submit-address-button"
+              disabled={isPending}
               variant="tonal"
             >
               Save
             </Button>
             <ErrorMessage
-              error={message !== "success" && message}
+              error={message}
               data-testid="address-error-message"
             />
           </div>
