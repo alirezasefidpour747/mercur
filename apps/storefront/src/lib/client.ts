@@ -1,6 +1,6 @@
 import { createClient, InferClient } from '@mercurjs/client';
 
-type Routes = Record<string, unknown>;
+import type { Routes } from '@mercurjs/core/_generated';
 
 const MEDUSA_BACKEND_URL = process.env.MEDUSA_BACKEND_URL || 'http://localhost:9000';
 

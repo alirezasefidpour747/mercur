@@ -8,12 +8,12 @@ export const Item = ({
   item: HttpTypes.StoreCartLineItem | HttpTypes.StoreOrderLineItem
   currencyCode: string
 }) => {
-  const original_total = convertToLocale({
+  const original_total = item.original_total == null ? null : convertToLocale({
     amount: item.original_total,
     currency_code: currencyCode,
   })
 
-  const total = convertToLocale({
+  const total = item.total == null ? null : convertToLocale({
     amount: item.total,
     currency_code: currencyCode,
   })
@@ -55,12 +55,12 @@ export const Item = ({
             </p>
           </div>
           <div className="lg:text-right flex lg:block items-center gap-2 mt-4 lg:mt-0">
-            {total !== original_total && (
+            {original_total != null && total !== original_total && (
               <p className="line-through text-secondary label-md">
                 {original_total}
               </p>
             )}
-            <p className="label-lg">{total}</p>
+            <p className="label-lg">{total ?? "—"}</p>
           </div>
         </div>
       </div>

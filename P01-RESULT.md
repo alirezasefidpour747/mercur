@@ -310,3 +310,14 @@ Correction **IMPLEMENTED — NOT TESTED**: add an application-local `eslint.conf
 Storefront build on `c3a914d3` compiled its bundle but **TESTED — FAILED** at validation: ESLint could not resolve react-hooks from the application placeholder, and Carousel imported a type from a transitive package not declared directly by the app.
 
 Correction **IMPLEMENTED — NOT TESTED**: resolve ESLint plugins relative to the installed Next config, whose declared dependencies include react-hooks; derive Embla API types from the directly installed React hook in both Carousel and ProductCarouselIndicator. No added dependency, lockfile mutation or validation bypass. Next steps are full build and standalone TypeScript diagnostics on the owner's machine.
+
+
+## Owner-machine debugging — 2026-10-01, round 4
+
+Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-round3.txt` (owner-provided complete build and standalone tsc output).
+
+On `a25179bd`, ESLint loaded successfully and the Embla module errors disappeared. Full storefront build and standalone tsc remain **TESTED — FAILED**. Lint exposes existing native commerce explicit-any/suppression/unsafe-optional-chain errors. Most tsc diagnostics stem from the pre-existing `Routes = Record<string, unknown>` client placeholder, which erases native endpoint methods.
+
+Correction **IMPLEMENTED — NOT TESTED**: bind the native SDK to Mercur's actual exported `@mercurjs/core/_generated` route contract; remove the incompatible optional promotion override in Cart; constrain country selections to strings and filter incomplete country options; make the debounce ref nullable and writable; present absent order amounts as unavailable rather than fabricate zero; describe the optional native seller expansion consumed by the inactive native product component.
+
+These are application compilation fixes only. No native core source, real request behavior, API authorization, dependency lockfile, Didar public DTO or future business feature is added/activated. No lint or TypeScript checks are disabled. Remaining native lint errors are still pending; first re-run standalone tsc to confirm the restored native contract and collect any remaining type diagnostics before the next repair batch. P01 remains **TESTED — FAILED**; backend build has owner-machine passing evidence.

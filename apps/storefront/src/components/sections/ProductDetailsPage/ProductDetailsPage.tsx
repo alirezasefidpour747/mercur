@@ -4,6 +4,7 @@ import { listOffers } from "@/lib/data/offers"
 import { StoreOffer } from "@/lib/helpers/buybox"
 import { HomeProductSection } from "../HomeProductSection/HomeProductSection"
 import NotFound from "@/app/not-found"
+import type { HttpTypes } from "@medusajs/types"
 
 export const ProductDetailsPage = async ({
   handle,
@@ -19,7 +20,11 @@ export const ProductDetailsPage = async ({
 
   if (!prod) return null
 
-  if (prod.seller?.store_status === "SUSPENDED") {
+  const seller = (prod as HttpTypes.StoreProduct & {
+    seller?: { store_status?: string; products?: HttpTypes.StoreProduct[] }
+  }).seller
+
+  if (seller?.store_status === "SUSPENDED") {
     return NotFound()
   }
 
@@ -45,7 +50,7 @@ export const ProductDetailsPage = async ({
       <div className="my-8">
         <HomeProductSection
           heading="Similar items"
-          products={prod.seller?.products}
+          products={seller?.products}
           locale={locale}
         />
       </div>
