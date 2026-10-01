@@ -1,10 +1,17 @@
+import type { HttpTypes } from "@medusajs/types"
 import { Card, Divider } from "@/components/atoms"
 import { convertToLocale } from "@/lib/helpers/money"
 
-export const OrderTotals = ({ orderGroup }: { orderGroup: any }) => {
+type TotalsGroup = {
+  orders?: Pick<HttpTypes.StoreOrder, "shipping_total" | "total" | "currency_code">[] | null
+  total?: number | null
+  currency_code?: string | null
+}
+
+export const OrderTotals = ({ orderGroup }: { orderGroup: TotalsGroup }) => {
   // The order group only exposes a computed `total`; per-seller monetary
   // breakdowns live on its child orders, so aggregate them here.
-  const orders: any[] = orderGroup.orders ?? []
+  const orders = orderGroup.orders ?? []
 
   const delivery = orders.reduce(
     (sum, order) => sum + (order.shipping_total ?? 0),

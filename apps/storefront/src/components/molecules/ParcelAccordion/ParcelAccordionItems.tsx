@@ -1,6 +1,7 @@
 'use client';
 
 import { useEffect, useRef, useState } from 'react';
+import type { HttpTypes } from '@medusajs/types';
 
 import { Card } from '@/components/atoms';
 import { OrderProductListItem } from '@/components/cells';
@@ -9,12 +10,17 @@ import { convertToLocale } from '@/lib/helpers/money';
 import { parcelStatuses, steps } from '@/lib/helpers/parcel-statuses';
 import { cn } from '@/lib/utils';
 
+export type ParcelOrder = Pick<
+  HttpTypes.StoreOrder,
+  'id' | 'display_id' | 'fulfillment_status' | 'items' | 'shipping_total'
+> & { seller?: { name: string } | null };
+
 export const ParcelAccordionItems = ({
   order,
   currency_code,
   shippingPriceTestId
 }: {
-  order: any;
+  order: ParcelOrder;
   index: number;
   currency_code: string;
   shippingPriceTestId?: string;
@@ -25,12 +31,13 @@ export const ParcelAccordionItems = ({
   const contentRef = useRef<HTMLDivElement>(null);
 
   useEffect(() => {
-    setTimeout(() => {
+    const timer = setTimeout(() => {
       if (contentRef.current) {
         setHeight(contentRef.current.scrollHeight);
       }
     }, 100);
-  }, []);
+    return () => clearTimeout(timer);
+  }, [order.items]);
 
   const openHandler = () => {
     setIsOpen(prev => !prev);
@@ -38,7 +45,7 @@ export const ParcelAccordionItems = ({
 
   const status = parcelStatuses(order.fulfillment_status);
 
-  const totalItems = order.items.reduce((acc: number, item: any) => acc + item.quantity, 0);
+  const totalItems = (order.items ?? []).reduce((count, item) => count + item.quantity, 0);
 
   return (
     <Card
@@ -54,7 +61,7 @@ export const ParcelAccordionItems = ({
           <span className="font-semibold uppercase text-primary">{steps[status]}</span>
         </p>
         <p className="label-md col-span-2 px-2">
-          Seller: <span className="font-semibold text-primary">{order.seller.name}</span>
+          Seller: <span className="font-semibold text-primary">{order.seller?.name ?? '—'}</span>
         </p>
         <p className="label-md col-span-2 px-2 text-center">
           Shipping:{' '}
@@ -86,7 +93,7 @@ export const ParcelAccordionItems = ({
         }}
       >
         <div className="p-4">
-          {order.items.map((item: any) => (
+          {(order.items ?? []).map((item) => (
             <OrderProductListItem
               key={item.id + item.variant_id}
               item={item}

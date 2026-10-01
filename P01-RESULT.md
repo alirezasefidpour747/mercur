@@ -484,3 +484,18 @@ Source review checked the fulfillment helper's flattened return type, checkout c
 On `89afdd86`, Storefront `bun run typecheck && bun run lint` **TESTED — FAILED** at the TypeScript gate with one TS2352 in ShippingAddress. The form's string dictionary had been asserted as a persisted StoreCartAddress although it has no id/created_at/updated_at. Lint did not execute because the typecheck failed; 67 remains the last measured fatal lint count.
 
 Correction **IMPLEMENTED — NOT TESTED**: AddressSelect's comparison input is a native address-field Pick containing exactly the five fields compareAddresses reads, while saved addresses and selection callbacks retain their original contracts. ShippingAddress supplies those fields explicitly without a persisted-address cast or invented IDs/timestamps. Remove the unused mapKeys and Radio imports. Other existing callers can still supply full native address objects structurally. Reviewed the comparison helper and both sides of this prop contract; full owner TypeScript/lint/build verification remains pending. P01 overall remains **TESTED — FAILED** and native T01–T10 remains outstanding. P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 22
+
+On `d96afb55`, owner Storefront `bun run typecheck` **PASSED** and `bun run lint` **TESTED — FAILED** with 54 fatal diagnostics (previous measured run: 67). Raw combined output: `docs/p01/evidence/owner-macos-20261001-storefront-lint-round4.txt`. This verifies rounds 20–21 against the application TypeScript gate, not the native runtime journey.
+
+Next native order-display correction batch **IMPLEMENTED — NOT TESTED**:
+
+- OrderAddresses consumes native shipping/billing address fields and guards missing addresses/customer/country before access or lookup.
+- OrderShipping uses declared native shipping-method name and nullable-array access for delivery/payment details, with no any cast; unknown payment providers use the actual provider ID for display.
+- ParcelAccordion and its item component use a native StoreOrder field projection and optional Seller name expansion. Guard missing item arrays; infer callbacks from native line items; clean up the measurement timer and recalculate when items change.
+- OrderTotals uses native total/currency fields for its private display projection and inferred reduction callbacks.
+- The inactive native OrderCancel UI uses StoreOrder/StoreOrderLineItem types and copies selected items; quantity adjustments update state without mutating API props, remain within the original line quantity, and use actual Product/title text for image alt. Its pre-existing cancellation handler is still a console-only stub, not an implemented cancellation API or P01 capability. No success claim is made for it.
+
+Reviewed current data helper and UI consumer contracts plus Medusa v2.21.0 `packages/core/types/src/http/order/common.ts` for native name/subtitle/nullability. No explicit-any or suppression remains in these six edited files. No core package, migration or API was modified. Full application TypeScript/lint/build verification remains pending. Native commerce screens remain outside active P01 B2B scope. P01 overall remains **TESTED — FAILED**, with native T01–T10, runtime navigation and canonical Bun lock evidence outstanding. P02 remains untouched.

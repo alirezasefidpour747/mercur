@@ -1,14 +1,14 @@
-import { isStripe, paymentInfoMap } from "@/lib/constants"
+import { paymentInfoMap } from "@/lib/constants"
 import { convertToLocale } from "@/lib/helpers/money"
 import { HttpTypes } from "@medusajs/types"
-import { Container, Text } from "@medusajs/ui"
+import { Text } from "@medusajs/ui"
 
 type ShippingDetailsProps = {
   order: HttpTypes.StoreOrder
 }
 
 const OrderShipping = ({ order }: ShippingDetailsProps) => {
-  const payment = order.payment_collections?.[0].payments?.[0]
+  const payment = order.payment_collections?.[0]?.payments?.[0]
 
   return (
     <div className="border rounded-sm p-4">
@@ -47,9 +47,9 @@ const OrderShipping = ({ order }: ShippingDetailsProps) => {
           Delivery method
         </Text>
         <Text className="txt-medium text-ui-fg-subtle">
-          {(order as any).shipping_methods[0]?.name} (
+          {order.shipping_methods?.[0]?.name} (
           {convertToLocale({
-            amount: order.shipping_methods?.[0].total ?? 0,
+            amount: order.shipping_methods?.[0]?.total ?? 0,
             currency_code: order.currency_code,
           })
             .replace(/,/g, "")
@@ -69,7 +69,7 @@ const OrderShipping = ({ order }: ShippingDetailsProps) => {
                   className="txt-medium text-ui-fg-subtle"
                   data-testid="payment-method"
                 >
-                  {paymentInfoMap[payment.provider_id].title}
+                  {paymentInfoMap[payment.provider_id]?.title ?? payment.provider_id}
                 </Text>
               </div>
             </div>
