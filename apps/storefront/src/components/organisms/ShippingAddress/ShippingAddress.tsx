@@ -1,6 +1,5 @@
 import { HttpTypes } from "@medusajs/types"
 import { Container } from "@medusajs/ui"
-import { mapKeys } from "lodash"
 import React, { useCallback, useEffect, useMemo, useState } from "react"
 import { Input } from "@/components/atoms"
 import AddressSelect from "@/components/cells/AddressSelect/AddressSelect"
@@ -89,11 +88,13 @@ const ShippingAddress = ({
           <div className="grid grid-cols-1 lg:grid-cols-2 gap-x-4">
             <AddressSelect
               addresses={addressesInRegion || []}
-              addressInput={
-                mapKeys(formData, (_, key) =>
-                  key.replace("shipping_address.", "")
-                ) as HttpTypes.StoreCartAddress
-              }
+              addressInput={{
+                first_name: formData["shipping_address.first_name"],
+                last_name: formData["shipping_address.last_name"],
+                address_1: formData["shipping_address.address_1"],
+                city: formData["shipping_address.city"],
+                country_code: formData["shipping_address.country_code"],
+              }}
               onSelect={setFormAddress}
             />
           </div>
