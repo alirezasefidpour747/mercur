@@ -7,8 +7,9 @@
     "dev": "rm -rf node_modules/.vite && vite --port 7001",
     "lint": "oxlint",
     "preview": "vite preview --port 7000",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "build": "bun run generate:native-contract && vite build",
+    "typecheck": "bun run generate:native-contract && tsc --noEmit -p tsconfig.app.json",
+    "generate:native-contract": "bun ../../shared/p01/generate-native-contract.mjs"
   },
   "dependencies": {
     "@mercurjs/admin": "*",
@@ -28,7 +29,8 @@
     "react-hook-form": "7.88.0",
     "@hookform/resolvers": "5.4.0",
     "jsonwebtoken": "9.0.3",
-    "react-jwt": "^2.1.1"
+    "react-jwt": "^2.1.1",
+    "@didar/p01-ui": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.2",

@@ -1,0 +1,500 @@
+arashthearcher@Arashs-MacBook-Air storefront % cd /Users/arashthearcher/didar-b2b/mercur/apps/admin-test 
+bun run build
+bun run typecheck
+$ vite build
+[@mercurjs/dashboard-sdk] Could not load the Medusa config from "/Users/arashthearcher/didar-b2b/mercur/apps/api/medusa-config.ts": Dynamic require of "/Users/arashthearcher/didar-b2b/mercur/apps/api/medusa-config.ts" is not supported. Building with base "/" and no plugin extensions — if this panel is served under a sub-path (e.g. /dashboard), its assets will not resolve.
+vite v8.1.3 building client environment for production...
+✓ 4014 modules transformed.
+computing gzip size...
+dist/index.html                                                                     3.48 kB │ gzip:0.88 kB
+dist/assets/RobotoMono-Medium-LUNBMOOH-B0UKl2Zn.ttf                                87.17 kB
+dist/assets/RobotoMono-Regular-27MA6W2G-44XoGH_Y.ttf                               87.23 kB
+dist/assets/Inter-Regular-CKBOXRQ3-DYjygwQm.ttf                                   310.25 kB
+dist/assets/Inter-Medium-RUQTUVA3-CKLJZXR2.ttf                                    315.13 kB
+dist/assets/index-D7P0dkA8.css                                                    114.77 kB │ gzip:    20.40 kB
+dist/assets/chunk-KVAD5JGS-BrRpw0mx.js                                              0.02 kB │ gzip:0.04 kB
+dist/assets/chunk-LO2ZWQGL-CQUm2DUJ.js                                              0.03 kB │ gzip:0.05 kB
+dist/assets/chunk-EOZUAYQL-b2jHKXq7.js                                              0.04 kB │ gzip:0.06 kB
+dist/assets/chunk-SMQT3ZNO-DqbWMjtf.js                                              0.07 kB │ gzip:0.09 kB
+dist/assets/chunk-2ZFELO2L-hjWFwXel.js                                              0.07 kB │ gzip:0.08 kB
+dist/assets/chunk-XSX255FK-B6-qyA-p.js                                              0.11 kB │ gzip:0.12 kB
+dist/assets/chunk-LTBX54CI-BbqP482g.js                                              0.12 kB │ gzip:0.12 kB
+dist/assets/chunk-54TMLQH3-BmNwR8-E.js                                              0.14 kB │ gzip:0.14 kB
+dist/assets/chunk-RHKRREUU-B6hTav28.js                                              0.14 kB │ gzip:0.15 kB
+dist/assets/chunk-VW56KWO2-BL5uULgS.js                                              0.15 kB │ gzip:0.14 kB
+dist/assets/chunk-LXSBG6LK-TC1tSDL6.js                                              0.16 kB │ gzip:0.14 kB
+dist/assets/chunk-QDPLZDMX-CAlI4v2_.js                                              0.16 kB │ gzip:0.15 kB
+dist/assets/chunk-THHRRYRS-BhRHn5kI.js                                              0.16 kB │ gzip:0.16 kB
+dist/assets/chunk-3KOTDGC2-DC22M8p3.js                                              0.20 kB │ gzip:0.16 kB
+dist/assets/chunk-USY2322P-Cl2eTPr7.js                                              0.20 kB │ gzip:0.19 kB
+dist/assets/chunk-PHOCVOZ5-wPM_E-6E.js                                              0.21 kB │ gzip:0.18 kB
+dist/assets/chunk-26OOAKQ6-DwAZCVcP.js                                              0.23 kB │ gzip:0.18 kB
+dist/assets/chunk-ZQZHFMD7-BOntngDZ.js                                              0.23 kB │ gzip:0.18 kB
+dist/assets/dist-2SeHPciZ.js                                                        0.26 kB │ gzip:0.19 kB
+dist/assets/settings-AVE3VCCM-B6Oe_kd0.js                                           0.31 kB │ gzip:0.25 kB
+dist/assets/chunk-U2L77ZDR-B8cnoWxr.js                                              0.33 kB │ gzip:0.26 kB
+dist/assets/chunk-7SVLKK6Q-BY1FZzFI.js                                              0.34 kB │ gzip:0.24 kB
+dist/assets/chunk-AYVH6Q5O-BY1FZzFI.js                                              0.34 kB │ gzip:0.24 kB
+dist/assets/chunk-MG4GKUJW-BY1FZzFI.js                                              0.34 kB │ gzip:0.24 kB
+dist/assets/chunk-VOHEQ7B5-BY1FZzFI.js                                              0.34 kB │ gzip:0.24 kB
+dist/assets/chunk-UYQY4B7J-C7icNyhe.js                                              0.36 kB │ gzip:0.25 kB
+dist/assets/chunk-PYDRHQTY-whMJ3VU3.js                                              0.37 kB │ gzip:0.26 kB
+dist/assets/chunk-CMKC2YBP-Cxbjw0Hp.js                                              0.37 kB │ gzip:0.25 kB
+dist/assets/loader-G2ECT6LC-Cvs9z36R.js                                             0.38 kB │ gzip:0.27 kB
+dist/assets/chunk-GR6JUIRU-Ds7i4WuJ.js                                              0.39 kB │ gzip:0.27 kB
+dist/assets/breadcrumb-KOE4ZWGU-DmB3bXRJ.js                                         0.40 kB │ gzip:0.29 kB
+dist/assets/chunk-3XOE4NV5-B-d5VU95.js                                              0.40 kB │ gzip:0.28 kB
+dist/assets/chunk-RT6L7JXU-CQZsmHJ_.js                                              0.41 kB │ gzip:0.25 kB
+dist/assets/chunk-4YWKKCTT-DrSpvFmT.js                                              0.41 kB │ gzip:0.27 kB
+dist/assets/breadcrumb-TCQDZXGC-LqFiL07c.js                                         0.43 kB │ gzip:0.32 kB
+dist/assets/chunk-WP3B4NEU-D-8zu6fh.js                                              0.44 kB │ gzip:0.25 kB
+dist/assets/chunk-GRH7C3QN-DKA0URZQ.js                                              0.45 kB │ gzip:0.30 kB
+dist/assets/chunk-LXTXP7ZM-zWuk7KWB.js                                              0.46 kB │ gzip:0.32 kB
+dist/assets/campaign-create-FEEKJCUE-m_lysCpZ.js                                    0.47 kB │ gzip:0.29 kB
+dist/assets/chunk-XFR5JLNF-B7PAQTEx.js                                              0.48 kB │ gzip:0.26 kB
+dist/assets/chunk-7AV5EJJ5-DdcVJ_PP.js                                              0.49 kB │ gzip:0.32 kB
+dist/assets/chunk-CFQX7HAW-D4Z0jMBX.js                                              0.49 kB │ gzip:0.33 kB
+dist/assets/home-RT4EIJFM-Ca11Hvru.js                                               0.51 kB │ gzip:0.35 kB
+dist/assets/chunk-LISOKQBZ-_Fq6p-6a.js                                              0.53 kB │ gzip:0.32 kB
+dist/assets/loader-3VTBJUA2-D4psAded.js                                             0.54 kB │ gzip:0.37 kB
+dist/assets/chunk-2Y3WMGN6-D2RTkTfr.js                                              0.55 kB │ gzip:0.36 kB
+dist/assets/chunk-54EPH67T-DboI4Qv5.js                                              0.55 kB │ gzip:0.33 kB
+dist/assets/chunk-Y7QKP6QU-DxDclzdS.js                                              0.57 kB │ gzip:0.33 kB
+dist/assets/chunk-BW7BDHZV-CZBIk3un.js                                              0.58 kB │ gzip:0.34 kB
+dist/assets/chunk-VOTOLN64-DyOxZ2s6.js                                              0.59 kB │ gzip:0.38 kB
+dist/assets/chunk-AJLGY3LQ-CO_BTovA.js                                              0.60 kB │ gzip:0.32 kB
+dist/assets/chunk-SANVDYAL-Dshtx-_E.js                                              0.60 kB │ gzip:0.35 kB
+dist/assets/chunk-PXYDR7WQ-CpbWrE4f.js                                              0.61 kB │ gzip:0.37 kB
+dist/assets/chunk-2HTCCPOG-BDfNkUTH.js                                              0.61 kB │ gzip:0.39 kB
+dist/assets/chunk-3XPXUIK3-XV4QHLx3.js                                              0.62 kB │ gzip:0.40 kB
+dist/assets/chunk-3R7N3HV3-Bk3C2W5J.js                                              0.63 kB │ gzip:0.40 kB
+dist/assets/chunk-DBGBLXBS-C-8KGMeh.js                                              0.63 kB │ gzip:0.40 kB
+dist/assets/chunk-HC25LNX7-DGLzT5cs.js                                              0.64 kB │ gzip:0.28 kB
+dist/assets/chunk-PDPCFFFH-DDOOFuBT.js                                              0.64 kB │ gzip:0.41 kB
+dist/assets/chunk-JPYECNPC-DLeBLlyx.js                                              0.65 kB │ gzip:0.35 kB
+dist/assets/chunk-R22UAHRF-CAt4szn8.js                                              0.71 kB │ gzip:0.41 kB
+dist/assets/chunk-U2EI2ZLM-DzJtWbYH.js                                              0.71 kB │ gzip:0.38 kB
+dist/assets/chunk-S4IDR46L-DYtH7olJ.js                                              0.74 kB │ gzip:0.42 kB
+dist/assets/chunk-DB6ANJBO-Cm2mDnF3.js                                              0.74 kB │ gzip:0.41 kB
+dist/assets/chunk-MDABSESI-Cm2mDnF3.js                                              0.74 kB │ gzip:0.41 kB
+dist/assets/chunk-64XMEZ5A-CcNrv9j0.js                                              0.75 kB │ gzip:0.44 kB
+dist/assets/chunk-HJ56YXBU-BYznMPd2.js                                              0.75 kB │ gzip:0.49 kB
+dist/assets/chunk-7C7YLUYT-DPLFfni2.js                                              0.78 kB │ gzip:0.51 kB
+dist/assets/chunk-F3XPA5ID-C6lR-kGX.js                                              0.78 kB │ gzip:0.40 kB
+dist/assets/chunk-QUHSHIAC-CxWFGnsG.js                                              0.79 kB │ gzip:0.39 kB
+dist/assets/chunk-W6Y3PPU5-DcEBU9Jm.js                                              0.80 kB │ gzip:0.42 kB
+dist/assets/chunk-V74Y5NIV-CPL3YbU-.js                                              0.82 kB │ gzip:0.48 kB
+dist/assets/chunk-QLOJNFUE-joYrl7BB.js                                              0.84 kB │ gzip:0.47 kB
+dist/assets/chunk-4F5GP7J7-BtUFf3ok.js                                              0.85 kB │ gzip:0.46 kB
+dist/assets/ellipse-mini-solid-C8CJyToe.js                                          0.86 kB │ gzip:0.51 kB
+dist/assets/chunk-JW4YZDH6-BRE7PB97.js                                              0.89 kB │ gzip:0.51 kB
+dist/assets/collection-metadata-QUMWZABV-C3n93RR_.js                                0.91 kB │ gzip:0.54 kB
+dist/assets/product-tag-metadata-WQEGISQ5-Bq1L_vsy.js                               0.91 kB │ gzip:0.54 kB
+dist/assets/product-type-metadata-WCGB3U4N-Cw9wzg8r.js                              0.91 kB │ gzip:0.55 kB
+dist/assets/chunk-ZH6TIKKW-D69yQofa.js                                              0.92 kB │ gzip:0.52 kB
+dist/assets/plus-mini-BPFjpWRy.js                                                   0.92 kB │ gzip:0.55 kB
+dist/assets/product-metadata-GKQUURAL-BCSVaIJm.js                                   0.92 kB │ gzip:0.55 kB
+dist/assets/product-variant-metadata-CTKNNNLM-DB2_Cfxh.js                           0.92 kB │ gzip:0.55 kB
+dist/assets/chunk-NOWUEJ74-CbN4UrKe.js                                              0.92 kB │ gzip:0.44 kB
+dist/assets/check-DuHTQRoa.js                                                       0.93 kB │ gzip:0.56 kB
+dist/assets/order-metadata-NVC3A3A5-DL4jV5EA.js                                     0.93 kB │ gzip:0.55 kB
+dist/assets/check-mini-CK6d3OJp.js                                                  0.93 kB │ gzip:0.56 kB
+dist/assets/shipping-profile-metadata-UEZYRBZQ-8kMmUZW_.js                          0.93 kB │ gzip:0.55 kB
+dist/assets/chunk-JHIMVLB2-BEaVQ1Yj.js                                              0.93 kB │ gzip:0.44 kB
+dist/assets/status-badge-DJpi452K.js                                                0.94 kB │ gzip:0.51 kB
+dist/assets/marketplace-metadata-2TZTRDRJ-CCzsv1Bz.js                               0.94 kB │ gzip:0.56 kB
+dist/assets/reservation-metadata-AKR6FRG5-DQRlVGkL.js                               0.94 kB │ gzip:0.56 kB
+dist/assets/categories-metadata-6F6EFZRQ-FfgVoDMO.js                                0.95 kB │ gzip:0.57 kB
+dist/assets/chunk-GNNOFJAK-CawmI-5G.js                                              0.95 kB │ gzip:0.52 kB
+dist/assets/customer-metadata-UEQSIGLT-CpMFDWwj.js                                  0.97 kB │ gzip:0.57 kB
+dist/assets/arrows-pointing-out-CfwsyNBt.js                                         0.97 kB │ gzip:0.57 kB
+dist/assets/user-metadata-XNM2JNNO-DSMl2Ol0.js                                      0.97 kB │ gzip:0.58 kB
+dist/assets/region-metadata-NAHNXAHQ-C4ysnI2T.js                                    0.98 kB │ gzip:0.58 kB
+dist/assets/promotion-add-campaign-VAF3HTLK-BolDFoWr.js                             0.98 kB │ gzip:0.54 kB
+dist/assets/customer-group-metadata-UQ2SCLOK-mOxADOeh.js                            0.98 kB │ gzip:0.58 kB
+dist/assets/tax-region-metadata-KHODQCDW-Cmt5EqM3.js                                0.99 kB │ gzip:0.59 kB
+dist/assets/inventory-metadata-OGS7JMZ5-FIzrD7OS.js                                 0.99 kB │ gzip:0.59 kB
+dist/assets/magnifying-glass-BkJJsl0A.js                                            0.99 kB │ gzip:0.58 kB
+dist/assets/sales-channel-metadata-BKNILVQ2-DqSfxLCJ.js                             0.99 kB │ gzip:0.59 kB
+dist/assets/chunk-MWEFUPRY-DMUNBRgU.js                                              1.00 kB │ gzip:0.55 kB
+dist/assets/chunk-WIDHYDJQ-Dg3YxsbD.js                                              1.01 kB │ gzip:0.45 kB
+dist/assets/no-match-JLVLPCRH-BECd1jD4.js                                           1.01 kB │ gzip:0.49 kB
+dist/assets/chunk-WA3UZTKD-DC9YfJIG.js                                              1.02 kB │ gzip:0.52 kB
+dist/assets/chunk-KOURHC2N-BlUnVcpt.js                                              1.02 kB │ gzip:0.42 kB
+dist/assets/alert-BlCDOPVA.js                                                       1.03 kB │ gzip:0.60 kB
+dist/assets/queue-list-Cmrfp-ER.js                                                  1.06 kB │ gzip:0.62 kB
+dist/assets/chunk-JQEAWWRP-B53F45-d.js                                              1.07 kB │ gzip:0.49 kB
+dist/assets/arrow-down-right-mini-Z9mY8TZJ.js                                       1.10 kB │ gzip:0.60 kB
+dist/assets/useInfiniteQuery-CaeQgMed.js                                            1.13 kB │ gzip:0.49 kB
+dist/assets/chunk-NN2AWPC7-CLLiAGUd.js                                              1.13 kB │ gzip:0.42 kB
+dist/assets/chunk-WPX74IOA-9v8ag8L2.js                                              1.14 kB │ gzip:0.44 kB
+dist/assets/chunk-UST2RGWB-0JElf9Ou.js                                              1.16 kB │ gzip:0.56 kB
+dist/assets/chunk-5KGMGL4N-BonBacNG.js                                              1.17 kB │ gzip:0.62 kB
+dist/assets/x-circle-BWIJbQlU.js                                                    1.17 kB │ gzip:0.65 kB
+dist/assets/react-country-flag.esm-Dx4PgKFO.js                                      1.19 kB │ gzip:0.69 kB
+dist/assets/stack-perspective-Ds_-WkZP.js                                           1.21 kB │ gzip:0.72 kB
+dist/assets/chunk-J4SYK3RT-IkxLsIyM.js                                              1.22 kB │ gzip:0.51 kB
+dist/assets/dist-U-7IyodC.js                                                        1.24 kB │ gzip:0.66 kB
+dist/assets/chunk-O7324VFF-B76hEXr7.js                                              1.25 kB │ gzip:0.54 kB
+dist/assets/exclamation-circle-DmxfkzOB.js                                          1.27 kB │ gzip:0.68 kB
+dist/assets/arrow-path-DgHuuadq.js                                                  1.27 kB │ gzip:0.70 kB
+dist/assets/chunk-3BJVQXHQ-D5DRLUn2.js                                              1.30 kB │ gzip:0.59 kB
+dist/assets/product-edit-attribute-W3AS47FM-CuX8pugH.js                             1.31 kB │ gzip:0.76 kB
+dist/assets/chunk-TUJIAA5O-DWC-7-0U.js                                              1.34 kB │ gzip:0.77 kB
+dist/assets/dist-DflTK1mU.js                                                        1.34 kB │ gzip:0.67 kB
+dist/assets/chunk-JHBNG7OD-D3N33pE0.js                                              1.37 kB │ gzip:0.47 kB
+dist/assets/triangles-mini-CeBW0OA5.js                                              1.38 kB │ gzip:0.75 kB
+dist/assets/chunk-Y456KVIN-BiZJNibE.js                                              1.41 kB │ gzip:0.53 kB
+dist/assets/chunk-E74OUNA3-D80xK4Q0.js                                              1.49 kB │ gzip:0.62 kB
+dist/assets/chunk-JL3NKSLJ-BpOzHHEr.js                                              1.50 kB │ gzip:0.75 kB
+dist/assets/chunk-32URSQ4F-7m5no2qv.js                                              1.55 kB │ gzip:0.77 kB
+dist/assets/chunk-PC2EI2BG-Cif7oOL7.js                                              1.71 kB │ gzip:0.63 kB
+dist/assets/chunk-LQAAVRET-DIjudVdr.js                                              1.75 kB │ gzip:0.61 kB
+dist/assets/chunk-FTXH5ROQ-CiE5xp0O.js                                              1.79 kB │ gzip:0.66 kB
+dist/assets/chunk-FX7HVGV5-CyfYofzd.js                                              1.80 kB │ gzip:0.67 kB
+dist/assets/arrow-up-mini-Do9VVAQo.js                                               1.83 kB │ gzip:0.68 kB
+dist/assets/payout-list-WZ6QMJJY-BTraBZj0.js                                        1.85 kB │ gzip:0.90 kB
+dist/assets/chunk-CP5IL4P6-CM-HTVM8.js                                              1.90 kB │ gzip:0.97 kB
+dist/assets/thumbnail-badge-CqK5M255.js                                             1.97 kB │ gzip:0.97 kB
+dist/assets/chunk-KMSBY4PU-DpJerlNt.js                                              1.98 kB │ gzip:0.67 kB
+dist/assets/category-organize-KQ7UWVAJ-DQdfkjfw.js                                  1.99 kB │ gzip:1.03 kB
+dist/assets/chunk-MAEP2UCK-DG0OUscd.js                                              2.02 kB │ gzip:0.90 kB
+dist/assets/chunk-KPNSESNF-DiAkUDna.js                                              2.02 kB │ gzip:0.70 kB
+dist/assets/useMutation-DXzJcaEh.js                                                 2.03 kB │ gzip:0.89 kB
+dist/assets/tax-region-list-U5JRCQZI-be2gvus4.js                                    2.04 kB │ gzip:0.95 kB
+dist/assets/chunk-6G456XO4-4bRCDwDC.js                                              2.09 kB │ gzip:0.68 kB
+dist/assets/chunk-IIFQ7KYL-Bf8ZblH2.js                                              2.09 kB │ gzip:1.07 kB
+dist/assets/use-prompt-B35BPMo0.js                                                  2.10 kB │ gzip:1.02 kB
+dist/assets/chunk-WW7ULZUY-DH2eobq2.js                                              2.14 kB │ gzip:0.97 kB
+dist/assets/chunk-H5E3CGD7-D38VIHkP.js                                              2.20 kB │ gzip:0.60 kB
+dist/assets/chunk-CGIVQ7D2-CNdTjSsN.js                                              2.26 kB │ gzip:0.84 kB
+dist/assets/chunk-3QSRE5LS-DTeS4lKS.js                                              2.30 kB │ gzip:1.03 kB
+dist/assets/collection-icon-edit-L6VSK4DB-OJiy3rlb.js                               2.31 kB │ gzip:1.07 kB
+dist/assets/category-icon-edit-KUCL7KEJ-8Kfk0e2o.js                                 2.31 kB │ gzip:1.09 kB
+dist/assets/chunk-VACZ4ZLQ-BD5oRGw9.js                                              2.31 kB │ gzip:0.51 kB
+dist/assets/chunk-TZSOL34K-BgEeV-Pe.js                                              2.34 kB │ gzip:0.66 kB
+dist/assets/chunk-OS6DZEKB-C0J1BpD-.js                                              2.40 kB │ gzip:1.30 kB
+dist/assets/focus-modal-BlrWXy4z.js                                                 2.41 kB │ gzip:0.88 kB
+dist/assets/review-respond-N6JNU5HF-DV6rjx6P.js                                     2.42 kB │ gzip:1.08 kB
+dist/assets/chunk-7VO6VJZJ-C3Phq_ql.js                                              2.47 kB │ gzip:0.78 kB
+dist/assets/offers-RS4UORI3-BPK-Llcv.js                                             2.49 kB │ gzip:1.27 kB
+dist/assets/chunk-Y7ENTINK-ChcQhwhg.js                                              2.51 kB │ gzip:0.65 kB
+dist/assets/x-circle-solid-D5Y_PnqZ.js                                              2.51 kB │ gzip:0.91 kB
+dist/assets/chunk-XAQLGDAI-CSOSVqdo.js                                              2.58 kB │ gzip:1.03 kB
+dist/assets/shipping-profile-detail-7SE5GLQZ-CeYhOK0j.js                            2.61 kB │ gzip:1.19 kB
+dist/assets/product-type-edit-X7VSBPUG-UTPptyUx.js                                  2.62 kB │ gzip:1.04 kB
+dist/assets/order-edit-email-AGJU7YHU-CtBPOk71.js                                   2.67 kB │ gzip:1.11 kB
+dist/assets/customer-group-edit-ZQTBUZVR-Bck5y5dO.js                                2.69 kB │ gzip:1.08 kB
+dist/assets/collection-edit-HMOZIS7Z-q2oKP-6d.js                                    2.73 kB │ gzip:1.16 kB
+dist/assets/product-type-create-BJMYBP2R-DjX0xdit.js                                2.75 kB │ gzip:1.06 kB
+dist/assets/product-tag-edit-FJPBCFBH-BGseYbRP.js                                   2.75 kB │ gzip:1.11 kB
+dist/assets/radio-group-BBzl5Y5c.js                                                 2.76 kB │ gzip:0.89 kB
+dist/assets/attribute-edit-ranking-SF7XSICV-CzFTWIRO.js                             2.78 kB │ gzip:1.40 kB
+dist/assets/chunk-ZSXF4PEE-DuVPgWrW.js                                              2.79 kB │ gzip:1.28 kB
+dist/assets/tax-region-province-detail-XTPJ6DZZ-fuL097bs.js                         2.82 kB │ gzip:1.37 kB
+dist/assets/chunk-BGI4CCBX-jXovGUVy.js                                              2.85 kB │ gzip:1.16 kB
+dist/assets/api-key-management-edit-XUZJEML7-SmaHxOYg.js                            2.86 kB │ gzip:1.11 kB
+dist/assets/user-detail-RD3T5WQT-CBEQ8R4B.js                                        2.87 kB │ gzip:1.30 kB
+dist/assets/payout-detail-UTFO6U4H-CkPMWChB.js                                      2.87 kB │ gzip:1.16 kB
+dist/assets/user-edit-Y5VP6CKB-Dwge54uI.js                                          2.91 kB │ gzip:1.05 kB
+dist/assets/chunk-ZVNGPUNQ-B85YE1oy.js                                              2.91 kB │ gzip:1.05 kB
+dist/assets/attribute-edit-possible-value-OOHDX7XL-BnNZOTMb.js                      2.92 kB │ gzip:1.22 kB
+dist/assets/store-closure-edit-AT4DMZRF-Bc6OmFNu.js                                 2.96 kB │ gzip:1.18 kB
+dist/assets/product-tag-create-SYOFR5EK-1TyYWgWv.js                                 2.98 kB │ gzip:1.13 kB
+dist/assets/product-sales-channels-PJNEIY4J-DiMVwJpy.js                             3.01 kB │ gzip:1.36 kB
+dist/assets/price-list-configuration-4OTKSK5N-ll65urtQ.js                           3.03 kB │ gzip:1.16 kB
+dist/assets/store-bulk-edit-FQPQQR46-scI_fpsc.js                                    3.04 kB │ gzip:1.45 kB
+dist/assets/offer-variant-detail-page-FVJE5WLV-C19EPdQT.js                          3.04 kB │ gzip:1.26 kB
+dist/assets/campaign-budget-edit-EBFDQ6OX-DeF7Olcs.js                               3.05 kB │ gzip:1.25 kB
+dist/assets/shipping-option-type-detail-2VDQWYDS-DxpkL5MC.js                        3.05 kB │ gzip:1.15 kB
+dist/assets/store-professional-details-edit-MXW6WBQF-DcoHM2Id.js                    3.05 kB │ gzip:1.12 kB
+dist/assets/chunk-BZPOERWW-Dus6cRxt.js                                              3.08 kB │ gzip:1.17 kB
+dist/assets/customer-group-create-WER6DODC-Def0ObCV.js                              3.08 kB │ gzip:1.10 kB
+dist/assets/product-variant-detail-7B26FRNG-DVftxJ1N.js                             3.08 kB │ gzip:1.39 kB
+dist/assets/commission-rule-detail-CIE6TPXW-p9jXZG6_.js                             3.09 kB │ gzip:1.17 kB
+dist/assets/product-type-list-PAAE6ZSR-C38Sk8iT.js                                  3.15 kB │ gzip:1.35 kB
+dist/assets/chunk-YVLANFBK-CQm91xId.js                                              3.16 kB │ gzip:1.36 kB
+dist/assets/profile-detail-GDQQJUWF-CeSRz8oc.js                                     3.20 kB │ gzip:1.04 kB
+dist/assets/customer-list-6X6RQDLK-SDD-Yknu.js                                      3.22 kB │ gzip:1.39 kB
+dist/assets/tax-region-tax-rate-edit-HN5VDJAZ-CE2ZDL0i.js                           3.26 kB │ gzip:1.28 kB
+dist/assets/tax-region-edit-DUBTSOQ4-Bcn8TdND.js                                    3.27 kB │ gzip:1.32 kB
+dist/assets/product-type-detail-WZLA27WI-BtbFFLi2.js                                3.29 kB │ gzip:1.46 kB
+dist/assets/sales-channel-list-BCL62DTX-DKvTqtka.js                                 3.32 kB │ gzip:1.50 kB
+dist/assets/commission-rule-commission-edit-KLGYDUOC-MhEvpdhw.js                    3.38 kB │ gzip:1.40 kB
+dist/assets/tax-region-tax-rate-create-DLLXVZPG-C33it_xk.js                         3.40 kB │ gzip:1.33 kB
+dist/assets/location-service-zone-edit-KFG52K4W-BtqzHsfc.js                         3.40 kB │ gzip:1.32 kB
+dist/assets/campaign-configuration-H6SKZFDS-Dh3JJ_kF.js                             3.42 kB │ gzip:1.17 kB
+dist/assets/region-add-countries-4CTAVHYW-DUe7Yees.js                               3.42 kB │ gzip:1.58 kB
+dist/assets/location-service-zone-manage-areas-NW5JUTCH-CkwOziPC.js                 3.44 kB │ gzip:1.46 kB
+dist/assets/dist-DvJ5KM2J.js                                                        3.45 kB │ gzip:1.54 kB
+dist/assets/region-list-JP3CZISQ-DEkQ2ICJ.js                                        3.46 kB │ gzip:1.52 kB
+dist/assets/chunk-IWBQZK6E-DaXVlaiI.js                                              3.52 kB │ gzip:0.62 kB
+dist/assets/shipping-profile-create-FT6KK2H5-DVJGqWNy.js                            3.60 kB │ gzip:1.17 kB
+dist/assets/category-products-RTOFMB25-DFeipDhq.js                                  3.65 kB │ gzip:1.80 kB
+dist/assets/attribute-edit-KYK4KJYP-CHsECG9V.js                                     3.68 kB │ gzip:1.31 kB
+dist/assets/edit-inventory-item-ENA2OFSQ-ntQvLjb7.js                                3.68 kB │ gzip:1.24 kB
+dist/assets/review-edit-VD4JATST-DcRQNHhT.js                                        3.69 kB │ gzip:1.37 kB
+dist/assets/collection-add-products-O5ILXKFY-C1MAq6d8.js                            3.70 kB │ gzip:1.82 kB
+dist/assets/global-commission-edit-JEBLF6CT-5fah2MTH.js                             3.74 kB │ gzip:1.48 kB
+dist/assets/product-shipping-profile-SWB5FK7S-BlBsckgv.js                           3.75 kB │ gzip:1.37 kB
+dist/assets/collection-list-QQJAESFN-C2OlghMG.js                                    3.83 kB │ gzip:1.70 kB
+dist/assets/campaign-edit-2WJ7V2EY-CUeldLB_.js                                      3.86 kB │ gzip:1.19 kB
+dist/assets/return-reason-list-PKAJDA6A-BDSId5Lq.js                                 3.89 kB │ gzip:1.78 kB
+dist/assets/refund-reason-edit-B32E4WHH-DfmdfSz8.js                                 3.90 kB │ gzip:1.26 kB
+dist/assets/refund-reason-list-3YLXKHJX-PdYAqp0U.js                                 3.94 kB │ gzip:1.83 kB
+dist/assets/location-sales-channels-FT6TFVXJ-He0gjkRW.js                            4.09 kB │ gzip:1.71 kB
+dist/assets/customer-group-add-customers-XYWJSXKS-D3pcJ3q_.js                       4.10 kB │ gzip:1.85 kB
+dist/assets/promotion-list-LJKKLZNU-DKx1-VEm.js                                     4.10 kB │ gzip:1.81 kB
+dist/assets/shipping-profiles-list-GC6AK77V-BeUja5M7.js                             4.10 kB │ gzip:1.66 kB
+dist/assets/location-service-zone-create-KPM4RSCF-D_KMKyJn.js                       4.11 kB │ gzip:1.61 kB
+dist/assets/api-key-management-sales-channels-RBK66ZGC-Ch9dERzs.js                  4.11 kB │ gzip:1.67 kB
+dist/assets/chunk-NFZEX33S-CJVsooiO.js                                              4.11 kB │ gzip:1.32 kB
+dist/assets/sales-channel-edit-CO2V2VER-QZ_G7I-c.js                                 4.18 kB │ gzip:1.35 kB
+dist/assets/return-reason-edit-5ZICBOB3-JgQ_5nzu.js                                 4.18 kB │ gzip:1.27 kB
+dist/assets/customers-add-customer-group-AZYAIQ7E-C3tYnpm6.js                       4.22 kB │ gzip:1.92 kB
+dist/assets/login-72TAMW53-D6aSXI4R.js                                              4.22 kB │ gzip:1.70 kB
+dist/assets/shipping-option-type-edit-CZFRAZPJ-w4hH-4S1.js                          4.23 kB │ gzip:1.27 kB
+dist/assets/product-create-variant-AKTPH6F7-KrQPs3kA.js                             4.24 kB │ gzip:1.62 kB
+dist/assets/campaign-list-M24QK43I-BWgJXz3f.js                                      4.25 kB │ gzip:1.73 kB
+dist/assets/shipping-option-type-list-2XUYXURQ-CD6ZJrlo.js                          4.25 kB │ gzip:1.64 kB
+dist/assets/product-tag-list-BNNJS67H-C-L_mTGg.js                                   4.26 kB │ gzip:1.91 kB
+dist/assets/customer-group-list-GYEQ2GTL-S24Lsd_f.js                                4.29 kB │ gzip:1.72 kB
+dist/assets/price-list-customer-availability-WU2OGO37-DzncRKCg.js                   4.30 kB │ gzip:1.63 kB
+dist/assets/location-fulfillment-providers-JGJOTGMZ-qo90YC74.js                     4.37 kB │ gzip:1.96 kB
+dist/assets/store-address-edit-VLYDLTHQ-C1GT3gub.js                                 4.37 kB │ gzip:1.31 kB
+dist/assets/refund-reason-create-TOH2D225-Kgdi9gSJ.js                               4.37 kB │ gzip:1.38 kB
+dist/assets/return-reason-create-GNUVNYS5-C6p53HS9.js                               4.39 kB │ gzip:1.25 kB
+dist/assets/edit-rules-3DCWA5UF-aw2oRwNX.js                                         4.40 kB │ gzip:1.80 kB
+dist/assets/chunk-KTE5QGW6-9Nj66WNh.js                                              4.41 kB │ gzip:0.75 kB
+dist/assets/chunk-IZ77JV46-DAaLhjJt.js                                              4.44 kB │ gzip:1.68 kB
+dist/assets/profile-edit-ZBD6N5SC-DHVJ9jy4.js                                       4.46 kB │ gzip:1.45 kB
+dist/assets/sales-channel-create-WEF7QXKI-DNV5f19B.js                               4.47 kB │ gzip:1.33 kB
+dist/assets/sales-channel-add-products-RRTMXVAT-CYCkiTth.js                         4.48 kB │ gzip:1.92 kB
+dist/assets/store-member-invite-A2WAB5GK-CLcR1tx5.js                                4.50 kB │ gzip:1.90 kB
+dist/assets/category-edit-3KXRPXXJ-C7jeMkIM.js                                      4.50 kB │ gzip:1.46 kB
+dist/assets/product-bulk-edit-AVQWRUJ4-BtcAlhUd.js                                  4.51 kB │ gzip:1.85 kB
+dist/assets/shipping-option-type-create-ZVOMA222-Ccz-_hpu.js                        4.54 kB │ gzip:1.38 kB
+dist/assets/product-tag-detail-Q3CKJBVX-DMueeYfS.js                                 4.61 kB │ gzip:1.94 kB
+dist/assets/collection-create-W75VOWNN-v63_GrkK.js                                  4.63 kB │ gzip:1.47 kB
+dist/assets/dist-BXbAtiie.js                                                        4.68 kB │ gzip:1.70 kB
+dist/assets/store-list-LPKSZF2E-CH4si0Lx.js                                         4.70 kB │ gzip:1.95 kB
+dist/assets/store-payment-details-edit-VCCSUXIV-COKEAxLV.js                         4.73 kB │ gzip:1.39 kB
+dist/assets/user-list-X6UZ6UZM-CyhkE2DL.js                                          4.73 kB │ gzip:1.60 kB
+dist/assets/chunk-3DFVU5HR-DEV3ciSn.js                                              4.78 kB │ gzip:0.74 kB
+dist/assets/product-create-attribute-KAICRW2S-BiF1GAhA.js                           4.82 kB │ gzip:1.70 kB
+dist/assets/review-detail-K555FECH-H7Y-G_l3.js                                      4.85 kB │ gzip:1.81 kB
+dist/assets/chunk-TW7BMUFE-DnXtQ8Nb.js                                              4.93 kB │ gzip:1.34 kB
+dist/assets/marketplace-add-currencies-Z6FUIAU5-B5KnIx0f.js                         5.02 kB │ gzip:2.15 kB
+dist/assets/edit-reservation-W3THLKKK-2XpeUtmh.js                                   5.02 kB │ gzip:1.91 kB
+dist/assets/price-list-list-FPCLLS33-C07lfN1u.js                                    5.06 kB │ gzip:1.90 kB
+dist/assets/add-campaign-promotions-6OB7BUPK-FIFCVtk2.js                            5.07 kB │ gzip:2.11 kB
+dist/assets/customer-edit-5EH2AUGN-D-eeeDiO.js                                      5.09 kB │ gzip:1.35 kB
+dist/assets/tax-region-detail-3CMIPIKA-Cty8LWSb.js                                  5.10 kB │ gzip:1.92 kB
+dist/assets/reservation-detail-M42OB6BC-BOCpcTPF.js                                 5.16 kB │ gzip:1.64 kB
+dist/assets/adjust-inventory-32UZ4BZC-BtqkG25r.js                                   5.28 kB │ gzip:1.86 kB
+dist/assets/category-list-AT66O7HI-BS4yfDbD.js                                      5.31 kB │ gzip:2.08 kB
+dist/assets/customer-create-46H2N34Z-7ysq-WNN.js                                    5.34 kB │ gzip:1.32 kB
+dist/assets/chunk-CBLCX5UK-oUxyzSpC.js                                              5.35 kB │ gzip:2.26 kB
+dist/assets/location-edit-XRGRJCVB-Dbry-Vdx.js                                      5.37 kB │ gzip:1.41 kB
+dist/assets/location-service-zone-shipping-option-pricing-Z5HCXRHG-4XqoGZx5.js      5.43 kB │ gzip:2.27 kB
+dist/assets/price-list-prices-add-HAYZV2XV-Dc_R0pEP.js                              5.46 kB │ gzip:2.51 kB
+dist/assets/chunk-7ECQXPOG-BTf9h2F2.js                                              5.52 kB │ gzip:1.89 kB
+dist/assets/input-DLprjRxO.js                                                       5.58 kB │ gzip:1.85 kB
+dist/assets/price-list-edit-ZVP6CCPE-BLA45Cz7.js                                    5.58 kB │ gzip:1.58 kB
+dist/assets/chunk-7UHN2CW7-BaA-HA-X.js                                              5.59 kB │ gzip:2.26 kB
+dist/assets/price-list-prices-edit-S4V5ACN3-iibOE-G0.js                             5.60 kB │ gzip:2.33 kB
+dist/assets/api-key-management-create-TFG4TLGM-B_WWnOkf.js                          5.69 kB │ gzip:1.93 kB
+dist/assets/product-list-SYMPZR6W-BSm7WIMh.js                                       5.76 kB │ gzip:2.29 kB
+dist/assets/user-invite-4JFF3NRW-Dy5ToI6Y.js                                        5.80 kB │ gzip:2.14 kB
+dist/assets/reservation-create-H3T3AHTK-yeFtppDF.js                                 5.88 kB │ gzip:2.08 kB
+dist/assets/commissions-list-US6OMDVL-Dfmohgii.js                                   5.89 kB │ gzip:2.15 kB
+dist/assets/chunk-36C3CNJC-KPWtPkXg.js                                              5.99 kB │ gzip:2.04 kB
+dist/assets/api-key-management-list-KPWCB7NX-B9UrNTO7.js                            6.05 kB │ gzip:2.24 kB
+dist/assets/reservation-list-FQAWE7S5-BRQw2doe.js                                   6.09 kB │ gzip:2.20 kB
+dist/assets/chunk-KMLQ2ENL-BFvWNLaY.js                                              6.11 kB │ gzip:2.16 kB
+dist/assets/chunk-2HV33DOE-CWeFj1SC.js                                              6.30 kB │ gzip:1.87 kB
+dist/assets/attribute-list-FLTRNSFI-XgEllhzz.js                                     6.31 kB │ gzip:2.34 kB
+dist/assets/store-create-JBY2MAIT-DWIYZXDl.js                                       6.32 kB │ gzip:2.18 kB
+dist/assets/chunk-YWMY2I7B-uJe_Q6aa.js                                              6.33 kB │ gzip:1.87 kB
+dist/assets/customer-edit-address-PGWY42QU-RFdPG1Yn.js                              6.42 kB │ gzip:1.47 kB
+dist/assets/chunk-SR3DYN52-CHM5jvs3.js                                              6.47 kB │ gzip:2.43 kB
+dist/assets/review-list-5NGJJH23-CeelYURq.js                                        6.52 kB │ gzip:2.53 kB
+dist/assets/inventory-stock-LDBJQCJF-Bl9HAgn4.js                                    6.56 kB │ gzip:2.75 kB
+dist/assets/order-create-refund-ZWMXQGUA-CwfD-mqB.js                                6.56 kB │ gzip:2.22 kB
+dist/assets/chunk-Z476HUMI-BY53Sem8.js                                              6.61 kB │ gzip:1.14 kB
+dist/assets/marketplace-edit-G7YNGABC-BCWWn8El.js                                   6.63 kB │ gzip:1.79 kB
+dist/assets/sales-channel-detail-7GAGHWEP-ClGo8hM9.js                               6.67 kB │ gzip:2.46 kB
+dist/assets/chunk-X5PMVI7H-B3aTLllh.js                                              6.92 kB │ gzip:2.69 kB
+dist/assets/product-attributes-PCOM3JRX-CaSNXa-Z.js                                 7.04 kB │ gzip:1.56 kB
+dist/assets/attribute-detail-7PIMBKEE-Dn0986o8.js                                   7.10 kB │ gzip:2.53 kB
+dist/assets/product-add-existing-attributes-VWM3LNIO-DsFG4uS9.js                    7.24 kB │ gzip:2.86 kB
+dist/assets/commission-rule-edit-5CFKPI7U-CRO6sAsz.js                               7.25 kB │ gzip:2.03 kB
+dist/assets/customer-group-detail-JMBR3D72-C6YoKX7q.js                              7.26 kB │ gzip:2.49 kB
+dist/assets/tax-region-create-OGVIIVMO-BC_kakau.js                                  7.31 kB │ gzip:2.00 kB
+dist/assets/order-list-L2WZX5ED-bcfXcLAW.js                                         7.39 kB │ gzip:2.83 kB
+dist/assets/region-detail-YTB7OEQU-Bw2Wmggh.js                                      7.43 kB │ gzip:2.64 kB
+dist/assets/product-organization-3PIQ4IY2-B33QI5aZ.js                               7.47 kB │ gzip:2.01 kB
+dist/assets/location-create-XCEPUY44-D_bJeJy4.js                                    7.55 kB │ gzip:1.55 kB
+dist/assets/order-edit-billing-address-V6QS5DYF-DRAbko04.js                         7.62 kB │ gzip:1.71 kB
+dist/assets/region-edit-NUMG2V5L-B2pPhBcD.js                                        7.64 kB │ gzip:2.13 kB
+dist/assets/tax-region-province-create-RYNRPGY5-CATU6FYU.js                         7.68 kB │ gzip:2.22 kB
+dist/assets/order-edit-shipping-address-TKLEEHOE-BrNKwlDy.js                        7.70 kB │ gzip:1.72 kB
+dist/assets/product-edit-TAVV5CWR-Ozf8qPgQ.js                                       7.79 kB │ gzip:1.92 kB
+dist/assets/attribute-create-possible-value-OKGWRSNJ-CPKbrfs8.js                    7.82 kB │ gzip:2.67 kB
+dist/assets/invite-IZ2YTVPF-QBW69Cat.js                                             8.00 kB │ gzip:2.27 kB
+dist/assets/location-list-JJN42JSH-Ba-VtsQ2.js                                      8.00 kB │ gzip:2.92 kB
+dist/assets/reset-password-RJ5VSBQV-39ba2EQg.js                                     8.03 kB │ gzip:1.88 kB
+dist/assets/chunk-RU5IUJC2-DM_O5VP-.js                                              8.13 kB │ gzip:2.58 kB
+dist/assets/chunk-HFCJJJKP-Cp0g6F6d.js                                              8.18 kB │ gzip:2.03 kB
+dist/assets/commission-rule-create-CDLLQIY4-CFWTSEGz.js                             8.25 kB │ gzip:2.22 kB
+dist/assets/chunk-NBMM2TZK-bh7E68Cd.js                                              8.59 kB │ gzip:3.27 kB
+dist/assets/chunk-VWK3K2CI-CMg6aBW_.js                                              8.65 kB │ gzip:2.72 kB
+dist/assets/location-service-zone-shipping-option-edit-UUIR7B5S-CtWXkwUY.js         8.67 kB │ gzip:2.28 kB
+dist/assets/manage-locations-TCMY6A4J-CHTsZpUV.js                                   8.68 kB │ gzip:2.66 kB
+dist/assets/customer-create-address-OGWYC7BZ-DYAFVxFR.js                            8.90 kB │ gzip:1.70 kB
+dist/assets/inventory-list-XS3OFHLW-Di-TlMWD.js                                     8.93 kB │ gzip:2.58 kB
+dist/assets/edit-inventory-item-attributes-Z26UDTSH-g2EsEzeg.js                     8.96 kB │ gzip:1.71 kB
+dist/assets/collection-detail-N7VZKBIJ-DSs1NVBK.js                                  8.99 kB │ gzip:2.91 kB
+dist/assets/chunk-XLA2CNCW-C-UtN0ex.js                                              9.05 kB │ gzip:3.91 kB
+dist/assets/store-edit-BXWV5H4Z-DDKpaUFo.js                                         9.08 kB │ gzip:2.83 kB
+dist/assets/category-create-7RFRKVKF-8Th8k7ku.js                                    9.30 kB │ gzip:2.41 kB
+dist/assets/attribute-create-UWLP2DZY-CfuWatfp.js                                   9.49 kB │ gzip:2.94 kB
+dist/assets/chunk-IQPN4PZJ-DQvesDHG.js                                              9.60 kB │ gzip:2.69 kB
+dist/assets/api-key-management-detail-ULNXV7YJ-7ODxtrqo.js                          9.65 kB │ gzip:2.79 kB
+dist/assets/chunk-6Q2JZ5YN-BoYIKzLy.js                                              9.92 kB │ gzip:2.01 kB
+dist/assets/chunk-VX37IW2B-CDTqAKcK.js                                             10.33 kB │ gzip:3.19 kB
+dist/assets/offer-detail-page-XU6XK6YR-CIj172T4.js                                 11.14 kB │ gzip:4.14 kB
+dist/assets/currency-input-JmQTdWNF.js                                             11.32 kB │ gzip:4.50 kB
+dist/assets/category-media-IOA2VNMI-C7M3GcZe.js                                    11.48 kB │ gzip:3.88 kB
+dist/assets/collection-media-PKTR7VDY-BDKWQdw6.js                                  11.50 kB │ gzip:3.88 kB
+dist/assets/marketplace-detail-UYBZIFQW-BuVu2-GK.js                                11.55 kB │ gzip:3.47 kB
+dist/assets/tax-region-tax-override-edit-4SJ3DRAF-BiZ3tYHC.js                      12.11 kB │ gzip:3.99 kB
+dist/assets/price-list-detail-AML5XNDJ-Bh3usQ3T.js                                 12.20 kB │ gzip:3.64 kB
+dist/assets/tax-region-tax-override-create-NMLHLS7J-C4CpfPSB.js                    12.43 kB │ gzip:3.71 kB
+dist/assets/order-request-transfer-7EZX5UOQ-DrZ0bOq3.js                            12.54 kB │ gzip:3.24 kB
+dist/assets/region-create-S2WUJ4RA-av2YhcLZ.js                                     12.72 kB │ gzip:3.36 kB
+dist/assets/category-detail-3YY7FVY4-D88YywT_.js                                   13.16 kB │ gzip:3.73 kB
+dist/assets/chunk-D3RDR3D3-BqGYu7Kb.js                                             13.54 kB │ gzip:3.47 kB
+dist/assets/campaign-detail-WBWGUSMW-Mf2DCy_j.js                                   13.63 kB │ gzip:4.17 kB
+dist/assets/product-variant-edit-UC34WTO7-BcyCCbOz.js                              13.80 kB │ gzip:2.77 kB
+dist/assets/product-media-6XS74AU3-B1CuQA7y.js                                     14.15 kB │ gzip:4.42 kB
+dist/assets/lodash.isequal-dErK9JDF.js                                             14.22 kB │ gzip:5.16 kB
+dist/assets/location-service-zone-shipping-option-create-RYAIECRU-DUuWAclN.js      14.23 kB │ gzip:3.82 kB
+dist/assets/promotion-detail-HOXUK5VG-CAkKftxD.js                                  14.37 kB │ gzip:3.52 kB
+dist/assets/inventory-detail-PMJN4E2D-hbXgm7lB.js                                  14.56 kB │ gzip:3.83 kB
+dist/assets/promotion-edit-details-7PHH756U-DT9NBR8b.js                            14.65 kB │ gzip:3.19 kB
+dist/assets/customer-detail-CGKGZE2N-tZVp3P3A.js                                   16.44 kB │ gzip:4.70 kB
+dist/assets/price-list-create-DRKZIV2D-ay7fSX9H.js                                 16.72 kB │ gzip:4.83 kB
+dist/assets/product-detail-ZKQXB7PH-pBDaqC0j.js                                    17.75 kB │ gzip:5.02 kB
+dist/assets/order-create-edit-QH25BOIU-D8rAG6Ig.js                                 19.03 kB │ gzip:5.67 kB
+dist/assets/sub-2ok2Eqwj.js                                                        21.99 kB │ gzip:6.35 kB
+dist/assets/chunk-XZ4GKMFM-C7vM2qup.js                                             22.09 kB │ gzip:6.71 kB
+dist/assets/location-detail-DKBNATDD-BX3VUetj.js                                   22.20 kB │ gzip:5.37 kB
+dist/assets/chunk-ZA2KFUFR-C1vo4fO9.js                                             22.37 kB │ gzip:7.03 kB
+dist/assets/chunk-N2TQXB44-CxPLGn25.js                                             22.81 kB │ gzip:    10.20 kB
+dist/assets/dropdown-menu-DVsp-hvB.js                                              23.76 kB │ gzip:6.67 kB
+dist/assets/order-create-return-ECGHPLEZ-BF9YttM_.js                               24.01 kB │ gzip:7.18 kB
+dist/assets/promotion-create-FKRGXGI4-BnsuO3M1.js                                  25.60 kB │ gzip:5.53 kB
+dist/assets/store-details-MPTCI4VG-DL7Kdavi.js                                     26.56 kB │ gzip:7.19 kB
+dist/assets/prompt-CWnitiB5.js                                                     29.56 kB │ gzip:9.95 kB
+dist/assets/lodash.debounce-DuDytFST.js                                            33.36 kB │ gzip:    11.50 kB
+dist/assets/useTranslation-Ca5ruzIs.js                                             34.00 kB │ gzip:    12.14 kB
+dist/assets/order-create-exchange-5PCJ25LK-B5qFeRZm.js                             34.66 kB │ gzip:8.39 kB
+dist/assets/order-create-claim-PPUQXVYH-D5Kt-p_A.js                                35.11 kB │ gzip:8.71 kB
+dist/assets/product-create-73WXVANY-CUrUdfZ4.js                                    38.20 kB │ gzip:9.11 kB
+dist/assets/index.esm-D3IG-Z5q.js                                                  39.74 kB │ gzip:    13.99 kB
+dist/assets/i18next-BDww3IUJ.js                                                    43.05 kB │ gzip:    13.65 kB
+dist/assets/chunk-C4XKPQ6T-B0OfrHMp.js                                             45.60 kB │ gzip:    13.10 kB
+dist/assets/create-data-table-column-helper-DRRhyjQb.js                            48.22 kB │ gzip:    12.71 kB
+dist/assets/chunk-DTGEFKK4-CPUUGIHD.js                                             53.18 kB │ gzip:    17.55 kB
+dist/assets/chunk-SNRPCOU4-uSW7mZ8U.js                                             54.85 kB │ gzip:    16.62 kB
+dist/assets/order-detail-XYHRY25Y-ByetH8cy.js                                      78.45 kB │ gzip:    15.55 kB
+dist/assets/schemas-D5FJ1HLl.js                                                    91.43 kB │ gzip:    25.74 kB
+dist/assets/chunk-KS7C4IRE-9kiDHwvZ.js                                             95.95 kB │ gzip:    31.84 kB
+dist/assets/proxy-Dl8xUkfL.js                                                     109.58 kB │ gzip:    36.08 kB
+dist/assets/label-DV6MasM0.js                                                     181.88 kB │ gzip:    60.18 kB
+dist/assets/chunk-46WEBDVJ-DLC8dhXy.js                                            200.94 kB │ gzip:    42.23 kB
+dist/assets/chunk-VPUTUJQG-C5XtQn3l.js                                            241.55 kB │ gzip:    11.59 kB
+dist/assets/index-B2RkjEi3.js                                                   6,214.27 kB │ gzip: 1,470.54 kB
+
+[plugin builtin:vite-reporter] 
+(!) Some chunks are larger than 500 kB after minification. Consider:
+- Using dynamic import() to code-split the application
+- Use build.rolldownOptions.output.codeSplitting to improve chunking: https://rolldown.rs/reference/OutputOptions.codeSplitting
+- Adjust chunk size limit for this warning via build.chunkSizeWarningLimit.
+✗ Build failed in 1.61s
+error during build:
+Build failed with 1 error:
+
+Error: [vite]: Rolldown failed to resolve import "@medusajs/ui" from "/Users/arashthearcher/didar-b2b/mercur/shared/p01/workspace.tsx".
+This is most likely unintended because it can break your application at runtime.
+If you do want to externalize this module explicitly add it to
+`build.rolldownOptions.external`
+    at viteLog (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32715:57)
+    at file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32751:71
+    at onwarn (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/@vitejs+plugin-react@6.0.3+e52572f5b018ce6e/node_modules/@vitejs/plugin-react/dist/index.js:40:7)
+    at file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32751:28
+    at onRollupLog (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32746:63)
+    at onLog (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32514:4)
+    at file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/rolldown@1.1.4/node_modules/rolldown/dist/shared/rolldown-build-aV0QeeTW.mjs:50:26
+    at logger (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/rolldown@1.1.4/node_modules/rolldown/dist/shared/rolldown-build-aV0QeeTW.mjs:41:3)
+    at aggregateBindingErrorsIntoJsError (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:48:18)
+    at unwrapBindingResult (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/rolldown@1.1.4/node_modules/rolldown/dist/shared/error-BlQ0-ek7.mjs:18:128)
+    at #build (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/rolldown@1.1.4/node_modules/rolldown/dist/shared/rolldown-build-aV0QeeTW.mjs:3256:34)
+    at async buildEnvironment (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:32622:66)
+    at async Object.build (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:33044:19)
+    at async Object.buildApp (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/chunks/node.js:33041:153)
+    at async CAC.<anonymous> (file:///Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/vite@8.1.3+98b4db36df10d701/node_modules/vite/dist/node/cli.js:777:3) {
+  errors: [Getter/Setter]
+}
+error: script "build" exited with code 1
+$ tsc --noEmit -p tsconfig.app.json
+src/lib/client.ts:2:29 - error TS2307: Cannot find module '@acme/api/_generated' or its corresponding type declarations.
+
+2 import type { Routes } from '@acme/api/_generated'
+                              ~~~~~~~~~~~~~~~~~~~~~~
+
+../../shared/p01/workspace.tsx:1:45 - error TS2307: Cannot find module 'react' or its corresponding type declarations.
+
+1 import { useEffect, useRef, useState } from "react";
+                                              ~~~~~~~
+
+../../shared/p01/workspace.tsx:2:59 - error TS2307: Cannot find module '@medusajs/ui' or its corresponding type declarations.
+
+2 import { Button, Container, Input, Textarea, Table } from "@medusajs/ui";
+                                                            ~~~~~~~~~~~~~~
+
+../../shared/p01/workspace.tsx:9:8 - error TS2307: Cannot find module 'react-router-dom' or its corresponding type declarations.
+
+9 } from "react-router-dom";
+         ~~~~~~~~~~~~~~~~~~
+
+../../shared/p01/workspace.tsx:69:45 - error TS7006: Parameter 'v' implicitly has an 'any' type.
+
+69   return { ...state, reload: () => setTick((v) => v + 1) };
+                                               ~
+
+../../shared/p01/workspace.tsx:75:5 - error TS2875: This JSX tag requires the module path 'react/jsx-runtime' to exist, but none could be found. Make sure you have types for the appropriate package installed.
+
+ 75     <p role="alert" className="didar-message">
+        ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 76       {error.status === 401
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~
+... 
+ 85       <bdi>{error.code}</bdi>
+    ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~
+ 86     </p>
+    ~~~~~~~~
+
+../../shared/p01/workspace.tsx:519:42 - error TS7006: Parameter 'e' implicitly has an 'any' type.
+
+519         <Input value={search} onChange={(e) => setSearch(e.target.value)} />
+                                             ~
+
+
+Found 7 errors in 2 files.
+
+Errors  Files
+     1  src/lib/client.ts:2
+     6  ../../shared/p01/workspace.tsx:1
+arashthearcher@Arashs-MacBook-Air admin-test % 

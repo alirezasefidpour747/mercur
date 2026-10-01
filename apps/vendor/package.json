@@ -7,8 +7,9 @@
     "dev": "rm -rf node_modules/.vite && vite --port 7002",
     "lint": "oxlint",
     "preview": "vite preview --port 7001",
-    "build": "vite build",
-    "typecheck": "tsc --noEmit -p tsconfig.app.json"
+    "build": "bun run generate:native-contract && vite build",
+    "typecheck": "bun run generate:native-contract && tsc --noEmit -p tsconfig.app.json",
+    "generate:native-contract": "bun ../../shared/p01/generate-native-contract.mjs"
   },
   "dependencies": {
     "@hookform/resolvers": "5.4.0",
@@ -29,7 +30,8 @@
     "react-i18next": "17.0.14",
     "react-jwt": "^2.1.1",
     "react-router-dom": "7.18.1",
-    "zod": "4.6.5"
+    "zod": "4.6.5",
+    "@didar/p01-ui": "workspace:*"
   },
   "devDependencies": {
     "@types/react": "^18.3.2",
