@@ -1,0 +1,328 @@
+arashthearcher@Arashs-MacBook-Air storefront % cd /Users/arashthearcher/didar-b2b/mercur
+git pull --ff-only origin didar/p01-product-core
+cd apps/storefront
+bunx tsc --noEmit --pretty false
+remote: Enumerating objects: 56, done.
+remote: Counting objects: 100% (56/56), done.
+remote: Compressing objects: 100% (24/24), done.
+remote: Total 29 (delta 20), reused 4 (delta 3), pack-reused 0 (from 0)
+Unpacking objects: 100% (29/29), 8.30 KiB | 197.00 KiB/s, done.
+From https://github.com/alirezasefidpour747/mercur
+ * branch              didar/p01-product-core -> FETCH_HEAD
+   a25179bd..199073cd  didar/p01-product-core -> origin/didar/p01-product-core
+Updating a25179bd..199073cd
+Fast-forward
+ P01-RESULT.md                                                     |  11 +
+ .../src/components/cells/CountrySelect/CountrySelect.tsx          |   2 +-
+ .../src/components/molecules/CountrySelector/CountrySelector.tsx  |  26 +-
+ .../molecules/UpdateCartItemButton/UpdateCartItemButton.tsx       |   2 +-
+ apps/storefront/src/components/organisms/OrderItems/Item.tsx      |   8 +-
+ .../components/sections/ProductDetailsPage/ProductDetailsPage.tsx |   9 +-
+ apps/storefront/src/lib/client.ts                                 |   2 +-
+ apps/storefront/src/types/cart.ts                                 |   1 -
+ docs/p01/evidence/owner-macos-20261001-storefront-round3.txt      | 508 ++++++++++++++++++++++++++++++
+ 9 files changed, 542 insertions(+), 27 deletions(-)
+ create mode 100644 docs/p01/evidence/owner-macos-20261001-storefront-round3.txt
+src/components/sections/ProductDetailsPage/ProductDetailsPage.tsx(53,11): error TS2322: Type 'StoreProduct[] | undefined' is not assignable to type 'Product[] | undefined'.
+  Type 'StoreProduct[]' is not assignable to type 'Product[]'.
+    Type 'StoreProduct' is missing the following properties from type 'Product': brand, size, price, originalPrice
+../../packages/core/src/api/admin/sellers/[id]/members/invite/route.ts(25,41): error TS18046: 'invites'is of type 'unknown'.
+../../packages/core/src/api/store/carts/[id]/line-items/route.ts(39,11): error TS2353: Object literal may only specify known properties, and 'offer_id' does not exist in type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/api/vendor/customers/[id]/route.ts(43,49): error TS7006: Parameter 'g' implicitly has an 'any' type.
+../../packages/core/src/api/vendor/customers/[id]/route.ts(50,47): error TS7006: Parameter 'g' implicitly has an 'any' type.
+../../packages/core/src/api/vendor/sellers/[id]/members/route.ts(45,41): error TS18046: 'invites' is oftype 'unknown'.
+../../packages/core/src/api/vendor/uploads/route.ts(13,21): error TS2339: Property 'files' does not exist on type 'AuthenticatedMedusaRequest<BaseUploadFile, Record<string, unknown>>'.
+../../packages/core/src/api/vendor/uploads/route.ts(13,38): error TS2694: Namespace 'global.Express' has no exported member 'Multer'.
+../../packages/core/src/modules/commission/service.ts(95,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/commission/service.ts(95,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((commissionLines: CreateCommissionLineDTO[], sharedContext?: Context) => Promise<CommissionLineDTO[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((commissionLines: CreateCommissionLineDTO[], sharedContext?: Context) => Promise<CommissionLineDTO[]>)'.
+../../packages/core/src/modules/commission/service.ts(96,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/commission/service.ts(99,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/commission/service.ts(228,3): error TS1241: Unable to resolve signatureof method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/commission/service.ts(228,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((data: any, sharedContext?: Context) => Promise<any>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((data: any, sharedContext?: Context) => Promise<any>)'.
+../../packages/core/src/modules/commission/service.ts(232,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/commission/service.ts(245,3): error TS1241: Unable to resolve signatureof method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/commission/service.ts(245,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<{ id: string; is_enabled: boolean; is_default: boolean; currency_code: string | null; ... 11 more ...; deleted_at: Date | null; }[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<{ id: string; is_enabled: boolean; is_default: boolean; currency_code: string | null; ... 11 more ...; deleted_at: Date | null; }[]>)'.
+../../packages/core/src/modules/commission/service.ts(250,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/commission/service.ts(259,3): error TS1241: Unable to resolve signatureof method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/commission/service.ts(259,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<[{ id: string; is_enabled: boolean; is_default: boolean; currency_code: string | null; ... 11 more ...; deleted_at: Date | null; }[], number]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<[{ id: string; is_enabled: boolean; is_default: boolean; currency_code: string | null; ... 11 more ...; deleted_at: Date | null; }[], number]>)'.
+../../packages/core/src/modules/commission/service.ts(264,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(22,17): error TS7006: Parameter 'container' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(155,27): error TS7006: Parameter 'row' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(178,39): error TS7006: Parameter 'trx' implicitly has an 'any' type.
+../../packages/core/src/modules/custom-fields/services/custom-fields-module-service.ts(198,39): error TS7006: Parameter 'trx' implicitly has an 'any' type.
+../../packages/core/src/modules/offer/service.ts(20,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/offer/service.ts(20,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: OfferFilters, config?: FindConfig<OfferDTO>, sharedContext?: Context) => Promise<OfferDTO[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: OfferFilters, config?: FindConfig<OfferDTO>, sharedContext?: Context) => Promise<OfferDTO[]>)'.
+../../packages/core/src/modules/offer/service.ts(25,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/offer/service.ts(42,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/offer/service.ts(42,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: OfferFilters, config?: FindConfig<OfferDTO>, sharedContext?: Context) => Promise<[OfferDTO[], number]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: OfferFilters, config?: FindConfig<OfferDTO>, sharedContext?: Context) => Promise<[OfferDTO[], number]>)'.
+../../packages/core/src/modules/offer/service.ts(47,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(60,5): error TS1241: Unable toresolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(60,6): error TS1270: Decoratorfunction return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreatePayoutAccountDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreatePayoutAccountDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(61,5): error TS1241: Unable toresolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(64,9): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(113,5): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(113,6): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreateOnboardingDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreateOnboardingDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(114,5): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(117,9): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(160,5): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(160,6): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreatePayoutDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((input: CreatePayoutDTO, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(161,5): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/payout/services/payout-module-service.ts(165,9): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/payout/services/provider-service.ts(39,28): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'InjectedDependencies'.
+  No index signature with a parameter of type 'string' was found on type 'InjectedDependencies'.
+../../packages/core/src/modules/product-attribute/service.ts(27,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/product-attribute/service.ts(27,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+../../packages/core/src/modules/product-attribute/service.ts(59,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/product-attribute/service.ts(59,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+../../packages/core/src/modules/product-attribute/service.ts(200,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/product-attribute/service.ts(200,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any> | undefined, sharedContext?: Context | undefined) => Promise<any[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any> | undefined, sharedContext?: Context | undefined) => Promise<any[]>)'.
+../../packages/core/src/modules/product-attribute/service.ts(205,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/product-attribute/service.ts(223,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/product-attribute/service.ts(223,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any> | undefined, sharedContext?: Context | undefined) => Promise<[any[], number]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any> | undefined, sharedContext?: Context | undefined) => Promise<[any[], number]>)'.
+../../packages/core/src/modules/product-attribute/service.ts(228,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/product-attribute/service.ts(246,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/product-attribute/service.ts(246,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? any[] : any>)'.
+../../packages/core/src/modules/review/service.ts(10,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/review/service.ts(10,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((type: "product" | "seller",id: string, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((type: "product" | "seller", id: string, sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/review/service.ts(32,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/review/service.ts(32,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((fields: string[], sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((fields: string[], sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/review/service.ts(54,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/review/service.ts(54,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((fields: string[], sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((fields: string[], sharedContext?: Context<SqlEntityManager<AbstractSqlDriver<AbstractSqlConnection, AbstractSqlPlatform>>> | undefined) => Promise<...>)'.
+../../packages/core/src/modules/seller/repositories/order-group.ts(43,27): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ $eq: string; $lt: string; $gt: string; $lte: string; $gte: string; $ne: string; $in: string; $nin: string; $like: string; $ilike: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ $eq: string; $lt: string; $gt: string; $lte: string; $gte: string; $ne: string; $in: string; $nin: string; $like: string; $ilike: string; }'.
+../../packages/core/src/modules/seller/repositories/order-group.ts(187,34): error TS7006: Parameter 'row' implicitly has an 'any' type.
+../../packages/core/src/modules/seller/service.ts(13,33): error TS7016: Could not find a declaration file for module 'jsonwebtoken'. '/Users/arashthearcher/didar-b2b/mercur/node_modules/.bun/jsonwebtoken@9.0.3/node_modules/jsonwebtoken/index.js' implicitly has an 'any' type.
+  If the 'jsonwebtoken' package actually exposes this module, consider sending a pull request to amend 'https://github.com/DefinitelyTyped/DefinitelyTyped/tree/master/types/jsonwebtoken'
+../../packages/core/src/modules/seller/service.ts(69,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(69,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T,sharedContext?: Context | undefined) => Promise<T extends any[] ? SellerDTO[] : SellerDTO>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? SellerDTO[] : SellerDTO>)'.
+../../packages/core/src/modules/seller/service.ts(89,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(89,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T,sharedContext?: Context | undefined) => Promise<T extends any[] ? SellerDTO[] : SellerDTO>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? SellerDTO[] : SellerDTO>)'.
+../../packages/core/src/modules/seller/service.ts(109,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(109,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((data: { email: string; first_name?: string | null | undefined; last_name?: string | null | undefined; }[], sharedContext?: Context| undefined) => Promise<MemberDTO[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((data: { email: string; first_name?: string | null | undefined; last_name?: string | null | undefined; }[], sharedContext?: Context | undefined) => Promise<MemberDTO[]>)'.
+../../packages/core/src/modules/seller/service.ts(159,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(159,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? MemberInviteDTO[] : MemberInviteDTO>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | (<T extends unknown>(data: T, sharedContext?: Context | undefined) => Promise<T extends any[] ? MemberInviteDTO[] : MemberInviteDTO>)'.
+../../packages/core/src/modules/seller/service.ts(236,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(236,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((token: string, sharedContext?: Context) => Promise<MemberInviteDTO>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((token: string, sharedContext?: Context) => Promise<MemberInviteDTO>)'.
+../../packages/core/src/modules/seller/service.ts(239,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/seller/service.ts(298,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(298,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<OrderGroupDTO[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<OrderGroupDTO[]>)'.
+../../packages/core/src/modules/seller/service.ts(303,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/seller/service.ts(316,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(316,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<(number | OrderGroupDTO[])[]>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((filters?: any, config?: FindConfig<any>, sharedContext?: Context) => Promise<(number | OrderGroupDTO[])[]>)'.
+../../packages/core/src/modules/seller/service.ts(321,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/modules/seller/service.ts(336,3): error TS1241: Unable to resolve signature of method decorator when called as an expression.
+  The runtime will invoke the decorator with 2 arguments, but the decorator expects 3.
+../../packages/core/src/modules/seller/service.ts(336,4): error TS1270: Decorator function return type 'void | TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((id: string, config?: FindConfig<any>, sharedContext?: Context) => Promise<OrderGroupDTO>)'.
+  Type 'TypedPropertyDescriptor<unknown>' is not assignable to type 'void | ((id: string, config?: FindConfig<any>, sharedContext?: Context) => Promise<OrderGroupDTO>)'.
+../../packages/core/src/modules/seller/service.ts(341,5): error TS1206: Decorators are not valid here.
+../../packages/core/src/workflows/cart/hooks/validate.ts(29,23): error TS2339: Property 'offer_id' doesnot exist on type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/workflows/cart/hooks/validate.ts(59,24): error TS2339: Property 'offer_id' doesnot exist on type 'CreateCartCreateLineItemDTO'.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(36,114): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(151,25): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/add-seller-shipping-method-to-cart.ts(155,22): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(134,52): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(189,93): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(189,128): error TS7006: Parameter 'so' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(191,59): error TS7006: Parameter 'item' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(224,76): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(252,31): error TS7006: Parameter 'item' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(255,31): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(350,38): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(540,67): error TS18046: 'createdOrderGroup' is of type 'unknown'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(582,51): error TS2339: Property 'id' does not exist on type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(637,51): error TS2339: Property 'id' does not exist on type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+../../packages/core/src/workflows/cart/workflows/complete-cart-with-split-orders.ts(649,57): error TS2339: Property 'id' does not exist on type 'WorkflowData<unknown>'.
+../../packages/core/src/workflows/cart/workflows/list-seller-shipping-options-for-cart.ts(111,77): error TS7006: Parameter 'fulfillmentSet' implicitly has an 'any' type.
+../../packages/core/src/workflows/cart/workflows/list-seller-shipping-options-for-cart.ts(246,38): error TS7006: Parameter 'shippingOption' implicitly has an 'any' type.
+../../packages/core/src/workflows/commission/steps/create-commission-rates.ts(19,28): error TS7006: Parameter 'rate' implicitly has an 'any' type.
+../../packages/core/src/workflows/offer/workflows/create-offers.ts(268,30): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/steps/create-order-group.ts(17,3): error TS2345: Argumentof type '(id: string, { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string>'.
+  Types of parameters 'id' and 'input' are incompatible.
+    Type 'string | undefined' is not assignable to type 'string'.
+      Type 'undefined' is not assignable to type 'string'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(30,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(30,19): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ NOT_PAID:string; AWAITING: string; CAPTURED: string; PARTIALLY_CAPTURED: string; PARTIALLY_REFUNDED: string; REFUNDED: string; CANCELED: string; REQUIRES_ACTION: string; AUTHORIZED: string; PARTIALLY_AUTHORIZED: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ NOT_PAID: string; AWAITING:string; CAPTURED: string; PARTIALLY_CAPTURED: string; PARTIALLY_REFUNDED: string; REFUNDED: string; CANCELED: string; REQUIRES_ACTION: string; AUTHORIZED: string; PARTIALLY_AUTHORIZED: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(47,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(63,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(73,7): error TS7053: Element implicitly has an 'any' type because expression of type 'PaymentCollectionStatus' can't be used to index type '{}'.
+  Property 'completed' does not exist on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(79,21): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(81,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(85,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(87,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(88,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(96,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(97,9): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(104,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(106,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(115,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(116,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(121,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(143,5): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(143,23): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ NOT_FULFILLED: string; PARTIALLY_FULFILLED: string; FULFILLED: string; PARTIALLY_SHIPPED: string; SHIPPED: string; DELIVERED: string; PARTIALLY_DELIVERED: string; CANCELED: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ NOT_FULFILLED: string; PARTIALLY_FULFILLED: string; FULFILLED: string; PARTIALLY_SHIPPED: string; SHIPPED: string; DELIVERED: string; PARTIALLY_DELIVERED: string; CANCELED: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(155,11): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type 'FulfillmentDTO'.
+  No index signature with a parameter of type 'string' was found on type 'FulfillmentDTO'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(156,9): error TS7053: Element implicitly has an 'any' type because expression of type 'any' can't be used to index type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(156,27): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{ canceled_at: string; delivered_at: string; shipped_at: string; packed_at: string; }'.
+  No index signature with a parameter of type 'string' was found on type '{ canceled_at: string; delivered_at: string; shipped_at: string; packed_at: string; }'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(164,25): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(173,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(175,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(185,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(187,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(197,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(199,7): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(210,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order-group/utils/aggregate-status.ts(211,5): error TS7053: Element implicitly has an 'any' type because expression of type 'string' can't be used to index type '{}'.
+  No index signature with a parameter of type 'string' was found on type '{}'.
+../../packages/core/src/workflows/order/workflows/cancel-order-fulfillment.ts(277,39): error TS7006: Parameter 'f' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/cancel-order-fulfillment.ts(282,40): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(499,12): error TS7006: Parameter 'sm' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(520,17): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/order/workflows/create-order-fulfillment.ts(521,20): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/product/steps/validate-seller-product-permissions.ts(35,35): error TS7006: Parameter 's' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/steps/create-member-invites.ts(21,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/create-seller-member.ts(19,3): error TS2345: Argument oftype '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/create-seller.ts(16,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter oftype 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/delete-seller.ts(13,3): error TS2345: Argument of type '(ids: string[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter oftype 'CompensateFn<string[]>'.
+  Types of parameters 'ids' and 'input' are incompatible.
+    Type 'string[] | undefined' is not assignable to type 'string[]'.
+      Type 'undefined' is not assignable to type 'string[]'.
+../../packages/core/src/workflows/seller/steps/update-member.ts(27,3): error TS2345: Argument of type '(prevMembers: MemberDTO[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<MemberDTO[]>'.
+  Types of parameters 'prevMembers' and 'input' are incompatible.
+    Type 'MemberDTO[] | undefined' is not assignable to type 'MemberDTO[]'.
+      Type 'undefined' is not assignable to type 'MemberDTO[]'.
+../../packages/core/src/workflows/seller/steps/update-seller.ts(23,3): error TS2345: Argument of type '(prevSellers: SellerDTO[], { container }: StepExecutionContext) => Promise<void>' is not assignable to parameter of type 'CompensateFn<SellerDTO[]>'.
+  Types of parameters 'prevSellers' and 'input' are incompatible.
+    Type 'SellerDTO[] | undefined' is not assignable to type 'SellerDTO[]'.
+      Type 'undefined' is not assignable to type 'SellerDTO[]'.
+../../packages/core/src/workflows/seller/workflows/accept-member-invite.ts(65,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/add-seller-member.ts(25,7): error TS2554: Expected 0arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/add-seller-member.ts(37,30): error TS18046: 'sellerMembers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/approve-seller.ts(43,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(22,45): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(27,9): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-member-invites.ts(27,22): error TS7006: Parameter 'inv' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(57,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(58,60): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-seller-account.ts(87,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(40,14): error TS2322: Type 'ReturnWorkflow<{ sellers: (CreateSellerDTO & { member: { email: string; }; })[]; } & AdditionalData, unknown, [Hook<"validate", { input: CreateSellersWorkflowInput; }, unknown>, Hook<...>]>' is not assignable to type 'ReturnWorkflow<CreateSellersWorkflowInput, SellerDTO[], CreateSellersWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ sellers: (CreateSellerDTO & { member: { email: string; }; })[]; } & AdditionalData, unknown, [Hook<"validate", { input: CreateSellersWorkflowInput; }, unknown>, Hook<...>]>' is not assignable to type '{ runAsStep: ({ input, }: { input: CreateSellersWorkflowInput | WorkflowData<CreateSellersWorkflowInput>; }) => SellerDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; c...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'SellerDTO[] & WorkflowDataProperties<SellerDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'SellerDTO[]': length, pop, push, concat, and 35 more.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(52,7): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,11): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,24): error TS7006: Parameter 'seller' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(64,32): error TS7006: Parameter 'i' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(78,7): error TS18046: 'sellers' isof type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/create-sellers.ts(78,20): error TS7006: Parameter 's' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/delete-seller.ts(20,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(72,45): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(77,9): error TS18046: 'invites' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/resend-member-invite.ts(77,22): error TS7006: Parameter 'inv' implicitly has an 'any' type.
+../../packages/core/src/workflows/seller/workflows/suspend-seller.ts(44,23): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/terminate-seller.ts(43,23): error TS2554: Expected 0arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/unsuspend-seller.ts(42,23): error TS2554: Expected 0arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/unterminate-seller.ts(42,23): error TS2554: Expected0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-member.ts(35,14): error TS2322: Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: { first_name?: string | null | undefined; last_name?: string | null | undefined; locale?: string | null | undefined; }; } & AdditionalData, unknown, [...]>' is not assignable to type 'ReturnWorkflow<UpdateMemberWorkflowInput, MemberDTO[], UpdateMemberWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: { first_name?: string | null | undefined; last_name?: string | null | undefined; locale?: string | null | undefined; }; } & AdditionalData,unknown, [...]>' is not assignable to type '{ runAsStep: ({ input, }: { input: UpdateMemberWorkflowInput | WorkflowData<UpdateMemberWorkflowInput>; }) => MemberDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; con...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'MemberDTO[] & WorkflowDataProperties<MemberDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'MemberDTO[]': length, pop, push, concat, and 35 more.
+../../packages/core/src/workflows/seller/workflows/update-member.ts(42,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(34,14): error TS2322: Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: UpdateSellerDTO; } & AdditionalData, unknown, [Hook<"sellersUpdated", { sellers: WorkflowDataProperties<unknown> & { ...; } & StepFunctionReturnConfig<...>; additional_data: Record<...> | undefined; }, unknown>]>' is not assignable to type 'ReturnWorkflow<UpdateSellersWorkflowInput, SellerDTO[], UpdateSellersWorkflowHooks>'.
+  Type 'ReturnWorkflow<{ selector: Record<string, unknown>; update: UpdateSellerDTO; } & AdditionalData, unknown, [Hook<"sellersUpdated", { sellers: WorkflowDataProperties<unknown> & { ...; } & StepFunctionReturnConfig<...>; additional_data: Record<...> | undefined; }, unknown>]>' is not assignable to type '{ runAsStep: ({ input, }: { input: UpdateSellersWorkflowInput | WorkflowData<UpdateSellersWorkflowInput>; }) => SellerDTO[] & ... 2 more ... & StepFunctionReturnConfig<...>; run: <TDataOverride = undefined, TResultOverride = undefined>(args?: FlowRunOptions<...> | undefined) => Promise<...>; getName: () => string; c...'.
+    The types returned by 'runAsStep(...)' are incompatible between these types.
+      Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is not assignable to type 'SellerDTO[] & WorkflowDataProperties<SellerDTO[]> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | ... 1 more ... | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>'.
+        Type 'WorkflowDataProperties<unknown> & { config(config: { name?: string | undefined; } & Omit<TransactionStepsDefinition, "next" | "uuid" | "action">): WorkflowData<...>; } & StepFunctionReturnConfig<...>' is missing the following properties from type 'SellerDTO[]': length, pop, push, concat, and 35 more.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(41,39): error TS2554: Expected 0 arguments, but got 1.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(49,7): error TS18046: 'sellers' is of type 'unknown'.
+../../packages/core/src/workflows/seller/workflows/update-seller.ts(49,20): error TS7006: Parameter 's'implicitly has an 'any' type.
+arashthearcher@Arashs-MacBook-Air storefront % 

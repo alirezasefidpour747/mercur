@@ -321,3 +321,14 @@ On `a25179bd`, ESLint loaded successfully and the Embla module errors disappeare
 Correction **IMPLEMENTED — NOT TESTED**: bind the native SDK to Mercur's actual exported `@mercurjs/core/_generated` route contract; remove the incompatible optional promotion override in Cart; constrain country selections to strings and filter incomplete country options; make the debounce ref nullable and writable; present absent order amounts as unavailable rather than fabricate zero; describe the optional native seller expansion consumed by the inactive native product component.
 
 These are application compilation fixes only. No native core source, real request behavior, API authorization, dependency lockfile, Didar public DTO or future business feature is added/activated. No lint or TypeScript checks are disabled. Remaining native lint errors are still pending; first re-run standalone tsc to confirm the restored native contract and collect any remaining type diagnostics before the next repair batch. P01 remains **TESTED — FAILED**; backend build has owner-machine passing evidence.
+
+
+## Owner-machine debugging — 2026-10-01, round 5
+
+Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-round4.txt`.
+
+On `199073cd`, prior storefront SDK/Cart/country/ref diagnostics were resolved, but **TESTED — FAILED**: Mercur's raw generated type map pulled backend source into the frontend compiler, exposing backend decorators and other diagnostics under the frontend tsconfig. One real frontend product-carousel DTO mismatch also remained.
+
+Correction **IMPLEMENTED — NOT TESTED**: an application-local native contract is generated directly from Mercur's checked-in auth/store route sections, with Mercur-relative source imports redirected to the same package's compiled route declarations through its existing exports. The SDK uses this generated contract; no backend implementation is imported into frontend typechecking and no endpoint or response is invented. Build/typecheck scripts regenerate the contract. Both native home-carousel components now accept real StoreProduct DTOs instead of the obsolete presentation Product interface.
+
+Generator executed locally against the exact repository native map and its output matched the checked-in contract. This only verifies contract generation, not full typecheck, runtime or frontend build. No Core source, dependency lockfile or lint/type validation bypass was changed. Remaining lint errors are pending. Owner-machine `bun run typecheck` is required next; P01 remains **TESTED — FAILED**.

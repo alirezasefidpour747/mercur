@@ -1,7 +1,7 @@
 import { Carousel } from "@/components/cells"
 import { ProductCard } from "../ProductCard/ProductCard"
 import { listProducts } from "@/lib/data/products"
-import { Product } from "@/types/product"
+import type { HttpTypes } from "@medusajs/types"
 
 export const HomeProductsCarousel = async ({
   locale,
@@ -9,7 +9,7 @@ export const HomeProductsCarousel = async ({
   home,
 }: {
   locale: string
-  sellerProducts: Product[]
+  sellerProducts: HttpTypes.StoreProduct[]
   home: boolean
 }) => {
   const {

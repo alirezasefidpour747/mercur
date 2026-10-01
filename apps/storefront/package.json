@@ -4,9 +4,11 @@
   "private": true,
   "scripts": {
     "dev": "next dev --turbopack",
-    "build": "next build",
+    "build": "bun run generate:native-contract && next build",
     "start": "next start",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate:native-contract": "bun ./scripts/generate-native-contract.mjs",
+    "typecheck": "bun run generate:native-contract && tsc --noEmit"
   },
   "dependencies": {
     "@headlessui/react": "^2.2.1",
