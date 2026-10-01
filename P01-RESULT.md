@@ -359,3 +359,10 @@ Correction **IMPLEMENTED — NOT TESTED**: declare `@medusajs/types: 2.21.0` as 
 On `ec55b323`, root `bun install` succeeded. Vendor typecheck remains **TESTED — FAILED**, now with one TS2367 diagnostic at `order-outstanding-payment.tsx:53`; the dependency-resolution and inferred-parameter errors are resolved. Owner-provided output is recorded in `docs/p01/evidence/owner-macos-20261001-vendor-round2.txt`.
 
 Correction **IMPLEMENTED — NOT TESTED**: the existing widget excludes native Payment Collection status `completed` instead of `captured`, which belongs to Payment Session. Verified against Medusa v2.21.0 `packages/core/types/src/http/payment/common.ts`. The canceled-collection and outstanding-balance guards remain in place. This fixes native application compatibility; it adds no P01 payment capability. Vendor typecheck/build must be rerun on the owner's machine. Canonical lockfile capture, Storefront lint/full build and native T01–T10 evidence remain pending. Overall P01 remains **TESTED — FAILED**.
+
+
+## Owner-machine debugging — 2026-10-01, round 9
+
+On `7df38c81`, vendor `bun run typecheck && bun run build` **PASSED**: both native contract generation steps succeeded, tsc emitted no diagnostics and Vite completed in 941ms. Evidence: `docs/p01/evidence/owner-macos-20261001-vendor-round3.txt`. This supersedes the previous vendor compilation failure. It does not prove authenticated Supplier workflows.
+
+Current owner-machine compilation evidence: backend build **PASSED**, Storefront standalone typecheck **PASSED**, admin typecheck/build **PASSED**, vendor typecheck/build **PASSED**. Storefront full lint/build remains **TESTED — FAILED** pending repair and a new run. The dashboard warning about dynamic Medusa-config require (base `/`, no plugin extensions) and large bundle warning remain unresolved. Canonical Bun lockfile capture/commit and frozen installation, native migrations/seed, real API/security/filter/concurrency/report/restart tests and populated four-language UI verification remain pending. P01 overall remains **TESTED — FAILED**; P02 has not started.
