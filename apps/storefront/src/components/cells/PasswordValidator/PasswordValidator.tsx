@@ -7,6 +7,15 @@ import { CheckCircle } from '@medusajs/icons';
 import { Card } from '@/components/atoms';
 import { cn } from '@/lib/utils';
 
+type PasswordValidation = {
+  isValid: boolean;
+  lower: boolean;
+  upper: boolean;
+  '8chars': boolean;
+  digit: boolean;
+  symbol: boolean;
+};
+
 function validatePassword(password: string) {
   const errors = {
     tooShort: password.length < 8,
@@ -27,7 +36,7 @@ export const PasswordValidator = ({
   setError
 }: {
   password: string;
-  setError: (error: any) => void;
+  setError: (error: PasswordValidation) => void;
 }) => {
   const [newPasswordError, setNewPasswordError] = useState({
     isValid: false,
@@ -57,7 +66,7 @@ export const PasswordValidator = ({
       digit: validation.errors.noDigit,
       symbol: validation.errors.noSymbol
     });
-  }, [password]);
+  }, [password, setError]);
   return (
     <Card className="p-4">
       <p

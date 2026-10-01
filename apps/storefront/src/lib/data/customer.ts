@@ -101,8 +101,8 @@ export async function signup(formData: FormData) {
     await transferCart();
 
     return createdCustomer;
-  } catch (error: any) {
-    return error.toString();
+  } catch (error: unknown) {
+    return String(error);
   }
 }
 
@@ -155,7 +155,7 @@ export async function transferCart() {
   revalidateTag(cartCacheTag);
 }
 
-export const addCustomerAddress = async (formData: FormData): Promise<any> => {
+export const addCustomerAddress = async (formData: FormData) => {
   const address = {
     address_name: formData.get('address_name') as string,
     first_name: formData.get('first_name') as string,
@@ -183,7 +183,7 @@ export const addCustomerAddress = async (formData: FormData): Promise<any> => {
       return { success: true, error: null };
     })
     .catch(err => {
-      return { success: false, error: err.toString() };
+      return { success: false, error: String(err) };
     });
 };
 
@@ -200,11 +200,11 @@ export const deleteCustomerAddress = async (addressId: string): Promise<void> =>
       return { success: true, error: null };
     })
     .catch(err => {
-      return { success: false, error: err.toString() };
+      return { success: false, error: String(err) };
     });
 };
 
-export const updateCustomerAddress = async (formData: FormData): Promise<any> => {
+export const updateCustomerAddress = async (formData: FormData) => {
   const addressId = formData.get('addressId') as string;
 
   if (!addressId) {
@@ -242,11 +242,11 @@ export const updateCustomerAddress = async (formData: FormData): Promise<any> =>
       return { success: true, error: null };
     })
     .catch(err => {
-      return { success: false, error: err.toString() };
+      return { success: false, error: String(err) };
     });
 };
 
-export const updateCustomerPassword = async (password: string, token: string): Promise<any> => {
+export const updateCustomerPassword = async (password: string, token: string) => {
   const res = await (sdk.auth.$actorType.$authProvider.update
     .mutate({
       $actorType: 'customer',
@@ -260,8 +260,8 @@ export const updateCustomerPassword = async (password: string, token: string): P
       revalidateTag(customerCacheTag);
       return { success: true, error: null };
     })
-    .catch((err: any) => {
-      return { success: false, error: err.toString() };
+    .catch((err: unknown) => {
+      return { success: false, error: String(err) };
     });
 
   return res;
@@ -277,8 +277,8 @@ export const sendResetPasswordEmail = async (email: string) => {
     .then(() => {
       return { success: true, error: null };
     })
-    .catch((err: any) => {
-      return { success: false, error: err.toString() };
+    .catch((err: unknown) => {
+      return { success: false, error: String(err) };
     });
 
   return res;

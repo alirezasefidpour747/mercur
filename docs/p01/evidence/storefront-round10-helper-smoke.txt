@@ -1,0 +1,3 @@
+Node v24.19.0; 2026-10-01
+18 helper smoke assertions passed: 10 emptiness inputs, 3 order-error cases, 5 Medusa error cases.
+Full app TypeScript, ESLint, build and real HTTP were not executed in this environment for this batch.

@@ -366,3 +366,21 @@ Correction **IMPLEMENTED — NOT TESTED**: the existing widget excludes native P
 On `7df38c81`, vendor `bun run typecheck && bun run build` **PASSED**: both native contract generation steps succeeded, tsc emitted no diagnostics and Vite completed in 941ms. Evidence: `docs/p01/evidence/owner-macos-20261001-vendor-round3.txt`. This supersedes the previous vendor compilation failure. It does not prove authenticated Supplier workflows.
 
 Current owner-machine compilation evidence: backend build **PASSED**, Storefront standalone typecheck **PASSED**, admin typecheck/build **PASSED**, vendor typecheck/build **PASSED**. Storefront full lint/build remains **TESTED — FAILED** pending repair and a new run. The dashboard warning about dynamic Medusa-config require (base `/`, no plugin extensions) and large bundle warning remain unresolved. Canonical Bun lockfile capture/commit and frozen installation, native migrations/seed, real API/security/filter/concurrency/report/restart tests and populated four-language UI verification remain pending. P01 overall remains **TESTED — FAILED**; P02 has not started.
+
+
+## Owner-machine debugging — 2026-10-01, round 10
+
+Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-round5.txt`. On the owner's working tree after the vendor fix, Storefront compilation succeeded in 6.5s, but full build **TESTED — FAILED** with exit code 1 and 136 fatal lint diagnostics. The captured build does not provide a new passing TypeScript gate. Most diagnostics are explicit-any in existing native commerce screens/helpers; no lint tooling error remains.
+
+First correction batch **IMPLEMENTED — NOT TESTED** against full application gates:
+
+- `src/lib/helpers/isEmpty.ts`: unknown inputs and narrowing predicates, preserving existing emptiness behavior.
+- `src/lib/helpers/medusa-error.ts` and `order-error-formatter.ts`: unknown error inputs, checked string/message/response shapes, preserving redirect handling and real failure messages without secondary property-access failures; remove unsafe raw response/header logging.
+- `src/lib/helpers/compare-addresses.ts`: object/null/undefined address inputs.
+- `src/lib/data/cookies.ts`: optional named header/cache fields instead of empty-object union types.
+- `src/lib/data/customer.ts`: infer actual action return types, normalize caught unknown values with String.
+- `LocalizedLink.tsx`: actual Next Link props instead of an arbitrary-any index signature.
+- `PasswordValidator.tsx`: concrete validation result fields and include the existing state-setter callback dependency.
+- `ProductDetailsHeader.tsx`: infer option DTOs from the already typed native Product.
+
+Local Node v24 helper smoke checks **PASSED** (18 assertions: empty/non-empty values, redirect/stock error formatting, actual and malformed response payloads, offline/null errors). This is not full application TypeScript/lint/build or real API evidence. React changes were reviewed for existing state-setter dependencies and unchanged rendering; the new types do not activate native Order/Payment/B2C flows. No check was disabled and no Core source changed. Remaining native lint diagnostics, full Storefront build and all outstanding native T01–T10 requirements remain pending. P01 overall remains **TESTED — FAILED**. Next gate: owner's Storefront typecheck for this batch before continuing native lint repairs.

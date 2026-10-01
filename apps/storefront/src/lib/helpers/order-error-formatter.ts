@@ -1,11 +1,19 @@
-export const orderErrorFormatter = (error: any) => {
-  if (error.message === "NEXT_REDIRECT") {
+export const orderErrorFormatter = (error: unknown) => {
+  const message =
+    typeof error === "object" &&
+    error !== null &&
+    "message" in error &&
+    typeof error.message === "string"
+      ? error.message
+      : String(error)
+
+  if (message === "NEXT_REDIRECT") {
     return null
   }
 
-  if (error.message.includes("Not enough stock available")) {
+  if (message.includes("Not enough stock available")) {
     return "Not enough stock available"
   }
 
-  return error.message
+  return message
 }
