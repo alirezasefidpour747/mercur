@@ -428,3 +428,8 @@ Verified native nullable calculated-price fields against Medusa v2.21.0 `package
 ## Owner-machine debugging — 2026-10-01, round 15
 
 On `d82181f4`, Storefront typecheck **TESTED — FAILED** with one TS18048 at CartReview.tsx:27: the second shipping-method count access remained unguarded. Other round 14 changes emitted no diagnostics in this run. Correction **IMPLEMENTED — NOT TESTED**: guard both count comparisons for an omitted native shipping_methods expansion; no shipping methods does not satisfy the review gate. Owner typecheck is required again. Remaining lint/full build and native T01–T10 evidence are pending. P01 overall remains **TESTED — FAILED**.
+
+
+## Owner-machine debugging — 2026-10-01, round 16
+
+On `b7b9d8c0`, owner Storefront `bun run typecheck` **PASSED** after native contract generation with no diagnostics. This supersedes round 15's optional shipping_methods error. Backend build, admin/vendor typecheck/build and current Storefront typecheck have passing owner evidence. Full Storefront lint/build remains **TESTED — FAILED** until all remaining native lint diagnostics are repaired and verified. Request a fresh standalone lint log from this working tree before the next correction batch. Canonical Bun lock capture and native migration/seed/authenticated T01–T10 evidence remain outstanding. P01 overall remains **TESTED — FAILED**; P02 remains untouched.
