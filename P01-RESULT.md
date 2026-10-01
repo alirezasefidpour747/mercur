@@ -433,3 +433,17 @@ On `d82181f4`, Storefront typecheck **TESTED — FAILED** with one TS18048 at Ca
 ## Owner-machine debugging — 2026-10-01, round 16
 
 On `b7b9d8c0`, owner Storefront `bun run typecheck` **PASSED** after native contract generation with no diagnostics. This supersedes round 15's optional shipping_methods error. Backend build, admin/vendor typecheck/build and current Storefront typecheck have passing owner evidence. Full Storefront lint/build remains **TESTED — FAILED** until all remaining native lint diagnostics are repaired and verified. Request a fresh standalone lint log from this working tree before the next correction batch. Canonical Bun lock capture and native migration/seed/authenticated T01–T10 evidence remain outstanding. P01 overall remains **TESTED — FAILED**; P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 17
+
+Fresh Storefront standalone lint **TESTED — FAILED**, exit code 1, with 80 fatal diagnostics (down from the earlier 136). Evidence: `docs/p01/evidence/owner-macos-20261001-storefront-lint-round2.txt`. The next-lint deprecation notice is a warning, not the cause of failure. Native return/shipping/order components and some payment/cart code still require correction.
+
+Next correction batch **IMPLEMENTED — NOT TESTED** against full application gates:
+
+- Existing cart data actions use checked unknown error extraction; promotions have an explicit success/failure result and inferred real DTO fields. Remove its redundant ts-ignore.
+- Address payload uses StoreUpdateCart and validates FormData strings, preserving omitted optional fields; await the actual cart-cookie lookup instead of testing its Promise.
+- Native completion keeps the generated API response type, narrows presence of order_group, and returns typed failure errors rather than cast-any responses. Region recovery narrows the actual error message and uses const for the mutated array.
+- CartPaymentSection uses actual StorePaymentProvider and StoreCart types, optional expansion fields and real error messages; absent shipping methods fail its readiness check. No payment route, settlement behavior or P01 commerce capability was added.
+
+The small application-local requestErrorMessage helper preserves nested response errors, ordinary Error messages and text errors, and provides a failure fallback for malformed/empty values. Local Node smoke checks **PASSED**, six assertions; this is not real API evidence. No explicit-any or suppression remains in these edited files. Full app TypeScript/lint/build must be verified on the owner machine; overall P01 remains **TESTED — FAILED** and all outstanding native T01–T10 work remains pending.

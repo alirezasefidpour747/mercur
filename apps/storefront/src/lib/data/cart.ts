@@ -4,6 +4,7 @@ import { HttpTypes } from '@medusajs/types';
 import { revalidatePath, revalidateTag } from 'next/cache';
 import { redirect } from 'next/navigation';
 
+import { requestErrorMessage } from '@/lib/helpers/request-error-message';
 import medusaError from '@/lib/helpers/medusa-error';
 import { parseVariantIdsFromError } from '@/lib/helpers/parse-variant-error';
 
@@ -280,7 +281,9 @@ export async function initiatePaymentSession(
   }
 }
 
-export async function applyPromotions(codes: string[]) {
+export async function applyPromotions(codes: string[]): Promise<
+  { success: true; applied: boolean } | { success: false; error: string }
+> {
   const cartId = await getCartId();
 
   if (!cartId) {
@@ -299,16 +302,12 @@ export async function applyPromotions(codes: string[]) {
     })
     const cartCacheTag = await getCacheTag("carts")
     revalidateTag(cartCacheTag)
-    // @ts-ignore
-    const applied = cart.promotions?.some((promotion: any) =>
-      codes.includes(promotion.code)
-    )
+    const applied = cart.promotions?.some((promotion) =>
+      typeof promotion.code === 'string' && codes.includes(promotion.code)
+    ) ?? false
     return { success: true, applied }
-  } catch (error: any) {
-    const errorMessage =
-      error?.response?.data?.message ||
-      error?.message ||
-      "Failed to apply promotion code"
+  } catch (error: unknown) {
+    const errorMessage = requestErrorMessage(error, "Failed to apply promotion code")
     return { success: false, error: errorMessage }
   }
 }
@@ -366,33 +365,40 @@ export async function setAddresses(currentState: unknown, formData: FormData) {
     if (!formData) {
       throw new Error('No form data found when setting addresses');
     }
-    const cartId = getCartId();
+    const cartId = await getCartId();
     if (!cartId) {
       throw new Error('No existing cart found when setting addresses');
     }
 
-    const data = {
-      shipping_address: {
-        first_name: formData.get('shipping_address.first_name'),
-        last_name: formData.get('shipping_address.last_name'),
-        address_1: formData.get('shipping_address.address_1'),
-        address_2: '',
-        company: formData.get('shipping_address.company'),
-        postal_code: formData.get('shipping_address.postal_code'),
-        city: formData.get('shipping_address.city'),
-        country_code: formData.get('shipping_address.country_code'),
-        province: formData.get('shipping_address.province'),
-        phone: formData.get('shipping_address.phone')
-      },
-      email: formData.get('email')
-    } as any;
-
-    data.billing_address = data.shipping_address;
+    const field = (name: string) => {
+      const value = formData.get(name);
+      if (value !== null && typeof value !== 'string') throw new Error(`Invalid address field: ${name}`);
+      return value ?? undefined;
+    };
+    const countryCode = field('shipping_address.country_code');
+    if (!countryCode) throw new Error('Missing address country code');
+    const shippingAddress = {
+      first_name: field('shipping_address.first_name'),
+      last_name: field('shipping_address.last_name'),
+      address_1: field('shipping_address.address_1'),
+      address_2: '',
+      company: field('shipping_address.company'),
+      postal_code: field('shipping_address.postal_code'),
+      city: field('shipping_address.city'),
+      country_code: countryCode,
+      province: field('shipping_address.province'),
+      phone: field('shipping_address.phone')
+    };
+    const data: HttpTypes.StoreUpdateCart = {
+      shipping_address: shippingAddress,
+      billing_address: shippingAddress,
+      email: field('email')
+    };
 
     await updateCart(data);
     await revalidatePath('/cart');
-  } catch (e: any) {
-    return e.message;
+  } catch (e: unknown) {
+    return requestErrorMessage(e, 'Failed to update addresses');
   }
 }
 
@@ -409,13 +415,13 @@ export async function placeOrder(cartId?: string) {
 
   const res = await sdk.store.carts.$id.complete
     .mutate({ $id: id, fetchOptions: { headers } })
-    .then(data => ({ ok: true, error: null, data: data as any }))
-    .catch(error => ({ ok: false, error, data: null as any }));
+    .then(data => ({ ok: true as const, error: null, data }))
+    .catch((error: unknown) => ({ ok: false as const, error: new Error(requestErrorMessage(error, 'Failed to place order')), data: null }));
 
   const cartCacheTag = await getCacheTag('carts');
   revalidateTag(cartCacheTag);
 
-  if (res.data?.order_group) {
+  if (res.data && 'order_group' in res.data && res.data.order_group) {
     revalidatePath('/user/reviews');
     revalidatePath('/user/orders');
     removeCartId();
@@ -463,7 +469,7 @@ export async function updateRegionWithValidation(
     throw new Error(`Region not found for country code: ${countryCode}`);
   }
 
-  let removedItems: string[] = [];
+  const removedItems: string[] = [];
 
   if (cartId) {
     const headers = {
@@ -472,12 +478,13 @@ export async function updateRegionWithValidation(
 
     try {
       await updateCart({ region_id: region.id });
-    } catch (error: any) {
-      if (!error?.message?.includes('do not have a price')) {
+    } catch (error: unknown) {
+      const message = requestErrorMessage(error, 'Failed to update region');
+      if (!message.includes('do not have a price')) {
         throw error;
       }
 
-      const problematicVariantIds = parseVariantIdsFromError(error.message);
+      const problematicVariantIds = parseVariantIdsFromError(message);
 
       if (!problematicVariantIds.length) {
         throw new Error('Failed to parse variant IDs from error');
@@ -500,7 +507,7 @@ export async function updateRegionWithValidation(
                 fetchOptions: { headers }
               });
               removedItems.push(item.product_title || 'Unknown product');
-            } catch (deleteError) {
+            } catch {
               // ignore individual delete failures and continue removing the rest
             }
           }
@@ -509,7 +516,7 @@ export async function updateRegionWithValidation(
         if (removedItems.length > 0) {
           await updateCart({ region_id: region.id });
         }
-      } catch (fetchError) {
+      } catch {
         throw new Error('Failed to handle incompatible cart items');
       }
     }
