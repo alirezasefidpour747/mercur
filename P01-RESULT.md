@@ -303,3 +303,10 @@ Backend `bun run build` on commit `f8a3a1d7` **PASSED**, completing in 4.13 seco
 Storefront `bun run build` generated its production output, but reported that ESLint could not load the inherited TypeScript config because of old jiti, and explicitly skipped TypeScript validation. This is not evidence of passing lint/typecheck gates.
 
 Correction **IMPLEMENTED — NOT TESTED**: add an application-local `eslint.config.mjs` using the installed Next core-web-vitals and TypeScript lint rules through existing FlatCompat; this avoids the inherited TypeScript config loader without disabling lint or changing dependencies. Set `typescript.ignoreBuildErrors` to false in the application Next config so production build enforces type validation. A new owner-machine build is required; P01 overall remains **TESTED — FAILED** pending remaining gates and the real native journey.
+
+
+## Owner-machine debugging — 2026-10-01, round 3
+
+Storefront build on `c3a914d3` compiled its bundle but **TESTED — FAILED** at validation: ESLint could not resolve react-hooks from the application placeholder, and Carousel imported a type from a transitive package not declared directly by the app.
+
+Correction **IMPLEMENTED — NOT TESTED**: resolve ESLint plugins relative to the installed Next config, whose declared dependencies include react-hooks; derive Embla API types from the directly installed React hook in both Carousel and ProductCarouselIndicator. No added dependency, lockfile mutation or validation bypass. Next steps are full build and standalone TypeScript diagnostics on the owner's machine.

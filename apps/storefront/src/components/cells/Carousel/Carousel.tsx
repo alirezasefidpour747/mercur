@@ -5,8 +5,9 @@ import useEmblaCarousel from "embla-carousel-react"
 import { Indicator } from "@/components/atoms"
 import { ArrowLeftIcon, ArrowRightIcon } from "@/icons"
 import { useCallback, useEffect, useState } from "react"
-import { EmblaCarouselType } from "embla-carousel"
 import tailwindConfig from "../../../../tailwind.config"
+
+type EmblaCarouselType = NonNullable<ReturnType<typeof useEmblaCarousel>[1]>
 
 export const CustomCarousel = ({
   variant = "light",
