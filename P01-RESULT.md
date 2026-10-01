@@ -352,3 +352,10 @@ On `2f854894`, `bun install` succeeded and admin typecheck/build both **PASSED**
 Vendor production bundle **PASSED** (898ms); vendor typecheck **TESTED — FAILED** with two diagnostics in the existing payment widget. Evidence: `docs/p01/evidence/owner-macos-20261001-vendor-round1.txt`. Both trace to undeclared `@medusajs/types` in the vendor app's own dependency scope.
 
 Correction **IMPLEMENTED — NOT TESTED**: declare `@medusajs/types: 2.21.0` as a vendor devDependency for the widget's type-only import, matching existing native Medusa packages. No payment logic or future package is implemented/activated. Re-run root `bun install` and vendor typecheck. Canonical owner-generated lockfile capture/commit and frozen installation remain pending. Storefront lint/full build, real migrations/seed/API journey, authorization/filter/persistence tests and runtime config warning remain unresolved. Overall P01 remains **TESTED — FAILED**; no P02.
+
+
+## Owner-machine debugging — 2026-10-01, round 8
+
+On `ec55b323`, root `bun install` succeeded. Vendor typecheck remains **TESTED — FAILED**, now with one TS2367 diagnostic at `order-outstanding-payment.tsx:53`; the dependency-resolution and inferred-parameter errors are resolved. Owner-provided output is recorded in `docs/p01/evidence/owner-macos-20261001-vendor-round2.txt`.
+
+Correction **IMPLEMENTED — NOT TESTED**: the existing widget excludes native Payment Collection status `completed` instead of `captured`, which belongs to Payment Session. Verified against Medusa v2.21.0 `packages/core/types/src/http/payment/common.ts`. The canceled-collection and outstanding-balance guards remain in place. This fixes native application compatibility; it adds no P01 payment capability. Vendor typecheck/build must be rerun on the owner's machine. Canonical lockfile capture, Storefront lint/full build and native T01–T10 evidence remain pending. Overall P01 remains **TESTED — FAILED**.

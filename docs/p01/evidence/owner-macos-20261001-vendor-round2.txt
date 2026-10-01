@@ -1,0 +1,14 @@
+Owner-provided macOS output — 2026-10-01
+Commit: ec55b323
+
+bun install v1.4.2 (744846f84)
+Checked 2289 installs across 2403 packages (no changes) [828.00ms]
+$ bun run generate:native-contract && tsc --noEmit -p tsconfig.app.json
+$ bun ../../shared/p01/generate-native-contract.mjs
+Generated native panel contracts (auth/admin and auth/vendor)
+src/widgets/order-outstanding-payment.tsx:53:13 - error TS2367: This comparison appears to be unintentional because the types 'BasePaymentCollectionStatus' and '"captured"' have no overlap.
+
+53     (pc) => pc.status !== "captured" && pc.status !== "canceled"
+               ~~~~~~~~~~~~~~~~~~~~~~~~
+
+Found 1 error in src/widgets/order-outstanding-payment.tsx:53

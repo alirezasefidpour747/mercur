@@ -50,7 +50,7 @@ const OrderOutstandingPayment = ({
   }
 
   const unpaidCollection = order.payment_collections?.find(
-    (pc) => pc.status !== "captured" && pc.status !== "canceled"
+    (pc) => pc.status !== "completed" && pc.status !== "canceled"
   )
 
   const pendingDifference = order.summary?.pending_difference ?? 0
