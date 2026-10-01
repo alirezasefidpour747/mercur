@@ -1,0 +1,7 @@
+Owner macOS — 2026-10-01; commit 485e4bf3
+bun run typecheck
+Generated native storefront contract (auth/store)
+OrderTrack.tsx:5:43 TS2339 — labels does not exist on StoreOrderFulfillment.
+OrderTrack.tsx:12:22 TS7006 — item implicitly has an any type.
+Found 2 errors in the same file.
+Transcribed from owner chat output.

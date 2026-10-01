@@ -2,8 +2,22 @@ import type { HttpTypes } from "@medusajs/types"
 import { Card } from "@/components/atoms"
 
 export const OrderTrack = ({ order }: { order: Pick<HttpTypes.StoreOrder, "fulfillments"> }) => {
-  const labels = order.fulfillments?.[0]?.labels
-  if (!labels?.length) return null
+  const fulfillment = order.fulfillments?.[0]
+  // Store DTOs do not promise label expansions. Only render verified response data.
+  if (!fulfillment || !("labels" in fulfillment) || !Array.isArray(fulfillment.labels)) {
+    return null
+  }
+
+  const labels = fulfillment.labels.filter(
+    (label: unknown): label is { id: string; tracking_number: string } =>
+      typeof label === "object" &&
+      label !== null &&
+      "id" in label &&
+      typeof label.id === "string" &&
+      "tracking_number" in label &&
+      typeof label.tracking_number === "string"
+  )
+  if (!labels.length) return null
 
   return (
     <div>
