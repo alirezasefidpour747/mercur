@@ -294,3 +294,12 @@ A compatibility correction is **IMPLEMENTED — NOT TESTED** pending the owner's
 - `src/scripts/seed-reviews.ts` and `src/scripts/seed-reviews-seller-mercur.ts`: normalize queried customer/order results to the ID-only projection actually consumed by these scripts.
 
 No typecheck exclusion, core package source change, migration, dependency change or seed execution is part of this correction. These existing ecommerce demo scripts are corrected for compilation; they are not enabled as P01 business flows. Full native persistence, authenticated journey and T01–T10 remain pending. P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 2
+
+Backend `bun run build` on commit `f8a3a1d7` **PASSED**, completing in 4.13 seconds after successful code/type generation. All nine previous script diagnostics were resolved.
+
+Storefront `bun run build` generated its production output, but reported that ESLint could not load the inherited TypeScript config because of old jiti, and explicitly skipped TypeScript validation. This is not evidence of passing lint/typecheck gates.
+
+Correction **IMPLEMENTED — NOT TESTED**: add an application-local `eslint.config.mjs` using the installed Next core-web-vitals and TypeScript lint rules through existing FlatCompat; this avoids the inherited TypeScript config loader without disabling lint or changing dependencies. Set `typescript.ignoreBuildErrors` to false in the application Next config so production build enforces type validation. A new owner-machine build is required; P01 overall remains **TESTED — FAILED** pending remaining gates and the real native journey.
