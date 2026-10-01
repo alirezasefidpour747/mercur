@@ -456,3 +456,10 @@ On `663c8f05`, owner Storefront `bun run typecheck` **TESTED — FAILED** with t
 Correction **IMPLEMENTED — NOT TESTED**: CartAddressSection keeps the billing checkbox separate from action error state; the action accepts FormData and returns the actual string/undefined result of setAddresses. The form uses the action dispatch directly, renders only the returned error, and disables Save while pending. Delivery navigation and refresh occur only after the awaited address action succeeds; the old wrapper advanced even on failure. Include the actual router/path dependencies in its address effect. No new commerce API or P01 checkout capability was added, and no type/lint suppression was introduced.
 
 Source inspection found one setAddresses UI consumer in the available checkout source. The component was checked against the current remote action signature. Full application typecheck, lint, build and runtime behavior remain pending; no local full app compiler or live native backend was available for this correction. P01 overall remains **TESTED — FAILED**. Native T01–T10 and the remaining lint repairs remain outstanding; P02 remains untouched.
+
+
+## Owner-machine debugging — 2026-10-01, round 19
+
+On `e6aec778`, owner Storefront `bun run typecheck` **PASSED** after native contract generation, with no diagnostics. This supersedes round 18's three CartAddressSection errors and verifies the current cart/payment/address changes against the full application TypeScript gate.
+
+Storefront lint/full build remains **TESTED — FAILED** based on the last recorded lint run; a fresh lint run is required to establish the remaining diagnostics after these corrections. The address success/failure navigation change has not yet been runtime tested. Native database/API/UI T01–T10 evidence and canonical Bun lock capture remain pending. P01 overall remains **TESTED — FAILED**; P02 remains untouched.
